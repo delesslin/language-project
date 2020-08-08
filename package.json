@@ -1,0 +1,20 @@
+{
+  "name": "language-project",
+  "version": "0.0.1",
+  "description": "Framework for language apps",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "nodemon server/index.js"
+  },
+  "keywords": [
+    "js",
+    "node",
+    "react",
+    "express",
+    "language",
+    "app",
+    "learning"
+  ],
+  "author": "delesslin",
+  "license": "MIT"
+}
