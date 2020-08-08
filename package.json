@@ -5,9 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "test": "nodemon server/index.js",
-    "commit": "git add . && git commit -am",
-    "push": "git push origin master",
-    "merge": "git pull origin master"
+    "start": "node server/index.js"
   },
   "keywords": [
     "js",
