@@ -1,0 +1,37 @@
+[
+  {
+    "_id": "564",
+    "language_entry": "tanake",
+    "pronunciation": ["tuh-nah-kay"],
+    "alternative_spellings": [],
+    "translations": ["hello"],
+    "images": [],
+    "recordings": [],
+    "tags": ["greetings", "basics"],
+    "notes": []
+  },
+  {
+    "_id": "100",
+    "language_entry": "kus",
+    "pronunciation": ["koos"],
+    "alternative_spellings": [],
+    "translations": ["corn"],
+    "images": [],
+    "recordings": [],
+    "tags": ["food", "plant"],
+    "notes": []
+  },
+  {
+    {
+      "_id": "200",
+      "language_entry": "witiki",
+      "pronunciation": ["wee-tee-kee"],
+      "alternative_spellings": [],
+      "translations": ["potato"],
+      "images": [],
+      "recordings": [],
+      "tags": ["food", "plant"],
+      "notes": []
+    }
+  }
+]
