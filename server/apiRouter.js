@@ -62,57 +62,6 @@ apiRouter.patch('/Words/:languageEntry', async (req, res) => {
 
 module.exports = apiRouter
 
-// const db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function () {
-//   console.log("we're connected!")
-// });
-
-
-
-// const Word =  mongoose.model("Word", wordSchema)
-// module.exports = Word;
-
-// async function listDatabases(client) {
-//   databasesList = await client.db().admin().listDatabases()
-
-//   console.log('Databases:')
-//   databasesList.databases.forEach((db) => console.log(` - ${db.name}`))
-//   return databasesList.databases
-// }
-// // Start server
-// async function test() {
-//   /**
-//    * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-//    * See https://docs.mongodb.com/ecosystem/drivers/node/ for more details
-//    */
-//   const client = new MongoClient(CONNECTION_URL, { useUnifiedTopology: true })
-
-//   try {
-//     // Connect to the MongoDB cluster
-
-//     await client.connect()
-//     return await listDatabases(client)
-//   } catch (e) {
-//     console.error(e)
-//   } finally {
-//     await client.close()
-//   }
-
-// }
-// test().catch(console.error)
-
-// apiRouter.get('/word', async (req, res) => {
-//   const answer = await getBigFile('apple')
-//   res.send(answer)
-// })
-
-// const getBigFile = async (a) => {
-//   //THIS MIGHT TAKE 10 SECONDS!!!!!!
-//   const url = 'https://baconipsum.com/api/?type=meat-and-filler'
-//   const data = await fetch(url)
-//   return data.json()
-// }
 
 // TODO: Authentication for admins
 // TODO: ABility to retrieve words based on query
