@@ -10,6 +10,11 @@ apiRouter.get('/word', async (req, res) => {
   res.send(answer)
 })
 
+apiRouter.post('/new-word', (req, res) => {
+  console.log(req.body)
+  res.sendStatus(200)
+})
+
 const getBigFile = async (a) => {
   //THIS MIGHT TAKE 10 SECONDS!!!!!!
   const url = 'https://baconipsum.com/api/?type=meat-and-filler'

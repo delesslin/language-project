@@ -6,9 +6,13 @@ const { serveBuildFolder } = require('./serveBuildFolder')
 const { apiRouter } = require('./apiRouter')
 const mongoose = require('mongoose')
 const { MongoClient } = require('mongodb')
+const bodyParser = require('body-parser')
 
 // Init express server
 const app = express()
+// Parse requests
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
 //mongoDB Atlas
 const CONNECTION_URL = process.env.CONNECTION_URL
