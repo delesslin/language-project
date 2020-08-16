@@ -1,6 +1,5 @@
 [
   {
-    "_id": "564",
     "language_entry": "tanake",
     "pronunciation": ["tuh-nah-kay"],
     "alternative_spellings": [],
@@ -11,7 +10,6 @@
     "notes": []
   },
   {
-    "_id": "100",
     "language_entry": "kus",
     "pronunciation": ["koos"],
     "alternative_spellings": [],
@@ -22,7 +20,6 @@
     "notes": []
   },
   {
-      "_id": "200",
       "language_entry": "witiki",
       "pronunciation": ["wee-tee-kee"],
       "alternative_spellings": [],
