@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
+
 const wordSchema = new mongoose.Schema({
-    language_entry: {type: String, required: true},
+    language_entry: {type: String, required: true, unique: true},
     pronunciation: [String],
     alternative_spellings: [String],
     translations: [String],
