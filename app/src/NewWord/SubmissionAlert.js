@@ -1,16 +1,23 @@
 import React from 'react'
 import { Snackbar } from '@material-ui/core'
 import { Alert } from '@material-ui/lab'
+import { useRecoilValue, useRecoilState } from 'recoil'
 
-export const SubmissionAlert = ({ state }) => {
+export const SubmissionAlert = ({ ATOM }) => {
+  const [{ isOpen, severity, msg }, setAlert] = useRecoilState(ATOM)
   const handleClose = () => {
     console.log('CLOSE ALERT!')
+    setAlert({
+      isOpen: false,
+      severity: '',
+      msg: '',
+    })
   }
 
   return (
-    <Snackbar open={state.open} onClose={handleClose}>
-      <Alert onClose={handleClose} severity='warning'>
-        Submitting new word
+    <Snackbar open={isOpen} onClose={handleClose}>
+      <Alert onClose={handleClose} severity={severity}>
+        {msg}
       </Alert>
     </Snackbar>
   )

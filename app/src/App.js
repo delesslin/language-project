@@ -4,6 +4,7 @@ import './App.css'
 import { NewWord } from './NewWord/Main'
 import { WrappersAndProviders } from './WrappersAndProviders'
 import { Switch, Route } from 'react-router-dom'
+import CustomKeyboard from './Keyboard/Main'
 
 const Switcher = () => {
   return (
@@ -12,7 +13,7 @@ const Switcher = () => {
         <NewWord />
       </Route>
       <Route path='/keyboard'>
-        <h1>KEYYYYBBBBOOOOAAAAAARDDDD</h1>
+        <CustomKeyboard />
       </Route>
       <Route path='/word'>
         <h1>LOOK AT THIS WORDddd</h1>

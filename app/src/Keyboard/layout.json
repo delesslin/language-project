@@ -1,0 +1,144 @@
+[
+  [
+    {
+      "key": "q",
+      "char": "ɂ",
+      "shift": "ɂ"
+    },
+    {
+      "key": "w",
+      "char": "w",
+      "shift": "W"
+    },
+    {
+      "key": "r",
+      "char": "r",
+      "shift": "R"
+    },
+    {
+      "key": "t",
+      "char": "t",
+      "shift": "T"
+    },
+    {
+      "key": "y",
+      "char": "y",
+      "shift": "Y"
+    },
+    {
+      "key": "u",
+      "char": "u",
+      "shift": "U"
+    },
+    {
+      "key": "i",
+      "char": "i",
+      "shift": "I"
+    },
+    {
+      "key": "o",
+      "char": "α",
+      "shift": "α"
+    },
+    {
+      "key": "p",
+      "char": "p",
+      "shift": "P"
+    },
+    {
+      "key": "BACKSPACE"
+    }
+  ],
+  [
+    {
+      "key": "a",
+      "char": "a",
+      "shift": "A"
+    },
+    {
+      "key": "s",
+      "char": "s",
+      "shift": "S"
+    },
+    {
+      "key": "d",
+      "char": "d",
+      "shift": "D"
+    },
+    {
+      "key": "f",
+      "char": "ą",
+      "shift": "Ą"
+    },
+    {
+      "key": "g",
+      "char": "g",
+      "shift": "G"
+    },
+    {
+      "key": "h",
+      "char": "ę",
+      "shift": "Ę"
+    },
+    {
+      "key": "k",
+      "char": "k",
+      "shift": "K"
+    },
+    {
+      "key": "l",
+      "char": "į",
+      "shift": "Į"
+    }
+  ],
+  [
+    {
+      "key": "SHIFT"
+    },
+    {
+      "key": "z",
+      "char": "ɛ",
+      "shift": "Ɛ"
+    },
+    {
+      "key": "x",
+      "char": "ʰ",
+      "shift": "ʰ"
+    },
+    {
+      "key": "c",
+      "char": "č",
+      "shift": "Č"
+    },
+    {
+      "key": "v",
+      "char": "ų",
+      "shift": "Ų"
+    },
+    {
+      "key": "b",
+      "char": "b",
+      "shift": "B"
+    },
+    {
+      "key": "n",
+      "char": "n",
+      "shift": "N"
+    },
+    {
+      "key": "m",
+      "char": "m",
+      "shift": "M"
+    },
+    {
+      "key": "SHIFT"
+    }
+  ],
+  [
+    {
+      "key": "SPACE",
+      "char": " ",
+      "shift": " "
+    }
+  ]
+]
