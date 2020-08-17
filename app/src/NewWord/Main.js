@@ -40,8 +40,8 @@ export const NewWord = () => {
       translations,
       tags,
       images,
-      notes,
       recordings,
+      notes
     }
     console.log('Sending new word to server')
     axios

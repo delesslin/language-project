@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, TextField } from '@material-ui/core'
 import { useRecoilState } from 'recoil'
-import { TERM_ATOM } from './Main'
+import { TERM_ATOM } from './atoms'
 export const Term = () => {
   const [term, setTerm] = useRecoilState(TERM_ATOM)
   return (

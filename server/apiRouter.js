@@ -38,9 +38,20 @@ apiRouter.post('/Words', async (req, res) => {
   }
 });
 
-apiRouter.delete('/Words/:languageEntry', async (req, res) => {
+apiRouter.post('/new-word', async (req, res) => {
+  const Words = new wordModel(req.body);
+
   try {
-    const Words = await wordModel.findOneAndDelete(req.params.languageEntry)
+    await Words.save();
+    res.send(Words);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
+apiRouter.delete('/Words/:language_entry', async (req, res) => {
+  try {
+    const Words = await wordModel.findOneAndDelete(req.params.language_entry)
 
     if (!Words) res.status(404).send("No item found")
     res.status(200).send()
@@ -49,15 +60,16 @@ apiRouter.delete('/Words/:languageEntry', async (req, res) => {
   }
 })
 
-apiRouter.patch('/Words/:languageEntry', async (req, res) => {
+apiRouter.patch('/Words/:language_entry', async (req, res) => {
   try {
-    await wordModel.findOneAndUpdate(req.params.languageEntry, req.body)
+    await wordModel.findOneAndUpdate(req.params.language_entry, req.body)
     await wordModel.save()
     res.send(Words)
   } catch (err) {
     res.status(500).send(err)
   }
 })
+
 
 
 module.exports = apiRouter
