@@ -11,12 +11,13 @@ require('dotenv').config()
 const CONNECTION_URL = process.env.CONNECTION_URL
 
 apiRouter.get('/test', (req, res) => {
-  res.send("1234")
+  res.send('1234')
 })
 
-
-mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
-
+mongoose.connect(CONNECTION_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
 
 apiRouter.get('/Words', async (req, res) => {
   const Words = await wordModel.find({})
@@ -28,32 +29,33 @@ apiRouter.get('/Words', async (req, res) => {
 })
 
 apiRouter.post('/Words', async (req, res) => {
-  const Words = new wordModel(req.body);
+  const Words = new wordModel(req.body)
 
   try {
-    await Words.save();
-    res.send(Words);
+    await Words.save()
+    res.send(Words)
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send(err)
   }
-});
+})
 
 apiRouter.post('/new-word', async (req, res) => {
-  const Words = new wordModel(req.body);
+  console.log(req.body)
+  const Words = new wordModel(req.body)
 
   try {
-    await Words.save();
-    res.send(Words);
+    await Words.save()
+    res.send(Words)
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send(err)
   }
-});
+})
 
 apiRouter.delete('/Words/:language_entry', async (req, res) => {
   try {
     const Words = await wordModel.findOneAndDelete(req.params.language_entry)
 
-    if (!Words) res.status(404).send("No item found")
+    if (!Words) res.status(404).send('No item found')
     res.status(200).send()
   } catch (err) {
     res.status(500).send(err)
@@ -70,10 +72,7 @@ apiRouter.patch('/Words/:language_entry', async (req, res) => {
   }
 })
 
-
-
 module.exports = apiRouter
-
 
 // TODO: Authentication for admins
 // TODO: ABility to retrieve words based on query
