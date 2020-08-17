@@ -7,7 +7,7 @@ const apiRouter = express()
 const wordModel = require('./models/word.js')
 require('dotenv').config()
 
-mongoose.set('useCreateIndex', true);
+mongoose.set('useCreateIndex', true)
 //mongoDB Atlas
 const CONNECTION_URL = process.env.CONNECTION_URL
 
