@@ -36,18 +36,23 @@ apiRouter.post('/Words', async (req, res) => {
     await Words.save()
     res.send(Words)
   } catch (err) {
+    console.error(err)
     res.status(500).send(err)
   }
 })
+
+//ToDo: Expand Error codes (Specifically error code for duplicate values)
 
 apiRouter.post('/new-word', async (req, res) => {
   console.log(req.body)
   const Words = new wordModel(req.body)
 
   try {
-    await Words.save()
-    res.send(Words)
+    const newWord = await Words.save()
+    console.log(newWord)
+    res.send(newWord)
   } catch (err) {
+    console.error(err)
     res.status(500).send(err)
   }
 })
