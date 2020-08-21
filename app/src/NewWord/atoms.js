@@ -36,5 +36,5 @@ export const NOTE_ATOM = atom({
 
 export const REC_ATOM = atom({
   key: 'REC_VALUE',
-  default: ['This is a BASE64 string representing a recording'],
+  default: [],
 })
