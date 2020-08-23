@@ -13,11 +13,16 @@ const Blobber = ({ blob }) => {
       return <PlayArrowIcon />
     }
   }
+  const handleClick = () => {
+    const bool = !isPlaying
+    setIsPlaying(bool)
+  }
 
   const BLOB_URL = URL.createObjectURL(blob)
+  console.log(BLOB_URL)
   return (
     <Grid item>
-      <Fab>
+      <Fab onClick={handleClick}>
         <Icon />
         <ReactPlayer url={BLOB_URL} playing={isPlaying} />
       </Fab>
