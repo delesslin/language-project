@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import ReactPlayer from 'react-player'
-import { Grid, Fab } from '@material-ui/core'
+import { Grid, Fab, Container, Hidden } from '@material-ui/core'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import StopIcon from '@material-ui/icons/Stop'
 
+// TODO: react-player causing funky styles. Different player or...?
 const Blobber = ({ blob }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const Icon = () => {
@@ -22,10 +23,13 @@ const Blobber = ({ blob }) => {
   console.log(BLOB_URL)
   return (
     <Grid item>
-      <Fab onClick={handleClick}>
-        <Icon />
-        <ReactPlayer url={BLOB_URL} playing={isPlaying} />
-      </Fab>
+      <Container>
+        <Fab onClick={handleClick}>
+          <Icon />
+        </Fab>
+      </Container>
+      <Hidden></Hidden>
+      <ReactPlayer url={BLOB_URL} playing={isPlaying} />
     </Grid>
   )
 }

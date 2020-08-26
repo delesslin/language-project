@@ -18,17 +18,19 @@ const BlobRecorder = ({ ATOM }) => {
     setRecordings([...recordings, blob])
   }
   return (
-    <Grid container direction='column'>
+    <Grid container direction='column' alignItems='stretch'>
       <Grid item>
-        <Typography>Recordings</Typography>
+        <Typography variant='h5'>Recordings</Typography>
       </Grid>
-      <Grid item container justify='center'>
-        <Recorder onRecordingComplete={handleData} />
-      </Grid>
-      <Grid item container justify='space-between'>
-        {recordings.map((entry, i) => {
-          return <Blobber key={i} blob={entry} />
-        })}
+      <Grid item container justify='flex-start' alignItems='flex-start'>
+        <Grid item>
+          <Recorder onRecordingComplete={handleData} />
+        </Grid>
+        <Grid item container alignContent='flex-start' justify='flex-start'>
+          {recordings.map((entry, i) => {
+            return <Blobber key={i} blob={entry} />
+          })}
+        </Grid>
       </Grid>
     </Grid>
   )

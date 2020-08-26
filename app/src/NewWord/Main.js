@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Paper, Grid, Typography } from '@material-ui/core'
+import { Paper, Grid, Typography, styled, Divider } from '@material-ui/core'
 import { Submit } from './Submit'
 import { MultiInput } from './MultiInput'
 import { Term } from './Term'
@@ -73,31 +73,42 @@ export const NewWord = () => {
         })
       })
   }
+  const StyledPaper = styled(Paper)({
+    padding: '20px 30px',
+  })
   return (
     <Grid item xs={10}>
-      <Paper>
+      <StyledPaper>
         <Grid
           container
-          spacing={2}
+          spacing={5}
           direction='column'
-          alignItems='flex-start'
+          alignItems='stretch'
           p={3}
         >
           <Grid item>
-            <Typography variant='h5'>Add New Word</Typography>
+            <Typography variant='h4'>Add New Word</Typography>
           </Grid>
+
           <Term />
+          <Divider />
           <MultiInput ATOM={PRON_ATOM} label='pronunciation' />
+          <Divider />
           <MultiInput ATOM={TRANS_ATOM} label='Translations' />
+          <Divider />
           <MultiInput ATOM={ALT_ATOM} label='Alternative Spellings' />
+          <Divider />
           <MultiInput ATOM={TAGS_ATOM} label='Tags' />
+          <Divider />
           <MultiInput ATOM={NOTE_ATOM} label='Notes' />
+          <Divider />
           <MultiInput ATOM={IMG_ATOM} label='Images' />
+          <Divider />
           <BlobRecorder ATOM={REC_ATOM} label='Recordings' />
           <Submit onClick={handleSubmit} />
           <SubmissionAlert ATOM={ALERT_ATOM} />
         </Grid>
-      </Paper>
+      </StyledPaper>
     </Grid>
   )
 }

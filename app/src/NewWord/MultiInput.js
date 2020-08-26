@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Grid, TextField, Fab, Chip } from '@material-ui/core'
+import { Grid, TextField, Fab, Chip, styled } from '@material-ui/core'
 import { useRecoilState } from 'recoil'
 import { PRON_ATOM } from './atoms'
 import DoneIcon from '@material-ui/icons/Done'
@@ -19,27 +19,34 @@ export const MultiInput = ({ ATOM, label }) => {
       return state.filter((value) => value !== pron)
     })
   }
+  const StyledTagsGrid = styled(Grid)({
+    minHeight: '50px',
+  })
   return (
     <Grid
       item
       container
       direction='column'
       alignContent='flex-start'
-      spacing={1}
+      spacing={2}
     >
-      <Grid item container justify='space-between' xs={7}>
-        <TextField
-          value={inputValue}
-          onChange={(e) => setInputValue(e.currentTarget.value)}
-          required
-          variant='outlined'
-          label={label}
-        ></TextField>
-        <Fab color='primary' aria-label='add' onClick={handleAdd}>
-          <AddIcon />
-        </Fab>
+      <Grid item container justify='flex-start' xs={7} spacing={2}>
+        <Grid item>
+          <TextField
+            value={inputValue}
+            onChange={(e) => setInputValue(e.currentTarget.value)}
+            required
+            variant='outlined'
+            label={label}
+          ></TextField>
+        </Grid>
+        <Grid item>
+          <Fab color='primary' aria-label='add' onClick={handleAdd}>
+            <AddIcon />
+          </Fab>
+        </Grid>
       </Grid>
-      <Grid item container>
+      <StyledTagsGrid item container>
         {state.map((item) => {
           return (
             <Chip
@@ -51,7 +58,7 @@ export const MultiInput = ({ ATOM, label }) => {
             />
           )
         })}
-      </Grid>
+      </StyledTagsGrid>
     </Grid>
   )
 }
