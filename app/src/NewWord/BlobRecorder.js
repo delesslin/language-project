@@ -17,6 +17,12 @@ const BlobRecorder = ({ ATOM }) => {
     console.log(blob)
     setRecordings([...recordings, blob])
   }
+  const deleteBlob = (i) => {
+    const newArr = recordings.filter((el, index) => {
+      return index !== i
+    })
+    setRecordings(newArr)
+  }
   return (
     <Grid container direction='column' alignItems='stretch'>
       <Grid item>
@@ -28,7 +34,9 @@ const BlobRecorder = ({ ATOM }) => {
         </Grid>
         <Grid item container alignContent='flex-start' justify='flex-start'>
           {recordings.map((entry, i) => {
-            return <Blobber key={i} blob={entry} />
+            return (
+              <Blobber key={i} blob={entry} onDelete={() => deleteBlob(i)} />
+            )
           })}
         </Grid>
       </Grid>

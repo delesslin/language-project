@@ -1,11 +1,20 @@
 import React, { useState } from 'react'
 import ReactPlayer from 'react-player'
-import { Grid, Fab, Container, Hidden } from '@material-ui/core'
+import {
+  Grid,
+  Fab,
+  Container,
+  Box,
+  styled,
+  Paper,
+  IconButton,
+} from '@material-ui/core'
+import DeleteIcon from '@material-ui/icons/Delete'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import StopIcon from '@material-ui/icons/Stop'
 
 // TODO: react-player causing funky styles. Different player or...?
-const Blobber = ({ blob }) => {
+const Blobber = ({ blob, onDelete }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const Icon = () => {
     if (isPlaying) {
@@ -21,15 +30,42 @@ const Blobber = ({ blob }) => {
 
   const BLOB_URL = URL.createObjectURL(blob)
   console.log(BLOB_URL)
+  const HiddenBox = styled(Box)({
+    width: '0px',
+    height: '0px',
+    overflow: 'hidden',
+  })
+  const BlobPaper = styled(Paper)({
+    elevation: 4,
+    padding: '8px 5px',
+  })
   return (
     <Grid item>
-      <Container>
-        <Fab onClick={handleClick}>
-          <Icon />
-        </Fab>
-      </Container>
-      <Hidden></Hidden>
-      <ReactPlayer url={BLOB_URL} playing={isPlaying} />
+      <BlobPaper>
+        <Grid container direction='column' alignItems='stretch'>
+          <Grid item>
+            <Container>
+              <Fab onClick={handleClick}>
+                <Icon />
+              </Fab>
+            </Container>
+          </Grid>
+          <Grid item>
+            <Container>
+              <IconButton onClick={onDelete}>
+                <DeleteIcon />
+              </IconButton>
+            </Container>
+          </Grid>
+          <HiddenBox>
+            <ReactPlayer
+              url={BLOB_URL}
+              playing={isPlaying}
+              onEnded={() => setIsPlaying(false)}
+            />
+          </HiddenBox>
+        </Grid>
+      </BlobPaper>
     </Grid>
   )
 }
