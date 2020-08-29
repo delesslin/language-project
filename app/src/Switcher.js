@@ -15,7 +15,6 @@ export const Switcher = () => {
         <KeyboardPage />
       </Route>
       <Route path='/word/:_id' component={WordDisplay} />
-
       <Route path='/'>
         <h1>This is your home now 🌞 </h1>
       </Route>
