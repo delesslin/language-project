@@ -9,13 +9,13 @@ import {
 } from '@material-ui/core'
 export const Login = ({ setLogin }) => {
   const handleSubmit = () => {
+    // TODO: AUTHENTICATE WITH SERVER
     setLogin(true)
   }
   return (
     <Container>
       <Paper>
-        <Typography>Test</Typography>
-        <Grid container direction='column' alignItems='center'>
+        <Grid container direction='column' alignItems='center' spacing={3}>
           <Grid item>
             <Typography variant='h4'>Login ⛓ </Typography>
           </Grid>
