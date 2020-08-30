@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
+import { useParams } from 'react-router'
 
-const WordDisplay = (props) => {
-  const _id = props.match.params._id
+const WordDisplay = () => {
+  const { _id } = useParams()
   return <h1>New word {_id}</h1>
 }
 

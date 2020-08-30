@@ -1,8 +1,8 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import CustomKeyboard from './Keyboard/Main'
+
 import WordDisplay from './WordDisplay'
-import KeyboardPage from './KeyboardPage'
+import Type from './Type'
 import { AdminPanel } from './AdminPanel'
 
 export const Switcher = () => {
@@ -11,10 +11,12 @@ export const Switcher = () => {
       <Route path='/admin'>
         <AdminPanel />
       </Route>
-      <Route path='/keyboard'>
-        <KeyboardPage />
+      <Route path='/type'>
+        <Type />
       </Route>
-      <Route path='/word/:_id' component={WordDisplay} />
+      <Route path='/word/:_id'>
+        <WordDisplay />
+      </Route>
       <Route path='/'>
         <h1>This is your home now 🌞 </h1>
       </Route>
