@@ -21,7 +21,7 @@ export const Key = ({ data, handleKeyPress, isShifted }) => {
     return () => {
       document.removeEventListener('keypress', handleKeyUp)
     }
-  }, [])
+  })
 
   const StyledPaper = styled(Paper)({
     padding: '5px 10px',

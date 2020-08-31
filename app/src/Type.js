@@ -1,28 +1,22 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-import { useKeyboard } from './Keyboard/Main'
+import { useKeyboardInput } from './Keyboard'
 import { Grid, TextField, Container } from '@material-ui/core'
-import { atom, useRecoilValue, useRecoilState } from 'recoil'
+import { atom, useRecoilValue } from 'recoil'
 const INPUT_ATOM = atom({
   key: 'INPUT_ATOM',
   default: '',
 })
 
 const Type = () => {
-  const { Keyboard, showKeyboard, hideKeyboard, value } = useKeyboard(
-    INPUT_ATOM,
-    true
-  )
-  const handleFocus = () => {
-    console.log('focus')
-    showKeyboard()
-  }
+  const text = useRecoilValue(INPUT_ATOM)
+  const [handleFocus, handleBlur] = useKeyboardInput(INPUT_ATOM)
+
   return (
     <Grid container direction='column'>
       <Container>
-        <TextField value={value} onFocus={handleFocus} onBlur={hideKeyboard} />
+        <TextField value={text} onFocus={handleFocus} onBlur={handleBlur} />
       </Container>
-      <Keyboard />
     </Grid>
   )
 }

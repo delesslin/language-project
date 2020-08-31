@@ -21,10 +21,18 @@ export const AdminPanel = () => {
           <h1>This is where we can do a BULK ADD ‼ </h1>
         </Route>
         <Route path={path + '/users'}>
-          <h1>Let's manage users 🦸 </h1>
+          <h1>
+            Let's manage users
+            <span role='img' aria-label='superhero'>
+              🦸
+            </span>
+          </h1>
           <h2>
             But not everyone with access to admin panel should be able to edit
-            this 🍰{' '}
+            this
+            <span role='img' aria-label='cake'>
+              🍰
+            </span>
           </h2>
         </Route>
         <Route path={path + '/edit/:_id'}>

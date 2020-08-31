@@ -4,10 +4,19 @@ import LAYOUT from './layout.json'
 import { Key } from './Key'
 import { Close } from './Close'
 import { useRecoilState } from 'recoil'
-
-const KeyboardComponent = ({ display, closeKeyboard, ATOM }) => {
-  const [text, setText] = useRecoilState(ATOM)
+import { KEYBOARD_ATOM } from './atoms'
+// continue to get a findDOMnode error. Will this be fixed by creating a custom component using native HTML elements?
+export const KeyboardComponent = () => {
+  const [keyboardState, setKeyboardState] = useRecoilState(KEYBOARD_ATOM)
   const [isShifted, setIsShifted] = React.useState(false)
+  const display = keyboardState.display
+  const text = keyboardState.value
+  const setText = (str) => {
+    setKeyboardState({
+      ...keyboardState,
+      value: str,
+    })
+  }
   const KeyboardGrid = styled(Grid)({
     paddingBottom: '25px',
   })
@@ -26,35 +35,34 @@ const KeyboardComponent = ({ display, closeKeyboard, ATOM }) => {
     }
   }
   const handleClose = () => {
-    closeKeyboard()
+    // closeKeyboard()
+    console.log('CLOSE KEYBOARD!')
   }
+  // REFACTOR TO NOT USE MATERIAL-UI? Purpose is to stop findDOMnode error
   return (
-    <>
-      <Drawer anchor='bottom' open={display}>
-        <KeyboardGrid container direction='column'>
-          <Close onClose={handleClose} />
-          <Grid item container direction='column'>
-            {LAYOUT.map((row) => {
-              const keys = row.map((entry) => {
-                return (
-                  <Key
-                    key={`${entry.key}-${Math.random()}`}
-                    data={entry}
-                    handleKeyPress={handleClick}
-                    isShifted={isShifted}
-                  />
-                )
-              })
+    <Drawer anchor='bottom' open={display}>
+      <KeyboardGrid container direction='column'>
+        <Close onClose={handleClose} />
+        <Grid item container direction='column'>
+          {LAYOUT.map((row) => {
+            const keys = row.map((entry) => {
               return (
-                <Grid item container justify='center'>
-                  {keys}
-                </Grid>
+                <Key
+                  key={`${entry.key}-${Math.random()}`}
+                  data={entry}
+                  handleKeyPress={handleClick}
+                  isShifted={isShifted}
+                />
               )
-            })}
-          </Grid>
-        </KeyboardGrid>
-      </Drawer>
-    </>
+            })
+            return (
+              <Grid item container justify='center' key={Math.random()}>
+                {keys}
+              </Grid>
+            )
+          })}
+        </Grid>
+      </KeyboardGrid>
+    </Drawer>
   )
 }
-export default KeyboardComponent

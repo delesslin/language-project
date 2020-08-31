@@ -18,7 +18,12 @@ export const Switcher = () => {
         <WordDisplay />
       </Route>
       <Route path='/'>
-        <h1>This is your home now 🌞 </h1>
+        <h1>
+          This is your home now{' '}
+          <span role='img' aria-label='sunshine'>
+            🌞
+          </span>{' '}
+        </h1>
       </Route>
     </Switch>
   )

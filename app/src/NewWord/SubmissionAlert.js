@@ -1,7 +1,7 @@
 import React from 'react'
 import { Snackbar } from '@material-ui/core'
 import { Alert } from '@material-ui/lab'
-import { useRecoilValue, useRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 
 export const SubmissionAlert = ({ ATOM }) => {
   const [{ isOpen, severity, msg }, setAlert] = useRecoilState(ATOM)

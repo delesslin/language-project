@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import { Grid, TextField, Fab, Chip, styled } from '@material-ui/core'
 import { useRecoilState } from 'recoil'
-import { PRON_ATOM } from './atoms'
-import DoneIcon from '@material-ui/icons/Done'
-// import { Fab } from '@material-ui/core'
+
 import AddIcon from '@material-ui/icons/Add'
 export const MultiInput = ({ ATOM, label }) => {
   const [state, setState] = useRecoilState(ATOM)
