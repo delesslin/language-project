@@ -6,11 +6,11 @@ import { Switcher } from './Switcher'
 import { GlobalKeyboard } from './Keyboard'
 
 function App() {
+  const keyboardRef = React.useRef()
   return (
     <div className='App'>
       <WrappersAndProviders>
         <Switcher />
-        <GlobalKeyboard />
       </WrappersAndProviders>
     </div>
   )
