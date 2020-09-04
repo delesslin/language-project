@@ -1,25 +1,31 @@
 import React from 'react'
 import { CopyKeyboard } from './Keyboard'
+import { Typography, Grid, styled } from '@material-ui/core'
 
 const Type = () => {
+  const StyledGridContainer = styled(Grid)({
+    padding: '40px',
+  })
   return (
-    <>
-      <h4>
-        OMG IT'S A KYBOARD
-        <span role='img' aria-label='keyboard emoji'>
-          ⌨
-        </span>
-      </h4>
-      <CopyKeyboard />
-    </>
+    <StyledGridContainer
+      container
+      direction='column'
+      alignItems='center'
+      spacing={10}
+    >
+      <Grid item>
+        <Typography variant='h4'>
+          Type In Catawba{' '}
+          <span role='img' aria-label='keyboard emoji'>
+            ⌨
+          </span>
+        </Typography>
+      </Grid>
+      <Grid>
+        <CopyKeyboard />
+      </Grid>
+    </StyledGridContainer>
   )
-  // return (
-  //   <Grid container direction='column'>
-  //     <Container>
-  //       <TextField value={text} onFocus={handleFocus} onBlur={handleBlur} />
-  //     </Container>
-  //   </Grid>
-  // )
 }
 
 export default Type

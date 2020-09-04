@@ -1,51 +1,63 @@
-import { DialogContent, Grid, TextField } from '@material-ui/core'
+import { DialogContent, Grid, Paper, TextField } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
-import Dialog from '@material-ui/core/Dialog'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import { styled } from '@material-ui/core/styles'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { KeyboardComponent } from './KeyboardComponent'
-// AHHHHHHHH STILL RE-RENDERING ON EACH CLICK
+import useClippy from 'use-clippy'
+import { CopyAlert } from './CopyAlert'
+
 export const CopyKeyboard = () => {
+  const [showAlert, setShowAlert] = useState(false)
+  const [clipboard, setClipboard] = useClippy()
   const [value, setValue] = useState('')
-  const handleClose = () => {
-    console.log('closing')
+
+  const handleCopy = () => {
+    setClipboard(value)
+    setShowAlert(true)
   }
-  const StyledDialog = styled(Dialog)({
-    padding: '50px',
-  })
+
+  const handleClear = () => {
+    setValue('')
+    if (showAlert) {
+      setShowAlert(false)
+    }
+  }
+  useEffect(() => {
+    if (showAlert) {
+      setShowAlert(false)
+    }
+  }, [value])
 
   return (
-    <StyledDialog
-      onClose={handleClose}
-      aria-labelledby='simple-dialog-title'
-      open={true}
-    >
-      <DialogTitle id='simple-dialog-title'>Type in Catawba</DialogTitle>
-      <DialogContent>
-        <Grid container justify='center'>
+    <>
+      <Grid container direction='center' alignItems='center' spacing={2}>
+        <Grid item container justify='center'>
           <Grid item>
             <TextField disabled variant='filled' value={value} />
           </Grid>
         </Grid>
-      </DialogContent>
-      <DialogContent>
-        <KeyboardComponent open={true} setText={setValue} text={value} />
-      </DialogContent>
-      <DialogContent>
-        <Grid container justify='center' spacing={2}>
+        <Grid item container justify='center'>
           <Grid item>
-            <Button variant='contained' color='primary'>
+            <KeyboardComponent text={value} setText={setValue} />
+          </Grid>
+        </Grid>
+        <Grid item container justify='center' spacing={2}>
+          <Grid item>
+            <Button variant='contained' color='primary' onClick={handleCopy}>
               Copy
             </Button>
           </Grid>
           <Grid item>
-            <Button variant='outlined' color='secondary'>
-              Nevermind
+            <Button variant='outlined' color='secondary' onClick={handleClear}>
+              Clear
             </Button>
           </Grid>
         </Grid>
-      </DialogContent>
-    </StyledDialog>
+        <Grid container item justify='center'>
+          <Grid item>
+            <CopyAlert open={showAlert} str={clipboard} />
+          </Grid>
+        </Grid>
+      </Grid>
+    </>
   )
 }
