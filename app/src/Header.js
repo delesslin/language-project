@@ -20,7 +20,7 @@ export default function Header() {
   const classes = useStyles()
 
   return (
-    <div className={classes.root}>
+    <div>
       <AppBar position='static'>
         <Toolbar>
           {/* <IconButton

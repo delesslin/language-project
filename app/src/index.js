@@ -2,10 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import App from './App'
+import { CssBaseline } from '@material-ui/core'
+import ScopedCssBaseline from '@material-ui/core/ScopedCssBaseline'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ScopedCssBaseline>
+      <App />
+    </ScopedCssBaseline>
   </React.StrictMode>,
   document.getElementById('root')
 )

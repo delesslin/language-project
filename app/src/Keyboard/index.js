@@ -29,7 +29,7 @@ export const CopyKeyboard = () => {
 
   return (
     <>
-      <Grid container direction='center' alignItems='center' spacing={2}>
+      <Grid container direction='column' alignItems='center' spacing={2}>
         <Grid item container justify='center'>
           <Grid item>
             <TextField disabled variant='filled' value={value} />
