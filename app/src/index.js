@@ -4,16 +4,21 @@ import ReactDOM from 'react-dom'
 import { CssBaseline } from '@material-ui/core'
 import ScopedCssBaseline from '@material-ui/core/ScopedCssBaseline'
 import Pages from './Pages'
-// import logo from './logo.svg'
-import { WrappersAndProviders } from './Components/WrappersAndProviders'
+import { RecoilRoot } from 'recoil'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Layout from './Components/Layout'
 
-function App() {
+// TODO: Move app contents into ReactDOM.render
+// TODO: Refactor to remove RecoilRoot
+export const App = () => {
   return (
-    <div className='App'>
-      <WrappersAndProviders>
-        <Pages />
-      </WrappersAndProviders>
-    </div>
+    <RecoilRoot>
+      <Router>
+        <Layout>
+          <Pages />
+        </Layout>
+      </Router>
+    </RecoilRoot>
   )
 }
 
