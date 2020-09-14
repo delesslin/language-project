@@ -1,17 +1,31 @@
 import React from 'react'
 import Header from '../Header'
-import { Grid, Container } from '@material-ui/core'
+import { Grid, Container, styled } from '@material-ui/core'
+import Footer from '../Footer'
 
+const MasterGrid = styled(Grid)({
+  minHeight: '100vh',
+  flexDirection: 'column',
+})
+const ContentGrid = styled(Grid)({
+  flex: '1 0 auto',
+})
+const FooterGrid = styled(Grid)({
+  flexShrink: 0,
+})
 const Layout = ({ children }) => {
   return (
-    <Grid container spacing={3} direction='column'>
+    <MasterGrid container>
       <Grid item>
         <Header />
       </Grid>
-      <Grid item>
+      <ContentGrid item>
         <Container>{children}</Container>
-      </Grid>
-    </Grid>
+      </ContentGrid>
+      <FooterGrid item>
+        <Footer />
+      </FooterGrid>
+    </MasterGrid>
   )
 }
 

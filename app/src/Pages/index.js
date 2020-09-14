@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import { AdminPanel } from './AdminPanel'
 import Type from './Type'
 import WordDisplay from './WordDisplay'
+import Home from './Home'
 
 const Pages = () => {
   return (
@@ -17,12 +18,7 @@ const Pages = () => {
         <WordDisplay />
       </Route>
       <Route exact path='/'>
-        <h1>
-          This is your home now{' '}
-          <span role='img' aria-label='sunshine'>
-            🌞
-          </span>{' '}
-        </h1>
+        <Home />
       </Route>
       <Route>
         <h1>Oh nooooo! WE CAN'T FIND THAT PAGE!!! ⚠ </h1>
