@@ -20,7 +20,7 @@ mongoose.connect(CONNECTION_URL, {
   useUnifiedTopology: true,
 })
 
-apiRouter.get('/Words', async (req, res) => {
+apiRouter.get('/words', async (req, res) => {
   const Words = await wordModel.find({})
   try {
     res.send(Words)

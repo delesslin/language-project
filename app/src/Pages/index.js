@@ -16,13 +16,16 @@ const Pages = () => {
       <Route path='/word/:_id'>
         <WordDisplay />
       </Route>
-      <Route path='/'>
+      <Route exact path='/'>
         <h1>
           This is your home now{' '}
           <span role='img' aria-label='sunshine'>
             🌞
           </span>{' '}
         </h1>
+      </Route>
+      <Route>
+        <h1>Oh nooooo! WE CAN'T FIND THAT PAGE!!! ⚠ </h1>
       </Route>
     </Switch>
   )
