@@ -31,3 +31,57 @@
 - Admins can add or edit words in the application
 - Admins can record pronunciations in the app
 - Admins can add photographs in the app
+
+# Opinions 👽
+### React App File Structure
+The `/app/src` folder follows the Folder/File structure used in Sara Vieira's *THE OPINIONATED GUIDE TO REACT*
+
+Example:
+```
+├── src
+| ├── index.js
+| ├── Components/
+| ├──── Button/
+| ├────── index.js
+| ├── Pages/
+| ├──── Homepage/
+| ├──── Screens/
+| ├────── Hero/
+| ├────── index.js
+| ├──── index.js
+| ├── index.js
+| ├── utils/
+| ├──── hooks/
+| ├────── useLocalStorage.js
+| ├──── date.js
+| ├── assets/
+| ├──── icons/
+| └──── images/
+```
+### React File Naming
+Every high-level Component or Page gets its own folder with an expressive name and inside that folder there will be in `index.js` file which is the only way that exterior files should be accessing the contents of the folder. Other contents of the folder are flexible.
+
+Example:
+```
+| ├──── Login/
+| ├────── index.js
+| ├────── Buttons/
+| |--------index.js
+| |--------RegisterButton.js
+```
+React understands these three import statements the same way, assuming the above file structure:
+```javascript
+import Login from './Login/index.js'
+```
+vs
+```javascript
+import Login from './Login/index'
+```
+vs
+```javascript
+import Login from './Login
+```
+
+
+# TODOs 📎
+1. Refactor React app state to only use the native react Context and State

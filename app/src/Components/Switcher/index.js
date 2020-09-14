@@ -1,9 +1,8 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
-import { GlobalKeyboard } from './Keyboard'
-import WordDisplay from './WordDisplay'
-import Type from './Type'
-import { AdminPanel } from './AdminPanel'
+import { Route, Switch } from 'react-router-dom'
+import { AdminPanel } from '../../Pages/AdminPanel'
+import Type from '../../Pages/Type'
+import WordDisplay from '../../Pages/WordDisplay'
 
 export const Switcher = () => {
   return (

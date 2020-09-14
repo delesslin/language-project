@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from './Header'
+import Header from '../Header'
 import { Grid, Container } from '@material-ui/core'
 
-export const Layout = ({ children }) => {
+const Layout = ({ children }) => {
   return (
     <Grid container spacing={3} direction='column'>
       <Grid item>
@@ -14,3 +14,5 @@ export const Layout = ({ children }) => {
     </Grid>
   )
 }
+
+export default Layout

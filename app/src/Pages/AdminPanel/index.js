@@ -1,9 +1,9 @@
 import React from 'react'
-import { NewWord } from './NewWord/Main'
+import { NewWord } from '../NewWord'
 import { Switch, Route, useRouteMatch } from 'react-router-dom'
 import { useRecoilState, atom } from 'recoil'
-import { Login } from './Login'
-import { EditEntry } from './EditEntry'
+import { Login } from '../Login'
+import { EditEntry } from '../EditEntry'
 const LOGIN_ATOM = atom({
   key: 'LOGIN_ATOM',
   default: false,

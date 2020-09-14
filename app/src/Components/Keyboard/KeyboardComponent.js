@@ -1,7 +1,7 @@
-import { Grid, styled } from '@material-ui/core'
-import React, { useState } from 'react'
 import { Key } from './Key'
 import LAYOUT from './layout.json'
+import { Grid, styled } from '@material-ui/core'
+import React, { useState } from 'react'
 // continue to get a findDOMnode error. Will this be fixed by creating a custom component using native HTML elements?
 // Cna remove React.forwardRef for now
 // TODO: Refactor to make this stateless
