@@ -9,6 +9,7 @@ const MasterGrid = styled(Grid)({
 })
 const ContentGrid = styled(Grid)({
   flex: '1 0 auto',
+  marginTop: '20px',
 })
 const FooterGrid = styled(Grid)({
   flexShrink: 0,
