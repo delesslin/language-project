@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
+import { Grid, Button } from '@material-ui/core'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
   const classes = useStyles()
 
+  // TODO: Implement search
+  // TODO: Implement login
   return (
     <div>
       <AppBar position='static'>
@@ -31,9 +35,15 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton> */}
-          <Typography variant='h6' className={classes.title}>
+          <Typography variant='h6' className={classes.title} edge='start'>
             Catawba Language Project
           </Typography>
+          <Button>
+            <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
+              <Typography>Browse</Typography>
+            </Link>
+          </Button>
+
           {/* <Button color='inherit'>Login</Button> */}
         </Toolbar>
       </AppBar>
