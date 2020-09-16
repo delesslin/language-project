@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 const TagCard = ({ tag }) => {
   return (
     <Grid item key={tag}>
-      <Link to={`/tags/${tag}`}>
+      <Link to={`/tags/${tag}`} style={{ textDecoration: 'none' }}>
         <Card>
           <CardMedia
             component='img'

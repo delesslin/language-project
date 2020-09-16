@@ -7,17 +7,20 @@ import Pages from './Pages'
 import { RecoilRoot } from 'recoil'
 import { BrowserRouter as Router } from 'react-router-dom'
 import Layout from './Components/Layout'
+import { Words } from './context'
 
 // TODO: Move app contents into ReactDOM.render
 // TODO: Refactor to remove RecoilRoot
 export const App = () => {
   return (
     <RecoilRoot>
-      <Router>
-        <Layout>
-          <Pages />
-        </Layout>
-      </Router>
+      <Words.Provider>
+        <Router>
+          <Layout>
+            <Pages />
+          </Layout>
+        </Router>
+      </Words.Provider>
     </RecoilRoot>
   )
 }
