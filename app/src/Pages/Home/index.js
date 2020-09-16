@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Container, Grid, CircularProgress } from '@material-ui/core'
 import TagCard from './TagCard'
 import { Words } from '../../context'
 
 const Home = () => {
-  const { words, tags, refetchWords } = React.useContext(Words.Context)
+  const { tags } = React.useContext(Words.Context)
 
   if (tags.length > 0) {
     return (

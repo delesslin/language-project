@@ -1,5 +1,5 @@
+import { Grid, Typography } from '@material-ui/core'
 import React from 'react'
-import { Typography, Grid, Container, Paper } from '@material-ui/core'
 
 export const WordEntry = ({ data }) => {
   return (

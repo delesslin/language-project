@@ -17,7 +17,7 @@ const Tag = () => {
       return acc
     }, [])
     setTaggedWords(matchedWords)
-  }, [words])
+  }, [words, _tagname])
   return (
     <Grid container direction='column' spacing={3}>
       <Grid item container justify='center'>

@@ -1,16 +1,9 @@
-import {
-  DialogContent,
-  Grid,
-  Paper,
-  TextField,
-  styled,
-  Box,
-} from '@material-ui/core'
+import { Box, Grid, Paper, styled, TextField } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
-import React, { useState, useEffect } from 'react'
-import { KeyboardComponent } from './KeyboardComponent'
+import React, { useEffect, useState } from 'react'
 import useClippy from 'use-clippy'
 import { CopyAlert } from './CopyAlert'
+import { KeyboardComponent } from './KeyboardComponent'
 
 export const CopyKeyboard = () => {
   const [showAlert, setShowAlert] = useState(false)
@@ -32,7 +25,7 @@ export const CopyKeyboard = () => {
     if (showAlert) {
       setShowAlert(false)
     }
-  }, [value])
+  }, [value, showAlert])
 
   return (
     <>
@@ -79,7 +72,7 @@ export const AddKeyboard = ({ setText = console.log }) => {
     top: 0,
     width: '100vw',
     height: '100vh',
-    backgroundColor: 'rgb(0, 0, 0)',
+
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     overflow: 'hidden',
     margin: '0px',

@@ -1,8 +1,8 @@
+import { Container, Grid, Paper, styled } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Words } from '../../context'
-import { Typography, Grid, Container, Paper, styled } from '@material-ui/core'
-import { WordEntry, Pronunciations, Translations } from './WordParts'
+import { Pronunciations, Translations, WordEntry } from './WordParts'
 
 const WordDisplay = () => {
   const { _id } = useParams()
@@ -40,7 +40,10 @@ const WordDisplay = () => {
         <WordPaper>
           <Grid container direction='column'>
             <Grid item>
-              <img src={thisWord.images[0]} />
+              <img
+                src={thisWord.images[0]}
+                alt={`visual of ${thisWord.translations[0]}`}
+              />
             </Grid>
             <WordEntry data={thisWord.language_entry} />
             <Pronunciations data={thisWord.pronunciation[0]} />
