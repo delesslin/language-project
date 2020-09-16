@@ -4,6 +4,7 @@ import { AdminPanel } from './AdminPanel'
 import Type from './Type'
 import WordDisplay from './WordDisplay'
 import Home from './Home'
+import Tag from './Tag'
 
 const Pages = () => {
   return (
@@ -17,9 +18,13 @@ const Pages = () => {
       <Route path='/word/:_id'>
         <WordDisplay />
       </Route>
+      <Route path='/tags/:_tagname'>
+        <Tag />
+      </Route>
       <Route exact path='/'>
         <Home />
       </Route>
+
       <Route>
         <h1>Oh nooooo! WE CAN'T FIND THAT PAGE!!! ⚠ </h1>
       </Route>
