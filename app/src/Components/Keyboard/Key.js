@@ -1,4 +1,5 @@
-import { Paper, styled } from '@material-ui/core'
+import { Paper } from '@material-ui/core'
+import styled from 'styled-components'
 import React from 'react'
 export const Key = ({ data, handleKeyPress, isShifted }) => {
   const handleClick = () => {
@@ -22,11 +23,14 @@ export const Key = ({ data, handleKeyPress, isShifted }) => {
       document.removeEventListener('keypress', handleKeyUp)
     }
   })
-
-  const StyledPaper = styled(Paper)({
-    padding: '5px 10px',
-    margin: '2px 3px',
-  })
+  const StyledPaper = styled(Paper)`
+    padding: 5px 10px;
+    margin: 2px 3px;
+  `
+  // const StyledPaper = styled(Paper)({
+  //   padding: '5px 10px',
+  //   margin: '2px 3px',
+  // })
   if (data.key === 'SHIFT') {
     return <StyledPaper>shift</StyledPaper>
   } else if (data.key === 'BACKSPACE') {

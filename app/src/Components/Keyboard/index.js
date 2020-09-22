@@ -1,6 +1,7 @@
-import { Box, Grid, Paper, styled, TextField } from '@material-ui/core'
+import { Box, Grid, Paper, TextField } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 import useClippy from 'use-clippy'
 import { CopyAlert } from './CopyAlert'
 import { KeyboardComponent } from './KeyboardComponent'
@@ -61,28 +62,45 @@ export const CopyKeyboard = () => {
     </>
   )
 }
+const ModalContainer = styled(Box)`
+  position: fixed;
+  padding-top: 20vh;
+  left: -50;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  margin: 0px;
+`
 
+const ModalContent = styled(Paper)`
+  position: relative;
+  padding: 20px;
+  margin: auto;
+  width: 75vw;
+`
 export const AddKeyboard = ({ setText = console.log }) => {
   const [value, setValue] = useState('')
 
-  const ModalContainer = styled(Box)({
-    position: 'fixed',
-    paddingTop: '20vh',
-    left: -50,
-    top: 0,
-    width: '100vw',
-    height: '100vh',
+  // const ModalContainer = styled(Box)({
+  //   position: 'fixed',
+  //   paddingTop: '20vh',
+  //   left: -50,
+  //   top: 0,
+  //   width: '100vw',
+  //   height: '100vh',
 
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    overflow: 'hidden',
-    margin: '0px',
-  })
-  const ModalContent = styled(Paper)({
-    position: 'relative',
-    padding: '20px',
-    margin: 'auto',
-    width: '75%',
-  })
+  //   backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  //   overflow: 'hidden',
+  //   margin: '0px',
+  // })
+  // const ModalContent = styled(Paper)({
+  //   position: 'relative',
+  //   padding: '20px',
+  //   margin: 'auto',
+  //   width: '75%',
+  // })
 
   const handleAdd = () => {
     setText(value)

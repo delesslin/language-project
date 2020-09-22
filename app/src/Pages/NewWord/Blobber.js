@@ -1,18 +1,28 @@
 import React, { useState } from 'react'
 import ReactPlayer from 'react-player'
-import {
-  Grid,
-  Fab,
-  Container,
-  Box,
-  styled,
-  Paper,
-  IconButton,
-} from '@material-ui/core'
+import { Grid, Fab, Container, Box, Paper, IconButton } from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import StopIcon from '@material-ui/icons/Stop'
-
+import styled from 'styled-components'
+const HiddenBox = styled(Box)`
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+`
+const BlobPaper = styled(Paper)`
+  elevation: 4;
+  padding: 8px 5px;
+`
+// const HiddenBox = styled(Box)({
+//   width: '0px',
+//   height: '0px',
+//   overflow: 'hidden',
+// })
+// const BlobPaper = styled(Paper)({
+//   elevation: 4,
+//   padding: '8px 5px',
+// })
 // TODO: react-player causing funky styles. Different player or...?
 const Blobber = ({ blob, onDelete }) => {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -29,16 +39,7 @@ const Blobber = ({ blob, onDelete }) => {
   }
 
   const BLOB_URL = URL.createObjectURL(blob)
-  console.log(BLOB_URL)
-  const HiddenBox = styled(Box)({
-    width: '0px',
-    height: '0px',
-    overflow: 'hidden',
-  })
-  const BlobPaper = styled(Paper)({
-    elevation: 4,
-    padding: '8px 5px',
-  })
+  // console.log(BLOB_URL)
   return (
     <Grid item>
       <BlobPaper>

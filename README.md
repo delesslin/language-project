@@ -86,6 +86,47 @@ vs
 import Login from './Login
 ```
 
+### Styles
+
+Although the app currently uses Material-ui design system/components for quick prototyping, which comes with its own 'styled' functionality, components should be styled using the styled-components pacakge. The syntax is much more intuitive for CSS users than re-learning CSS properties as JS Object properties (which is what Material UI requires).
+Examples:
+
+```javascript
+// use . syntax for any native HTML elements
+const RedCircle = styled.div`
+  background-color: red;
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+`
+// Declare styled component outside the body of the react component
+const ColorfulComponent = () => {
+  // Declare styled components just like you would any other react component
+  return <RedCircle />
+}
+```
+
+styled-components also make it easy to extend styles.
+For example (continuing earlier example):
+
+```javascript
+// Use ( ) syntax for any non-native html components, such as custom made components and Material UI components
+const BlueCircle = styled(RedCircle)`
+  background-color: #0000ff;
+`
+
+const ColorfulComponents = () => {
+  return (
+    <div>
+      <RedCircle />
+      <BlueCircle />
+    </div>
+  )
+}
+```
+
+styled-components have a lot of other features including SASS style nesting & changing style properties based on props passed to the component. check it out at: (https://styled-components.com/docs/basics#adapting-based-on-props)
+
 # Working with this repo
 
 ## First time downloading project:

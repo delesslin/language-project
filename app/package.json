@@ -26,6 +26,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "recoil": "0.0.10",
+    "styled-components": "^5.2.0",
     "use-clippy": "^1.0.6"
   },
   "scripts": {

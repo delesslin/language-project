@@ -1,8 +1,15 @@
 import React, { useState } from 'react'
-import { Grid, TextField, Fab, Chip, styled } from '@material-ui/core'
+import { Grid, TextField, Fab, Chip } from '@material-ui/core'
 import { useRecoilState } from 'recoil'
 
 import AddIcon from '@material-ui/icons/Add'
+import styled from 'styled-components'
+const StyledTagsGrid = styled(Grid)`
+  min-height: 50px;
+`
+// const StyledTagsGrid = styled(Grid)({
+//   minHeight: '50px',
+// })
 export const MultiInput = ({ ATOM, label }) => {
   const [state, setState] = useRecoilState(ATOM)
   const [inputValue, setInputValue] = useState('')
@@ -17,9 +24,6 @@ export const MultiInput = ({ ATOM, label }) => {
       return state.filter((value) => value !== pron)
     })
   }
-  const StyledTagsGrid = styled(Grid)({
-    minHeight: '50px',
-  })
   return (
     <Grid
       item

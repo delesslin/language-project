@@ -1,10 +1,14 @@
 import React from 'react'
-import { Grid, Typography, Paper, styled } from '@material-ui/core'
+import { Grid, Typography, Paper } from '@material-ui/core'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+// const WordPaper = styled(Paper)({
+//   padding: '25px 40px',
+// })
+const WordPaper = styled(Paper)`
+  padding: 25px 40px;
+`
 const WordCard = ({ data }) => {
-  const WordPaper = styled(Paper)({
-    padding: '25px 40px',
-  })
   console.log(data)
   return (
     <Grid item>

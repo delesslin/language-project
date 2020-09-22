@@ -1,5 +1,5 @@
 import React from 'react'
-import { Paper, Grid, Typography, styled, Divider } from '@material-ui/core'
+import { Paper, Grid, Typography, Divider } from '@material-ui/core'
 import { Submit } from './Submit'
 import { MultiInput } from './MultiInput'
 import { Term } from './Term'
@@ -17,6 +17,7 @@ import {
 } from './atoms'
 import { SubmissionAlert } from './SubmissionAlert'
 import BlobRecorder from './BlobRecorder'
+import styled from 'styled-components'
 
 const ALERT_ATOM = atom({
   key: 'ALERT_ATOM',
@@ -26,6 +27,12 @@ const ALERT_ATOM = atom({
     msg: '',
   },
 })
+const StyledPaper = styled(Paper)`
+  padding: 20px 30px;
+`
+// const StyledPaper = styled(Paper)({
+//   padding: '20px 30px',
+// })
 export const NewWord = () => {
   const language_entry = useRecoilValue(TERM_ATOM)
   const pronunciation = useRecoilValue(PRON_ATOM)
@@ -73,9 +80,6 @@ export const NewWord = () => {
         })
       })
   }
-  const StyledPaper = styled(Paper)({
-    padding: '20px 30px',
-  })
   return (
     <Grid item xs={10}>
       <StyledPaper>

@@ -1,17 +1,20 @@
-import { Container, Grid, Paper, styled } from '@material-ui/core'
+import { Container, Grid, Paper } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Words } from '../../context'
 import { Pronunciations, Translations, WordEntry } from './WordParts'
-
+import styled from 'styled-components'
+const WordPaper = styled(Paper)`
+  padding: 25px 20px;
+`
 const WordDisplay = () => {
   const { _id } = useParams()
   const { words } = useContext(Words.Context)
   const [thisWord, setThisWord] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
-  const WordPaper = styled(Paper)({
-    padding: '25px 20px',
-  })
+  // const WordPaper = styled(Paper)({
+  //   padding: '25px 20px',
+  // })
   // TODO: Handle Errors (e.g. no matching _id)
   // Refactor to util folder???
   useEffect(() => {

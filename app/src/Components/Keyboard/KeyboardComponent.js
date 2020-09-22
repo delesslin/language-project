@@ -1,17 +1,21 @@
 import { Key } from './Key'
 import LAYOUT from './layout.json'
-import { Grid, styled } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import React, { useState } from 'react'
+import styled from 'styled-components'
 // continue to get a findDOMnode error. Will this be fixed by creating a custom component using native HTML elements?
 // Cna remove React.forwardRef for now
+const KeyboardGrid = styled(Grid)`
+  padding-bottom: 25px;
+`
 // TODO: Refactor to make this stateless
 export const KeyboardComponent = React.memo(({ text, setText }) => {
   // const [keyboardState, setKeyboardState] = useRecoilState(KEYBOARD_ATOM)
   // const [isShifted, setIsShifted] = React.useState(false)
   const [isShifted, setIsShifted] = useState(false)
-  const KeyboardGrid = styled(Grid)({
-    paddingBottom: '25px',
-  })
+  // const KeyboardGrid = styled(Grid)({
+  //   paddingBottom: '25px',
+  // })
   const handleClick = (char) => {
     // TODO: remove this logic to an external function
     console.log(char)

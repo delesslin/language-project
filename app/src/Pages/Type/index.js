@@ -1,12 +1,17 @@
-import { Grid, styled, Typography } from '@material-ui/core'
+import { Grid, Typography } from '@material-ui/core'
 import React from 'react'
+import styled from 'styled-components'
 import { CopyKeyboard } from '../../Components/Keyboard'
 
+const StyledGridContainer = styled(Grid)`
+  padding: 40px;
+  margin: 0px;
+`
 const Type = () => {
-  const StyledGridContainer = styled(Grid)({
-    padding: '40px',
-    margin: '0px',
-  })
+  // const StyledGridContainer = styled(Grid)({
+  //   padding: '40px',
+  //   margin: '0px',
+  // })
 
   return (
     <>
