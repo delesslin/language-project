@@ -1,5 +1,5 @@
 import React from 'react'
-import useGetWords from '../utils/useGetWords'
+import useGetWords from '../utils/hooks/useGetWords'
 
 const WordsContext = React.createContext()
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Words } from '../../context'
+import { Words } from '../../../context'
 import Fuse from 'fuse.js'
 const findMatches = async (term, words) => {
   const fuse = new Fuse(words, {
