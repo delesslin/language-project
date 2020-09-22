@@ -21,10 +21,12 @@ const Pages = () => {
       <Route path='/tags/:_tagname'>
         <Tag />
       </Route>
+      <Route path='/search'>
+        <h1>Let's search!</h1>
+      </Route>
       <Route exact path='/'>
         <Home />
       </Route>
-
       <Route>
         <h1>Oh nooooo! WE CAN'T FIND THAT PAGE!!! ⚠ </h1>
       </Route>

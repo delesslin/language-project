@@ -1,26 +1,16 @@
-import { Button } from '@material-ui/core'
+import { Box, Grid } from '@material-ui/core'
 import AppBar from '@material-ui/core/AppBar'
-import { makeStyles } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import NavBar from './NavBar'
+import styled from 'styled-components'
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    flexGrow: 1,
-  },
-}))
-
+const CenterBox = styled(Box)`
+  display: grid;
+  place-items: center;
+`
 export default function Header() {
-  const classes = useStyles()
-
   // TODO: Implement search
   // TODO: Implement login
   return (
@@ -35,14 +25,14 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton> */}
-          <Typography variant='h6' className={classes.title} edge='start'>
-            Catawba Language Project
-          </Typography>
-          <Button>
-            <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>
-              <Typography>Browse</Typography>
-            </Link>
-          </Button>
+          <Grid container justify='space-between' alignItems='center'>
+            <Grid item>
+              <Typography variant='h5' edge='start'>
+                Catawba Language Project
+              </Typography>
+            </Grid>
+            <NavBar />
+          </Grid>
 
           {/* <Button color='inherit'>Login</Button> */}
         </Toolbar>
