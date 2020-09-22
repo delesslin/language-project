@@ -5,6 +5,7 @@ import Type from './Type'
 import WordDisplay from './WordDisplay'
 import Home from './Home'
 import Tag from './Tag'
+import Search from './Search'
 
 const Pages = () => {
   return (
@@ -22,7 +23,7 @@ const Pages = () => {
         <Tag />
       </Route>
       <Route path='/search'>
-        <h1>Let's search!</h1>
+        <Search />
       </Route>
       <Route exact path='/'>
         <Home />
