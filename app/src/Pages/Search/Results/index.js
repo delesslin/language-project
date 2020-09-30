@@ -1,11 +1,14 @@
 import { Box, CircularProgress, Grid, Typography } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
+import Request from './Request'
+import Result from './Result'
 const StyledProgress = styled(Box)`
   display: grid;
   place-items: center;
   padding-top: 75px;
 `
+// TODO: insert dividers between results
 const Results = ({ loading, results }) => {
   if (loading) {
     return (
@@ -20,19 +23,15 @@ const Results = ({ loading, results }) => {
       return (
         <Grid container direction='column'>
           {results.map((entry) => {
-            const data = entry.item
-            return (
-              <Grid item container justify='space-around' key={entry.refIndex}>
-                <Grid item>
-                  <Typography>{data.language_entry}</Typography>
-                  <Typography>{data.translations[0]}</Typography>
-                </Grid>
-              </Grid>
-            )
+            return <Result key={entry.item._id} entry={entry} />
           })}
-          <Grid item>
-            Can't find what you're looking for? Request a translation here: LINK
-          </Grid>
+          <Request />
+        </Grid>
+      )
+    } else {
+      return (
+        <Grid container direction='column'>
+          <Request />
         </Grid>
       )
     }

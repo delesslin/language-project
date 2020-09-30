@@ -11,7 +11,7 @@ const Home = () => {
       <Container>
         <Grid container spacing={3} justify='center'>
           {tags.map((tag) => {
-            return <TagCard tag={tag} />
+            return <TagCard key={tag} tag={tag} />
           })}
         </Grid>
       </Container>

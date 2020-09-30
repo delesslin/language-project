@@ -3,6 +3,8 @@
 1. Refactor React app state to only use the native react Context and State
 2. Implement login on server and app
 3. Implement keyboards, recorders, & public domain image search for NewWord
+4. Style search results
+5. Link search results to word page
 
 # Minimum Viable Project
 
