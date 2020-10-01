@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid, Typography } from '@material-ui/core'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import StyledLink from '../../../Components/styled/StyledLink'
+import StyledLink from '../../../styled/StyledLink'
 
 const CircleImg = styled.img`
   border-radius: 50%;

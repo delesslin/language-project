@@ -9,17 +9,25 @@ export const ModalPaperContainer = styled.div`
 `
 
 export const StyledModalPaper = styled(Paper)`
-  min-width: 40vw;
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
   padding: 50px;
 `
-export const ModalStandard = ({ children, open }) => (
+export const ModalStandard = ({
+  children,
+  open,
+  width = 'auto',
+  height = 'auto',
+}) => (
   <Modal
     open={open}
     aria-labelledby='Catawba Keyboard'
     aria-describedby='Interactive keyboard with Catawba characters'
   >
     <ModalPaperContainer>
-      <StyledModalPaper>{children}</StyledModalPaper>
+      <StyledModalPaper width={width} height={height}>
+        {children}
+      </StyledModalPaper>
     </ModalPaperContainer>
   </Modal>
 )
