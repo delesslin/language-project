@@ -18,6 +18,7 @@ import {
 import { SubmissionAlert } from './SubmissionAlert'
 import BlobRecorder from './BlobRecorder'
 import styled from 'styled-components'
+import { AltSpellings } from './AltSpellings'
 
 const ALERT_ATOM = atom({
   key: 'ALERT_ATOM',
@@ -100,7 +101,8 @@ export const NewWord = () => {
           <Divider />
           <MultiInput ATOM={TRANS_ATOM} label='Translations' />
           <Divider />
-          <MultiInput ATOM={ALT_ATOM} label='Alternative Spellings' />
+          {/* <MultiInput ATOM={ALT_ATOM} label='Alternative Spellings' /> */}
+          <AltSpellings ATOM={ALT_ATOM} />
           <Divider />
           <MultiInput ATOM={TAGS_ATOM} label='Tags' />
           <Divider />
