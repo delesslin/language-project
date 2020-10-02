@@ -2,11 +2,12 @@
 
 1. Refactor Recorder
 2. Test API with New Word interface
-3. Refactor React app state to only use the native react Context and State
-4. Implement login on server and app
-5. Implement browse and edit from admin portal
-6. Style search results
-7. Link search results to word page
+3. Handle response to submit success
+4. Refactor React app state to only use the native react Context and State
+5. Implement login on server and app
+6. Implement browse and edit from admin portal
+7. Style search results
+8. Link search results to word page
 
 # Minimum Viable Project
 

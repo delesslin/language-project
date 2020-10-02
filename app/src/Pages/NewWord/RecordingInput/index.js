@@ -1,46 +1,16 @@
-import { Button, Container, Fab, Grid, Paper } from '@material-ui/core'
-import React, { useEffect, useState } from 'react'
+import { Button, Grid, Paper } from '@material-ui/core'
+import React from 'react'
 import { useRecoilState } from 'recoil'
-import MicIcon from '@material-ui/icons/Mic'
-import MicRecorder from 'mic-recorder-to-mp3'
-import Player from './Player'
 import styled from 'styled-components'
-const recorder = new MicRecorder({ bitRate: 128 })
-const reader = new FileReader()
+import Player from '../../../Components/Player'
+import Recorder from '../../../Components/Recorder'
+
 const RecorderGrid = styled(Grid)`
   width: 100%;
 `
-const Recorder = ({ ATOM }) => {
+const Recordings = ({ ATOM }) => {
   const [recordings, setRecordings] = useRecoilState(ATOM)
-  const [isRecording, setIsRecording] = useState(false)
-  const [isBlocked, setIsBlocked] = useState(false)
 
-  const handleDown = () => {
-    console.log('mouse down!')
-    setIsRecording(true)
-    recorder
-      .start()
-      .then(() => {})
-      .catch((e) => {
-        console.error(e)
-        setIsBlocked(true)
-      })
-  }
-  const handleUp = () => {
-    recorder
-      .stop()
-      .getMp3()
-      .then(([buffer, blob]) => {
-        reader.readAsDataURL(blob)
-        reader.addEventListener(
-          'load',
-          function () {
-            add(reader.result)
-          },
-          false
-        )
-      })
-  }
   const add = (base64) => {
     setRecordings([...recordings, base64])
   }
@@ -50,9 +20,7 @@ const Recorder = ({ ATOM }) => {
   return (
     <RecorderGrid container spacing={1} justify='flex-start' direction='row'>
       <Grid item>
-        <Fab onMouseDown={handleDown} onMouseUp={handleUp}>
-          <MicIcon />
-        </Fab>
+        <Recorder add={add} />
       </Grid>
       <Grid item container spacing={2}>
         {recordings.map((base64, i) => {
@@ -78,4 +46,4 @@ const Recorder = ({ ATOM }) => {
   )
 }
 
-export default Recorder
+export default Recordings

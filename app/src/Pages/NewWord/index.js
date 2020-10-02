@@ -20,7 +20,7 @@ import { SubmissionAlert } from './SubmissionAlert'
 import styled from 'styled-components'
 import { AltSpellings } from './AltSpellings'
 import Images from './Images'
-import Recorder from './Recorder'
+import RecordingInput from './RecordingInput'
 
 const ALERT_ATOM = atom({
   key: 'ALERT_ATOM',
@@ -114,7 +114,7 @@ export const NewWord = () => {
           <Images ATOM={IMG_ATOM} />
           <Divider />
           {/* <BlobRecorder ATOM={REC_ATOM} label='Recordings' /> */}
-          <Recorder ATOM={REC_ATOM} />
+          <RecordingInput ATOM={REC_ATOM} />
           <Submit onClick={handleSubmit} />
           <SubmissionAlert ATOM={ALERT_ATOM} />
         </Grid>
