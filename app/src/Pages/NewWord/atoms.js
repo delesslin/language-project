@@ -2,36 +2,36 @@ import { atom } from 'recoil'
 
 export const TERM_ATOM = atom({
   key: 'TERM_ATOM',
-  default: 'sαwąkαde',
+  default: '',
 })
 export const PRON_ATOM = atom({
   key: 'PRON_ATOM',
-  default: ['suh-wong-kuh-day'],
+  default: [],
 })
 
 export const ALT_ATOM = atom({
   key: 'ALT_ATOM',
-  default: ['Alternative spelling for sαwąkαde'],
+  default: [],
 })
 
 export const TRANS_ATOM = atom({
   key: 'TRANS_ATOM',
-  default: ['Stand up!'],
+  default: [],
 })
 
 export const TAGS_ATOM = atom({
   key: 'TAGS_ATOM',
-  default: ['commands', 'headstart'],
+  default: [],
 })
 
 export const IMG_ATOM = atom({
   key: 'IMG_ATOM',
-  default: ['https://picsum.photos/200'],
+  default: [],
 })
 
 export const NOTE_ATOM = atom({
   key: 'NOTE_VALUE',
-  default: ['This is a note about sαwąkαde'],
+  default: [],
 })
 
 export const REC_ATOM = atom({

@@ -6,6 +6,7 @@ import MicRecorder from 'mic-recorder-to-mp3'
 import Player from './Player'
 import styled from 'styled-components'
 const recorder = new MicRecorder({ bitRate: 128 })
+const reader = new FileReader()
 const RecorderGrid = styled(Grid)`
   width: 100%;
 `
@@ -29,10 +30,19 @@ const Recorder = ({ ATOM }) => {
     recorder
       .stop()
       .getMp3()
-      .then(([buffer, blob]) => add(blob))
+      .then(([buffer, blob]) => {
+        reader.readAsDataURL(blob)
+        reader.addEventListener(
+          'load',
+          function () {
+            add(reader.result)
+          },
+          false
+        )
+      })
   }
-  const add = (blob) => {
-    setRecordings([...recordings, blob])
+  const add = (base64) => {
+    setRecordings([...recordings, base64])
   }
   const remove = (blobIndex) => {
     setRecordings(recordings.filter((entry, i) => i !== blobIndex))
@@ -45,13 +55,13 @@ const Recorder = ({ ATOM }) => {
         </Fab>
       </Grid>
       <Grid item container spacing={2}>
-        {recordings.map((rec, i) => {
+        {recordings.map((base64, i) => {
           return (
             <Paper key={i}>
               <Grid container direction='column' spacing={2} justify='center'>
                 <Grid item container justify='center'>
                   <Grid item>
-                    <Player blob={rec} />
+                    <Player base64={base64} />
                   </Grid>
                 </Grid>
                 <Grid item>

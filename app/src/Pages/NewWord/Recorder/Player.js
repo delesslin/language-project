@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline'
 
-const Player = ({ blob }) => {
-  const BLOB_URL = URL.createObjectURL(blob)
-  const AUDIO = new Audio(BLOB_URL)
+const Player = ({ base64 }) => {
+  const AUDIO = new Audio(base64)
   const [isPlaying, setIsPlaying] = useState(false)
   const [error, setError] = useState(false)
   const hasEnded = (event) => {
