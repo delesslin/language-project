@@ -19,7 +19,7 @@ const Images = ({ ATOM }) => {
   return (
     <>
       <StyledInputGrid container spacing={2}>
-        <Grid item container direction='justify'>
+        <Grid item container direction='column' justify='center'>
           <Grid item>
             <Button variant='contained' onClick={() => setOpenModal(true)}>
               Add images
@@ -28,7 +28,7 @@ const Images = ({ ATOM }) => {
         </Grid>
         <Grid container item spacing={2}>
           {images.map((img) => {
-            return <SelectedImage src={img} remove={remove} />
+            return <SelectedImage key={img} src={img} remove={remove} />
           })}
         </Grid>
       </StyledInputGrid>
