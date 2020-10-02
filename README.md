@@ -1,13 +1,11 @@
 # TODOs 📎
 
-1. Refactor Recorder
-2. Test API with New Word interface
-3. Handle response to submit success
-4. Refactor React app state to only use the native react Context and State
-5. Implement login on server and app
-6. Implement browse and edit from admin portal
-7. Style search results
-8. Link search results to word page
+1. Handle response to submit success
+2. Refactor React app state to only use the native react Context and State
+3. Implement login on server and app
+4. Implement browse and edit from admin portal
+5. Style search results
+6. Link search results to word page
 
 # Minimum Viable Project
 
