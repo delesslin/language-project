@@ -1,13 +1,14 @@
 # TODOs 📎
 
-1. Handle response to submit success
-2. Refactor React app state to only use the native react Context and State
+1. Finish implementing Word page
+2. Handle response to submit success
 3. Implement login on server and app
 4. Implement browse and edit from admin portal
 5. Style search results
 6. Link search results to word page
+7. Refactor React app state to only use the native react Context and State
 
-# Minimum Viable Project
+# Minimum Viable Product
 
 ### Goal: Jan 1, 2021
 
