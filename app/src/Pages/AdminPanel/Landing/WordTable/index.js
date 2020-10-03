@@ -2,6 +2,7 @@ import { Button } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
 import { Cell } from './Cell'
+import StyledLink from '../../../../styled/StyledLink'
 // TODO: THIS SHOULD REALLY USE SEMANTIC HTML TABLESSSSSS!!! Refactor
 const TableDiv = styled.div`
   display: grid;
@@ -60,7 +61,9 @@ const WordTable = ({ words }) => {
             <Cell>{word.recordings.length}</Cell>
             <Cell>{word.notes.length}</Cell>
             <Cell>
-              <Button variant='outlined'>EDIT</Button>
+              <StyledLink to={`/admin/edit/${word._id}`}>
+                <Button variant='outlined'>EDIT</Button>
+              </StyledLink>
             </Cell>
           </RowDiv>
         )

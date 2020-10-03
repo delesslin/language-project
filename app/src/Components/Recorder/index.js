@@ -22,6 +22,7 @@ const Recorder = ({ add = (base64) => console.log(base64) }) => {
       })
   }
   const handleUp = () => {
+    console.log('mouse up')
     recorder
       .stop()
       .getMp3()
@@ -32,7 +33,7 @@ const Recorder = ({ add = (base64) => console.log(base64) }) => {
           function () {
             add(reader.result)
           },
-          false
+          { once: true }
         )
       })
   }

@@ -1,6 +1,6 @@
 # TODOs 📎
 
-1. Admin landing page
+1. Extract NewWord and implement Edit
 2. Style search results
 3. Handle response to submit success
 4. Implement 'public vs private' option in database
