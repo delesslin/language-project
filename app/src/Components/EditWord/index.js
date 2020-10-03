@@ -7,6 +7,7 @@ import Context from './context'
 import Images from './Images'
 import LanguageEntry from './LanguageEntry'
 import MultiText from './MultiText'
+import Notes from './Notes'
 import RecordingsInput from './RecordingsInput'
 import reducer, { INIT } from './reducer'
 
@@ -36,6 +37,9 @@ const EditWord = ({ data = null }) => {
         <Images />
         <Divider />
         <RecordingsInput />
+        <Divider />
+        <Notes />
+        <Divider />
       </Grid>
     </Context.Provider>
   )
