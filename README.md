@@ -1,11 +1,11 @@
 # TODOs 📎
 
-1. Finish implementing Word page
-2. Handle response to submit success
-3. Implement login on server and app
-4. Implement browse and edit from admin portal
-5. Style search results
-6. Link search results to word page
+1. Admin landing page
+2. Style search results
+3. Handle response to submit success
+4. Implement 'public vs private' option in database
+5. Implement login on server and app
+6. Implement browse and edit from admin portal
 7. Refactor React app state to only use the native react Context and State
 
 # Minimum Viable Product

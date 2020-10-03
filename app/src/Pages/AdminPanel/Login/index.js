@@ -7,7 +7,7 @@ import {
   TextField,
   Button,
 } from '@material-ui/core'
-export const Login = ({ setLogin }) => {
+const Login = ({ setLogin }) => {
   const handleSubmit = () => {
     // TODO: AUTHENTICATE WITH SERVER
     setLogin(true)
@@ -37,3 +37,5 @@ export const Login = ({ setLogin }) => {
     </Container>
   )
 }
+
+export default Login

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRouteMatch } from 'react-router-dom'
-export const EditEntry = () => {
+const Edit = () => {
   const { params } = useRouteMatch()
   const { _id } = params
   return (
@@ -9,3 +9,5 @@ export const EditEntry = () => {
     </>
   )
 }
+
+export default Edit
