@@ -1,4 +1,4 @@
-import { Divider, Grid } from '@material-ui/core'
+import { Button, Divider, Grid } from '@material-ui/core'
 import React, { useEffect, useReducer } from 'react'
 import AltSpellings from './AltSpellings'
 
@@ -10,36 +10,56 @@ import MultiText from './MultiText'
 import Notes from './Notes'
 import RecordingsInput from './RecordingsInput'
 import reducer, { INIT } from './reducer'
-
-const EditWord = ({ data = null }) => {
+const Divide = () => (
+  <Grid item>
+    <Divider />
+  </Grid>
+)
+const EditWord = ({
+  data = null,
+  onSave = (obj) => console.log('saving', obj),
+}) => {
   const [state, dispatch] = useReducer(reducer, blankState)
   useEffect(() => {
     if (data !== null) {
       dispatch({ type: INIT, data })
     }
   }, [data])
-
-  // add notes
+  const onSubmit = () => {
+    console.log(state)
+    onSave(state)
+  }
   // add _id
+  // Shouldn't _id be handled by parent element???
   return (
     <Context.Provider value={[state, dispatch]}>
       <Grid container direction='column' spacing={5}>
         <LanguageEntry />
-        <Divider />
+        <Divide />
         <MultiText property='pronunciation' label='Pronunciation' />
-        <Divider />
+        <Divide />
         <MultiText property='translations' label='Translations' />
-        <Divider />
+        <Divide />
         <AltSpellings />
-        <Divider />
+        <Divide />
         <MultiText property='tags' label='Tags' />
-        <Divider />
+        <Divide />
         <Images />
-        <Divider />
+        <Divide />
         <RecordingsInput />
-        <Divider />
+        <Divide />
         <Notes />
-        <Divider />
+        <Divide />
+        <Grid item container spacing={3}>
+          <Grid item>
+            <Button variant='contained' color='primary' onClick={onSubmit}>
+              SUBMIT
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button>Nevermind</Button>
+          </Grid>
+        </Grid>
       </Grid>
     </Context.Provider>
   )

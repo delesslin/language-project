@@ -1,5 +1,5 @@
 import React from 'react'
-// import { NewWord } from './NewWord'
+import { NewWord } from './NewWord'
 import { Switch, Route, useRouteMatch } from 'react-router-dom'
 import { useRecoilState, atom } from 'recoil'
 import Login from './Login'
@@ -15,9 +15,9 @@ export const AdminPanel = () => {
   if (isLoggedIn) {
     return (
       <Switch>
-        {/* <Route path={path + '/new'}>
+        <Route path={path + '/new'}>
           <NewWord />
-        </Route> */}
+        </Route>
         <Route path={path + '/bulk-new'}>
           <h1>This is where we can do a BULK ADD ‼ </h1>
         </Route>
