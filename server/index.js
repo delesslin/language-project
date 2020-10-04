@@ -3,7 +3,7 @@ console.log('Starting server')
 const PORT = process.env.PORT || 3333
 const express = require('express')
 const { serveBuildFolder } = require('./config/serveBuildFolder')
-const wordsRouter = require('./routes/words')
+const apiRouter = require('./routes/index.js')
 const InitiateMongoServer = require('./config/db')
 
 console.log('----------------------------------------')
@@ -15,7 +15,7 @@ const app = express()
 app.use(express.json())
 
 // Handle API requests
-app.use('/api', wordsRouter)
+app.use('/api', apiRouter)
 
 // Serve Build
 serveBuildFolder(app, '/../app/build')

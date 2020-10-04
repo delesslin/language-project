@@ -1,3 +1,7 @@
+// ====================
+// CALLS TO:
+// /api/words
+// ====================
 // MERN MongoDB, Express, React, Node
 
 // TODO: ABility to retrieve words based on query
