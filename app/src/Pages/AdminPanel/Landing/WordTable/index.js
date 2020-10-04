@@ -4,70 +4,96 @@ import styled from 'styled-components'
 import { Cell } from './Cell'
 import StyledLink from '../../../../styled/StyledLink'
 // TODO: THIS SHOULD REALLY USE SEMANTIC HTML TABLESSSSSS!!! Refactor
-const TableDiv = styled.div`
-  display: grid;
-  grid-auto-flow: row;
-  row-gap: 3px;
-  background-color: #555;
-  border: 3px solid #555;
-  border-top: none;
+const TableDiv = styled.table`
+  // display: grid;
+  // grid-auto-flow: row;
+  // row-gap: 3px;
+  // background-color: #555;
+  // border: 3px solid #555;
+  // border-top: none;
 `
-const RowDiv = styled.div`
-  display: grid;
-  width: 90vw;
-  grid-auto-columns: 1fr;
-  grid-auto-flow: column;
-  column-gap: 3px;
+const RowDiv = styled.tr`
+  // display: grid;
+  // width: 90vw;
+  // grid-auto-columns: 1fr;
+  // grid-auto-flow: column;
+  // column-gap: 3px;
+  // background-color: #555;
+  // div {
+  //   background-color: #efefef;
+  //   p {
+  //     color: #555;
+  //   }
+  // }
+`
+const HeaderDiv = styled.thead`
+  // background-color: #eee;
+  // div {
+  //   background-color: #555;
+  //   p {
+  //     color: #eee;
+  //   }
+  // }
   background-color: #555;
-  div {
+  color: #efefef;
+`
+const HeadCell = ({ children }) => {
+  return (
+    <Cell as='th'>
+      <b>{children}</b>
+    </Cell>
+  )
+}
+const TableBody = styled.tbody`
+  tr {
     background-color: #efefef;
-    p {
-      color: #555;
-    }
+    color: #555;
   }
-`
-const HeaderDiv = styled(RowDiv)`
-  background-color: #eee;
-  div {
-    background-color: #555;
-    p {
-      color: #eee;
-    }
+  tr:nth-child(odd) {
+    background-color: #dfdfdf;
   }
 `
 const WordTable = ({ words }) => {
   return (
     <TableDiv>
       <HeaderDiv>
-        <Cell>ENTRY</Cell>
-        <Cell>PRONOUNCED</Cell>
-        <Cell>ALTERNATIVE SPELLINGS</Cell>
-        <Cell>TRANSLATIONS</Cell>
-        <Cell>TAGS</Cell>
-        <Cell>IMAGES</Cell>
-        <Cell>RECORDINGS</Cell>
-        <Cell>NOTES</Cell>
-        <Cell></Cell>
+        <RowDiv>
+          <HeadCell>ENTRY</HeadCell>
+          <HeadCell>PRONOUNCED</HeadCell>
+          <HeadCell>ALTERNATIVE SPELLINGS</HeadCell>
+          <HeadCell>TRANSLATIONS</HeadCell>
+          <HeadCell>TAGS</HeadCell>
+          <HeadCell>IMAGES</HeadCell>
+          <HeadCell>RECORDINGS</HeadCell>
+          <HeadCell>NOTES</HeadCell>
+          <HeadCell>
+            <Button variant='outlined' disabled>
+              EDIT
+            </Button>
+          </HeadCell>
+        </RowDiv>
       </HeaderDiv>
-      {words.map((word) => {
-        return (
-          <RowDiv key={word._id}>
-            <Cell>{word.language_entry}</Cell>
-            <Cell>{word.pronunciation}</Cell>
-            <Cell>{word.alternative_spellings.length}</Cell>
-            <Cell>{word.translations.length}</Cell>
-            <Cell>{word.tags.length}</Cell>
-            <Cell>{word.images.length}</Cell>
-            <Cell>{word.recordings.length}</Cell>
-            <Cell>{word.notes.length}</Cell>
-            <Cell>
-              <StyledLink to={`/admin/edit/${word._id}`}>
-                <Button variant='outlined'>EDIT</Button>
-              </StyledLink>
-            </Cell>
-          </RowDiv>
-        )
-      })}
+      <TableBody>
+        {words.map((word) => {
+          return (
+            <RowDiv key={word._id}>
+              <Cell>{word.language_entry}</Cell>
+              <Cell>{word.pronunciation}</Cell>
+              <Cell>{word.alternative_spellings.length}</Cell>
+              <Cell>{word.translations.length}</Cell>
+              <Cell>{word.tags.length}</Cell>
+              <Cell>{word.images.length}</Cell>
+              <Cell>{word.recordings.length}</Cell>
+              <Cell>{word.notes.length}</Cell>
+              <Cell>
+                <StyledLink to={`/admin/edit/${word._id}`}>
+                  <Button variant='outlined'>EDIT</Button>
+                </StyledLink>
+              </Cell>
+            </RowDiv>
+          )
+        })}
+      </TableBody>
     </TableDiv>
   )
 }

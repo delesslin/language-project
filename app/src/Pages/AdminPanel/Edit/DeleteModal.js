@@ -10,6 +10,7 @@ import React from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
+import { Words } from '../../../context/'
 const ModalDiv = styled.div`
   display: grid;
   place-items: center;
@@ -24,6 +25,7 @@ const ModalPaper = styled(Paper)`
   place-items: center;
 `
 const DeleteModal = ({ _id, open, toggleOpen }) => {
+  const { refetchWords } = React.useContext(Words.Context)
   const [confirm, setConfirm] = React.useState('')
   const history = useHistory()
   const lastFour = _id.slice(-4)

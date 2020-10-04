@@ -1,6 +1,7 @@
-import { Grid, Typography } from '@material-ui/core'
+import { Button, Grid, Typography } from '@material-ui/core'
 import React from 'react'
 import { Words } from '../../../context'
+import StyledLink from '../../../styled/StyledLink'
 import WordTable from './WordTable'
 
 const Landing = () => {
@@ -12,8 +13,17 @@ const Landing = () => {
           <b>ADMIN PANEL</b>
         </Typography>
       </Grid>
-      <Grid item>
-        <WordTable words={words} />
+      <Grid item container spacing={3} justify='center'>
+        <Grid item>
+          <StyledLink to='/admin/new'>
+            <Button variant='outlined'>add new word</Button>
+          </StyledLink>
+        </Grid>
+      </Grid>
+      <Grid item container justify='center'>
+        <Grid item>
+          <WordTable words={words} />
+        </Grid>
       </Grid>
     </Grid>
   )
