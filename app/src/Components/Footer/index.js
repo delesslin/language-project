@@ -1,5 +1,6 @@
 import React from 'react'
-import { Typography, Paper, styled } from '@material-ui/core'
+import { Typography, Paper, styled, Grid, Button } from '@material-ui/core'
+import StyledLink from '../../styled/StyledLink'
 const FooterPaper = styled(Paper)({
   padding: '15px',
 })
@@ -7,14 +8,23 @@ const FooterText = styled(Typography)({})
 const Footer = () => {
   return (
     <FooterPaper>
-      <FooterText align='center'>
-        <b>
-          <i>A project of the Catawba Cultural Preservation Project</i>
-        </b>
-      </FooterText>
-      <FooterText align='center'>
-        <i>An entity of Catawba Indian Nation</i>
-      </FooterText>
+      <Grid container justify='space-between'>
+        <Grid item>
+          <FooterText>
+            <b>
+              <i>A project of the Catawba Cultural Preservation Project</i>
+            </b>
+          </FooterText>
+          <FooterText>
+            <i>An entity of Catawba Indian Nation</i>
+          </FooterText>
+        </Grid>
+        <Grid item>
+          <StyledLink to='/admin'>
+            <Button>admin</Button>
+          </StyledLink>
+        </Grid>
+      </Grid>
     </FooterPaper>
   )
 }

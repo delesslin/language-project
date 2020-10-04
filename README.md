@@ -1,12 +1,11 @@
 # TODOs 📎
 
-1. Extract NewWord and implement Edit
-2. Style search results
-3. Handle response to submit success
-4. Implement 'public vs private' option in database
-5. Implement login on server and app
-6. Implement browse and edit from admin portal
-7. Refactor React app state to only use the native react Context and State
+1. Style search results
+2. Implement 'public vs private' option in database
+3. Implement login on server and app
+4. Refactor React app state to only use the native react Context and State
+5. Randomize tags
+6. Consolidate similar tags (e.g. animal vs animals)
 
 # Minimum Viable Product
 

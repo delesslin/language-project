@@ -1,30 +1,17 @@
 // MERN MongoDB, Express, React, Node
-// TODO: Authentication for admins
+
 // TODO: ABility to retrieve words based on query
 
 const express = require('express')
-const fetch = require('node-fetch')
-const mongoose = require('mongoose')
-const { MongoClient } = require('mongodb')
-const apiRouter = express()
 
-const wordModel = require('./models/word.js')
-require('dotenv').config()
+const wordsRouter = express()
 
-mongoose.set('useCreateIndex', true)
-//mongoDB Atlas
-const CONNECTION_URL = process.env.CONNECTION_URL
+const wordModel = require('../models/word.js')
 
-// Should this be connecting here or in each API call?
-mongoose.connect(CONNECTION_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-})
 // ============================
 // CREATE
 // ============================
-apiRouter.post('/words', async (req, res) => {
+wordsRouter.post('/words', async (req, res) => {
   //TODO: Expand Error codes (Specifically error code for duplicate values)
   const Word = new wordModel(req.body)
 
@@ -39,7 +26,7 @@ apiRouter.post('/words', async (req, res) => {
 // ==================
 // READ
 // ==================
-apiRouter.get('/words', async (req, res) => {
+wordsRouter.get('/words', async (req, res) => {
   const Words = await wordModel.find({})
   try {
     res.status(200).send(Words)
@@ -51,7 +38,7 @@ apiRouter.get('/words', async (req, res) => {
 // ==================
 // UPDATE
 // ==================
-apiRouter.patch('/words/:_id', async (req, res) => {
+wordsRouter.patch('/words/:_id', async (req, res) => {
   try {
     // console.log(req.body)
     const Word = await wordModel.findOneAndUpdate(
@@ -68,7 +55,7 @@ apiRouter.patch('/words/:_id', async (req, res) => {
 // =================
 // DELETE
 // =================
-apiRouter.delete('/words/:_id', async (req, res) => {
+wordsRouter.delete('/words/:_id', async (req, res) => {
   try {
     await wordModel.findOneAndDelete({ _id: req.params._id })
 
@@ -80,4 +67,4 @@ apiRouter.delete('/words/:_id', async (req, res) => {
   }
 })
 
-module.exports = apiRouter
+module.exports = wordsRouter
