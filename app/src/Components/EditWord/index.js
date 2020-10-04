@@ -18,6 +18,7 @@ const Divide = () => (
 const EditWord = ({
   data = null,
   onSave = (obj) => console.log('saving', obj),
+  children,
 }) => {
   const [state, dispatch] = useReducer(reducer, blankState)
   useEffect(() => {
@@ -56,9 +57,7 @@ const EditWord = ({
               SUBMIT
             </Button>
           </Grid>
-          <Grid item>
-            <Button>Nevermind</Button>
-          </Grid>
+          {children}
         </Grid>
       </Grid>
     </Context.Provider>

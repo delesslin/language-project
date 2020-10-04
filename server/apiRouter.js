@@ -1,3 +1,7 @@
+// MERN MongoDB, Express, React, Node
+// TODO: Authentication for admins
+// TODO: ABility to retrieve words based on query
+
 const express = require('express')
 const fetch = require('node-fetch')
 const mongoose = require('mongoose')
@@ -11,82 +15,69 @@ mongoose.set('useCreateIndex', true)
 //mongoDB Atlas
 const CONNECTION_URL = process.env.CONNECTION_URL
 
-apiRouter.get('/test', (req, res) => {
-  res.send('1234')
-})
-
+// Should this be connecting here or in each API call?
 mongoose.connect(CONNECTION_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 })
+// ============================
+// CREATE
+// ============================
+apiRouter.post('/words', async (req, res) => {
+  //TODO: Expand Error codes (Specifically error code for duplicate values)
+  const Word = new wordModel(req.body)
 
+  try {
+    await Word.save()
+    res.status(200).send(Word)
+  } catch (err) {
+    console.error(err)
+    res.status(500).send(err)
+  }
+})
+// ==================
+// READ
+// ==================
 apiRouter.get('/words', async (req, res) => {
   const Words = await wordModel.find({})
   try {
-    res.send(Words)
+    res.status(200).send(Words)
   } catch (err) {
     res.status(500).send(err)
   }
 })
 
-apiRouter.post('/Words', async (req, res) => {
-  const Words = new wordModel(req.body)
-
+// ==================
+// UPDATE
+// ==================
+apiRouter.patch('/words/:_id', async (req, res) => {
   try {
-    await Words.save()
-    res.send(Words)
+    // console.log(req.body)
+    const Word = await wordModel.findOneAndUpdate(
+      { _id: req.params._id },
+      req.body
+    )
+    // await wordModel.save()
+    res.status(200).send(Word)
   } catch (err) {
-    console.error(err)
+    console.log(err)
     res.status(500).send(err)
   }
 })
-
-//ToDo: Expand Error codes (Specifically error code for duplicate values)
-
-apiRouter.post('/new-word', async (req, res) => {
-  console.log(req.body)
-  const Words = new wordModel(req.body)
-
+// =================
+// DELETE
+// =================
+apiRouter.delete('/words/:_id', async (req, res) => {
   try {
-    const newWord = await Words.save()
-    console.log(newWord)
-    res.send(newWord)
-  } catch (err) {
-    console.error(err)
-    res.status(500).send(err)
-  }
-})
+    await wordModel.findOneAndDelete({ _id: req.params._id })
 
-apiRouter.delete('/Words/:language_entry', async (req, res) => {
-  try {
-    const Words = await wordModel.findOneAndDelete(req.params.language_entry)
-
-    if (!Words) res.status(404).send('No item found')
+    // if (!Words) res.status(404).send('No item found')
     res.status(200).send()
   } catch (err) {
-    res.status(500).send(err)
-  }
-})
-
-apiRouter.patch('/Words/:language_entry', async (req, res) => {
-  try {
-    await wordModel.findOneAndUpdate(req.params.language_entry, req.body)
-    await wordModel.save()
-    res.send(Words)
-  } catch (err) {
+    console.error(err)
     res.status(500).send(err)
   }
 })
 
 module.exports = apiRouter
-
-// TODO: Authentication for admins
-// TODO: ABility to retrieve words based on query
-// TODO: Add new word
-// TODO: Edit Word
-// TODO: Delete Word
-
-// CRUD: CREATE, READ, UPDATE, DELETE
-// exports.apiRouter = apiRouter
-
-// MERN MongoDB, Express, React, Node
