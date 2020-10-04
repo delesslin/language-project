@@ -3,13 +3,16 @@
 // /api/words
 // ====================
 const express = require('express')
-const { check, validationResult } = require('express-validator/check')
+const { check, validationResult } = require('express-validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const userRouter = express()
 
 const userModel = require('../models/users.js')
-userRouter.get('/', (req, res) => res.send('working'))
+userRouter.get('/', async (req, res) => {
+  const users = await userModel.find({})
+  res.send(users)
+})
 
 userRouter.post(
   '/sign-up',
@@ -83,6 +86,73 @@ userRouter.post(
       // if error, send error
       console.log(err.message)
       res.status(500).send('Error in Saving')
+    }
+  }
+)
+
+userRouter.post(
+  '/login',
+  [
+    // make sure it is actually an email
+    check('email', 'Please enter a valid email').isEmail(),
+    // make sure password is at least 6 chars long
+    check('password', 'Please enter a valid password').isLength({
+      min: 6,
+    }),
+  ],
+  async (req, res) => {
+    // get any errors that were returned by the array
+    const errors = validationResult(req)
+    // if there was an error, return error to client
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array(),
+      })
+    }
+    // destructure request body
+    const { email, password } = req.body
+    try {
+      // see if there is a user with this email
+      let user = await userModel.findOne({ email })
+      if (!user) {
+        return res.status(400).json({
+          message: 'User not exists',
+        })
+      }
+      // compare submitted pword to saved pword
+      const isMatch = await bcrypt.compare(password, user.password)
+      // if there is no match, send error
+      if (!isMatch) {
+        return res.status(400).json({
+          message: 'Incorrect Password !',
+        })
+      }
+      // create payload object using _id
+      const payload = {
+        user: {
+          id: user.id,
+        },
+      }
+      // create JWT token
+      jwt.sign(
+        payload,
+        'randomString',
+        {
+          expiresIn: 3600,
+        },
+        (err, token) => {
+          if (err) throw err
+          // send token
+          res.status(200).json({
+            token,
+          })
+        }
+      )
+    } catch (e) {
+      console.error(e)
+      res.status(500).json({
+        message: 'Server Error',
+      })
     }
   }
 )

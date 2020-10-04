@@ -8,6 +8,7 @@ const InitiateMongoServer = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
+      useCreateIndex: true,
     })
     mongoose.set('useCreateIndex', true)
     console.log('Connected to DB !!')
