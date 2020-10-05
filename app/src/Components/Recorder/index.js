@@ -23,6 +23,7 @@ const Recorder = ({ add = (base64) => console.log(base64) }) => {
   }
   const handleUp = () => {
     console.log('mouse up')
+    setIsRecording(false)
     recorder
       .stop()
       .getMp3()
@@ -38,7 +39,11 @@ const Recorder = ({ add = (base64) => console.log(base64) }) => {
       })
   }
   return (
-    <Fab onMouseDown={handleDown} onMouseUp={handleUp}>
+    <Fab
+      onMouseDown={handleDown}
+      onMouseUp={handleUp}
+      color={isRecording ? 'secondary' : 'primary'}
+    >
       <MicIcon />
     </Fab>
   )

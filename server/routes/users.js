@@ -156,5 +156,7 @@ userRouter.post(
     }
   }
 )
+// TODO: implement auth
+// https://dev.to/dipakkr/implementing-authentication-in-nodejs-with-express-and-jwt-codelab-1-j5i
 
 module.exports = userRouter

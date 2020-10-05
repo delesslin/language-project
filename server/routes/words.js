@@ -15,7 +15,7 @@ const wordModel = require('../models/word.js')
 // ============================
 // CREATE
 // ============================
-wordsRouter.post('/words', async (req, res) => {
+wordsRouter.post('/', async (req, res) => {
   //TODO: Expand Error codes (Specifically error code for duplicate values)
   const Word = new wordModel(req.body)
 
@@ -30,7 +30,8 @@ wordsRouter.post('/words', async (req, res) => {
 // ==================
 // READ
 // ==================
-wordsRouter.get('/words', async (req, res) => {
+wordsRouter.get('/', async (req, res) => {
+  console.log('getting words!')
   const Words = await wordModel.find({})
   try {
     res.status(200).send(Words)
@@ -42,7 +43,7 @@ wordsRouter.get('/words', async (req, res) => {
 // ==================
 // UPDATE
 // ==================
-wordsRouter.patch('/words/:_id', async (req, res) => {
+wordsRouter.patch('/:_id', async (req, res) => {
   try {
     // console.log(req.body)
     const Word = await wordModel.findOneAndUpdate(
@@ -59,7 +60,7 @@ wordsRouter.patch('/words/:_id', async (req, res) => {
 // =================
 // DELETE
 // =================
-wordsRouter.delete('/words/:_id', async (req, res) => {
+wordsRouter.delete('/:_id', async (req, res) => {
   try {
     await wordModel.findOneAndDelete({ _id: req.params._id })
 
