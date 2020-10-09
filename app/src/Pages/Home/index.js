@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Grid, CircularProgress } from '@material-ui/core'
+import { Container, Grid, CircularProgress, Button } from '@material-ui/core'
 import TagCard from './TagCard'
 import { Words } from '../../context'
 import styled from 'styled-components'
-const TagGrid = styled.div`
+const CardGrid = styled.div`
   display: grid;
 
   grid-template-columns: repeat(5, 1fr);
@@ -28,11 +28,15 @@ const Home = () => {
 
   if (tags.length > 0) {
     return (
-      <TagGrid>
+      <CardGrid>
         {tags.map(({ tag, image }) => {
-          return <TagCard key={tag} tag={tag} image={image} />
+          return (
+            <TagCard key={tag} tag={tag} image={image}>
+              <Button variant='contained'>{tag}</Button>
+            </TagCard>
+          )
         })}
-      </TagGrid>
+      </CardGrid>
     )
     // return (
     //   <Container>

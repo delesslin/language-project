@@ -10,32 +10,17 @@ import {
 } from '@material-ui/core'
 
 import { Link, useHistory } from 'react-router-dom'
-import styled from 'styled-components'
-const TagPaper = styled(Paper)`
-  background-image: url(${({ href }) => href});
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: grid;
-  place-items: center;
-  &:hover {
-    box-shadow: 5px 5px 5px #555;
-    cursor: pointer;
-    button {
-      box-shadow: 2px 2px 2px #555;
-    }
-  }
-`
+import CardPaper from '../../styled/CardPaper'
 
-const TagCard = ({ tag, image }) => {
+const TagCard = ({ tag, image, children }) => {
   const history = useHistory()
   const handleClick = () => {
     history.push(`/tags/${tag}`)
   }
   return (
-    <TagPaper href={image} onClick={handleClick}>
-      <Button variant='contained'>{tag}</Button>
-    </TagPaper>
+    <CardPaper href={image} onClick={handleClick}>
+      {children}
+    </CardPaper>
   )
   // return (
   //   <Grid item key={tag}>

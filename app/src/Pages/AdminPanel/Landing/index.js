@@ -2,7 +2,7 @@ import { Button, Grid, Typography } from '@material-ui/core'
 import React from 'react'
 import { Words } from '../../../context'
 import StyledLink from '../../../styled/StyledLink'
-import WordTable from './WordTable'
+import { EditTable } from '../../../Components/WordTable'
 
 const Landing = () => {
   const { words } = React.useContext(Words.Context)
@@ -18,11 +18,14 @@ const Landing = () => {
           <StyledLink to='/admin/new'>
             <Button variant='outlined'>add new word</Button>
           </StyledLink>
+          <StyledLink to='/admin/bulk-new'>
+            <Button variant='outlined'>bulk upload</Button>
+          </StyledLink>
         </Grid>
       </Grid>
       <Grid item container justify='center'>
         <Grid item>
-          <WordTable words={words} />
+          <EditTable words={words} />
         </Grid>
       </Grid>
     </Grid>

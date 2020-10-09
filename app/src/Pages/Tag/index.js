@@ -3,6 +3,7 @@ import { useParams } from 'react-router'
 import { Grid, Typography } from '@material-ui/core'
 import { Words } from '../../context'
 import WordCard from './WordCard'
+import CardGrid from '../../styled/CardGrid'
 
 const Tag = () => {
   const { _tagname } = useParams()
@@ -25,10 +26,26 @@ const Tag = () => {
           <Typography variant='h2'>{_tagname}</Typography>
         </Grid>
       </Grid>
-      <Grid item container justify='center'>
-        {taggedWords.map((entry) => (
-          <WordCard key={entry._id} data={entry}></WordCard>
-        ))}
+      <Grid item>
+        <CardGrid>
+          {taggedWords.map((entry) => {
+            const image = ''
+
+            return (
+              <WordCard
+                key={entry._id}
+                data={entry}
+                href={entry.images[0]}
+                link={`/word/${entry._id}`}
+              >
+                <Typography>
+                  <b>{entry.language_entry}</b>
+                </Typography>
+                <Typography>{entry.translations[0]}</Typography>
+              </WordCard>
+            )
+          })}
+        </CardGrid>
       </Grid>
     </Grid>
   )

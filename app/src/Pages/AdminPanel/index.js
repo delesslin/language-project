@@ -5,6 +5,7 @@ import { useRecoilState, atom } from 'recoil'
 import Login from './Login'
 import Edit from './Edit'
 import Landing from './Landing'
+import BatchUpload from './BatchUpload'
 const LOGIN_ATOM = atom({
   key: 'LOGIN_ATOM',
   default: true,
@@ -19,7 +20,7 @@ export const AdminPanel = () => {
           <NewWord />
         </Route>
         <Route path={path + '/bulk-new'}>
-          <h1>This is where we can do a BULK ADD ‼ </h1>
+          <BatchUpload />
         </Route>
         <Route path={path + '/users'}>
           <h1>

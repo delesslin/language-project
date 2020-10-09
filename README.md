@@ -1,11 +1,12 @@
 # TODOs 📎
 
-1. Style search results
-2. Implement 'public vs private' option in database
-3. Implement login on server and app
-4. Refactor React app state to only use the native react Context and State
-5. Randomize tags
-6. Consolidate similar tags (e.g. animal vs animals)
+1. Batch Uploads
+2. Style search results
+3. Implement 'public vs private' option in database
+4. Implement login on server and app
+5. Refactor React app state to only use the native react Context and State
+6. Randomize tags
+7. Consolidate similar tags (e.g. animal vs animals)
 
 # Minimum Viable Product
 

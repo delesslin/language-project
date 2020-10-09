@@ -15,6 +15,7 @@
     "fuse.js": "^6.4.1",
     "material-ui-fullscreen-dialog": "^1.1.0",
     "mic-recorder-to-mp3": "^2.2.2",
+    "papaparse": "^5.3.0",
     "pluralize": "^8.0.0",
     "react": "^16.13.1",
     "react-copy-to-clipboard": "^5.0.2",

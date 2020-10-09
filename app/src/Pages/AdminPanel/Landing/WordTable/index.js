@@ -1,58 +1,7 @@
-import { Button } from '@material-ui/core'
 import React from 'react'
-import styled from 'styled-components'
-import { Cell } from './Cell'
-import StyledLink from '../../../../styled/StyledLink'
-// TODO: THIS SHOULD REALLY USE SEMANTIC HTML TABLESSSSSS!!! Refactor
-const TableDiv = styled.table`
-  // display: grid;
-  // grid-auto-flow: row;
-  // row-gap: 3px;
-  // background-color: #555;
-  // border: 3px solid #555;
-  // border-top: none;
-`
-const RowDiv = styled.tr`
-  // display: grid;
-  // width: 90vw;
-  // grid-auto-columns: 1fr;
-  // grid-auto-flow: column;
-  // column-gap: 3px;
-  // background-color: #555;
-  // div {
-  //   background-color: #efefef;
-  //   p {
-  //     color: #555;
-  //   }
-  // }
-`
-const HeaderDiv = styled.thead`
-  // background-color: #eee;
-  // div {
-  //   background-color: #555;
-  //   p {
-  //     color: #eee;
-  //   }
-  // }
-  background-color: #555;
-  color: #efefef;
-`
-const HeadCell = ({ children }) => {
-  return (
-    <Cell as='th'>
-      <b>{children}</b>
-    </Cell>
-  )
-}
-const TableBody = styled.tbody`
-  tr {
-    background-color: #efefef;
-    color: #555;
-  }
-  tr:nth-child(odd) {
-    background-color: #dfdfdf;
-  }
-`
+// import styled from 'styled-components'
+// import { Cell } from './Cell'
+
 const WordTable = ({ words }) => {
   return (
     <TableDiv>
