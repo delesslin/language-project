@@ -1,6 +1,6 @@
 # TODOs 📎
 
-1. Batch Uploads
+1. Sanitize data so that strings don't begin or end with ' '
 2. Style search results
 3. Implement 'public vs private' option in database
 4. Implement login on server and app

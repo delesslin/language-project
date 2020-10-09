@@ -18,7 +18,14 @@ const useGetWords = () => {
   React.useEffect(() => {
     console.log('fetching...')
     getWords().then((data) => {
-      setWords(data)
+      setWords(() => {
+        return data.map((entry) => {
+          return {
+            ...entry,
+            tags: entry.tags.map((tag) => tag.trim()),
+          }
+        })
+      })
     })
   }, [])
 
@@ -27,7 +34,7 @@ const useGetWords = () => {
     if (words.length > 0) {
       const newTagsArr = words.reduce((acc, curr) => {
         curr.tags.forEach((el) => {
-          // OR singularized version of el
+          // sanitize tags of ' ' at beginning or end
           if (!acc.includes(el)) {
             acc.push(el)
           }
