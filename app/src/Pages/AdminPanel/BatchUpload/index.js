@@ -1,97 +1,57 @@
-import { Grid, Paper, Typography } from '@material-ui/core'
-import React, { useContext, useState } from 'react'
-import parseCSV from '../../../utils/parseCSV'
-import FileButton from './FileButton'
-import { Button } from '@material-ui/core'
-
-import axios from 'axios'
-
-import { DeleteTable, EditTable } from '../../../Components/WordTable'
-import { Words } from '../../../context'
-import WarningMsg from './WarningMsg'
+import { Button, Grid, Paper, Typography } from '@material-ui/core'
+import React, { useEffect } from 'react'
+import { useLocation, useParams } from 'react-router'
 import styled from 'styled-components'
+import { DeleteTable } from '../../../Components/WordTable'
+import useBatchUpload from '../../../utils/hooks/useBatchUpload'
+import FileButton from './FileButton'
+import WarningMsg from './WarningMsg'
+import SnackBar from '@material-ui/core/Snackbar'
+import Alert from '@material-ui/lab/Alert'
+
 const PreviewPaper = styled(Paper)`
   padding: 15px 20px;
   margin-bottom: 25px;
 `
+const ErrorPaper = styled(Paper)`
+  width: 100%;
+  min-height: 75px;
+  background: rgb(233, 112, 85);
+  background: linear-gradient(
+    292deg,
+    rgba(233, 112, 85, 1) 18%,
+    rgba(233, 148, 170, 1) 100%
+  );
+  display: grid;
+  place-items: center start;
+  padding: 20px 20px;
+`
+// TODO: handleError
 
-// TODO: Confirmation
-const split = (str) => {
-  const noSemi = str.split(';')
-  if (noSemi[0].length === 0) {
-    return []
-  }
-  const noSlash = noSemi.reduce((acc, curr) => {
-    return [...acc, ...curr.split('/')]
-  }, [])
-  return noSlash
-}
 const BatchUpload = () => {
-  const [state, setState] = useState([])
-  const { words } = useContext(Words.Context)
-  const handleChange = (e) => {
-    const file = e.target.files[0]
-    parseCSV(file)
-      .then((res) => {
-        // console.log(res)
-        // setState(res.data)
-        return res.data
-      })
-      .then((words) => {
-        return words.map((word) => {
-          return {
-            ...word,
-            pronunciation: split(word.pronunciation),
-            alternative_spellings: split(word.alternative_spellings),
-            translations: split(word.translations),
-            tags: split(word.tags),
-            images: word.images.split(';'),
-            recordings: split(word.recordings),
-            notes: split(word.notes),
-          }
-        })
-      })
-      .then((data) => {
-        return data.map((entry) => {
-          const i = words.findIndex(
-            (word) => word.language_entry === entry.language_entry
-          )
-          if (i < 0) {
-            return entry
-          } else {
-            return {
-              ...entry,
-              error: 'There is already an entry for this word',
-            }
-          }
-        })
-      })
-      // .then(console.log)
-      .then((data) => setState(data))
-    // check data against words & add .error if there is a match
-    // setState
-  }
-  const handleDelete = (i) => {
-    console.log(`OMG DELETE ${i}`)
-    setState((state) => {
-      return state.filter((entry, index) => index !== i)
-    })
-  }
-  const handleSubmit = () => {
-    axios.post('/api/batch', state).then((res) => {
-      console.log(res)
-    })
-  }
+  const { state, onChange, onDelete, onSubmit, error } = useBatchUpload()
+  useEffect(() => {
+    console.log(error.message)
+  }, [error])
   return (
     <Grid container direction='column' spacing={3}>
       <Grid item>
         <Typography variant='h3'>BATCH UPLOAD</Typography>
       </Grid>
+      {error !== false ? (
+        <Grid item>
+          <ErrorPaper>
+            <Typography variant='h6'>
+              There was a problem, please upload a new document.
+            </Typography>
+          </ErrorPaper>
+        </Grid>
+      ) : null}
       <Grid item>
-        <FileButton handleChange={handleChange} />
+        <FileButton handleChange={onChange} />
       </Grid>
-      <Grid item>
-        {state.length > 0 ? (
+      {state.length > 0 ? (
+        <Grid item>
           <PreviewPaper>
             <Grid container direction='column' spacing={2}>
               <Grid item>
@@ -101,21 +61,17 @@ const BatchUpload = () => {
                 <WarningMsg />
               </Grid>
               <Grid item>
-                <DeleteTable words={state} handleDelete={handleDelete} />
+                <DeleteTable words={state} handleDelete={onDelete} />
               </Grid>
               <Grid item>
-                <Button
-                  color='primary'
-                  onClick={handleSubmit}
-                  variant='contained'
-                >
+                <Button color='primary' onClick={onSubmit} variant='contained'>
                   submit
                 </Button>
               </Grid>
             </Grid>
           </PreviewPaper>
-        ) : null}
-      </Grid>
+        </Grid>
+      ) : null}
     </Grid>
   )
 }

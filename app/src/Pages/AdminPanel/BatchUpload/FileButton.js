@@ -9,7 +9,7 @@ const FileButton = ({ handleChange }) => (
       type='file'
       onChange={handleChange}
     />
-    <Button color='secondary' variant='contained' component='span'>
+    <Button variant='contained' component='span'>
       Upload button
     </Button>{' '}
   </label>
