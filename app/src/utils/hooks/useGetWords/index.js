@@ -3,7 +3,7 @@ import { Paper } from '@material-ui/core'
 import React from 'react'
 import getWords from './getWords'
 import pluralize from 'pluralize'
-
+import { arrayShuffle } from '@adriantombu/array-shuffle'
 const useGetWords = () => {
   const [words, setWords] = React.useState([])
   const [tags, setTags] = React.useState([])
@@ -19,12 +19,13 @@ const useGetWords = () => {
     console.log('fetching...')
     getWords().then((data) => {
       setWords(() => {
-        return data.map((entry) => {
+        let sanitized = data.map((entry) => {
           return {
             ...entry,
             tags: entry.tags.map((tag) => tag.trim()),
           }
         })
+        return arrayShuffle(sanitized)
       })
     })
   }, [])
@@ -86,6 +87,7 @@ const useGetWords = () => {
         let image = ''
         entry.words.forEach((word) => {
           if (word.images.length > 0) {
+            // find one that includes an image
             image = word.images[0]
           }
         })
@@ -96,7 +98,8 @@ const useGetWords = () => {
         }
       })
       // console.log(imagedTags)
-      setTags(imagedTags)
+      const shuffled = arrayShuffle(imagedTags)
+      setTags(shuffled)
     }
   }, [words])
 

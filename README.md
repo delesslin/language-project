@@ -1,12 +1,14 @@
 # TODOs 📎
 
-1. Sanitize data so that strings don't begin or end with ' '
+1. Refactor new style system for PAGES
 2. Style search results
-3. Implement 'public vs private' option in database
-4. Implement login on server and app
-5. Refactor React app state to only use the native react Context and State
-6. Randomize tags
-7. Consolidate similar tags (e.g. animal vs animals)
+3. Export data as .csv file
+4. Sanitize data so that strings don't begin or end with ' '
+5. Implement 'public vs private' option in database
+6. Implement login on server and app
+7. Refactor React app state to only use the native react Context and State
+8. Randomize tags
+9. Consolidate similar tags (e.g. animal vs animals)
 
 # Minimum Viable Product
 

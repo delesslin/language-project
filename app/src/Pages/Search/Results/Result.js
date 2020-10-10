@@ -1,18 +1,18 @@
 import React from 'react'
-import { Grid, Typography } from '@material-ui/core'
+import { Grid, Paper, Typography } from '@material-ui/core'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import StyledLink from '../../../styled/StyledLink'
 
 const CircleImg = styled.img`
-  border-radius: 50%;
+  border-radius: 100%;
   height: 100px;
   margin: 0px;
   padding: 0px;
   float: left;
   padding-right: 15px;
 `
-const ResultDiv = styled(Grid)`
+const ResultDiv = styled(Paper)`
   padding: 10px 0px;
 `
 

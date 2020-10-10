@@ -14,13 +14,22 @@ const Landing = () => {
         </Typography>
       </Grid>
       <Grid item container spacing={3} justify='center'>
-        <Grid item>
-          <StyledLink to='/admin/new'>
-            <Button variant='outlined'>add new word</Button>
-          </StyledLink>
-          <StyledLink to='/admin/bulk-new'>
-            <Button variant='outlined'>bulk upload</Button>
-          </StyledLink>
+        <Grid item container spacing={2} justify='center'>
+          <Grid item>
+            <StyledLink to='/admin/new'>
+              <Button variant='outlined'>add new word</Button>
+            </StyledLink>
+          </Grid>
+          <Grid item>
+            <StyledLink to='/admin/bulk-new'>
+              <Button variant='outlined'>bulk upload</Button>
+            </StyledLink>
+          </Grid>
+          <Grid item>
+            <StyledLink to='/admin/export'>
+              <Button variant='outlined'>export</Button>
+            </StyledLink>
+          </Grid>
         </Grid>
       </Grid>
       <Grid item container justify='center'>

@@ -14,6 +14,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
     "coolors-io": "^1.1.1",
+    "css-in-js-media": "^1.0.15",
     "fuse.js": "^6.4.1",
     "hex-rgb": "^4.2.0",
     "material-ui-fullscreen-dialog": "^1.1.0",
@@ -34,6 +35,8 @@
     "react-scripts": "^3.4.3",
     "recoil": "0.0.10",
     "styled-components": "^5.2.0",
+    "styled-normalize": "^8.0.7",
+    "styled-reset": "^4.2.3",
     "use-clippy": "^1.0.6"
   },
   "scripts": {

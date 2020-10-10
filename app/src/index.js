@@ -8,28 +8,30 @@ import { RecoilRoot } from 'recoil'
 import { BrowserRouter as Router } from 'react-router-dom'
 import Layout from './Components/Layout'
 import { Words } from './context'
-
+import { Normalize } from 'styled-normalize'
 // TODO: Move app contents into ReactDOM.render
 // TODO: Refactor to remove RecoilRoot
+
 export const App = () => {
   return (
-    <RecoilRoot>
-      <Words.Provider>
-        <Router>
-          <Layout>
-            <Pages />
-          </Layout>
-        </Router>
-      </Words.Provider>
-    </RecoilRoot>
+    <React.Fragment>
+      <Normalize />
+      <RecoilRoot>
+        <Words.Provider>
+          <Router>
+            <Layout>
+              <Pages />
+            </Layout>
+          </Router>
+        </Words.Provider>
+      </RecoilRoot>
+    </React.Fragment>
   )
 }
 
 ReactDOM.render(
   <React.StrictMode>
-    <ScopedCssBaseline>
-      <App />
-    </ScopedCssBaseline>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 )

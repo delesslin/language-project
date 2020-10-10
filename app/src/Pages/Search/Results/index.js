@@ -8,6 +8,11 @@ const StyledProgress = styled(Box)`
   place-items: center;
   padding-top: 75px;
 `
+const SearchGrid = styled.div`
+  display: grid;
+  grid-column-template: 70%;
+  auto-row: 200px;
+`
 // TODO: insert dividers between results
 const Results = ({ loading, results }) => {
   if (loading) {

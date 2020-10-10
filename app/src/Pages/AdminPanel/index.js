@@ -6,6 +6,7 @@ import Login from './Login'
 import Edit from './Edit'
 import Landing from './Landing'
 import BatchUpload from './BatchUpload'
+import Export from './Export'
 const LOGIN_ATOM = atom({
   key: 'LOGIN_ATOM',
   default: true,
@@ -21,6 +22,9 @@ export const AdminPanel = () => {
         </Route>
         <Route path={path + '/bulk-new'}>
           <BatchUpload />
+        </Route>
+        <Route path={path + '/export'}>
+          <Export />
         </Route>
         <Route path={path + '/users'}>
           <h1>
