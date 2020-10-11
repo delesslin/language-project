@@ -1,16 +1,7 @@
 import React from 'react'
-import {
-  CardMedia,
-  Typography,
-  CardContent,
-  Card,
-  Grid,
-  Paper,
-  Button,
-} from '@material-ui/core'
 
 import { Link, useHistory } from 'react-router-dom'
-import CardPaper from '../../styled/CardPaper'
+import { Card } from '../../styled/Card'
 
 const TagCard = ({ tag, image, children }) => {
   const history = useHistory()
@@ -18,9 +9,9 @@ const TagCard = ({ tag, image, children }) => {
     history.push(`/tags/${tag}`)
   }
   return (
-    <CardPaper href={image} onClick={handleClick}>
+    <Card href={image} onClick={handleClick}>
       {children}
-    </CardPaper>
+    </Card>
   )
   // return (
   //   <Grid item key={tag}>

@@ -1,8 +1,8 @@
+import { Paper } from '@material-ui/core'
 import React from 'react'
-import { Grid, Typography, Paper } from '@material-ui/core'
-import { Link, useHistory } from 'react-router-dom'
-import CardPaper from '../../styled/CardPaper'
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import { Card } from '../../styled/Card'
 // const WordPaper = styled(Paper)({
 //   padding: '25px 40px',
 // })
@@ -16,9 +16,9 @@ const WordCard = ({ data, href, link, children }) => {
     history.push(link)
   }
   return (
-    <CardPaper href={href} onClick={handleClick}>
+    <Card href={href} onClick={handleClick}>
       <WordPaper>{children}</WordPaper>
-    </CardPaper>
+    </Card>
   )
   // return (
   //   <Grid item>

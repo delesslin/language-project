@@ -4,9 +4,9 @@ import StyledLink from '../../styled/StyledLink'
 const Tags = ({ data }) => {
   return (
     <Grid container spacing={1}>
-      {data.map((tag) => {
+      {data.map((tag, i) => {
         return (
-          <Grid item>
+          <Grid item key={i}>
             <StyledLink to={`/tags/${tag}`}>
               <Chip label={tag} clickable />
             </StyledLink>

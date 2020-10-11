@@ -12,7 +12,7 @@ export const Layout = styled.div`
     'header'
     'main'
     'footer';
-  grid-gap: 15px;
+  grid-gap: 30px;
 
   header {
     grid-area: header;
@@ -115,17 +115,23 @@ export const Main = styled.main`
 `
 export const Page = styled.div`
   grid-area: page;
-  box-shadow: 2px 2px 5px #aaa;
+  // box-shadow: 2px 2px 5px #aaa;
   border-radius: 5px;
-  padding: 20px;
+  padding: 25px;
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-areas:
     'title'
     'content';
+  grid-gap: 25px;
 `
 export const PageTitle = styled.h2`
   grid-area: title;
+  padding: 0px;
+  margin: 0px;
+  ${media('<phone')} {
+    text-align: center;
+  }
   ${media('>=desktop')} {
     text-align: center;
   }

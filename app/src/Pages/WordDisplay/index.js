@@ -12,6 +12,9 @@ import AltSpellings from './AltSpellings'
 import Notes from './Notes'
 import Loading from '../../Components/Loading'
 import Request from '../Request'
+import Page from '../../Components/Page'
+import Player from '../../Components/Player'
+import { ContentImage } from '../../styled/Content'
 const WordPaper = styled(Paper)`
   padding: 25px 20px;
 `
@@ -58,15 +61,15 @@ const WordDisplay = () => {
       return <Request />
     }
     return (
-      <Container>
+      <Page>
         <WordPaper>
           <WordGrid>
             {thisWord.images.length > 0 ? (
-              <StyledImage
-                src={thisWord.images[0]}
-                alt={`visual of ${thisWord.translations[0]}`}
-                size='300px'
-              />
+              <ContentImage href={thisWord.images[0]}>
+                {thisWord.recordings.length > 0 ? (
+                  <Player base64={thisWord.recordings[0]} />
+                ) : null}
+              </ContentImage>
             ) : null}
             <InfoContainer>
               <Sound data={thisWord.recordings} />
@@ -82,7 +85,7 @@ const WordDisplay = () => {
           </WordGrid>
           <Id>{thisWord._id}</Id>
         </WordPaper>
-      </Container>
+      </Page>
     )
   }
 }

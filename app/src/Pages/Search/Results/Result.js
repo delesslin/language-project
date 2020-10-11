@@ -6,7 +6,7 @@ import StyledLink from '../../../styled/StyledLink'
 
 const CircleImg = styled.img`
   border-radius: 100%;
-  height: 100px;
+  height: 50px;
   margin: 0px;
   padding: 0px;
   float: left;
@@ -27,14 +27,12 @@ const Result = ({ entry }) => {
   const data = entry.item
 
   return (
-    <StyledLink to={`/word/${data._id}`}>
-      <ResultDiv>
-        <CircleImg src='https://picsum.photos/200' alt='example image' />
-        <WordTypo variant='h5'>{data.language_entry}</WordTypo>
-        <PronTypo>{data.pronunciation[0]}</PronTypo>
-        <Typography>{data.translations[0]}</Typography>
-      </ResultDiv>
-    </StyledLink>
+    <ResultDiv>
+      <CircleImg src='https://picsum.photos/200' alt='example image' />
+      <WordTypo variant='h5'>{data.language_entry}</WordTypo>
+      <PronTypo>{data.pronunciation[0]}</PronTypo>
+      <Typography>{data.translations[0]}</Typography>
+    </ResultDiv>
   )
 }
 

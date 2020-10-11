@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Request from './Request'
 import Result from './Result'
+import { CardGrid } from '../../../styled/Card'
 const StyledProgress = styled(Box)`
   display: grid;
   place-items: center;
@@ -26,12 +27,12 @@ const Results = ({ loading, results }) => {
   } else if (results !== null) {
     if (results.length > 0) {
       return (
-        <Grid container direction='column'>
+        <CardGrid columns={1}>
           {results.map((entry) => {
             return <Result key={entry.item._id} entry={entry} />
           })}
           <Request />
-        </Grid>
+        </CardGrid>
       )
     } else {
       return (

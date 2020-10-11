@@ -3,7 +3,8 @@ import { useParams } from 'react-router'
 import { Grid, Typography } from '@material-ui/core'
 import { Words } from '../../context'
 import WordCard from './WordCard'
-import CardGrid from '../../styled/CardGrid'
+import { CardGrid } from '../../styled/Card'
+import Page from '../../Components/Page'
 
 const Tag = () => {
   const { _tagname } = useParams()
@@ -20,35 +21,39 @@ const Tag = () => {
     }
   }, [_tagname, tags])
   return (
-    <Grid container direction='column' spacing={3}>
-      <Grid item container justify='center'>
-        <Grid item>
-          <Typography variant='h2'>{_tagname}</Typography>
-        </Grid>
-      </Grid>
-      <Grid item>
-        <CardGrid>
-          {taggedWords.map((entry) => {
-            const image = ''
+    <Page title={_tagname}>
+      <CardGrid columns={3}>
+        {taggedWords.map((entry, i) => {
+          const image = ''
 
-            return (
-              <WordCard
-                key={entry._id}
-                data={entry}
-                href={entry.images[0]}
-                link={`/word/${entry._id}`}
-              >
-                <Typography>
-                  <b>{entry.language_entry}</b>
-                </Typography>
-                <Typography>{entry.translations[0]}</Typography>
-              </WordCard>
-            )
-          })}
-        </CardGrid>
-      </Grid>
-    </Grid>
+          return (
+            <WordCard
+              key={i}
+              data={entry}
+              href={entry.images[0]}
+              link={`/word/${entry._id}`}
+            >
+              <Typography>
+                <b>{entry.language_entry}</b>
+              </Typography>
+              <Typography>{entry.translations[0]}</Typography>
+            </WordCard>
+          )
+        })}
+      </CardGrid>
+    </Page>
   )
+  // return (
+  //   <Grid container direction='column' spacing={3}>
+  //     <Grid item container justify='center'>
+  //       <Grid item>
+  //         <Typography variant='h2'>{_tagname}</Typography>
+  //       </Grid>
+  //     </Grid>
+  //     <Grid item>
+  //     </Grid>
+  //   </Grid>
+  // )
 }
 
 export default Tag

@@ -1,5 +1,6 @@
 import { Grid } from '@material-ui/core'
 import React, { useEffect, useRef, useState } from 'react'
+import Page from '../../Components/Page'
 import useSearch from '../../utils/hooks/useSearch'
 import Results from './Results'
 import SearchButton from './SearchButton'
@@ -30,26 +31,28 @@ const Search = () => {
     }
   }
   return (
-    <Grid container direction='column' alignItems='center'>
-      <Grid item>
-        <Grid container spacing={2}>
-          <Grid item>
-            <SearchField
-              loading={isSearching}
-              onChange={handleChange}
-              ref={inputRef}
-              error={error}
-            />
-          </Grid>
-          <Grid item>
-            <SearchButton loading={isSearching} onClick={handleClick} />
+    <Page title='search'>
+      <Grid container direction='column' alignItems='center'>
+        <Grid item>
+          <Grid container spacing={2}>
+            <Grid item>
+              <SearchField
+                loading={isSearching}
+                onChange={handleChange}
+                ref={inputRef}
+                error={error}
+              />
+            </Grid>
+            <Grid item>
+              <SearchButton loading={isSearching} onClick={handleClick} />
+            </Grid>
           </Grid>
         </Grid>
+        <Grid item>
+          <Results loading={isSearching} results={results} />
+        </Grid>
       </Grid>
-      <Grid item>
-        <Results loading={isSearching} results={results} />
-      </Grid>
-    </Grid>
+    </Page>
   )
 }
 

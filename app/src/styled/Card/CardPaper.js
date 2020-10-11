@@ -13,7 +13,7 @@ const genGradient = () => {
   return `background: rgb(${a.red},${a.green},${a.blue});
   background: linear-gradient(${deg}deg, rgba(${a.red},${a.green},${a.blue},1) 18%, rgba(${b.red},${b.green},${b.blue},1) 100%);`
 }
-const CardPaper = styled(Paper)`
+const CardPaper = styled.div`
   ${({ href }) => {
     if (href !== undefined && href.length > 0) {
       return `background-image: url(${href});
@@ -26,8 +26,14 @@ const CardPaper = styled(Paper)`
   }}
   display: grid;
   place-items: center;
+  border-radius: 10px;
+  border: 1px solid #555;
+  transition: box-shadow 0.1s;
+  transition: border 0.1s;
+
   &:hover {
-    box-shadow: 5px 5px 5px #555;
+    box-shadow: 2px 2px 2px #555;
+    border: 3px solid #555;
     cursor: pointer;
     > * {
       box-shadow: 2px 2px 2px #555;

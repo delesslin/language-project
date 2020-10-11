@@ -11,11 +11,21 @@ import { Words } from './context'
 import { Normalize } from 'styled-normalize'
 // TODO: Move app contents into ReactDOM.render
 // TODO: Refactor to remove RecoilRoot
-
+import { createGlobalStyle } from 'styled-components'
+const GlobalStyle = createGlobalStyle`
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+`
+// Move WordProvider to Pages
 export const App = () => {
   return (
     <React.Fragment>
       <Normalize />
+      <GlobalStyle />
       <RecoilRoot>
         <Words.Provider>
           <Router>

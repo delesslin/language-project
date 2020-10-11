@@ -9,6 +9,7 @@ import Search from './Search'
 import Request from './Request'
 import GlobalTheme from '../Components/GlobalTheme'
 
+// move GlobalThem to App component
 const Pages = () => {
   return (
     <GlobalTheme>
