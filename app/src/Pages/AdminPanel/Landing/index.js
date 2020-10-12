@@ -3,9 +3,33 @@ import React from 'react'
 import { Words } from '../../../context'
 import StyledLink from '../../../styled/StyledLink'
 import { EditTable } from '../../../Components/WordTable'
+import Page from '../../../Components/Page'
 
 const Landing = () => {
   const { words } = React.useContext(Words.Context)
+  return (
+    <Page title='admin panel'>
+      <Grid item container spacing={2} justify='center'>
+        <Grid item>
+          <StyledLink to='/admin/new'>
+            <Button variant='outlined'>add new word</Button>
+          </StyledLink>
+        </Grid>
+        <Grid item>
+          <StyledLink to='/admin/bulk-new'>
+            <Button variant='outlined'>bulk upload</Button>
+          </StyledLink>
+        </Grid>
+        <Grid item>
+          <StyledLink to='/admin/export'>
+            <Button variant='outlined'>export</Button>
+          </StyledLink>
+        </Grid>
+      </Grid>
+
+      <EditTable words={words} />
+    </Page>
+  )
   return (
     <Grid container direction='column' spacing={3}>
       <Grid item container justify='center'>
@@ -13,29 +37,9 @@ const Landing = () => {
           <b>ADMIN PANEL</b>
         </Typography>
       </Grid>
-      <Grid item container spacing={3} justify='center'>
-        <Grid item container spacing={2} justify='center'>
-          <Grid item>
-            <StyledLink to='/admin/new'>
-              <Button variant='outlined'>add new word</Button>
-            </StyledLink>
-          </Grid>
-          <Grid item>
-            <StyledLink to='/admin/bulk-new'>
-              <Button variant='outlined'>bulk upload</Button>
-            </StyledLink>
-          </Grid>
-          <Grid item>
-            <StyledLink to='/admin/export'>
-              <Button variant='outlined'>export</Button>
-            </StyledLink>
-          </Grid>
-        </Grid>
-      </Grid>
+      <Grid item container spacing={3} justify='center'></Grid>
       <Grid item container justify='center'>
-        <Grid item>
-          <EditTable words={words} />
-        </Grid>
+        <Grid item></Grid>
       </Grid>
     </Grid>
   )

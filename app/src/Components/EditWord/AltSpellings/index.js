@@ -4,6 +4,7 @@ import Context from '../context'
 import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
 import EditIcon from '@material-ui/icons/Edit'
 import KeyboardModal from '../../Keyboard/KeyboardModal'
+import { AltInput } from '../../../styled/Inputs'
 
 const AltSpellings = () => {
   const [{ alternative_spellings }, dispatch] = useContext(Context)
@@ -25,35 +26,37 @@ const AltSpellings = () => {
   }
   return (
     <>
-      <Grid container direction='column' spacing={3}>
-        <Grid item container spacing={2}>
-          <Grid item>
-            <TextField
-              disabled
-              variant='filled'
-              label='Alternative Spellings'
-            />
+      <AltInput>
+        <Grid container direction='column' spacing={1}>
+          <Grid item container spacing={2} justify='center' alignItems='center'>
+            <Grid item>
+              <TextField
+                disabled
+                variant='filled'
+                label='Alternative Spellings'
+              />
+            </Grid>
+            <Grid item>
+              <Fab onClick={() => setOpenModal(true)}>
+                <EditIcon />
+              </Fab>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Fab onClick={() => setOpenModal(true)}>
-              <EditIcon />
-            </Fab>
+          <Grid container item spacing={1}>
+            {alternative_spellings.map((entry, i) => {
+              return (
+                <Grid item key={i}>
+                  <Chip
+                    label={entry}
+                    onDelete={() => remove(i)}
+                    color='primary'
+                  />
+                </Grid>
+              )
+            })}
           </Grid>
         </Grid>
-        <Grid container item spacing={1}>
-          {alternative_spellings.map((entry, i) => {
-            return (
-              <Grid item key={i}>
-                <Chip
-                  label={entry}
-                  onDelete={() => remove(i)}
-                  color='primary'
-                />
-              </Grid>
-            )
-          })}
-        </Grid>
-      </Grid>
+      </AltInput>
       <KeyboardModal
         open={openModal}
         openModal={setOpenModal}

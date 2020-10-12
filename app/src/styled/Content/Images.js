@@ -1,14 +1,13 @@
-import React from 'react'
-import styled from 'styled-components'
+const { default: styled } = require('styled-components')
+
 export const ContentImage = styled.div`
   background-image: url(${(props) => props.href});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  // overflow: hidden;
   display: grid;
   place-items: center;
-  width: 250px;
-  height: 250px;
   > * {
     opacity: 0.5;
   }

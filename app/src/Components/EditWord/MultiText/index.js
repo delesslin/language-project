@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react'
 import Context from '../context'
 import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
 import AddIcon from '@material-ui/icons/Add'
+import { MultiInput } from '../../../styled/Inputs'
 
 const MultiText = ({ property, label = '' }) => {
   const [state, dispatch] = useContext(Context)
@@ -23,8 +24,8 @@ const MultiText = ({ property, label = '' }) => {
     })
   }
   return (
-    <Grid item container direction='column' spacing={2}>
-      <Grid item container spacing={2}>
+    <MultiInput>
+      <Grid item container spacing={1} justify='center' alignItems='center'>
         <Grid item>
           <TextField
             value={currVal}
@@ -47,7 +48,7 @@ const MultiText = ({ property, label = '' }) => {
           )
         })}
       </Grid>
-    </Grid>
+    </MultiInput>
   )
 }
 

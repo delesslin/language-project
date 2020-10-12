@@ -1,40 +1,11 @@
-import { Chip, Container, Grid, Paper } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { Words } from '../../context'
-import { Pronunciations, Translations, WordEntry } from './WordParts'
-import Image from '../../styled/Image'
-import styled from 'styled-components'
-import Sound from './Sound'
-import Id from './Id'
-import Tags from './Tags'
-import AltSpellings from './AltSpellings'
-import Notes from './Notes'
 import Loading from '../../Components/Loading'
-import Request from '../Request'
 import Page from '../../Components/Page'
-import Player from '../../Components/Player'
-import { ContentImage } from '../../styled/Content'
-const WordPaper = styled(Paper)`
-  padding: 25px 20px;
-`
-const WordGrid = styled.div`
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 20px;
-  row-gap: 15px;
-`
-const StyledImage = styled(Image)`
-  grid-column: 1 / 2;
-`
-const InfoContainer = styled.div`
-  grid-column: 2 / 3;
-  display: grid;
-  row-gap: 1px;
-`
-const TagContainer = styled.div`
-  grid-column: 1 / 3;
-`
+import WordCard from '../../Components/WordCard'
+import { Words } from '../../context'
+import Request from '../Request'
+
 const WordDisplay = () => {
   const { _id } = useParams()
   const { words } = useContext(Words.Context)
@@ -62,7 +33,8 @@ const WordDisplay = () => {
     }
     return (
       <Page>
-        <WordPaper>
+        <WordCard word={thisWord} expanded={true} />
+        {/* <WordPaper>
           <WordGrid>
             {thisWord.images.length > 0 ? (
               <ContentImage href={thisWord.images[0]}>
@@ -84,7 +56,7 @@ const WordDisplay = () => {
             </TagContainer>
           </WordGrid>
           <Id>{thisWord._id}</Id>
-        </WordPaper>
+        </WordPaper> */}
       </Page>
     )
   }

@@ -7,6 +7,7 @@ import axios from 'axios'
 import StyledLink from '../../../styled/StyledLink'
 import { useHistory } from 'react-router'
 import { Words } from '../../../context'
+import Page from '../../../Components/Page'
 const ALERT_ATOM = atom({
   key: 'ALERT_ATOM',
   default: {
@@ -43,21 +44,14 @@ export const NewWord = () => {
       })
   }
   return (
-    <StyledPaper>
-      <Grid container direction='column' spacing={3}>
+    <Page title='add new word'>
+      <EditWord onSave={handleSubmit}>
         <Grid item>
-          <Typography variant='h5'>New Term</Typography>
+          <StyledLink to='/admin'>
+            <Button>nevermind</Button>
+          </StyledLink>
         </Grid>
-        <Grid item>
-          <EditWord onSave={handleSubmit}>
-            <Grid item>
-              <StyledLink to='/admin'>
-                <Button>nevermind</Button>
-              </StyledLink>
-            </Grid>
-          </EditWord>
-        </Grid>
-      </Grid>
-    </StyledPaper>
+      </EditWord>
+    </Page>
   )
 }

@@ -1,6 +1,7 @@
 import { Fab, Grid, TextField } from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
 import React, { useContext } from 'react'
+import { WordInput } from '../../../styled/Inputs'
 import KeyboardModal from '../../Keyboard/KeyboardModal'
 import Context from '../context'
 import { REPLACE } from '../reducer'
@@ -21,23 +22,25 @@ const LanguageEntry = () => {
   }
   return (
     <>
-      <Grid item container alignItems='center' spacing={3}>
-        <Grid item>
-          <TextField
-            label='Language Entry'
-            variant='filled'
-            disabled
-            required
-            value={language_entry}
-            onFocus={handleFocus}
-          />
+      <WordInput>
+        <Grid item container alignItems='center' justify='center' spacing={1}>
+          <Grid item>
+            <TextField
+              label='Language Entry'
+              variant='filled'
+              disabled
+              required
+              value={language_entry}
+              onFocus={handleFocus}
+            />
+          </Grid>
+          <Grid item>
+            <Fab onClick={() => setOpenModal(true)}>
+              <EditIcon />
+            </Fab>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Fab onClick={() => setOpenModal(true)}>
-            <EditIcon />
-          </Fab>
-        </Grid>
-      </Grid>
+      </WordInput>
       <KeyboardModal
         open={openModal}
         openModal={setOpenModal}

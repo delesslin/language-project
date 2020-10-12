@@ -2,8 +2,9 @@ import { Box, CircularProgress, Grid, Typography } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
 import Request from './Request'
-import Result from './Result'
+import Result from '../../../Components/WordCard'
 import { CardGrid } from '../../../styled/Card'
+import WordCard from '../../../Components/WordCard'
 const StyledProgress = styled(Box)`
   display: grid;
   place-items: center;
@@ -28,8 +29,9 @@ const Results = ({ loading, results }) => {
     if (results.length > 0) {
       return (
         <CardGrid columns={1}>
-          {results.map((entry) => {
-            return <Result key={entry.item._id} entry={entry} />
+          {results.map(({ item }) => {
+            const entry = item
+            return <WordCard key={entry._id} word={entry} />
           })}
           <Request />
         </CardGrid>

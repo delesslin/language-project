@@ -8,17 +8,17 @@ const columns = (x, max = 10) => {
 export const CardGrid = styled.div`
   display: grid;
 
-  grid-auto-rows: 100px;
+  grid-auto-rows: minmax(150px, auto);
   grid-gap: 20px;
   place-items: stretch;
 
   ${columns(1)}
   ${media('>phone')} {
     ${(props) => columns(props.columns, 2)}
-    grid-auto-rows: 150px;
+
     ${media('>tablet')} {
       ${(props) => columns(props.columns, 4)}
-      grid-auto-rows: 200px;
+
       ${media('>desktop')} {
         ${(props) => columns(props.columns, 5)}
         ${media('>largeDesktop')} {

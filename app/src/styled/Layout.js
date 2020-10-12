@@ -124,6 +124,11 @@ export const Page = styled.div`
     'title'
     'content';
   grid-gap: 25px;
+  ${media('<tablet')} {
+    padding: 10px 20px;
+
+    // grid-gap: 10px;
+  }
 `
 export const PageTitle = styled.h2`
   grid-area: title;

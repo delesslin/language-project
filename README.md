@@ -1,7 +1,7 @@
 # TODOs 📎
 
 1. Refactor new style system for PAGES
-2. Style search results
+2. Back Button
 3. Export data as .csv file
 4. Sanitize data so that strings don't begin or end with ' '
 5. Implement 'public vs private' option in database
