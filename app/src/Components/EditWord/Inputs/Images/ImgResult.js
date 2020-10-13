@@ -1,6 +1,6 @@
 import { Grid } from '@material-ui/core'
 import React, { useEffect } from 'react'
-import Image from '../../../styled/Image'
+import Image from '../../../../styled/Image'
 const ImgResult = ({ result, selections, add, remove }) => {
   const [selected, setSelected] = React.useState(false)
   useEffect(() => {

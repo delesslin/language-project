@@ -17,6 +17,15 @@ const UserSchema = mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  roles: {
+    // 4 roles:
+    // admin (edit users),
+    // editor (edits words),
+    // user (views words),
+    // guest (views words but unregistered); should never be assigned, only a fn fallback
+    type: [String],
+    default: ['user'],
+  },
 })
 
 // export model user with UserSchema

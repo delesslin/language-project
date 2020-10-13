@@ -7,6 +7,8 @@ import axios from 'axios'
 import { Button, Grid, Paper, Typography } from '@material-ui/core'
 import StyledLink from '../../../styled/StyledLink'
 import DeleteModal from './DeleteModal'
+import Page from '../../../Components/Page'
+import { AuthContext } from '..'
 
 const Edit = () => {
   const { words } = useContext(Words.Context)
@@ -15,28 +17,31 @@ const Edit = () => {
     params: { _id },
   } = useRouteMatch()
   const [initialState, setInitialState] = React.useState(null)
+  const history = useHistory()
+  const { token } = useContext(AuthContext)
   useEffect(() => {
     setInitialState(words.find((entry) => entry._id === _id))
   }, [words])
 
   const handleUpdate = (obj) => {
     // send to update api
-    axios.patch(`/api/words/${_id}`, obj).then((res) => {
-      console.log(res)
-    })
+    axios
+      .patch(`/api/words/${_id}`, obj, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log(res)
+        history.push('/admin')
+      })
+      .catch((e) => console.error(e))
   }
   if (initialState === null) {
     return <Loading />
   } else {
     return (
       <>
-        <Paper>
+        <Page title='edit'>
           <Grid container direction='column' spacing={3}>
-            <Grid item>
-              <Typography variant='h4'>
-                Let edit entry with id #{_id}
-              </Typography>
-            </Grid>
             <Grid item>
               <EditWord data={initialState} onSave={handleUpdate}>
                 <Grid item>
@@ -56,7 +61,7 @@ const Edit = () => {
               </EditWord>
             </Grid>
           </Grid>
-        </Paper>
+        </Page>
         <DeleteModal open={openDelete} _id={_id} toggleOpen={setOpenDelete} />
       </>
     )

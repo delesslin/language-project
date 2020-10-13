@@ -16,7 +16,7 @@ import AltSpellings from './AltSpellings'
 
 import blankState from './blankState'
 import Context from './context'
-import Images from './Images'
+import Images from './Inputs/Images'
 import Pronunciation from './Inputs/Pronunciation'
 import LanguageEntry from './LanguageEntry'
 import MultiText from './MultiText'
@@ -51,9 +51,7 @@ const EditWord = ({
         <LanguageEntry />
         <AltSpellings />
         <Pronunciation />
-        <ImgInput>
-          <Images />
-        </ImgInput>
+        <Images />
         <TransInput>
           <MultiText property='translations' label='Translations' />
         </TransInput>

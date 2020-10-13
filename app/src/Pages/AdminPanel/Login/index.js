@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useRef } from 'react'
 import {
   Container,
   Paper,
@@ -7,34 +7,48 @@ import {
   TextField,
   Button,
 } from '@material-ui/core'
-const Login = ({ setLogin }) => {
+import Page from '../../../Components/Page'
+import Axios from 'axios'
+import { AuthContext } from '..'
+import Alert from '@material-ui/lab/Alert'
+const Login = () => {
+  const emailRef = useRef(null)
+  const passwordRef = useRef(null)
+  const { login, error } = useContext(AuthContext)
   const handleSubmit = () => {
-    // TODO: AUTHENTICATE WITH SERVER
-    setLogin(true)
+    console.log(emailRef.current.value)
+    const email = emailRef.current.value
+    const password = passwordRef.current.value
+    login(email, password)
   }
+
   return (
-    <Container>
-      <Paper>
-        <Grid container direction='column' alignItems='center' spacing={3}>
+    <Page title='⛓ login ⛓'>
+      <Grid container direction='column' alignItems='center' spacing={3}>
+        {error ? (
           <Grid item>
-            <Typography variant='h4'>Login ⛓ </Typography>
+            <Alert severity='error'>Email or password are wrong</Alert>
           </Grid>
-          <Grid item>
-            <Typography>Username</Typography>
-            <TextField variant='outlined' required></TextField>
-          </Grid>
-          <Grid item>
-            <Typography>Password</Typography>
-            <TextField variant='outlined'></TextField>
-          </Grid>
-          <Grid item>
-            <Button variant='contained' onClick={handleSubmit}>
-              Submit
-            </Button>
-          </Grid>
+        ) : null}
+        <Grid item>
+          <Typography>Email</Typography>
+          <TextField
+            inputRef={emailRef}
+            variant='outlined'
+            required
+          ></TextField>
         </Grid>
-      </Paper>
-    </Container>
+        <Grid item>
+          <Typography>Password</Typography>
+          <TextField inputRef={passwordRef} variant='outlined'></TextField>
+        </Grid>
+        <Grid item>
+          <Button variant='contained' onClick={handleSubmit}>
+            Submit
+          </Button>
+        </Grid>
+      </Grid>
+    </Page>
   )
 }
 

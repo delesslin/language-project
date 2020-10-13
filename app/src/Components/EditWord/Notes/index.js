@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react'
 import Context from '../context'
 import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
 import AddIcon from '@material-ui/icons/Add'
+import { NoteInput } from '../../../styled/Inputs'
 
 // TODO: Switch to Paper to preview
 // TODO: Switch to TextField for typing
@@ -26,33 +27,37 @@ const Notes = () => {
     })
   }
   return (
-    <Grid item container direction='column' spacing={2}>
-      <Grid item container spacing={2}>
-        <Grid item>
-          <TextField
-            variant='outlined'
-            value={currText}
-            onChange={(e) => setCurrText(e.currentTarget.value)}
-            label={'Notes'}
-          />
+    <NoteInput>
+      <div>
+        <Grid item container spacing={2}>
+          <Grid item>
+            <TextField
+              variant='outlined'
+              value={currText}
+              onChange={(e) => setCurrText(e.currentTarget.value)}
+              label={'Notes'}
+            />
+          </Grid>
+          <Grid item>
+            <Fab onClick={() => add(currText)}>
+              <AddIcon />
+            </Fab>
+          </Grid>
         </Grid>
-        <Grid item>
-          <Fab onClick={() => add(currText)}>
-            <AddIcon />
-          </Fab>
+      </div>
+      <div>
+        <Grid item container spacing={1}>
+          {notes.map((entry, i) => {
+            return (
+              <Grid item key={i}>
+                {/* <Paper onClick={() => remove(i)}>{entry}</Paper> */}
+                <Chip label={entry} onDelete={() => remove(i)} />
+              </Grid>
+            )
+          })}
         </Grid>
-      </Grid>
-      <Grid item container spacing={1}>
-        {notes.map((entry, i) => {
-          return (
-            <Grid item key={i}>
-              {/* <Paper onClick={() => remove(i)}>{entry}</Paper> */}
-              <Chip label={entry} onDelete={() => remove(i)} />
-            </Grid>
-          )
-        })}
-      </Grid>
-    </Grid>
+      </div>
+    </NoteInput>
   )
 }
 

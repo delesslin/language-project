@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken')
 const userRouter = express()
 
 const userModel = require('../models/users.js')
+// only available to admin
 userRouter.get('/', async (req, res) => {
   const users = await userModel.find({})
   res.send(users)
@@ -37,7 +38,7 @@ userRouter.post(
       })
     }
     // destructure request body
-    const { username, email, password } = req.body
+    const { username, email, password, roles } = req.body
     try {
       // see if there is already a user with given email
       let user = await userModel.findOne({
@@ -54,6 +55,7 @@ userRouter.post(
         username,
         email,
         password,
+        roles,
       })
       // encrypt password
       const salt = await bcrypt.genSalt(10)
@@ -70,7 +72,7 @@ userRouter.post(
       // create JWT token
       jwt.sign(
         payload,
-        'randomString',
+        process.env.SECRET,
         {
           expiresIn: 10000,
         },
@@ -105,6 +107,7 @@ userRouter.post(
     const errors = validationResult(req)
     // if there was an error, return error to client
     if (!errors.isEmpty()) {
+      console.log(errors)
       return res.status(400).json({
         errors: errors.array(),
       })
@@ -115,6 +118,7 @@ userRouter.post(
       // see if there is a user with this email
       let user = await userModel.findOne({ email })
       if (!user) {
+        console.log('no user')
         return res.status(400).json({
           message: 'User not exists',
         })
@@ -123,6 +127,7 @@ userRouter.post(
       const isMatch = await bcrypt.compare(password, user.password)
       // if there is no match, send error
       if (!isMatch) {
+        console.log('bad pword')
         return res.status(400).json({
           message: 'Incorrect Password !',
         })
@@ -136,7 +141,7 @@ userRouter.post(
       // create JWT token
       jwt.sign(
         payload,
-        'randomString',
+        process.env.SECRET,
         {
           expiresIn: 3600,
         },

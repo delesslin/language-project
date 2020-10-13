@@ -2,8 +2,10 @@ import { Button, Grid } from '@material-ui/core'
 import React from 'react'
 
 import styled from 'styled-components'
-import Context from '../context'
-import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
+import { CardGrid } from '../../../../styled/Card'
+import { ImgInput } from '../../../../styled/Inputs'
+import Context from '../../context'
+import { ADD_MULTI, REMOVE_MULTI } from '../../reducer'
 import ImageModal from './ImageModal'
 import SelectedImage from './SelectedImage'
 
@@ -32,20 +34,22 @@ const Images = () => {
   }
   return (
     <>
-      <StyledInputGrid container spacing={2}>
-        <Grid item container direction='column' justify='center'>
-          <Grid item>
-            <Button variant='contained' onClick={() => setOpenModal(true)}>
-              Add images
-            </Button>
-          </Grid>
-        </Grid>
-        <Grid container item spacing={2}>
-          {images.map((img, i) => {
-            return <SelectedImage key={i} src={img} remove={() => remove(i)} />
-          })}
-        </Grid>
-      </StyledInputGrid>
+      <ImgInput>
+        <div>
+          <Button variant='contained' onClick={() => setOpenModal(true)}>
+            Add images
+          </Button>
+        </div>
+        <div>
+          <CardGrid columns={3}>
+            {images.map((img, i) => {
+              return (
+                <SelectedImage key={i} src={img} remove={() => remove(i)} />
+              )
+            })}
+          </CardGrid>
+        </div>
+      </ImgInput>
       <ImageModal
         open={openModal}
         save={setImages}

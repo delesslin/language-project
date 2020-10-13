@@ -1,16 +1,17 @@
 const { default: styled } = require('styled-components')
 
 export const InputGrid = styled.div`
-  background-color: #bbb;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto;
-  grid-gap: 2px;
+  background-color: #555;
+  grid-gap: 3px;
   grid-template-areas:
     'word word word a a a' 'p p p i i i' 'tr tr tr i i i'
     't t t i i i' 'r r r n n n' 'b b b b b b';
-  div {
-    padding: 5px;
+  > div {
+    padding: 10px;
+
     background-color: #fff;
   }
 `
@@ -22,12 +23,18 @@ export const WordInput = styled.div`
 `
 export const AltInput = styled.div`
   grid-area: a;
+  // grid-template-columns: 1fr;
+  // grid-template-rows: auto minmax(50px, auto);
+  // grid-auto-flow: column;
+  // background-color: red;
 `
 export const PronInput = styled.div`
   grid-area: p;
 `
 export const ImgInput = styled.div`
   grid-area: i;
+  display: flex;
+  flex-direction: column;
 `
 export const TransInput = styled.div`
   grid-area: tr;
@@ -49,4 +56,5 @@ export const MultiInput = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: auto minmax(50px, auto);
   grid-auto-flow: column;
+  grid-row-gap: 10px;
 `

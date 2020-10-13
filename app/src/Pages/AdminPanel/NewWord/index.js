@@ -8,6 +8,7 @@ import StyledLink from '../../../styled/StyledLink'
 import { useHistory } from 'react-router'
 import { Words } from '../../../context'
 import Page from '../../../Components/Page'
+import { AuthContext } from '..'
 const ALERT_ATOM = atom({
   key: 'ALERT_ATOM',
   default: {
@@ -23,10 +24,13 @@ const StyledPaper = styled(Paper)`
 export const NewWord = () => {
   const history = useHistory()
   const { refetchWords } = useContext(Words.Context)
+  const { token } = useContext(AuthContext)
   const handleSubmit = (payload) => {
     console.log('Sending new word to server', payload)
     axios
-      .post('/api/words', payload)
+      .post('/api/words', payload, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => {
         console.log('==============================================')
         console.log('SUCCESS!')

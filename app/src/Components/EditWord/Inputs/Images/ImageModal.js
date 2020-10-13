@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { Fab, Grid, Typography, TextField, Button } from '@material-ui/core'
-import { ModalStandard } from '../../../styled/Modals'
+import { ModalStandard } from '../../../../styled/Modals'
 import SearchIcon from '@material-ui/icons/Search'
-import searchWiki from '../../../utils/searchWiki'
+import searchWiki from '../../../../utils/searchWiki'
 import styled from 'styled-components'
 
 import ImgResult from './ImgResult'
+import { CardGrid } from '../../../../styled/Card'
 // TODO: Should be able to highlight images that you want to add
 // TODO: SHould be able to click to unhighlight images you no longer want to add
 
@@ -66,7 +67,7 @@ const ImageModal = ({ open, save, close, currentImages }) => {
             </Fab>
           </Grid>
         </Grid>
-        <ResultsGrid item container spacing={2}>
+        <CardGrid>
           {searchResults.map((result) => {
             return (
               <ImgResult
@@ -77,7 +78,7 @@ const ImageModal = ({ open, save, close, currentImages }) => {
               />
             )
           })}
-        </ResultsGrid>
+        </CardGrid>
         <Grid item container spacing={1}>
           <Grid item>
             <Button onClick={handleSave} variant='contained' color='primary'>
