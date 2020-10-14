@@ -10,7 +10,7 @@ import React, { useContext } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { Words } from '../../../context/'
+import { Auth, Words } from '../../../context/'
 import { AuthContext } from '..'
 const ModalDiv = styled.div`
   display: grid;
@@ -29,13 +29,11 @@ const DeleteModal = ({ _id, open, toggleOpen }) => {
   const { refetchWords } = React.useContext(Words.Context)
   const [confirm, setConfirm] = React.useState('')
   const history = useHistory()
-  const { token } = useContext(AuthContext)
+  const { headers } = useContext(Auth.Context)
   const lastFour = _id.slice(-4)
   const handleDelete = () => {
     axios
-      .delete(`/api/words/${_id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .delete(`/api/words/${_id}`, headers)
       .then((res) => {
         // refetch words
         refetchWords()

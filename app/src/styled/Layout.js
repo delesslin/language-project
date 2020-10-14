@@ -37,7 +37,7 @@ export const Header = styled.header`
   grid-template-areas:
     'b title title title title title title'
     'b nav nav nav nav nav nav';
-  box-shadow: 0px 2px 5px #555;
+  // box-shadow: 0px 2px 5px #555;
   border-radius: 0px 0px 5px 5px;
 
   ${GradientBackground(0.3)}
@@ -94,7 +94,7 @@ export const Footer = styled.footer`
   }
   ${GradientBackground(0.1)}
   border-radius: 5px 5px 0px 0px;
-  box-shadow: 0px -2px 5px #aaa;
+  // box-shadow: 0px -2px 5px #aaa;
 `
 
 export const FooterText = styled.p`

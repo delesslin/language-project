@@ -13,25 +13,6 @@ import { useHistory } from 'react-router-dom'
 import Player from '../Player'
 import ChipBag from './ChipBag'
 
-// const CircleImg = styled.img`
-//   border-radius: 100%;
-//   height: 50px;
-//   margin: 0px;
-//   padding: 0px;
-//   float: left;
-//   padding-right: 15px;
-// `
-// const ResultDiv = styled(Paper)`
-//   padding: 10px 0px;
-// `
-
-const WordTypo = styled(Typography)`
-  font-weight: bold;
-`
-const PronTypo = styled(Typography)`
-  font-style: italic;
-`
-
 const WordCard = ({ word, expanded = false, fullscreen = false }) => {
   const history = useHistory()
   const handleClick = () => {
@@ -39,7 +20,7 @@ const WordCard = ({ word, expanded = false, fullscreen = false }) => {
   }
   return (
     <SearchResult fullscreen={fullscreen}>
-      <SearchImage href={word.images[0]}></SearchImage>
+      <SearchImage href={word.images && word.images[0]}></SearchImage>
       {word.recordings.length > 0 ? (
         <SearchAudio>
           <Player base64={word.recordings[0]} />

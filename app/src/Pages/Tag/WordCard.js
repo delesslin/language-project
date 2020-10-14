@@ -8,6 +8,11 @@ import { Card } from '../../styled/Card'
 // })
 const WordPaper = styled(Paper)`
   padding: 15px 20px;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 const WordCard = ({ data, href, link, children }) => {
   console.log(data)

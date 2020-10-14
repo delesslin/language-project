@@ -7,6 +7,8 @@ const blankState = {
   images: [],
   recordings: [],
   notes: [],
+  roles: [],
+  public: false,
 }
 
 export default blankState

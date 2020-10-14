@@ -27,13 +27,11 @@ export const App = () => {
       <Normalize />
       <GlobalStyle />
       <RecoilRoot>
-        <Words.Provider>
-          <Router>
-            <Layout>
-              <Pages />
-            </Layout>
-          </Router>
-        </Words.Provider>
+        <Router>
+          <Layout>
+            <Pages />
+          </Layout>
+        </Router>
       </RecoilRoot>
     </React.Fragment>
   )

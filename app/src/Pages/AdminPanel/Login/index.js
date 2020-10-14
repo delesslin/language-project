@@ -9,12 +9,13 @@ import {
 } from '@material-ui/core'
 import Page from '../../../Components/Page'
 import Axios from 'axios'
-import { AuthContext } from '..'
+
 import Alert from '@material-ui/lab/Alert'
+import { Auth } from '../../../context'
 const Login = () => {
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
-  const { login, error } = useContext(AuthContext)
+  const { login, error } = useContext(Auth.Context)
   const handleSubmit = () => {
     console.log(emailRef.current.value)
     const email = emailRef.current.value

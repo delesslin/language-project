@@ -1,8 +1,10 @@
 import { Chip, Typography } from '@material-ui/core'
 import React from 'react'
+import { useHistory } from 'react-router'
 import { ResultTags } from '../../styled/Content/Search'
 
 const ChipBag = ({ label = '', chips = [], hrefGen = null }) => {
+  const history = useHistory()
   if (chips.length < 1) return null
   return (
     <ResultTags>
@@ -15,8 +17,7 @@ const ChipBag = ({ label = '', chips = [], hrefGen = null }) => {
             <Chip
               key={i}
               label={chip}
-              component='a'
-              href={hrefGen === null ? '' : hrefGen(chip)}
+              onClick={() => history.push(hrefGen(chip))}
               clickable
               variant='outlined'
             />

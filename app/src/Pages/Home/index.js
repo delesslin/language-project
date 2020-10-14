@@ -7,7 +7,7 @@ import Page from '../../Components/Page'
 import { CardGrid } from '../../styled/Card'
 
 const Home = () => {
-  const { tags, words } = React.useContext(Words.Context)
+  const { tags, words, isLoading } = React.useContext(Words.Context)
   const [cards, setCards] = useState([])
   useEffect(() => {
     // alphabetize
@@ -21,7 +21,7 @@ const Home = () => {
     // setCards
   }, [tags])
 
-  if (tags.length > 0) {
+  if (!isLoading) {
     return (
       <Page title='Browse'>
         <CardGrid columns='5'>

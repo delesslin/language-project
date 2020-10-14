@@ -1,54 +1,51 @@
-import React, { createContext, useState } from 'react'
-import { NewWord } from './NewWord'
-import {
-  Switch,
-  Route,
-  useRouteMatch,
-  BrowserRouter as Router,
-} from 'react-router-dom'
-import { useRecoilState, atom } from 'recoil'
-import Login from './Login'
-import Edit from './Edit'
-import Landing from './Landing'
-import BatchUpload from './BatchUpload'
-import Export from './Export'
+import React, { createContext, useContext } from 'react'
+import { BrowserRouter as Router, Route, useRouteMatch } from 'react-router-dom'
+import { Auth, Words } from '../../context'
 import useAuth from '../../utils/hooks/useAuth'
-import Users from './Users'
+import BatchUpload from './BatchUpload'
+import Edit from './Edit'
+import Export from './Export'
+import Landing from './Landing'
+import Login from './Login'
+import { NewWord } from './NewWord'
 import Signup from './Signup'
-export const AuthContext = createContext()
+import Users from './Users'
+
 export const AdminPanel = () => {
-  const { loggedIn, token, error, login } = useAuth()
+  const { loggedIn } = useContext(Auth.Context)
   const { path } = useRouteMatch()
 
   return (
-    <AuthContext.Provider value={{ loggedIn, token, error, login }}>
+    <>
       {loggedIn ? (
-        <Router>
-          <Route exact path={path}>
-            <Landing />
-          </Route>
-          <Route path={path + '/new'}>
-            <NewWord />
-          </Route>
-          <Route path={path + '/bulk-new'}>
-            <BatchUpload />
-          </Route>
-          <Route path={path + '/export'}>
-            <Export />
-          </Route>
-          <Route path={path + '/users'}>
-            <Users />
-          </Route>
-          <Route path={path + '/signup'}>
-            <Signup />
-          </Route>
-          <Route path={path + '/edit/:_id'}>
-            <Edit />
-          </Route>
-        </Router>
+        <Words.Provider>
+          <Router>
+            <Route path={path + '/new'}>
+              <NewWord />
+            </Route>
+            <Route path={path + '/bulk-new'}>
+              <BatchUpload />
+            </Route>
+            <Route path={path + '/export'}>
+              <Export />
+            </Route>
+            <Route path={path + '/users'}>
+              <Users />
+            </Route>
+            <Route path={path + '/signup'}>
+              <Signup />
+            </Route>
+            <Route path={path + '/edit/:_id'}>
+              <Edit />
+            </Route>
+            <Route path={path + '/:_id?'}>
+              <Landing />
+            </Route>
+          </Router>
+        </Words.Provider>
       ) : (
         <Login />
       )}
-    </AuthContext.Provider>
+    </>
   )
 }

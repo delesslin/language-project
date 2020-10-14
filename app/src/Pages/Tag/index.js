@@ -5,7 +5,17 @@ import { Words } from '../../context'
 import WordCard from './WordCard'
 import { CardGrid } from '../../styled/Card'
 import Page from '../../Components/Page'
-
+import styled from 'styled-components'
+const MainText = styled(Typography)`
+  background-color: #f8f4dd;
+  padding: 5px 10px;
+  margin: 30px;
+`
+const SecondText = styled(Typography)`
+  background-color: #a2d2f6;
+  padding: 5px 20px;
+  margin: 10px;
+`
 const Tag = () => {
   const { _tagname } = useParams()
   const { tags } = React.useContext(Words.Context)
@@ -33,10 +43,10 @@ const Tag = () => {
               href={entry.images[0]}
               link={`/word/${entry._id}`}
             >
-              <Typography>
+              <MainText>
                 <b>{entry.language_entry}</b>
-              </Typography>
-              <Typography>{entry.translations[0]}</Typography>
+              </MainText>
+              <SecondText>{entry.translations[0]}</SecondText>
             </WordCard>
           )
         })}

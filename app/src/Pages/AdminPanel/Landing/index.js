@@ -1,16 +1,23 @@
 import { Button, Grid, Typography } from '@material-ui/core'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Words } from '../../../context'
 import StyledLink from '../../../styled/StyledLink'
-import { EditTable } from '../../../Components/WordTable'
 import Page from '../../../Components/Page'
-import { useHistory } from 'react-router'
+import { useHistory, useParams } from 'react-router'
+import { EditTable } from '../../../Components/WordTable'
+import VisibilityIcon from '@material-ui/icons/Visibility'
+import styled from 'styled-components'
+import EditWord from '../../../Components/EditWord'
+import WordDetail from './WordDetail'
 
 const Landing = () => {
-  const { words } = React.useContext(Words.Context)
+  const { words, refetchWords } = React.useContext(Words.Context)
   const history = useHistory()
+  const params = useParams()
+  useEffect(() => refetchWords(), [])
+  useEffect(() => console.log(params), [params])
   return (
-    <Page title='admin panel'>
+    <Page title={`editor panel [${words.length}]`}>
       <Grid item container spacing={2} justify='center'>
         <Grid item>
           <StyledLink to='/admin/new'>
@@ -37,7 +44,7 @@ const Landing = () => {
         </Grid>
       </Grid>
 
-      <EditTable words={words} />
+      <WordDetail />
     </Page>
   )
   return (

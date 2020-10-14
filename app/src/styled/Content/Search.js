@@ -18,7 +18,7 @@ export const SearchBox = styled.div`
 export const SearchResult = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 1fr;
+  grid-template-rows: minmax(50vh, auto);
   grid-template-areas: 'pic pic text text text';
   grid-column-gap: 20px;
   border: 2px solid #555;
@@ -45,7 +45,12 @@ export const SearchImage = styled(ContentImage)`
     grid-area: pic / pic / pic / text;
   }
   ${({ href }) => {
-    if (href.length === 0) {
+    if (href == null) {
+      return `
+        background-color: red;
+      `
+    }
+    if (href.length < 1) {
       return `
         background-color: red;
       `

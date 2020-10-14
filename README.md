@@ -1,14 +1,14 @@
 # TODOs 📎
 
-1. Refactor new style system for PAGES
-2. Back Button
-3. Export data as .csv file
-4. Sanitize data so that strings don't begin or end with ' '
-5. Implement 'public vs private' option in database
-6. Implement login on server and app
-7. Refactor React app state to only use the native react Context and State
-8. Randomize tags
-9. Consolidate similar tags (e.g. animal vs animals)
+1. Sanitize data so that strings don't begin or end with ' '
+2. Refactor React app state to only use the native react Context and State
+   1. Only remaining componenet sing ATOMS is KeyboardComponent
+   2. Refactor keyboard componenet anyways to be responsive
+3. Implement request page
+4. Search should use query string to make shareable and navigable
+5. Export data as .csv file
+6. Add custom image url to edit/new word
+7. Remove console.logs
 
 # Minimum Viable Product
 

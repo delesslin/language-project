@@ -2,13 +2,12 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import EditWord from '../../../Components/EditWord'
 import Loading from '../../../Components/Loading'
-import { Words } from '../../../context'
+import { Auth, Words } from '../../../context'
 import axios from 'axios'
 import { Button, Grid, Paper, Typography } from '@material-ui/core'
 import StyledLink from '../../../styled/StyledLink'
 import DeleteModal from './DeleteModal'
 import Page from '../../../Components/Page'
-import { AuthContext } from '..'
 
 const Edit = () => {
   const { words } = useContext(Words.Context)
@@ -18,7 +17,7 @@ const Edit = () => {
   } = useRouteMatch()
   const [initialState, setInitialState] = React.useState(null)
   const history = useHistory()
-  const { token } = useContext(AuthContext)
+  const { headers } = useContext(Auth.Context)
   useEffect(() => {
     setInitialState(words.find((entry) => entry._id === _id))
   }, [words])
@@ -26,9 +25,7 @@ const Edit = () => {
   const handleUpdate = (obj) => {
     // send to update api
     axios
-      .patch(`/api/words/${_id}`, obj, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      .patch(`/api/words/${_id}`, obj, headers)
       .then((res) => {
         console.log(res)
         history.push('/admin')

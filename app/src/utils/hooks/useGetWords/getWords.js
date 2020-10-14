@@ -1,5 +1,5 @@
-const getWords = async () => {
-  const res = await fetch('/api/words')
+const getWords = async (headers = {}) => {
+  const res = await fetch('/api/words', headers)
   return res.json()
 }
 

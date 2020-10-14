@@ -1,12 +1,12 @@
 import React from 'react'
+import useAuth from '../utils/hooks/useAuth'
 import useGetWords from '../utils/hooks/useGetWords'
 
 const WordsContext = React.createContext()
 
 const WordsProvider = ({ children }) => {
   // bring in useGetWords
-  const [words, tags, refetchWords] = useGetWords()
-  const store = { words, tags, refetchWords }
+  const store = useGetWords()
 
   return <WordsContext.Provider value={store}>{children}</WordsContext.Provider>
 }
@@ -14,4 +14,17 @@ const WordsProvider = ({ children }) => {
 export const Words = {
   Provider: WordsProvider,
   Context: WordsContext,
+}
+// ==========
+// AUTH CONTEXT
+// =============
+const AuthContext = React.createContext()
+
+const AuthProvider = ({ children }) => {
+  const store = useAuth()
+  return <AuthContext.Provider value={store}>{children}</AuthContext.Provider>
+}
+export const Auth = {
+  Provider: AuthProvider,
+  Context: AuthContext,
 }

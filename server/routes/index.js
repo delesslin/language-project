@@ -19,20 +19,27 @@ apiRouter.use('/', (req, res, next) => {
   } else {
     const token = authHeader && authHeader.split(' ')[1]
     console.log('token', token)
-    jwt.verify(token, process.env.SECRET, async (err, user) => {
-      console.log(err)
-      if (err) {
-        return res.sendStatus(403)
-      } else {
-        const data = await UserModel.find({ id: user.id })
-        console.log('roles', data[0].roles)
-
-        req.user = {
-          roles: data[0].roles,
-        }
-        next()
+    if (token == null) {
+      req.user = {
+        roles: ['guest'],
       }
-    })
+      next()
+    } else {
+      jwt.verify(token, process.env.SECRET, async (err, user) => {
+        console.log(err)
+        if (err) {
+          return res.sendStatus(403)
+        } else {
+          const data = await UserModel.find({ id: user.id })
+          console.log('roles', data[0].roles)
+
+          req.user = {
+            roles: data[0].roles,
+          }
+          next()
+        }
+      })
+    }
   }
 })
 apiRouter.use('/words', wordsRouter)

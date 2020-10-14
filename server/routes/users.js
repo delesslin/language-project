@@ -13,7 +13,6 @@ const userModel = require('../models/users.js')
 // READ
 // only available to admin
 // ==================================
-
 userRouter.get('/', async (req, res) => {
   if (req.user.roles.includes('admin')) {
     const users = await userModel.find({})
@@ -193,6 +192,12 @@ userRouter.delete('/users/:id', async (req, res) => {
     console.error(err)
     res.status(500).send(err)
   }
+})
+// ======================================
+// DELETE
+// =========================================
+userRouter.use('/delete', (req, res) => {
+  console.log('delete request made!')
 })
 // TODO: implement auth
 // https://dev.to/dipakkr/implementing-authentication-in-nodejs-with-express-and-jwt-codelab-1-j5i

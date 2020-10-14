@@ -30,14 +30,7 @@ export const KeyboardComponent = React.memo(({ text, setText }) => {
       setText(newText)
     }
   }
-  // const handleClose = () => {
-  //   // closeKeyboard()
-  //   console.log('CLOSE KEYBOARD!')
-  //   setKeyboardState({
-  //     display: false,
-  //     value: '',
-  //   })
-  // }
+
   // REFACTOR TO NOT USE MATERIAL-UI? Purpose is to stop findDOMnode error
   return (
     <KeyboardGrid container direction='column'>

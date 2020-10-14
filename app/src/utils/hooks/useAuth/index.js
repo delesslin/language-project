@@ -18,7 +18,10 @@ const useAuth = () => {
       })
       .catch((e) => setError(true))
   }
-  return { loggedIn, token, login, error }
+  const headers = {
+    headers: { Authorization: `Bearer ${token}` },
+  }
+  return { loggedIn, token, login, error, headers }
 }
 
 export default useAuth

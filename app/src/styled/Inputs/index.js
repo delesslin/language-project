@@ -7,15 +7,22 @@ export const InputGrid = styled.div`
   background-color: #555;
   grid-gap: 3px;
   grid-template-areas:
-    'word word word a a a' 'p p p i i i' 'tr tr tr i i i'
-    't t t i i i' 'r r r n n n' 'b b b b b b';
+    'v word word a a a'
+    'b tr tr tr r r'
+    'b p p t t t'
+    'n n n i i i';
   > div {
     padding: 10px;
 
     background-color: #fff;
   }
 `
-
+export const VisibleInput = styled.div`
+  grid-area: v;
+  display: grid;
+  place-items: center;
+  background-color: #fff;
+`
 export const WordInput = styled.div`
   grid-area: word;
   display: grid;

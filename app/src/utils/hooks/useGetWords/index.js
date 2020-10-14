@@ -1,23 +1,31 @@
 import { Paper } from '@material-ui/core'
 
-import React from 'react'
+import React, { useContext } from 'react'
 import getWords from './getWords'
 import pluralize from 'pluralize'
 import { arrayShuffle } from '@adriantombu/array-shuffle'
+import { Auth } from '../../../context'
 const useGetWords = () => {
   const [words, setWords] = React.useState([])
   const [tags, setTags] = React.useState([])
+  const [isLoading, setIsLoading] = React.useState(false)
 
+  const { headers } = useContext(Auth.Context)
   const refetchWords = () => {
     console.log('fetching words again')
-    getWords().then((data) => {
+
+    setIsLoading(true)
+    getWords(headers).then((data) => {
       setWords(data)
+      setIsLoading(false)
     })
   }
   // useEffect get data and set state
   React.useEffect(() => {
     console.log('fetching...')
-    getWords().then((data) => {
+    setIsLoading(true)
+    getWords(headers).then((data) => {
+      // console.log(data)
       setWords(() => {
         let sanitized = data.map((entry) => {
           return {
@@ -27,6 +35,7 @@ const useGetWords = () => {
         })
         return arrayShuffle(sanitized)
       })
+      setIsLoading(false)
     })
   }, [])
 
@@ -104,10 +113,10 @@ const useGetWords = () => {
   }, [words])
 
   React.useEffect(() => {
-    // console.log('tags', tags)
+    console.log('tags', tags)
   }, [tags])
 
-  return [words, tags, refetchWords]
+  return { words, tags, refetchWords, isLoading }
 }
 
 export default useGetWords

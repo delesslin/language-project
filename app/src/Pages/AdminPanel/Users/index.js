@@ -5,6 +5,7 @@ import { useHistory, useParams } from 'react-router'
 import styled from 'styled-components'
 import { AuthContext } from '..'
 import Page from '../../../Components/Page'
+import { Auth } from '../../../context'
 import Detail from './Detail'
 const UsersGrid = styled.div`
 transition: all 0.2s;
@@ -50,15 +51,13 @@ const HoverGrid = styled(Grid)`
 // TODO: handle nvm
 const Users = () => {
   const [users, setUsers] = useState([])
-  const { token } = useContext(AuthContext)
+  const { headers } = useContext(Auth.Context)
   const [unauthorized, setUnauthorized] = useState(false)
   const history = useHistory()
   const [selected, setSelected] = useState(null)
 
   useEffect(() => {
-    Axios.get('/api/users', {
-      headers: { Authorization: `Bearer ${token}` },
-    })
+    Axios.get('/api/users', headers)
       .then((res) => {
         setUsers(res.data)
       })

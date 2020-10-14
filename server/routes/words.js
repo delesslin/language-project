@@ -36,10 +36,18 @@ wordsRouter.post('/', async (req, res) => {
 // READ
 // ==================
 wordsRouter.get('/', async (req, res) => {
-  console.log('getting words!')
-  const Words = await wordModel.find({})
   try {
-    res.status(200).send(Words)
+    if (req.user.roles.includes('admin') || req.user.roles.includes('editor')) {
+      console.log('all words!')
+      const Words = await wordModel.find({})
+      console.log(Words)
+      res.status(200).send(Words)
+    } else {
+      console.log('public words')
+      const Words = await wordModel.find({ public: true })
+      console.log(Words)
+      res.status(200).send(Words)
+    }
   } catch (err) {
     res.status(500).send(err)
   }
