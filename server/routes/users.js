@@ -9,12 +9,22 @@ const jwt = require('jsonwebtoken')
 const userRouter = express()
 
 const userModel = require('../models/users.js')
+// ==================================
+// READ
 // only available to admin
-userRouter.get('/', async (req, res) => {
-  const users = await userModel.find({})
-  res.send(users)
-})
+// ==================================
 
+userRouter.get('/', async (req, res) => {
+  if (req.user.roles.includes('admin')) {
+    const users = await userModel.find({})
+    res.send(users)
+  } else {
+    res.sendStatus(403)
+  }
+})
+// ====================
+// CREATE
+// ====================
 userRouter.post(
   '/sign-up',
   [
@@ -29,6 +39,9 @@ userRouter.post(
   ],
   async (req, res) => {
     console.log('request to sign up!')
+    if (!req.user.roles.includes('admin')) {
+      res.sendStatus(403)
+    }
     // see if there are any errors
     const errors = validationResult(req)
     // if there are errors, send the errors back to client
@@ -91,7 +104,9 @@ userRouter.post(
     }
   }
 )
-
+// ======================
+// LOGIN
+// ======================
 userRouter.post(
   '/login',
   [
@@ -161,6 +176,24 @@ userRouter.post(
     }
   }
 )
+
+// =================================
+// DELETE
+// ====================================
+userRouter.delete('/users/:id', async (req, res) => {
+  if (!req.user.roles.includes('admin')) {
+    res.sendStatus(403)
+  }
+  try {
+    await userModel.findOneAndDelete({ id: req.params.id })
+
+    // if (!Words) res.status(404).send('No item found')
+    res.status(200).send()
+  } catch (err) {
+    console.error(err)
+    res.status(500).send(err)
+  }
+})
 // TODO: implement auth
 // https://dev.to/dipakkr/implementing-authentication-in-nodejs-with-express-and-jwt-codelab-1-j5i
 
