@@ -110,7 +110,12 @@ const Users = () => {
           </MenuGrid>
           <Detail user={selected} />
           <NewGrid>
-            <Button variant='contained' color='primary' onClick={handleNew}>
+            <Button
+              variant='contained'
+              color='primary'
+              onClick={handleNew}
+              fullWidth
+            >
               add new user
             </Button>
           </NewGrid>

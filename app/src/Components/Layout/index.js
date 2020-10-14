@@ -2,8 +2,9 @@ import { IconButton } from '@material-ui/core'
 import HomeIcon from '@material-ui/icons/Home'
 import SearchIcon from '@material-ui/icons/Search'
 import FacebookIcon from '@material-ui/icons/Facebook'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import React from 'react'
-import { useHistory } from 'react-router'
+import { useHistory, useLocation } from 'react-router'
 import {
   Header,
   Layout as StyledLayout,
@@ -16,6 +17,7 @@ import {
   Page,
   PageContent,
   PageTitle,
+  Back,
 } from '../../styled/Layout'
 
 const NavButton = ({ to, children }) => {
@@ -25,9 +27,16 @@ const NavButton = ({ to, children }) => {
 }
 
 const Layout = ({ children }) => {
+  const location = useLocation()
+  const history = useHistory()
   return (
     <StyledLayout>
       <Header>
+        <Back disabled={location.pathname == '/'}>
+          <IconButton onClick={() => history.goBack()}>
+            <ArrowBackIcon />
+          </IconButton>
+        </Back>
         <Title>Catawba Language Project</Title>
         <Nav>
           <NavButton to='/'>

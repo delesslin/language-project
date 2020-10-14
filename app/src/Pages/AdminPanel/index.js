@@ -24,6 +24,9 @@ export const AdminPanel = () => {
     <AuthContext.Provider value={{ loggedIn, token, error, login }}>
       {loggedIn ? (
         <Router>
+          <Route exact path={path}>
+            <Landing />
+          </Route>
           <Route path={path + '/new'}>
             <NewWord />
           </Route>
@@ -41,9 +44,6 @@ export const AdminPanel = () => {
           </Route>
           <Route path={path + '/edit/:_id'}>
             <Edit />
-          </Route>
-          <Route exact path='/'>
-            <Landing />
           </Route>
         </Router>
       ) : (

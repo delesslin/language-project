@@ -88,7 +88,6 @@ const Detail = ({ user }) => {
                     <Checkbox
                       checked={roles[role]}
                       label={role}
-                      labelPlacement='top'
                       disabled={locked}
                       onChange={(e) => handleRoleChange(e, role)}
                     />

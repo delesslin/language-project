@@ -31,11 +31,12 @@ background: linear-gradient(292deg, rgba(233,112,85,${opacity}) 18%, rgba(233,14
 export const Header = styled.header`
   padding: 10px;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: auto repeat(6, 1fr);
+  grid-column-gap: 15px;
   grid-template-rows: auto;
   grid-template-areas:
-    'title title title title title title'
-    'nav nav nav nav nav nav';
+    'b title title title title title title'
+    'b nav nav nav nav nav nav';
   box-shadow: 0px 2px 5px #555;
   border-radius: 0px 0px 5px 5px;
 
@@ -43,14 +44,26 @@ export const Header = styled.header`
   ${media('>phone')} {
     // background-color: #00ffff;
     ${media('>tablet')} {
-      grid-template-areas: 'title title title title nav nav';
+      grid-template-areas: 'b title title title title nav nav';
       // background-color: #ffff00;
       ${media('>desktop')} {
-        grid-template-areas: 'title title title title nav nav';
+        grid-template-areas: 'b title title title title nav nav';
         // background-color: #ff00ff;
       }
     }
   }
+`
+export const Back = styled.div`
+  display: grid;
+  place-items: center;
+  ${(props) => {
+    console.log(props.disabled)
+    if (props.disabled) {
+      return `width: 0%;
+        overflow: hidden;
+      `
+    }
+  }}
 `
 export const Title = styled.h1`
   grid-area: title;

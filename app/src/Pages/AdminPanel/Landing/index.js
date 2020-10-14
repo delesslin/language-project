@@ -4,9 +4,11 @@ import { Words } from '../../../context'
 import StyledLink from '../../../styled/StyledLink'
 import { EditTable } from '../../../Components/WordTable'
 import Page from '../../../Components/Page'
+import { useHistory } from 'react-router'
 
 const Landing = () => {
   const { words } = React.useContext(Words.Context)
+  const history = useHistory()
   return (
     <Page title='admin panel'>
       <Grid item container spacing={2} justify='center'>
@@ -24,6 +26,14 @@ const Landing = () => {
           <StyledLink to='/admin/export'>
             <Button variant='outlined'>export</Button>
           </StyledLink>
+        </Grid>
+        <Grid item>
+          <Button
+            variant='outlined'
+            onClick={() => history.push('/admin/users')}
+          >
+            users
+          </Button>
         </Grid>
       </Grid>
 
