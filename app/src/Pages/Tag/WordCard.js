@@ -1,19 +1,12 @@
-import { Paper } from '@material-ui/core'
+import { Fab, IconButton, Paper } from '@material-ui/core'
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import Player from '../../Components/Player'
+import { RotatedText } from '../../Components/Text'
 import { Card } from '../../styled/Card'
-// const WordPaper = styled(Paper)({
-//   padding: '25px 40px',
-// })
-const WordPaper = styled(Paper)`
-  padding: 15px 20px;
-  min-width: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
+
 const WordCard = ({ data, href, link, children }) => {
   console.log(data)
   const history = useHistory()
@@ -21,8 +14,23 @@ const WordCard = ({ data, href, link, children }) => {
     history.push(link)
   }
   return (
-    <Card href={href} onClick={handleClick}>
-      <WordPaper>{children}</WordPaper>
+    <Card href={href}>
+      <div>
+        {data.recordings.length < 1 ? null : (
+          <Player base64={data.recordings[0]} />
+        )}
+      </div>
+      <div>
+        <RotatedText>
+          <b>{data.language_entry}</b>
+        </RotatedText>
+        <RotatedText>{data.translations[0]}</RotatedText>
+      </div>
+      <div>
+        <Fab onClick={handleClick}>
+          <MoreHorizIcon />
+        </Fab>
+      </div>
     </Card>
   )
   // return (

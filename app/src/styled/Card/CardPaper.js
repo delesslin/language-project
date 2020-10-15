@@ -4,6 +4,7 @@ import hexRGB from 'hex-rgb'
 import React from 'react'
 import { parse } from 'coolors-io'
 import styled from 'styled-components'
+import media from 'css-in-js-media'
 const colors = parse('https://coolors.co/ffe74c-ff5964-ffffff-38618c-35a7ff')
 const rgb = colors.map((hex) => hexRGB(hex))
 const genGradient = () => {
@@ -25,19 +26,37 @@ const CardPaper = styled.div`
     }
   }}
   display: grid;
+  grid-template-columns: 2fr 3fr 2fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 'p w d' 'p w d';
   place-items: center;
   border-radius: 10px;
-  border: 1px solid #555;
-  transition: box-shadow 0.1s;
-  transition: border 0.1s;
-
+  grid-gap: 5px;
+  transition: all 0.2s;
+  padding: 10px;
   &:hover {
     box-shadow: 2px 2px 2px #555;
-    border: 3px solid #555;
-    cursor: pointer;
-    > * {
-      box-shadow: 2px 2px 2px #555;
+  }
+  ${({ clickable = false }) => {
+    if (clickable) {
+      return `
+       &:hover {
+         cursor: pointer;
+       }
+      `
     }
+  }}
+  ${media('<tablet')} {
+    grid-template-areas: 'p w w' 'd w w';
+  }
+  > :nth-child(1) {
+    grid-area: p;
+  }
+  > :nth-child(2) {
+    grid-area: w;
+  }
+  > :nth-child(3) {
+    grid-area: d;
   }
 `
 export default CardPaper

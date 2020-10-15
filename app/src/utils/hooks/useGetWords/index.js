@@ -20,6 +20,11 @@ const useGetWords = () => {
       setIsLoading(false)
     })
   }
+  const replaceItem = (i, obj) => {
+    const arr = words
+    arr[i] = obj
+    setWords([...arr])
+  }
   // useEffect get data and set state
   React.useEffect(() => {
     console.log('fetching...')
@@ -116,7 +121,7 @@ const useGetWords = () => {
     console.log('tags', tags)
   }, [tags])
 
-  return { words, tags, refetchWords, isLoading }
+  return { words, tags, refetchWords, isLoading, replaceItem }
 }
 
 export default useGetWords

@@ -1,5 +1,10 @@
 import React, { createContext, useContext } from 'react'
-import { BrowserRouter as Router, Route, useRouteMatch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  useRouteMatch,
+  Switch,
+} from 'react-router-dom'
 import { Auth, Words } from '../../context'
 import useAuth from '../../utils/hooks/useAuth'
 import BatchUpload from './BatchUpload'
@@ -19,7 +24,7 @@ export const AdminPanel = () => {
     <>
       {loggedIn ? (
         <Words.Provider>
-          <Router>
+          <Switch>
             <Route path={path + '/new'}>
               <NewWord />
             </Route>
@@ -41,7 +46,7 @@ export const AdminPanel = () => {
             <Route path={path + '/:_id?'}>
               <Landing />
             </Route>
-          </Router>
+          </Switch>
         </Words.Provider>
       ) : (
         <Login />

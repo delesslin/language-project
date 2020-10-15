@@ -46,42 +46,42 @@ const EditWord = ({
   }
   // add _id
   // Shouldn't _id be handled by parent element???
+  return (
+    <Context.Provider value={[state, dispatch]}>
+      <InputGrid>
+        <LanguageEntry />
+        <AltSpellings />
+        <Pronunciation />
+        <Images />
+        <TransInput>
+          <MultiText property='translations' label='Translations' />
+        </TransInput>
+        <TagInput>
+          <MultiText property='tags' label='Tags' />
+        </TagInput>
+        <RecInput>
+          <RecordingsInput />
+        </RecInput>
+        <NoteInput>
+          <Notes />
+        </NoteInput>
+        <VisibleInput></VisibleInput>
+        <ButtonInput>
+          <Grid item container spacing={3}>
+            <Grid item>
+              <Button variant='contained' color='primary' onClick={onSubmit}>
+                SUBMIT
+              </Button>
+            </Grid>
+            {children}
+          </Grid>
+        </ButtonInput>
+      </InputGrid>
+    </Context.Provider>
+  )
   if (data == null) {
     return null
   } else {
-    return (
-      <Context.Provider value={[state, dispatch]}>
-        <InputGrid>
-          <LanguageEntry />
-          <AltSpellings />
-          <Pronunciation />
-          <Images />
-          <TransInput>
-            <MultiText property='translations' label='Translations' />
-          </TransInput>
-          <TagInput>
-            <MultiText property='tags' label='Tags' />
-          </TagInput>
-          <RecInput>
-            <RecordingsInput />
-          </RecInput>
-          <NoteInput>
-            <Notes />
-          </NoteInput>
-          <VisibleInput></VisibleInput>
-          <ButtonInput>
-            <Grid item container spacing={3}>
-              <Grid item>
-                <Button variant='contained' color='primary' onClick={onSubmit}>
-                  SUBMIT
-                </Button>
-              </Grid>
-              {children}
-            </Grid>
-          </ButtonInput>
-        </InputGrid>
-      </Context.Provider>
-    )
   }
 }
 

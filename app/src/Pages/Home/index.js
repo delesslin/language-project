@@ -25,11 +25,9 @@ const Home = () => {
     return (
       <Page title='Browse'>
         <CardGrid columns='5'>
-          {tags.map(({ tag, image }) => {
+          {tags.map(({ tag, image }, index) => {
             return (
-              <TagCard key={tag} tag={tag} image={image}>
-                <Button variant='contained'>{tag}</Button>
-              </TagCard>
+              <TagCard key={tag} tag={tag} image={image} i={index}></TagCard>
             )
           })}
         </CardGrid>

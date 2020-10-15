@@ -32,11 +32,13 @@ const Layout = ({ children }) => {
   return (
     <StyledLayout>
       <Header>
-        <Back disabled={location.pathname == '/'}>
-          <IconButton onClick={() => history.goBack()}>
-            <ArrowBackIcon />
-          </IconButton>
-        </Back>
+        {location.pathname == '/' ? null : (
+          <Back>
+            <IconButton onClick={() => history.goBack()}>
+              <ArrowBackIcon />
+            </IconButton>
+          </Back>
+        )}
         <Title>Catawba Language Project</Title>
         <Nav>
           <NavButton to='/'>

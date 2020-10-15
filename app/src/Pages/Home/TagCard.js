@@ -1,36 +1,21 @@
 import React from 'react'
 
 import { Link, useHistory } from 'react-router-dom'
+import { RotatedText } from '../../Components/Text'
 import { Card } from '../../styled/Card'
 
-const TagCard = ({ tag, image, children }) => {
+const TagCard = ({ tag, image, i = 0 }) => {
   const history = useHistory()
   const handleClick = () => {
     history.push(`/tags/${tag}`)
   }
   return (
-    <Card href={image} onClick={handleClick}>
-      {children}
+    <Card href={image} onClick={handleClick} clickable>
+      <div></div>
+      <RotatedText angle={i % 2 ? -3 : 3}>{tag}</RotatedText>
+      <div></div>
     </Card>
   )
-  // return (
-  //   <Grid item key={tag}>
-  //     <Link to={`/tags/${tag}`} style={{ textDecoration: 'none' }}>
-  //       <Card>
-  //         <CardMedia
-  //           component='img'
-  //           alt='example tag img'
-  //           height='140'
-  //           image='https://loremflickr.com/640/360'
-  //           title={tag}
-  //         />
-  //         <CardContent>
-  //           <Typography variant='h3'>{tag}</Typography>
-  //         </CardContent>
-  //       </Card>
-  //     </Link>
-  //   </Grid>
-  // )
 }
 
 export default TagCard
