@@ -1,5 +1,5 @@
 console.log('Starting server')
-
+require('dotenv').config()
 const PORT = process.env.PORT || 3333
 const express = require('express')
 const { serveBuildFolder } = require('./serveBuildFolder')

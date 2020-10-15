@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-require('dotenv').config()
+
 const CONNECTION_URL = process.env.CONNECTION_URL
 // getting this error: DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead
 const InitiateMongoServer = async () => {
