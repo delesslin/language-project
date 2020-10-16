@@ -15,11 +15,19 @@ import Login from './Login'
 import { NewWord } from './NewWord'
 import Signup from './Signup'
 import Users from './Users'
+import { isMobile } from 'react-device-detect'
+import { Page } from '../../styled/Layout'
 
 export const AdminPanel = () => {
   const { loggedIn } = useContext(Auth.Context)
   const { path } = useRouteMatch()
-
+  if (isMobile) {
+    return (
+      <Page title='admin panel only available on Desktop Browsers'>
+        <h3>⚠ ⚠ ⚠</h3>
+      </Page>
+    )
+  }
   return (
     <>
       {loggedIn ? (
