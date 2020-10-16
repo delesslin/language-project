@@ -26,7 +26,7 @@ const CardPaper = styled.div`
     }
   }}
   display: grid;
-  grid-template-columns: 2fr 3fr 2fr;
+  grid-template-columns: auto 3fr auto;
   grid-template-rows: 1fr 1fr;
   grid-template-areas: 'p w d' 'p w d';
   place-items: center;
@@ -48,7 +48,6 @@ const CardPaper = styled.div`
   }}
   ${media('<tablet')} {
     grid-template-areas: 'p w w' 'd w w';
-    ${({ tag }) => (tag ? `grid-template-areas: 'w w w' 'w w w';` : ``)}
   }
   > :nth-child(1) {
     grid-area: p;
