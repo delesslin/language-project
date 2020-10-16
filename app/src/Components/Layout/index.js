@@ -3,6 +3,7 @@ import HomeIcon from '@material-ui/icons/Home'
 import SearchIcon from '@material-ui/icons/Search'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import ArrowBackIcon from '@material-ui/icons/ArrowBack'
+import VideogameAssetIcon from '@material-ui/icons/VideogameAsset'
 import React from 'react'
 import { useHistory, useLocation } from 'react-router'
 import {
@@ -46,6 +47,9 @@ const Layout = ({ children }) => {
           </NavButton>
           <NavButton to='/search'>
             <SearchIcon />
+          </NavButton>
+          <NavButton to='/game'>
+            <VideogameAssetIcon />
           </NavButton>
         </Nav>
       </Header>

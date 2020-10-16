@@ -10,6 +10,7 @@ import Request from './Request'
 import GlobalTheme from '../Components/GlobalTheme'
 import { Auth, Words } from '../context'
 import NotFound from './NotFound'
+import Game from './Games'
 const Public = () => (
   <Words.Provider>
     <Switch>
@@ -27,6 +28,9 @@ const Public = () => (
       </Route>
       <Route path='/request'>
         <Request />
+      </Route>
+      <Route path='/game'>
+        <Game />
       </Route>
       <Route exact path='/'>
         <Home />
