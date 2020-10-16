@@ -18,7 +18,7 @@ app.use(express.json())
 app.use('/api', apiRouter)
 
 // Serve Build
-serveBuildFolder(app, '../app/build')
+serveBuildFolder(app, '/../app/build')
 
 // const client = new MongoClient(CONNECTION_URL)
 
