@@ -10,7 +10,7 @@ const TagCard = ({ tag, image, i = 0 }) => {
     history.push(`/tags/${tag}`)
   }
   return (
-    <Card href={image} onClick={handleClick} clickable>
+    <Card href={image} onClick={handleClick} clickable tag>
       <div></div>
       <RotatedText angle={i % 2 ? -3 : 3}>{tag}</RotatedText>
       <div></div>

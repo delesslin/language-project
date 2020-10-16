@@ -13,10 +13,14 @@ export const CardGrid = styled.div`
   place-items: stretch;
 
   ${columns(1)}
-  ${media('>desktop')} {
-    ${(props) => columns(props.columns, 5)}
-    ${media('>largeDesktop')} {
-      ${(props) => columns(props.columns)}
+  ${media('>tablet')} {
+    ${(props) => columns(props.columns, 4)}
+
+    ${media('>desktop')} {
+      ${(props) => columns(props.columns, 5)}
+      ${media('>largeDesktop')} {
+        ${(props) => columns(props.columns)}
+      }
     }
   }
 `

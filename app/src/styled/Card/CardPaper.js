@@ -48,6 +48,7 @@ const CardPaper = styled.div`
   }}
   ${media('<tablet')} {
     grid-template-areas: 'p w w' 'd w w';
+    ${({ tags }) => (tags ? `grid-template-areas: 'w w w' 'w w w'` : ``)}
   }
   > :nth-child(1) {
     grid-area: p;
