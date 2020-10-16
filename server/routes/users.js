@@ -9,6 +9,28 @@ const jwt = require('jsonwebtoken')
 const userRouter = express()
 
 const userModel = require('../models/users.js')
+const { create } = require('../models/users.js')
+// ===============================
+// SETUP OWNER
+// ===============================
+const createAdmin = async () => {
+  const owner = await userModel({ email: process.env.ADMIN_EMAIL })
+  if (owner.length < 1) {
+    console.log('creating owner')
+    user = new userModel({
+      username: process.env.ADMIN_USER,
+      email: process.env.ADMIN_EMAIL,
+      password: process.env.ADMIN_PWORD,
+      roles: ['admin', 'editor'],
+    })
+    // encrypt password
+    const salt = await bcrypt.genSalt(10)
+    user.password = await bcrypt.hash(password, salt)
+    // save user with encrypted pword
+    await user.save()
+  }
+}
+createAdmin()
 // ==================================
 // READ
 // only available to admin

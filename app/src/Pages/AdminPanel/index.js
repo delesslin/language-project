@@ -16,7 +16,7 @@ import { NewWord } from './NewWord'
 import Signup from './Signup'
 import Users from './Users'
 import { isMobile } from 'react-device-detect'
-import { Page } from '../../styled/Layout'
+import Page from '../../Components/Page'
 
 export const AdminPanel = () => {
   const { loggedIn } = useContext(Auth.Context)

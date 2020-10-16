@@ -12,7 +12,6 @@
 8. Delete users from admin panel
 9. Implement 'owner' role from environmental variables
 10. Implement theme
-11. Block admin view from mobile
 
 # Minimum Viable Product
 

@@ -40,6 +40,7 @@ const SelectEnglish = ({ options, onAnswer, status, next }) => {
     const randomArr = options.sort(() => Math.random() >= 0.5)
     setAnswer(randomArr[0])
   }, [options])
+
   const handleAnswer = (id) => {
     if (id === answer._id) {
       onAnswer(20)

@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Page from '../../Components/Page'
 import { Words } from '../../context'
 import SelectEnglish from './SelectEnglish'
+import uniqueRandomArray from 'unique-random-array'
 
 // TODO: create GameContext
 // TODO: progress bar
@@ -14,6 +15,10 @@ const Game = () => {
   const [options, setOptions] = useState([])
   const [progress, setProgress] = React.useState(0)
   const [answered, setAnswered] = React.useState(-1)
+  const next = () => {
+    resetOptions()
+    setAnswered(-1)
+  }
   const incrementProgress = (x) => {
     if (x < 0) {
       setAnswered(0)
@@ -23,12 +28,14 @@ const Game = () => {
     }
     setProgress((prog) => prog + x)
   }
-  useEffect(() => {
-    if (answered === -1 && lesson.length > 0) {
-      const randomArr = lesson.sort(() => Math.random() >= 0.5)
-      setOptions(() => randomArr.slice(0, 4))
-    }
-  }, [answered, lesson])
+  const resetOptions = () => {
+    const random = uniqueRandomArray(lesson)
+    console.log('resetting options')
+    const arr = [random(), random(), random(), random()]
+    console.log(arr[0])
+    setOptions(arr)
+  }
+
   const setupLesson = () => {
     const randomArr = words.sort((word) => Math.random() >= 0.5)
     // setLesson to first 10 words
@@ -36,16 +43,19 @@ const Game = () => {
     setProgress(0)
     setAnswered(-1)
   }
-  useEffect(() => {
-    setupLesson()
-  }, [words])
   const handleReset = () => {
     console.log("let's reset")
     setupLesson()
   }
-  const next = () => {
-    setAnswered(-1)
-  }
+  useEffect(() => {
+    if (answered === -1 && lesson.length > 0) {
+      resetOptions()
+    }
+  }, [answered, lesson])
+  useEffect(() => {
+    setupLesson()
+  }, [words])
+
   if (lesson.length < 1) {
     return (
       <Page title='practice'>
