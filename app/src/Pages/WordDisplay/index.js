@@ -4,11 +4,12 @@ import Loading from '../../Components/Loading'
 import Page from '../../Components/Page'
 import WordCard from '../../Components/WordCard'
 import { Words } from '../../context'
+import useAPI from '../../utils/hooks/useAPI'
 import Request from '../Request'
 
 const WordDisplay = () => {
   const { _id } = useParams()
-  const { words } = useContext(Words.Context)
+  const { words } = useAPI()
   const [thisWord, setThisWord] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 

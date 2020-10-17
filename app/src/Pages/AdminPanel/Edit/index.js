@@ -1,31 +1,29 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { Button, Grid } from '@material-ui/core'
+import React, { useEffect, useState } from 'react'
 import { useHistory, useRouteMatch } from 'react-router-dom'
 import EditWord from '../../../Components/EditWord'
 import Loading from '../../../Components/Loading'
-import { Auth, Words } from '../../../context'
-import axios from 'axios'
-import { Button, Grid, Paper, Typography } from '@material-ui/core'
-import StyledLink from '../../../styled/StyledLink'
-import DeleteModal from './DeleteModal'
 import Page from '../../../Components/Page'
+import StyledLink from '../../../styled/StyledLink'
+import useAPI from '../../../utils/hooks/useAPI'
+import DeleteModal from './DeleteModal'
 
 const Edit = () => {
-  const { words } = useContext(Words.Context)
+  const { words, headers } = useAPI()
   const [openDelete, setOpenDelete] = useState(false)
   const {
     params: { _id },
   } = useRouteMatch()
   const [initialState, setInitialState] = React.useState(null)
   const history = useHistory()
-  const { headers } = useContext(Auth.Context)
+  const { Words: WordsAPI } = useAPI()
   useEffect(() => {
     setInitialState(words.find((entry) => entry._id === _id))
   }, [words])
 
   const handleUpdate = (obj) => {
     // send to update api
-    axios
-      .patch(`/api/words/${_id}`, obj, headers)
+    WordsAPI.update(_id, obj)
       .then((res) => {
         console.log(res)
         history.push('/admin')

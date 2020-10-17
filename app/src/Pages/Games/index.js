@@ -4,13 +4,14 @@ import Page from '../../Components/Page'
 import { Words } from '../../context'
 import SelectEnglish from './SelectEnglish'
 import uniqueRandomArray from 'unique-random-array'
+import useAPI from '../../utils/hooks/useAPI'
 
 // TODO: create GameContext
 // TODO: progress bar
 // TODO: mobile first
 
 const Game = () => {
-  const { words } = useContext(Words.Context)
+  const { words } = useAPI()
   const [lesson, setLesson] = useState([])
   const [options, setOptions] = useState([])
   const [progress, setProgress] = React.useState(0)

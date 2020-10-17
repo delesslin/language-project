@@ -1,21 +1,14 @@
-import React, { useContext, useRef } from 'react'
-import {
-  Container,
-  Paper,
-  Typography,
-  Grid,
-  TextField,
-  Button,
-} from '@material-ui/core'
-import Page from '../../../Components/Page'
-import Axios from 'axios'
-
+import { Button, Grid, TextField, Typography } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
+import React, { useContext, useRef } from 'react'
+import Page from '../../../Components/Page'
 import { Auth } from '../../../context'
+import useAPI from '../../../utils/hooks/useAPI'
+
 const Login = () => {
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
-  const { login, error } = useContext(Auth.Context)
+  const { login, error } = useAPI()
   const handleSubmit = () => {
     console.log(emailRef.current.value)
     const email = emailRef.current.value

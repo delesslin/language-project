@@ -5,17 +5,18 @@ import StyledProvider from './StyledProvider'
 
 const GlobalTheme = ({ children }) => {
   const [state, setState] = useState({
-    palette: {
-      primary: {
-        main: '#00ff00',
-      },
-    },
+    primary: '#fbc10b',
+    secondary: '#0bbcee',
+    green: '#41b2a2',
+    red: '#f25a38',
+    dark: '#051940',
+    light: '#F8F1FF',
+    black: '#111',
+    white: '#eee',
   })
   return (
     <Theme.Provider value={state}>
-      <MuiProvider>
-        <StyledProvider>{children}</StyledProvider>
-      </MuiProvider>
+      <StyledProvider>{children}</StyledProvider>
     </Theme.Provider>
   )
 }

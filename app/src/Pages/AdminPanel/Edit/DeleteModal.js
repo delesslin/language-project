@@ -3,15 +3,14 @@ import {
   Grid,
   Modal,
   Paper,
-  Typography,
   TextField,
+  Typography,
 } from '@material-ui/core'
-import React, { useContext } from 'react'
-import axios from 'axios'
+import React from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { Auth, Words } from '../../../context/'
-import { AuthContext } from '..'
+import useAPI from '../../../utils/hooks/useAPI'
+import { Words as ContextWords } from '../../../context'
 const ModalDiv = styled.div`
   display: grid;
   place-items: center;
@@ -26,14 +25,13 @@ const ModalPaper = styled(Paper)`
   place-items: center;
 `
 const DeleteModal = ({ _id, open, toggleOpen }) => {
-  const { refetchWords } = React.useContext(Words.Context)
+  const { refetchWords } = useAPI()
   const [confirm, setConfirm] = React.useState('')
+  const { Words } = useAPI()
   const history = useHistory()
-  const { headers } = useContext(Auth.Context)
   const lastFour = _id.slice(-4)
   const handleDelete = () => {
-    axios
-      .delete(`/api/words/${_id}`, headers)
+    Words.delete(_id)
       .then((res) => {
         // refetch words
         refetchWords()

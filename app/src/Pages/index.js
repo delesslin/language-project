@@ -45,16 +45,14 @@ const Public = () => (
 const Pages = () => {
   return (
     <Auth.Provider>
-      <GlobalTheme>
-        <Switch>
-          <Route path='/admin'>
-            <AdminPanel />
-          </Route>
-          <Route path='/'>
-            <Public />
-          </Route>
-        </Switch>
-      </GlobalTheme>
+      <Switch>
+        <Route path='/admin'>
+          <AdminPanel />
+        </Route>
+        <Route path='/'>
+          <Public />
+        </Route>
+      </Switch>
     </Auth.Provider>
   )
 }

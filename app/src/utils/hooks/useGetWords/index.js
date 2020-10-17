@@ -1,21 +1,19 @@
-import { Paper } from '@material-ui/core'
-
-import React, { useContext } from 'react'
-import getWords from './getWords'
-import pluralize from 'pluralize'
 import { arrayShuffle } from '@adriantombu/array-shuffle'
-import { Auth } from '../../../context'
+import pluralize from 'pluralize'
+import React from 'react'
+import useAPI from '../useAPI'
+
 const useGetWords = () => {
   const [words, setWords] = React.useState([])
   const [tags, setTags] = React.useState([])
   const [isLoading, setIsLoading] = React.useState(false)
+  const { Words: WordsAPI } = useAPI()
 
-  const { headers } = useContext(Auth.Context)
   const refetchWords = () => {
     console.log('fetching words again')
 
     setIsLoading(true)
-    getWords(headers).then((data) => {
+    WordsAPI.read().then((data) => {
       setWords(data)
       setIsLoading(false)
     })
@@ -29,7 +27,7 @@ const useGetWords = () => {
   React.useEffect(() => {
     console.log('fetching...')
     setIsLoading(true)
-    getWords(headers).then((data) => {
+    WordsAPI.read().then((data) => {
       // console.log(data)
       setWords(() => {
         let sanitized = data.map((entry) => {

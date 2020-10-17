@@ -1,13 +1,12 @@
-import React, { useContext, useEffect } from 'react'
-import styled from 'styled-components'
-import { useHistory, useParams } from 'react-router'
-import { EditTable } from '../../../Components/WordTable'
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
+import React, { useContext, useEffect } from 'react'
+import { useHistory, useParams } from 'react-router'
+import styled from 'styled-components'
 import EditWord from '../../../Components/EditWord'
-import { Auth, Words } from '../../../context'
-import Axios from 'axios'
 import Loading from '../../../Components/Loading'
+import { Auth, Words } from '../../../context'
+import useAPI from '../../../utils/hooks/useAPI'
 const EditGrid = styled.div`
   display: grid;
   grid-template-columns: minmax(10vw, auto) 1fr;
@@ -84,11 +83,12 @@ const ScrollTranslation = styled.div`
   }
 `
 const WordDetail = () => {
-  const { words, refetchWords, isLoading } = React.useContext(Words.Context)
+  const { words, refetchWords, isLoading, headers } = useAPI()
   const params = useParams()
   const [currentWord, setCurrentWord] = React.useState(null)
   const history = useHistory()
-  const { headers } = useContext(Auth.Context)
+
+  const { Words: WordsAPI } = useAPI()
   useEffect(() => {
     if (params._id != null) {
       setCurrentWord(() => {
@@ -101,7 +101,7 @@ const WordDetail = () => {
     history.push(`/admin/${words[i]._id}`)
   }
   const onSave = (obj) => {
-    Axios.patch(`/api/words/${obj._id}`, obj, headers)
+    WordsAPI.update(params._id, obj)
       .then((e) => {
         refetchWords()
         setCurrentWord(null)

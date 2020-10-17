@@ -28,49 +28,7 @@ const GradientBackground = (opacity = 1) => `
 background: rgb(255, 255, 255);
 background: linear-gradient(292deg, rgba(233,112,85,${opacity}) 18%, rgba(233,148,170,${opacity}) 100%);
 `
-export const Header = styled.header`
-  padding: 10px;
-  display: grid;
-  grid-template-columns: auto repeat(6, 1fr);
-  grid-column-gap: 15px;
-  grid-template-rows: auto;
-  grid-template-areas:
-    'b title title title title title title'
-    'b nav nav nav nav nav nav';
-  // box-shadow: 0px 2px 5px #555;
-  border-radius: 0px 0px 5px 5px;
 
-  ${GradientBackground(0.3)}
-  ${media('>phone')} {
-    // background-color: #00ffff;
-    ${media('>tablet')} {
-      grid-template-areas: 'b title title title title nav nav';
-      // background-color: #ffff00;
-      ${media('>desktop')} {
-        grid-template-areas: 'b title title title title nav nav';
-        // background-color: #ff00ff;
-      }
-    }
-  }
-`
-export const Back = styled.div`
-  display: grid;
-  place-items: center;
-  ${(props) => {
-    console.log(props.disabled)
-    if (props.disabled) {
-      return `width: 0%;
-        overflow: hidden;
-      `
-    }
-  }}
-`
-export const Title = styled.h1`
-  grid-area: title;
-  ${media('<phone')} {
-    font-size: 1.2em;
-  }
-`
 export const Nav = styled.div`
   grid-area: nav;
 

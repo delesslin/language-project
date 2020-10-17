@@ -1,34 +1,23 @@
-import { Button, Grid, Paper, Typography } from '@material-ui/core'
+import { Button, Grid, Paper } from '@material-ui/core'
 import React, { useContext } from 'react'
+import { useHistory } from 'react-router'
 import { atom } from 'recoil'
 import styled from 'styled-components'
 import EditWord from '../../../Components/EditWord'
-import axios from 'axios'
-import StyledLink from '../../../styled/StyledLink'
-import { useHistory } from 'react-router'
-import { Auth, Words } from '../../../context'
 import Page from '../../../Components/Page'
-import { AuthContext } from '..'
-const ALERT_ATOM = atom({
-  key: 'ALERT_ATOM',
-  default: {
-    isOpen: false,
-    severity: '',
-    msg: '',
-  },
-})
-const StyledPaper = styled(Paper)`
-  padding: 20px 30px;
-`
+import { Auth, Words } from '../../../context'
+import StyledLink from '../../../styled/StyledLink'
+import useAPI from '../../../utils/hooks/useAPI'
+
 // Handle submit
 export const NewWord = () => {
   const history = useHistory()
-  const { refetchWords } = useContext(Words.Context)
-  const { headers } = useContext(Auth.Context)
+  const { refetchWords } = useAPI()
+
+  const { Words: WordAPI } = useAPI()
   const handleSubmit = (payload) => {
     console.log('Sending new word to server', payload)
-    axios
-      .post('/api/words', payload, headers)
+    WordAPI.create(payload)
       .then((res) => {
         console.log('==============================================')
         console.log('SUCCESS!')

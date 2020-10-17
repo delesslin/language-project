@@ -1,11 +1,10 @@
-import { Button, Fab, Grid, Switch } from '@material-ui/core'
-import Axios from 'axios'
+import { Button, Grid } from '@material-ui/core'
 import React, { useContext, useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router'
+import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { AuthContext } from '..'
 import Page from '../../../Components/Page'
 import { Auth } from '../../../context'
+import useAPI from '../../../utils/hooks/useAPI'
 import Detail from './Detail'
 const UsersGrid = styled.div`
 transition: all 0.2s;
@@ -52,12 +51,13 @@ const HoverGrid = styled(Grid)`
 // TODO: refactor to use url params
 const Users = () => {
   const [users, setUsers] = useState([])
-  const { headers } = useContext(Auth.Context)
+
   const [unauthorized, setUnauthorized] = useState(true)
   const history = useHistory()
-  const [selected, setSelected] = useState(null)
+
+  const { Users } = useAPI()
   const getUsers = () => {
-    Axios.get('/api/users', headers)
+    Users.read()
       .then((res) => {
         setUsers(res.data)
         setUnauthorized(false)

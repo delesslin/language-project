@@ -1,10 +1,10 @@
 import { Checkbox, Grid, TextField, Typography } from '@material-ui/core'
-import Axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router'
 import styled from 'styled-components'
 import Buttons from '../../../../Components/Buttons/AdminEditButtons'
 import { Auth } from '../../../../context'
+import useAPI from '../../../../utils/hooks/useAPI'
 
 const DetailGrid = styled.div`
   grid-area: detail;
@@ -15,19 +15,16 @@ const DetailGrid = styled.div`
 // TODO: implement save and nevermind buttons both should be disabled until a change is made
 const Detail = ({
   users = [],
-  onNVM,
+
   refresh = () => console.log('refresh!'),
 }) => {
   const [locked, setLocked] = useState(true)
-  const { headers } = useContext(Auth.Context)
+
   const { _id } = useParams()
   const history = useHistory()
   const [user, setUser] = useState(null)
-  const [roles, setRoles] = useState({
-    admin: false,
-    editor: false,
-    user: false,
-  })
+  const { Users } = useAPI()
+
   const lock = (bool) => setLocked(bool)
   useEffect(() => {
     if (_id != null && users.length > 0) {
@@ -65,7 +62,7 @@ const Detail = ({
     })
   }
   const onSubmit = () => {
-    Axios.patch('/api/users', user, headers)
+    Users.update(user)
       .then(() => {
         refresh()
         console.log('success!')
@@ -74,7 +71,7 @@ const Detail = ({
       .catch(console.error)
   }
   const onDelete = () => {
-    Axios.delete(`/api/users/${_id}`, headers)
+    Users.delete(_id)
       .then(() => {
         setUser(null)
         history.push('/admin/users')

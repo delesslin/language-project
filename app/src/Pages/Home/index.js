@@ -12,6 +12,8 @@ import styled from 'styled-components'
 import Page from '../../Components/Page'
 import { Card, CardGrid } from '../../styled/Card'
 import Hero from './Hero'
+import useAPI from '../../utils/hooks/useAPI'
+import Spinner from '../../Components/Spinner'
 const HomeGrid = styled.div`
   display: grid;
   grid-rows: 50vh auto;
@@ -19,7 +21,7 @@ const HomeGrid = styled.div`
   grid-gap: 50px;
 `
 const Home = () => {
-  const { tags, words, isLoading } = React.useContext(Words.Context)
+  const { tags, words, isLoading } = useAPI()
   const [currentIndex, setCurrentIndex] = useState(0)
   const incrementIndex = (x) => {
     if (currentIndex + x < 0) {
@@ -81,9 +83,9 @@ const Home = () => {
     // )
   } else {
     return (
-      <Container>
-        <CircularProgress />
-      </Container>
+      <Page title='browse by topic'>
+        <Spinner />
+      </Page>
     )
   }
 }

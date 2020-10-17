@@ -12,6 +12,7 @@ import { Normalize } from 'styled-normalize'
 // TODO: Move app contents into ReactDOM.render
 // TODO: Refactor to remove RecoilRoot
 import { createGlobalStyle } from 'styled-components'
+import GlobalTheme from './Components/GlobalTheme'
 const GlobalStyle = createGlobalStyle`
 html,
 body,
@@ -26,13 +27,15 @@ export const App = () => {
     <React.Fragment>
       <Normalize />
       <GlobalStyle />
-      <RecoilRoot>
-        <Router>
-          <Layout>
-            <Pages />
-          </Layout>
-        </Router>
-      </RecoilRoot>
+      <GlobalTheme>
+        <RecoilRoot>
+          <Router>
+            <Layout>
+              <Pages />
+            </Layout>
+          </Router>
+        </RecoilRoot>
+      </GlobalTheme>
     </React.Fragment>
   )
 }

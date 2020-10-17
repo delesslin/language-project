@@ -1,6 +1,6 @@
-import React from 'react'
-import { Words } from '../../../context'
 import Fuse from 'fuse.js'
+import React from 'react'
+import useAPI from '../useAPI'
 const findMatches = async (term, words) => {
   const fuse = new Fuse(words, {
     // keys: ['language_entry', 'notes', 'tags', 'translations'],
@@ -11,7 +11,7 @@ const findMatches = async (term, words) => {
 }
 const useSearch = () => {
   // refactor using CONTEXT
-  const { words } = React.useContext(Words.Context)
+  const { words } = useAPI()
   const [results, setResults] = React.useState(null)
   const [isSearching, setIsSearching] = React.useState(false)
   const search = (term) => {
@@ -23,11 +23,6 @@ const useSearch = () => {
       setResults(results)
       setIsSearching(false)
     })
-
-    // setTimeout(() => {
-    //   setResults([])
-    //   setIsSearching(false)
-    // }, 3000)
   }
   const reset = () => {
     setResults(null)

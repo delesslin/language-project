@@ -1,10 +1,11 @@
 import { Button, Grid, Typography } from '@material-ui/core'
 import React, { useContext } from 'react'
 import { Words } from '../../../context'
+import useAPI from '../../../utils/hooks/useAPI'
 
 // Makes all words available as a .csv file
 const Export = () => {
-  const { words } = useContext(Words.Context)
+  const { words } = useAPI()
   const handleClick = () => {
     console.log(words)
   }

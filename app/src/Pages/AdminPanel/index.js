@@ -1,12 +1,9 @@
-import React, { createContext, useContext } from 'react'
-import {
-  BrowserRouter as Router,
-  Route,
-  useRouteMatch,
-  Switch,
-} from 'react-router-dom'
-import { Auth, Words } from '../../context'
-import useAuth from '../../utils/hooks/useAuth'
+import React from 'react'
+import { isMobile } from 'react-device-detect'
+import { Route, Switch, useRouteMatch } from 'react-router-dom'
+import Page from '../../Components/Page'
+import { Words } from '../../context'
+import useAPI from '../../utils/hooks/useAPI'
 import BatchUpload from './BatchUpload'
 import Edit from './Edit'
 import Export from './Export'
@@ -15,11 +12,9 @@ import Login from './Login'
 import { NewWord } from './NewWord'
 import Signup from './Signup'
 import Users from './Users'
-import { isMobile } from 'react-device-detect'
-import Page from '../../Components/Page'
 
 export const AdminPanel = () => {
-  const { loggedIn } = useContext(Auth.Context)
+  const { loggedIn } = useAPI()
   const { path } = useRouteMatch()
   if (isMobile) {
     return (

@@ -1,11 +1,9 @@
 import { Button, Grid, TextField } from '@material-ui/core'
-import Axios from 'axios'
 import React, { useContext, useRef, useState } from 'react'
 import { useHistory } from 'react-router'
-import { AuthContext } from '..'
 import Page from '../../../Components/Page'
 import { Auth } from '../../../context'
-import useAuth from '../../../utils/hooks/useAuth'
+import useAPI from '../../../utils/hooks/useAPI'
 
 const Signup = () => {
   const userRef = useRef(null)
@@ -13,17 +11,14 @@ const Signup = () => {
   const passRef = useRef(null)
   const [error, setError] = useState(false)
   const history = useHistory()
-  const { headers } = useContext(Auth.Context)
+  const { headers } = useAPI()
+  const { Users } = useAPI()
   const handleSubmit = () => {
-    Axios.post(
-      '/api/users/sign-up',
-      {
-        username: userRef.current.value,
-        email: emailRef.current.value,
-        password: passRef.current.value,
-      },
-      headers
-    )
+    Users.create({
+      username: userRef.current.value,
+      email: emailRef.current.value,
+      password: passRef.current.value,
+    })
       .then((res) => {
         history.push('/admin/users')
       })

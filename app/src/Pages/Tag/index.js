@@ -6,6 +6,7 @@ import WordCard from './WordCard'
 import { CardGrid } from '../../styled/Card'
 import Page from '../../Components/Page'
 import styled from 'styled-components'
+import useAPI from '../../utils/hooks/useAPI'
 const MainText = styled(Typography)`
   background-color: #f8f4dd;
   padding: 5px 10px;
@@ -18,7 +19,7 @@ const SecondText = styled(Typography)`
 `
 const Tag = () => {
   const { _tagname } = useParams()
-  const { tags } = React.useContext(Words.Context)
+  const { tags } = useAPI()
   const [taggedWords, setTaggedWords] = React.useState([])
 
   useEffect(() => {
