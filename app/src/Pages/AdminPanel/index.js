@@ -42,7 +42,7 @@ export const AdminPanel = () => {
             <Route path={path + '/export'}>
               <Export />
             </Route>
-            <Route path={path + '/users'}>
+            <Route path={path + '/users/:_id?'}>
               <Users />
             </Route>
             <Route path={path + '/signup'}>

@@ -49,25 +49,28 @@ const HoverGrid = styled(Grid)`
 // TODO: handle submit
 // TODO: handle delete
 // TODO: handle nvm
+// TODO: refactor to use url params
 const Users = () => {
   const [users, setUsers] = useState([])
   const { headers } = useContext(Auth.Context)
-  const [unauthorized, setUnauthorized] = useState(false)
+  const [unauthorized, setUnauthorized] = useState(true)
   const history = useHistory()
   const [selected, setSelected] = useState(null)
-
-  useEffect(() => {
+  const getUsers = () => {
     Axios.get('/api/users', headers)
       .then((res) => {
         setUsers(res.data)
+        setUnauthorized(false)
       })
       .catch((e) => {
         console.log(e.response)
-        setUnauthorized(true)
       })
+  }
+  useEffect(() => {
+    getUsers()
   }, [])
-  const handleClick = (i) => {
-    setSelected(users[i])
+  const handleClick = (_id) => {
+    history.push(`/admin/users/${_id}`)
   }
   const handleNew = () => {
     history.push('/admin/signup')
@@ -89,7 +92,7 @@ const Users = () => {
                   <HoverGrid
                     item
                     key={i}
-                    onClick={() => handleClick(i)}
+                    onClick={() => handleClick(user._id)}
                     container
                     direction='column'
                     alignItems='flex-end'
@@ -107,7 +110,7 @@ const Users = () => {
               })}
             </Grid>
           </MenuGrid>
-          <Detail user={selected} />
+          <Detail users={users} refresh={getUsers} />
           <NewGrid>
             <Button
               variant='contained'

@@ -9,28 +9,36 @@ const jwt = require('jsonwebtoken')
 const userRouter = express()
 
 const userModel = require('../models/users.js')
-const { create } = require('../models/users.js')
 // ===============================
 // SETUP OWNER
 // ===============================
 const createAdmin = async () => {
-  const owner = await userModel({ email: process.env.ADMIN_EMAIL })
+  const owner = await userModel.find({ email: process.env.ADMIN_EMAIL })
   if (owner.length < 1) {
     console.log('creating owner')
-    user = new userModel({
-      username: process.env.ADMIN_USER,
-      email: process.env.ADMIN_EMAIL,
-      password: process.env.ADMIN_PWORD,
-      roles: ['admin', 'editor'],
-    })
+    const username = process.env.ADMIN_USER
+    const email = process.env.ADMIN_EMAIL
+    const roles = ['admin', 'editor']
+    const password = process.env.ADMIN_PWORD
+    const obj = {
+      username,
+      email,
+      roles,
+      password,
+    }
+
+    const user = new userModel(obj)
     // encrypt password
     const salt = await bcrypt.genSalt(10)
     user.password = await bcrypt.hash(password, salt)
     // save user with encrypted pword
     await user.save()
+  } else {
+    console.log('admin already exists')
   }
 }
 createAdmin()
+
 // ==================================
 // READ
 // only available to admin
@@ -126,6 +134,44 @@ userRouter.post(
   }
 )
 // ======================
+// UPDATE
+// ======================
+userRouter.patch('/', async (req, res) => {
+  console.log('REQ')
+  const user = req.body
+  console.log(user)
+  if (!req.user.roles.includes('admin')) {
+    res.sendStatus(403)
+  }
+  try {
+    await userModel.findOneAndUpdate({ _id: user._id }, user)
+    // if (!Words) res.status(404).send('No item found')
+    res.status(200).send()
+  } catch (err) {
+    console.error(err)
+    res.status(500).send(err)
+  }
+})
+
+// =================================
+// DELETE
+// ====================================
+userRouter.delete('/:_id', async (req, res) => {
+  console.log("let's delete")
+  if (!req.user.roles.includes('admin')) {
+    res.sendStatus(403)
+  }
+  try {
+    await userModel.findOneAndDelete({ _id: req.params._id })
+
+    // if (!Words) res.status(404).send('No item found')
+    res.status(200).send()
+  } catch (err) {
+    console.error(err)
+    res.status(500).send(err)
+  }
+})
+// ======================
 // LOGIN
 // ======================
 userRouter.post(
@@ -198,29 +244,6 @@ userRouter.post(
   }
 )
 
-// =================================
-// DELETE
-// ====================================
-userRouter.delete('/users/:id', async (req, res) => {
-  if (!req.user.roles.includes('admin')) {
-    res.sendStatus(403)
-  }
-  try {
-    await userModel.findOneAndDelete({ id: req.params.id })
-
-    // if (!Words) res.status(404).send('No item found')
-    res.status(200).send()
-  } catch (err) {
-    console.error(err)
-    res.status(500).send(err)
-  }
-})
-// ======================================
-// DELETE
-// =========================================
-userRouter.use('/delete', (req, res) => {
-  console.log('delete request made!')
-})
 // TODO: implement auth
 // https://dev.to/dipakkr/implementing-authentication-in-nodejs-with-express-and-jwt-codelab-1-j5i
 

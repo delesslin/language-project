@@ -1,17 +1,22 @@
 # TODOs 📎
 
-1. Sanitize data so that strings don't begin or end with ' '
-2. Refactor React app state to only use the native react Context and State
+1. Delete users from admin panel
+
+2.  Consolidate api calls into an API file
+3.  Implement theme
+4.  Refactor styled into isolated Components <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
+
+
+5.  Remove console.logs
+6. Sanitize data so that strings don't begin or end with ' '
+7. Search should use query string to make shareable and navigable
+8. Refactor React app state to only use the native react Context and State
    1. Only remaining componenet using ATOMS is KeyboardComponent
    2. Refactor keyboard componenet anyways to be responsive
-3. Implement request page
-4. Search should use query string to make shareable and navigable
-5. Export data as .csv file
-6. Add custom image url to edit/new word
-7. Remove console.logs
-8. Delete users from admin panel
-9. Implement 'owner' role from environmental variables
-10. Implement theme
+9. Implement request page
+10. Export data as .csv file
+11. Add custom image url to edit/new word
+12. Consolidate batch-upload & word-upload...should presuume an Array of length > 0
 
 # Minimum Viable Product
 
