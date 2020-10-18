@@ -21,7 +21,7 @@ const Detail = ({
   const [locked, setLocked] = useState(true)
 
   const { _id } = useParams()
-  const history = useHistory()
+  const history = useAPI()
   const [user, setUser] = useState(null)
   const { Users } = useAPI()
 

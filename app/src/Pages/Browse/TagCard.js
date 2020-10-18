@@ -1,6 +1,6 @@
 import React from 'react'
+import { useHistory } from 'react-router'
 
-import { Link, useHistory } from 'react-router-dom'
 import { RotatedText } from '../../Components/Text'
 import { Card } from '../../styled/Card'
 

@@ -11,7 +11,7 @@ import useAPI from '../../../utils/hooks/useAPI'
 
 // Handle submit
 export const NewWord = () => {
-  const history = useHistory()
+  const history = useAPI()
   const { refetchWords } = useAPI()
 
   const { Words: WordAPI } = useAPI()

@@ -122,4 +122,4 @@ const useGetWords = () => {
   return { words, tags, refetchWords, isLoading, replaceItem }
 }
 
-export default useGetWords
+// export default useGetWords

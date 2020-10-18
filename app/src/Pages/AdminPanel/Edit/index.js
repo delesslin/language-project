@@ -15,7 +15,7 @@ const Edit = () => {
     params: { _id },
   } = useRouteMatch()
   const [initialState, setInitialState] = React.useState(null)
-  const history = useHistory()
+  const history = useAPI()
   const { Words: WordsAPI } = useAPI()
   useEffect(() => {
     setInitialState(words.find((entry) => entry._id === _id))

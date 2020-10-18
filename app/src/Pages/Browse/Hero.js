@@ -7,7 +7,8 @@ import { Card, CardGrid } from '../../styled/Card'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
-import { useHistory } from 'react-router'
+import useAPI from '../../utils/hooks/useAPI'
+
 const HeroGrid = styled.div`
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -21,7 +22,7 @@ const IconDiv = styled.div`
 // TODO: refactor HERO to be taller
 // TODO:
 const Hero = ({ word, handleIncrement = (i) => console.log(i) }) => {
-  const history = useHistory()
+  const history = useAPI()
   const handleClick = () => {
     history.push(`/word/${word._id}`)
   }

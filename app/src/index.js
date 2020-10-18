@@ -13,6 +13,7 @@ import { Normalize } from 'styled-normalize'
 // TODO: Refactor to remove RecoilRoot
 import { createGlobalStyle } from 'styled-components'
 import GlobalTheme from './Components/GlobalTheme'
+import { APIProvider } from './utils/hooks/useAPI'
 const GlobalStyle = createGlobalStyle`
 html,
 body,
@@ -28,13 +29,15 @@ export const App = () => {
       <Normalize />
       <GlobalStyle />
       <GlobalTheme>
-        <RecoilRoot>
-          <Router>
-            <Layout>
-              <Pages />
-            </Layout>
-          </Router>
-        </RecoilRoot>
+        <APIProvider>
+          <RecoilRoot>
+            <Router>
+              <Layout>
+                <Pages />
+              </Layout>
+            </Router>
+          </RecoilRoot>
+        </APIProvider>
       </GlobalTheme>
     </React.Fragment>
   )

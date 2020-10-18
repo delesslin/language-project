@@ -2,13 +2,14 @@ import { Button, Grid } from '@material-ui/core'
 import React, { useEffect } from 'react'
 import { useHistory, useParams } from 'react-router'
 import Page from '../../../Components/Page'
+import { Words } from '../../../context'
 import StyledLink from '../../../styled/StyledLink'
 import useAPI from '../../../utils/hooks/useAPI'
 import WordDetail from './WordDetail'
 
 const Landing = () => {
   const { words, refetchWords } = useAPI()
-  const history = useHistory()
+  const history = useAPI()
   const params = useParams()
   useEffect(() => refetchWords(), [])
   useEffect(() => console.log(params), [params])

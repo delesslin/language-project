@@ -15,12 +15,11 @@ const WordDisplay = () => {
 
   // TODO: Handle Errors (e.g. no matching _id)
   useEffect(() => {
-    console.log('words', words)
     // making sure the api has been fetched
     // without if block the app may attempt to find a match inside of a blank array, before API has returned response
     if (words.length > 0) {
       const word = words.find((el) => el._id === _id)
-      console.log(word)
+
       setThisWord(word)
       setIsLoading(false)
     }

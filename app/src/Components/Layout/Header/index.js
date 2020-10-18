@@ -6,8 +6,10 @@ import media from 'css-in-js-media'
 import React from 'react'
 import { useHistory, useLocation } from 'react-router'
 import styled from 'styled-components'
+import useAPI from '../../../utils/hooks/useAPI'
 import { Nav, NavButton } from '../Nav'
 import { hexColor } from '../Nav/IconButton'
+
 const random = () => Math.floor(Math.random() * 10 - 5)
 const rotate = (a = 5) => {
   return `
@@ -81,7 +83,7 @@ const Header = () => {
   return (
     <HeaderDiv disabled={location.pathname == '/'}>
       <Back disabled={location.pathname == '/'}>
-        <NavButton variant='transparent' to='/'>
+        <NavButton variant='transparent' to='/browse'>
           <ArrowBackIcon />
         </NavButton>
       </Back>
@@ -89,7 +91,7 @@ const Header = () => {
       <Title angle={1}>{'Catawba Language Project'.toUpperCase()}</Title>
 
       <Nav>
-        <NavButton to='/'>
+        <NavButton to='/browse'>
           <HomeIcon />
         </NavButton>
         <NavButton to='/search'>

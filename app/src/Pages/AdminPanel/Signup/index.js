@@ -10,7 +10,7 @@ const Signup = () => {
   const emailRef = useRef(null)
   const passRef = useRef(null)
   const [error, setError] = useState(false)
-  const history = useHistory()
+  const history = useAPI()
   const { headers } = useAPI()
   const { Users } = useAPI()
   const handleSubmit = () => {

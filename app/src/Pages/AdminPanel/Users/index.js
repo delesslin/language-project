@@ -53,7 +53,7 @@ const Users = () => {
   const [users, setUsers] = useState([])
 
   const [unauthorized, setUnauthorized] = useState(true)
-  const history = useHistory()
+  const history = useAPI()
 
   const { Users } = useAPI()
   const getUsers = () => {

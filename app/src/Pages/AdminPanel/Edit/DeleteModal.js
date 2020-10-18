@@ -28,7 +28,7 @@ const DeleteModal = ({ _id, open, toggleOpen }) => {
   const { refetchWords } = useAPI()
   const [confirm, setConfirm] = React.useState('')
   const { Words } = useAPI()
-  const history = useHistory()
+  const history = useAPI()
   const lastFour = _id.slice(-4)
   const handleDelete = () => {
     Words.delete(_id)

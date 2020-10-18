@@ -1,9 +1,10 @@
-import { useHistory, useLocation } from 'react-router'
-import styled from 'styled-components'
 import media from 'css-in-js-media'
 import React from 'react'
-import hexRGB from 'hex-rgb'
+import { useHistory } from 'react-router'
+import styled from 'styled-components'
+import useAPI from '../../../utils/hooks/useAPI'
 import IconButton from './IconButton'
+
 export const Nav = styled.div`
   grid-area: nav;
 

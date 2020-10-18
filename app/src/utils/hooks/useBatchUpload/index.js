@@ -2,14 +2,14 @@ import React, { useContext, useState } from 'react'
 import parseCSV from '../../parseCSV'
 import axios from 'axios'
 import { Words } from '../../../context'
-import { useHistory } from 'react-router'
+import useAPI from '../useAPI'
+
 const useBatchUpload = () => {
   const [state, setState] = useState([])
   const [error, setError] = useState(false)
-  const history = useHistory()
-  const { words, refetchWords } = useContext(Words.Context)
+  const { history, words } = useAPI()
+
   const handleSuccess = () => {
-    refetchWords()
     history.push('/admin')
   }
   const onChange = (e) => {

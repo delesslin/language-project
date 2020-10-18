@@ -1,15 +1,13 @@
-import { Fab, IconButton, Paper } from '@material-ui/core'
+import { Fab } from '@material-ui/core'
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import React from 'react'
-import { useHistory } from 'react-router-dom'
-import styled from 'styled-components'
 import Player from '../../Components/Player'
 import { RotatedText } from '../../Components/Text'
 import { Card } from '../../styled/Card'
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
+import useAPI from '../../utils/hooks/useAPI'
 
 const WordCard = ({ data, href, link, children }) => {
-  console.log(data)
-  const history = useHistory()
+  const history = useAPI()
   const handleClick = () => {
     history.push(link)
   }

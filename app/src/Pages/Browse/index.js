@@ -24,6 +24,9 @@ const Home = () => {
   const { tags, words, isLoading } = useAPI()
   const [currentIndex, setCurrentIndex] = useState(0)
   const incrementIndex = (x) => {
+    if (words.length <= 1) {
+      return
+    }
     if (currentIndex + x < 0) {
       setCurrentIndex(words.length + x)
     }
@@ -32,31 +35,23 @@ const Home = () => {
     }
     setCurrentIndex((i) => i + x)
   }
-  useEffect(() => {
-    // alphabetize
-    // Consolidate similar tags
-    // select images for cards set as href
-    const newCards = tags.reduce((acc, curr) => {
-      // find index of word that has given tag or its pluralized form that has images.length > 0
-      // if no index, return object with href=null
-      // if index return obj with href=words
-    }, [])
-    // setCards
-  }, [tags])
 
   // TODO: add RANDOM WORD for the top
-  if (!isLoading) {
-    return (
-      <Page>
+  // console.log(Array.isArray(tags))
+  return (
+    <Page>
+      {isLoading || words == null || tags == null ? null : (
         <HomeGrid>
-          <Hero word={words[currentIndex]} handleIncrement={incrementIndex} />
+          {words != null ? (
+            <Hero word={words[currentIndex]} handleIncrement={incrementIndex} />
+          ) : null}
           <div>
             <Typography variant='h3'>BROWSE BY TOPIC</Typography>
             <CardGrid columns='5'>
               {tags.map(({ tag, image }, index) => {
                 return (
                   <TagCard
-                    key={tag}
+                    key={index}
                     tag={tag}
                     image={image}
                     i={index}
@@ -66,28 +61,9 @@ const Home = () => {
             </CardGrid>
           </div>
         </HomeGrid>
-      </Page>
-    )
-
-    // return (
-
-    // )
-    // return (
-    //   <Container>
-    //     <Grid container spacing={3} justify='center'>
-    //       {tags.map((tag) => {
-    //         return <TagCard key={tag} tag={tag} />
-    //       })}
-    //     </Grid>
-    //   </Container>
-    // )
-  } else {
-    return (
-      <Page title='browse by topic'>
-        <Spinner />
-      </Page>
-    )
-  }
+      )}
+    </Page>
+  )
 }
 
 export default Home

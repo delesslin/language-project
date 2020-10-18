@@ -1,7 +1,9 @@
 import { Chip, Typography } from '@material-ui/core'
 import React from 'react'
 import { useHistory } from 'react-router'
+
 import { ResultTags } from '../../styled/Content/Search'
+import useAPI from '../../utils/hooks/useAPI'
 
 const ChipBag = ({ label = '', chips = [], hrefGen = null }) => {
   const history = useHistory()

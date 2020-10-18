@@ -5,9 +5,11 @@ import styled from 'styled-components'
 import CardPaper from '../../styled/Card/CardPaper'
 import { SearchResult } from '../../styled/Content'
 import { SearchResultText } from '../../styled/Content/Search'
+import useAPI from '../../utils/hooks/useAPI'
 import IconButton from '../Layout/Nav/IconButton'
 import Player from '../Player'
 import ChipBag from './ChipBag'
+
 const ImagePaper = styled(CardPaper)`
   grid-area: pic;
   display: flex;
@@ -15,7 +17,7 @@ const ImagePaper = styled(CardPaper)`
   align-items: center;
 `
 const WordCard = ({ word, expanded = false, fullscreen = false, to = '' }) => {
-  const history = useHistory()
+  const history = useAPI()
   const handleClick = () => {
     history.push(`/word/${word._id}`)
   }
