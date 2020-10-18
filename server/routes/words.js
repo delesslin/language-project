@@ -17,7 +17,7 @@ const wordModel = require('../models/word.js')
 // ============================
 wordsRouter.post('/', async (req, res) => {
   //TODO: Expand Error codes (Specifically error code for duplicate values)
-  console.log(req.user.roles)
+  // console.log(req.user.roles)
   if (req.user.roles.includes('editor')) {
     const Word = new wordModel(req.body)
 
@@ -40,12 +40,12 @@ wordsRouter.get('/', async (req, res) => {
     if (req.user.roles.includes('admin') || req.user.roles.includes('editor')) {
       console.log('all words!')
       const Words = await wordModel.find({})
-      console.log(Words)
+      // console.log(Words)
       res.status(200).send(Words)
     } else {
       console.log('public words')
       const Words = await wordModel.find({ public: true })
-      console.log(Words)
+      // console.log(Words)
       res.status(200).send(Words)
     }
   } catch (err) {

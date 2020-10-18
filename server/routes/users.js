@@ -127,7 +127,7 @@ userRouter.post(
       )
     } catch (err) {
       // if error, send error
-      console.log(err.message)
+      console.error(err.message)
       res.status(500).send('Error in Saving')
     }
   }
@@ -136,9 +136,9 @@ userRouter.post(
 // UPDATE
 // ======================
 userRouter.patch('/', async (req, res) => {
-  console.log('REQ')
+  // console.log('REQ')
   const user = req.body
-  console.log(user)
+  // console.log(user)
   if (!req.user.roles.includes('admin')) {
     res.sendStatus(403)
   }
@@ -188,7 +188,7 @@ userRouter.post(
     const errors = validationResult(req)
     // if there was an error, return error to client
     if (!errors.isEmpty()) {
-      console.log(errors)
+      console.error(errors)
       return res.status(400).json({
         errors: errors.array(),
       })
@@ -199,7 +199,7 @@ userRouter.post(
       // see if there is a user with this email
       let user = await userModel.findOne({ email })
       if (!user) {
-        console.log('no user')
+        console.error('no user')
         return res.status(400).json({
           message: 'User not exists',
         })
