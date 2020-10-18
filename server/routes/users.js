@@ -13,29 +13,28 @@ const userModel = require('../models/users.js')
 // SETUP OWNER
 // ===============================
 const createAdmin = async () => {
-  const owner = await userModel.find({ email: process.env.ADMIN_EMAIL })
-  if (owner.length < 1) {
-    console.log('creating owner')
-    const username = process.env.ADMIN_USER
-    const email = process.env.ADMIN_EMAIL
-    const roles = ['admin', 'editor']
-    const password = process.env.ADMIN_PWORD
-    const obj = {
-      username,
-      email,
-      roles,
-      password,
-    }
-
-    const user = new userModel(obj)
-    // encrypt password
-    const salt = await bcrypt.genSalt(10)
-    user.password = await bcrypt.hash(password, salt)
-    // save user with encrypted pword
-    await user.save()
-  } else {
-    console.log('admin already exists')
+  console.log('creating owner')
+  const username = 'admin'
+  const roles = ['owner', 'admin', 'editor']
+  const email = process.env.ADMIN_EMAIL
+  const password = process.env.ADMIN_PWORD
+  if (email == null || password == null) {
+    console.error(
+      'You need to assign an admin email and password through environmental variables'
+    )
   }
+  const user = {
+    username,
+    email,
+    roles,
+    password,
+  }
+
+  // encrypt password
+  const salt = await bcrypt.genSalt(10)
+  user.password = await bcrypt.hash(password, salt)
+  const owner = await userModel.findOneAndUpdate({ username: 'admin' }, user)
+  console.log('owner initalized')
 }
 createAdmin()
 
