@@ -1,19 +1,18 @@
 # TODOs 📎
 
-1.  Implement theme
-2.  Refactor /styled into isolated Components <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
-
-
-3.  Remove console.logs
-4. Sanitize data so that strings don't begin or end with ' '
-5. Search should use query string to make shareable and navigable
-6. Refactor React app state to only use the native react Context and State
+1.  Stop multiple api calls from react app
+2.  Implement theme
+3.  Refactor /styled into isolated Components <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
+4.  Remove console.logs
+5. Sanitize data so that strings don't begin or end with ' '
+6. Search should use query string to make shareable and navigable
+7. Refactor React app state to only use the native react Context and State
    1. Only remaining componenet using ATOMS is KeyboardComponent
    2. Refactor keyboard componenet anyways to be responsive
-7. Implement request page
-8.  Export data as .csv file
-9.  Add custom image url to edit/new word
-10. Consolidate batch-upload & word-upload...should presuume an Array of length > 0
+8. Implement request page
+9.  Export data as .csv file
+10. Add custom image url to edit/new word
+11. Consolidate batch-upload & word-upload...should presuume an Array of length > 0
 
 # Minimum Viable Product
 

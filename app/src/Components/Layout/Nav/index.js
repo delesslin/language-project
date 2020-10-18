@@ -9,17 +9,23 @@ export const Nav = styled.div`
 
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   ${media('>tablet')} {
     justify-content: flex-end;
   }
 `
-
+const ButtonWrapper = styled.div`
+  display: grid;
+  place-items: center;
+`
 export const NavButton = ({ to, children, href = '', variant }) => {
   const history = useHistory()
   const redirect = () => history.push(to)
   return (
-    <IconButton onClick={redirect} href={href} variant={variant}>
-      {children}
-    </IconButton>
+    <ButtonWrapper>
+      <IconButton onClick={redirect} href={href} variant={variant}>
+        {children}
+      </IconButton>
+    </ButtonWrapper>
   )
 }

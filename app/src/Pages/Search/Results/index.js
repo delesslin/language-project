@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Request from './Request'
 import Result from '../../../Components/WordCard'
 import { CardGrid } from '../../../styled/Card'
+import Spinner from '../../../Components/Spinner'
 import WordCard from '../../../Components/WordCard'
 const StyledProgress = styled(Box)`
   display: grid;
@@ -18,13 +19,7 @@ const SearchGrid = styled.div`
 // TODO: insert dividers between results
 const Results = ({ loading, results }) => {
   if (loading) {
-    return (
-      <Grid container direction='column'>
-        <StyledProgress>
-          <CircularProgress />
-        </StyledProgress>
-      </Grid>
-    )
+    return <Spinner />
   } else if (results !== null) {
     if (results.length > 0) {
       return (

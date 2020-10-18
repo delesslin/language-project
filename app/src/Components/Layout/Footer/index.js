@@ -3,27 +3,33 @@ import styled from 'styled-components'
 import media from 'css-in-js-media'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import { NavButton } from '../Nav'
+import LockIcon from '@material-ui/icons/Lock'
+import IconButton from '../Nav/IconButton'
 export const FooterDiv = styled.footer`
   padding: 0px 10px 0px 10px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto;
+
   grid-template-areas:
     'nav  nav  nav  nav  nav  nav'
-    'text text text text text text';
+    'text text text text text text'
+    'admin admin admin admin admin admin';
   ${media('>tablet')} {
-    grid-template-areas: 'nav nav text text text text';
+    grid-template-areas: 'nav nav text text admin admin';
   }
   background-color: ${({ theme }) => theme.dark};
   border-radius: 5px 5px 0px 0px;
   // box-shadow: 0px -2px 5px #aaa;
 `
 
-export const FooterText = styled.p`
+export const FooterText = styled.div`
   grid-area: text;
-  text-align: center;
-  ${media('>tablet')} {
-    text-align: right;
+  display: grid;
+  place-items: center;
+  > p {
+    text-align: center;
+    ${({ theme }) => `color: ${theme.light}`}
   }
 `
 export const FooterNav = styled.div`
@@ -34,7 +40,15 @@ export const FooterNav = styled.div`
     justify-content: center;
   }
 `
-
+const AdminButton = styled.div`
+  grid-area: admin;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  ${media('<tablet')} {
+    justify-content: center;
+  }
+`
 const Footer = () => {
   return (
     <FooterDiv>
@@ -47,8 +61,13 @@ const Footer = () => {
         </NavButton>
       </FooterNav>
       <FooterText>
-        A project of the Catawba Cultural Preservation Project
+        <p>A project of the Catawba Cultural Preservation Project</p>
       </FooterText>
+      <AdminButton>
+        <NavButton variant='primary' to='/admin'>
+          <LockIcon />
+        </NavButton>
+      </AdminButton>
     </FooterDiv>
   )
 }

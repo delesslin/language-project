@@ -1,8 +1,9 @@
 import hexRgb from 'hex-rgb'
 import React from 'react'
+import { useHistory } from 'react-router'
 import styled from 'styled-components'
 
-const hexColor = (hex = '#f0f000', opacity = 0.9) => {
+export const hexColor = (hex = '#f0f000', opacity = 0.9) => {
   const a = hexRgb(hex)
   return `rgba(${a.red},${a.green},${a.blue},${opacity})`
 }

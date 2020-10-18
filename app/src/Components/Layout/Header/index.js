@@ -1,24 +1,35 @@
-import React from 'react'
-import styled from 'styled-components'
-import { IconButton } from '@material-ui/core'
+import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import HomeIcon from '@material-ui/icons/Home'
 import SearchIcon from '@material-ui/icons/Search'
-import FacebookIcon from '@material-ui/icons/Facebook'
-import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import VideogameAssetIcon from '@material-ui/icons/VideogameAsset'
-import { useHistory, useLocation } from 'react-router'
 import media from 'css-in-js-media'
-import { NavButton, Nav } from './Nav'
+import React from 'react'
+import { useHistory, useLocation } from 'react-router'
+import styled from 'styled-components'
+import { Nav, NavButton } from '../Nav'
+import { hexColor } from '../Nav/IconButton'
+const random = () => Math.floor(Math.random() * 10 - 5)
+const rotate = (a = 5) => {
+  return `
+  transform: rotate(${a}deg);
+  > * {
+    transform: rotate(${-a}deg);
+  }
+  `
+}
 export const HeaderDiv = styled.header`
   padding: 10px;
   display: grid;
-  grid-template-columns: auto repeat(6, 1fr);
+  grid-template-columns: ${(props) => (props.disabled ? '0px' : 'auto')} repeat(
+      6,
+      1fr
+    );
   grid-column-gap: 15px;
-  grid-template-rows: auto;
+  grid-template-rows: auto auto;
   grid-template-areas:
     'b title title title title title title'
     'b nav nav nav nav nav nav';
-  // box-shadow: 0px 2px 5px #555;
+
   border-radius: 0px 0px 5px 5px;
 
   background-color: ${({ theme }) => theme.primary};
@@ -37,6 +48,8 @@ export const HeaderDiv = styled.header`
 export const Back = styled.div`
   display: grid;
   place-items: center;
+  grid-area: b;
+  width: auto;
   ${(props) => {
     console.log(props.disabled)
     if (props.disabled) {
@@ -48,23 +61,33 @@ export const Back = styled.div`
 `
 export const Title = styled.h1`
   grid-area: title;
+  letter-spacing: 2px;
+  font-size: 2rem;
+
+  border-radius: 1px;
+  ${({ theme }) => `color: ${hexColor(theme.dark, 1)};`}
+  ${(props) => props.theme.fonts.primary}
   ${media('<phone')} {
-    font-size: 1.2em;
+    font-size: 1.2rem;
   }
+`
+const HeaderNav = styled.div`
+  grid-area: nav;
+  place-items: center;
 `
 const Header = () => {
   const location = useLocation()
   const history = useHistory()
   return (
-    <HeaderDiv>
-      {location.pathname == '/' ? null : (
-        <Back>
-          <NavButton variant='transparent' to='/'>
-            <ArrowBackIcon />
-          </NavButton>
-        </Back>
-      )}
-      <Title>Catawba Language Project</Title>
+    <HeaderDiv disabled={location.pathname == '/'}>
+      <Back disabled={location.pathname == '/'}>
+        <NavButton variant='transparent' to='/'>
+          <ArrowBackIcon />
+        </NavButton>
+      </Back>
+
+      <Title angle={1}>{'Catawba Language Project'.toUpperCase()}</Title>
+
       <Nav>
         <NavButton to='/'>
           <HomeIcon />

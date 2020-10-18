@@ -13,6 +13,10 @@ const GlobalTheme = ({ children }) => {
     light: '#F8F1FF',
     black: '#111',
     white: '#eee',
+    fonts: {
+      secondary: "font-family: 'DM Serif Text', serif;",
+      primary: "font-family: 'Lato', sans-serif;",
+    },
   })
   return (
     <Theme.Provider value={state}>

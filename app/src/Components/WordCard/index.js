@@ -1,43 +1,42 @@
-import { Chip, Fab, IconButton, Paper, Typography } from '@material-ui/core'
-import React from 'react'
-import styled from 'styled-components'
-import { SearchResult } from '../../styled/Content'
-import {
-  ResultTags,
-  SearchAudio,
-  SearchImage,
-  SearchResultText,
-} from '../../styled/Content/Search'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
+import React from 'react'
 import { useHistory } from 'react-router-dom'
+import styled from 'styled-components'
+import CardPaper from '../../styled/Card/CardPaper'
+import { SearchResult } from '../../styled/Content'
+import { SearchResultText } from '../../styled/Content/Search'
+import IconButton from '../Layout/Nav/IconButton'
 import Player from '../Player'
 import ChipBag from './ChipBag'
-
-const WordCard = ({ word, expanded = false, fullscreen = false }) => {
+const ImagePaper = styled(CardPaper)`
+  grid-area: pic;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`
+const WordCard = ({ word, expanded = false, fullscreen = false, to = '' }) => {
   const history = useHistory()
   const handleClick = () => {
     history.push(`/word/${word._id}`)
   }
   return (
     <SearchResult fullscreen={fullscreen}>
-      <SearchImage href={word.images && word.images[0]}></SearchImage>
-      {word.recordings.length > 0 ? (
-        <SearchAudio>
+      <ImagePaper href={word.images && word.images[0]}>
+        {word.recordings.length > 0 ? (
           <Player base64={word.recordings[0]} />
-        </SearchAudio>
-      ) : null}
+        ) : null}
+        {expanded ? null : (
+          <IconButton onClick={handleClick} variant='red'>
+            <MoreHorizIcon />
+          </IconButton>
+        )}
+      </ImagePaper>
       <SearchResultText>
         <h3>{word.language_entry}</h3>
         <h5>({word.pronunciation[0]})</h5>
         <h4>{word.translations[0]}</h4>
 
-        {!expanded ? (
-          <div>
-            <IconButton onClick={handleClick}>
-              <MoreHorizIcon />
-            </IconButton>
-          </div>
-        ) : (
+        {!expanded ? null : (
           <>
             <ChipBag
               label='alternative spellings'

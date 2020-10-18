@@ -15,14 +15,21 @@ const genGradient = () => {
   background: linear-gradient(${deg}deg, rgba(${a.red},${a.green},${a.blue},1) 18%, rgba(${b.red},${b.green},${b.blue},1) 100%);`
 }
 const CardPaper = styled.div`
-  ${({ href }) => {
+  ${({ href, theme }) => {
     if (href !== undefined && href.length > 0) {
       return `background-image: url(${href});
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;`
     } else {
-      return genGradient()
+      return `background-color: ${[
+        theme.primary,
+        theme.secondary,
+        theme.dark,
+        theme.light,
+        theme.green,
+        theme.red,
+      ].find((entry) => Math.random() > 0.5)};`
     }
   }}
   display: grid;
