@@ -67,7 +67,7 @@ wordsRouter.patch('/:_id', async (req, res) => {
       // await wordModel.save()
       res.status(200).send(Word)
     } catch (err) {
-      console.log(err)
+      console.error(err)
       res.status(500).send(err)
     }
   } else {

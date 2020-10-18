@@ -13,15 +13,16 @@ const userModel = require('../models/users.js')
 // SETUP OWNER
 // ===============================
 const createAdmin = async () => {
-  console.log('creating owner')
+  console.log('//////creating owner')
   const username = 'admin'
   const roles = ['owner', 'admin', 'editor']
   const email = process.env.ADMIN_EMAIL
   const password = process.env.ADMIN_PWORD
   if (email == null || password == null) {
-    console.error(
-      'You need to assign an admin email and password through environmental variables'
+    console.warn(
+      '///WARNING: You need to assign an admin email and password through environmental variables'
     )
+    return
   }
   const user = {
     username,
