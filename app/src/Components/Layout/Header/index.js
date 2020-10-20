@@ -8,17 +8,17 @@ import { useHistory, useLocation } from 'react-router'
 import styled from 'styled-components'
 import useAPI from '../../../utils/hooks/useAPI'
 import { Nav, NavButton } from '../Nav'
-import { hexColor } from '../Nav/IconButton'
+import { hexColor } from '../../Buttons/IconButton'
 
-const random = () => Math.floor(Math.random() * 10 - 5)
-const rotate = (a = 5) => {
-  return `
-  transform: rotate(${a}deg);
-  > * {
-    transform: rotate(${-a}deg);
-  }
-  `
-}
+// const random = () => Math.floor(Math.random() * 10 - 5)
+// const rotate = (a = 5) => {
+//   return `
+//   transform: rotate(${a}deg);
+//   > * {
+//     transform: rotate(${-a}deg);
+//   }
+//   `
+// }
 export const HeaderDiv = styled.header`
   padding: 10px;
   display: grid;
@@ -91,7 +91,7 @@ const Header = () => {
       <Title angle={1}>{'Catawba Language Project'.toUpperCase()}</Title>
 
       <Nav>
-        <NavButton to='/browse'>
+        <NavButton to='/'>
           <HomeIcon />
         </NavButton>
         <NavButton to='/search'>

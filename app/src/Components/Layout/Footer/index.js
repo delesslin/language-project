@@ -4,7 +4,7 @@ import media from 'css-in-js-media'
 import FacebookIcon from '@material-ui/icons/Facebook'
 import { NavButton } from '../Nav'
 import LockIcon from '@material-ui/icons/Lock'
-import IconButton from '../Nav/IconButton'
+import IconButton from '../../Buttons/IconButton'
 export const FooterDiv = styled.footer`
   padding: 0px 10px 0px 10px;
   display: grid;
@@ -47,6 +47,9 @@ const AdminButton = styled.div`
   justify-content: flex-end;
   ${media('<tablet')} {
     justify-content: center;
+  }
+  ${media('<tablet')} {
+    display: none;
   }
 `
 const Footer = () => {

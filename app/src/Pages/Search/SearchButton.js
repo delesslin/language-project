@@ -1,7 +1,7 @@
 import { Button, styled } from '@material-ui/core'
 import React from 'react'
 import SearchIcon from '@material-ui/icons/Search'
-import IconButton from '../../Components/Layout/Nav/IconButton'
+import IconButton from '../../Components/Buttons/IconButton'
 
 const StyledButton = styled(IconButton)``
 const SearchButton = ({ loading, onClick }) => {

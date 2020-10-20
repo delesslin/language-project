@@ -1,9 +1,9 @@
 # TODOs 📎
 
-1.
-2.  URGENT: refactor these APIs
-3.  Stop multiple api calls from react app
-4.  Implement theme
+1. Create
+2. Implement audio play in game - refactor Player to usePlayer
+3. Remove Admin login on cell
+4.  Stop multiple api calls from react app
 5.  Refactor /styled into isolated Components <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
 6.  Remove console.logs
 7. Sanitize data so that strings don't begin or end with ' '
@@ -22,11 +22,11 @@
 
 #### Public Features
 
-- App easily available to the public on android, iOS, and web platforms
-- Word Count increased from approximately 35 to 100
-- Users can hear pronunciations for all words
-- Users can search for words
 - Users can play at least 2 games to practice words
+- App easily available to the public on android, iOS, and web platforms (defer to MVP 2)
+- Users can search for words
+- Users can hear pronunciations for all words
+- Word Count increased from approximately 35 to 100
 
 #### Admin Features
 

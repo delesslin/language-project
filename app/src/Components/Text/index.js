@@ -11,9 +11,10 @@ const rotate = (a = 5) => {
 }
 export const RotatedDiv = styled.div`
   background-color: #fdf7d8;
-  padding: 1px 20px;
+  display: grid;
+  place-items: center;
   border-radius: 2px;
-  box-shadow: 1px 1px 2px ${({ theme }) => theme.black};
+  box-shadow: 2px 2px 1px ${({ theme }) => theme.black};
   ${({ angle = random(), theme }) => `
   background-color: ${angle < 0 ? theme.primary : theme.secondary};
   ${rotate(angle)}

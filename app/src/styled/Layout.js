@@ -75,7 +75,6 @@ export const Main = styled.main`
   padding: 0px 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: 1fr;
   grid-template-areas: 'page page page page page page page page page page page page';
   ${media('>desktop')} {
     grid-template-areas: '... page page page page page page page page page page ...';

@@ -32,10 +32,10 @@ const Public = () => (
       <Game />
     </Route>
     <Route path='/browse'>
-      <Browse />
+      <Redirect to='/' />
     </Route>
     <Route exact path='/'>
-      <Redirect to='/browse' />
+      <Browse />
     </Route>
     <Route>
       <NotFound />

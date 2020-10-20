@@ -1,14 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router'
-import Loading from '../../Components/Loading'
+import React, { useEffect, useState } from 'react'
+import { useHistory, useParams } from 'react-router'
 import Page from '../../Components/Page'
-import WordCard from '../../Components/WordCard'
-import { Words } from '../../context'
+import Spinner from '../../Components/Spinner'
 import useAPI from '../../utils/hooks/useAPI'
 import Request from '../Request'
-
+import Hero from './Hero'
+import Detail from './Detail'
+import Tags from './Tags'
 const WordDisplay = () => {
   const { _id } = useParams()
+  const history = useHistory()
   const { words } = useAPI()
   const [thisWord, setThisWord] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -24,39 +25,30 @@ const WordDisplay = () => {
       setIsLoading(false)
     }
   }, [_id, words])
-  // TODO: implement loading
+  const handleNext = () => {
+    setIsLoading(true)
+    const newWord = words[Math.floor(Math.random() * words.length) - 1]
+
+    const url = `/word/${newWord._id}`
+
+    history.push(url)
+    setIsLoading(false)
+  }
   if (isLoading) {
-    return <Loading />
+    return (
+      <Page>
+        <Spinner />
+      </Page>
+    )
   } else {
     if (thisWord === undefined) {
       return <Request />
     }
     return (
       <Page>
-        <WordCard word={thisWord} expanded={true} />
-        {/* <WordPaper>
-          <WordGrid>
-            {thisWord.images.length > 0 ? (
-              <ContentImage href={thisWord.images[0]}>
-                {thisWord.recordings.length > 0 ? (
-                  <Player base64={thisWord.recordings[0]} />
-                ) : null}
-              </ContentImage>
-            ) : null}
-            <InfoContainer>
-              <Sound data={thisWord.recordings} />
-              <WordEntry data={thisWord.language_entry} />
-              <Pronunciations data={thisWord.pronunciation[0]} />
-              <Translations data={thisWord.translations[0]} />
-              <AltSpellings data={thisWord.alternative_spellings} />
-              <Notes data={thisWord.notes} />
-            </InfoContainer>
-            <TagContainer>
-              <Tags data={thisWord.tags} />
-            </TagContainer>
-          </WordGrid>
-          <Id>{thisWord._id}</Id>
-        </WordPaper> */}
+        <Hero word={thisWord} handleIncrement={handleNext} />
+        <Detail word={thisWord} />
+        <Tags tags={thisWord.tags} />
       </Page>
     )
   }

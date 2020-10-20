@@ -15,21 +15,25 @@ const genGradient = () => {
   background: linear-gradient(${deg}deg, rgba(${a.red},${a.green},${a.blue},1) 18%, rgba(${b.red},${b.green},${b.blue},1) 100%);`
 }
 const CardPaper = styled.div`
-  ${({ href, theme }) => {
-    if (href !== undefined && href.length > 0) {
-      return `background-image: url(${href});
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;`
+  ${({ href, theme, success = -1 }) => {
+    if (success < 0) {
+      if (href !== undefined && href.length > 0) {
+        return `background-image: url(${href});
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;`
+      } else {
+        return `background-color: ${[
+          theme.primary,
+          theme.secondary,
+          theme.dark,
+          theme.light,
+          theme.green,
+          theme.red,
+        ].find((entry) => Math.random() > 0.5)};`
+      }
     } else {
-      return `background-color: ${[
-        theme.primary,
-        theme.secondary,
-        theme.dark,
-        theme.light,
-        theme.green,
-        theme.red,
-      ].find((entry) => Math.random() > 0.5)};`
+      return `background-color: ${success ? theme.green : theme.red};`
     }
   }}
   display: grid;

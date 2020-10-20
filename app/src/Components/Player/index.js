@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline'
 
-const Player = ({ base64 }) => {
+const Player = ({ base64, children }) => {
   const AUDIO = new Audio(base64)
   const [isPlaying, setIsPlaying] = useState(false)
   const [error, setError] = useState(false)
@@ -24,13 +24,7 @@ const Player = ({ base64 }) => {
       })
   }
 
-  return (
-    <Grid item>
-      <Fab onClick={handlePlay} disabled={isPlaying}>
-        {error ? <ErrorOutlineIcon /> : <PlayArrowIcon />}
-      </Fab>
-    </Grid>
-  )
+  return <div onClick={handlePlay}>{children}</div>
 }
 
 export default React.memo(Player)

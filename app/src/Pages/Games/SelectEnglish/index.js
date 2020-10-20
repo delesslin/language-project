@@ -1,36 +1,51 @@
 import { Button, Chip } from '@material-ui/core'
 import React, { useEffect } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import Player from '../../../Components/Player'
-import { RotatedText } from '../../../Components/Text'
+import { RotatedDiv, RotatedText } from '../../../Components/Text'
 import { Card, CardGrid } from '../../../styled/Card'
-
+import IconButton from '../../../Components/Buttons/IconButton'
+import NavigateNextIcon from '@material-ui/icons/NavigateNext'
+import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver'
+import media from 'css-in-js-media'
+import Options from '../Options'
+import { RoundButton as NextButton } from '../../../Components/Buttons/RoundButton'
+import { Paper } from '../../../Components/Surfaces'
 const GameGrid = styled.div`
   display: grid;
   grid-template-rows: 1fr auto;
   grid-gap: 25px;
   margin-top: 25px;
 `
-const OptionsGrid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  > div {
-    margin: 10px 20px;
-  }
-`
+
 const OutcomeDiv = styled.div`
-  background-color: ${({ correct }) => (correct ? '#eaf9c8' : '#ffc2c8')};
+
   display: grid;
-  grid-template-rows: auto auto auto;
-  place-items: stretch;
+  grid-template-rows: auto 1fr auto;
+  place-items: center;
   font-weight: bold;
   grid-gap: 10px
   border-radius: 10px;
   padding: 7px;
-  h3 {
+  > p {
     text-align: center;
   }
+`
+const moveVertical = (lean) => keyframes`
+0%: { right: 0px;}
+100% { right: ${lean !== 0 ? lean * -1 : '0px'};}
+
+
+`
+
+const LanguageDiv = styled(RotatedDiv)`
+  font-size: 1.5rem;
+  font-weight: bold;
+  // padding: 5px 50px;
+`
+const TranslationDiv = styled(RotatedDiv)`
+  font-size: 1.2em;
+  // padding: 3px 40px;
 `
 // TODO: move this logic to ./Games
 // TODO: a game componenet should only receive lesson and incrementProgress
@@ -55,50 +70,46 @@ const SelectEnglish = ({ options, onAnswer, status, next }) => {
   if (status > -1) {
     return (
       <GameGrid>
-        <OutcomeDiv correct={status}>
-          <CardGrid columns={1}>
-            <Card>
-              {answer.recordings.length > 0 ? (
-                <Player base64={answer.recordings[0]} />
-              ) : null}
-              <div>
-                <RotatedText>
-                  <b>{answer.language_entry}</b>
-                </RotatedText>
-                <RotatedText>{answer.translations[0]}</RotatedText>
-              </div>
-            </Card>
-          </CardGrid>
-          <h3>{status ? 'Correct!' : 'Incorrect 🙁'}</h3>
-          <Button variant='contained' onClick={next}>
-            NEXT
-          </Button>
-        </OutcomeDiv>
+        <CardGrid columns={1}>
+          <Paper success={status}>
+            {answer.recordings.length > 0 ? (
+              <NextButton variant='secondary' size='10vw' lean={-5}>
+                <Player base64={answer.recordings[0]}>
+                  <RecordVoiceOverIcon />
+                  {/* <Player base64={answer.recordings[0]} /> */}
+                </Player>
+              </NextButton>
+            ) : null}
+            <div>
+              <LanguageDiv>
+                <p>{answer.language_entry}</p>
+              </LanguageDiv>
+              <TranslationDiv>{answer.translations[0]}</TranslationDiv>
+            </div>
+            <NextButton size='15vw' onClick={next} color='primary'>
+              <div>👍</div> <NavigateNextIcon />
+            </NextButton>
+          </Paper>
+        </CardGrid>
       </GameGrid>
     )
   }
   return (
     <GameGrid>
       <CardGrid columns={1}>
-        <Card>
+        <Paper color='light'>
           {answer.recordings.length > 0 ? (
-            <Player base64={answer.recordings[0]} />
+            <NextButton variant='secondary' size='10vw' lean={-5}>
+              <Player base64={answer.recordings[0]}>
+                <RecordVoiceOverIcon />
+                {/* <Player base64={answer.recordings[0]} /> */}
+              </Player>
+            </NextButton>
           ) : null}
-          <RotatedText>{answer.language_entry}</RotatedText>
-        </Card>
+          <LanguageDiv>{answer.language_entry}</LanguageDiv>
+        </Paper>
       </CardGrid>
-      <OptionsGrid>
-        {options.map((entry, i) => {
-          return (
-            <div key={i}>
-              <Chip
-                label={entry.translations[0]}
-                onClick={() => handleAnswer(entry._id)}
-              />
-            </div>
-          )
-        })}
-      </OptionsGrid>
+      <Options options={options} handleAnswer={handleAnswer} />
     </GameGrid>
   )
 }

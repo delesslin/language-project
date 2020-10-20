@@ -16,7 +16,7 @@ import useAPI from '../../utils/hooks/useAPI'
 import Spinner from '../../Components/Spinner'
 const HomeGrid = styled.div`
   display: grid;
-  grid-rows: 50vh auto;
+  grid-rows: minmax(50vh, auto) auto;
   grid-auto-flow: rows;
   grid-gap: 50px;
 `

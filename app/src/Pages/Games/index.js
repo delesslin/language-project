@@ -5,6 +5,7 @@ import { Words } from '../../context'
 import SelectEnglish from './SelectEnglish'
 import uniqueRandomArray from 'unique-random-array'
 import useAPI from '../../utils/hooks/useAPI'
+import Spinner from '../../Components/Spinner'
 
 // TODO: create GameContext
 // TODO: progress bar
@@ -60,7 +61,7 @@ const Game = () => {
   if (lesson.length < 1) {
     return (
       <Page title='practice'>
-        <CircularProgress />
+        <Spinner />
       </Page>
     )
   } else {

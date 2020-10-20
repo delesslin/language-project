@@ -3,10 +3,11 @@ import { useParams } from 'react-router'
 import { Grid, Typography } from '@material-ui/core'
 import { Words } from '../../context'
 import WordCard from './WordCard'
-import { CardGrid } from '../../styled/Card'
+// import { CardGrid } from '../../styled/Card'
 import Page from '../../Components/Page'
 import styled from 'styled-components'
 import useAPI from '../../utils/hooks/useAPI'
+import media from 'css-in-js-media'
 const MainText = styled(Typography)`
   background-color: #f8f4dd;
   padding: 5px 10px;
@@ -16,6 +17,16 @@ const SecondText = styled(Typography)`
   background-color: #a2d2f6;
   padding: 5px 20px;
   margin: 10px;
+`
+
+const CardGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 20px;
+  ${media('<desktop')} {
+    grid-template-columns: 1fr;
+  }
 `
 const Tag = () => {
   const { _tagname } = useParams()
@@ -33,7 +44,7 @@ const Tag = () => {
   }, [_tagname, tags])
   return (
     <Page title={_tagname}>
-      <CardGrid columns={3}>
+      <CardGrid columns={2}>
         {taggedWords.map((entry, i) => {
           const image = ''
 
@@ -43,28 +54,12 @@ const Tag = () => {
               data={entry}
               href={entry.images[0]}
               link={`/word/${entry._id}`}
-            >
-              <MainText>
-                <b>{entry.language_entry}</b>
-              </MainText>
-              <SecondText>{entry.translations[0]}</SecondText>
-            </WordCard>
+            />
           )
         })}
       </CardGrid>
     </Page>
   )
-  // return (
-  //   <Grid container direction='column' spacing={3}>
-  //     <Grid item container justify='center'>
-  //       <Grid item>
-  //         <Typography variant='h2'>{_tagname}</Typography>
-  //       </Grid>
-  //     </Grid>
-  //     <Grid item>
-  //     </Grid>
-  //   </Grid>
-  // )
 }
 
 export default Tag
