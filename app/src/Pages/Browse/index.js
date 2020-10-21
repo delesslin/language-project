@@ -1,19 +1,11 @@
+import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
-import {
-  Container,
-  Grid,
-  CircularProgress,
-  Button,
-  Typography,
-} from '@material-ui/core'
-import TagCard from './TagCard'
-import { Words } from '../../context'
 import styled from 'styled-components'
 import Page from '../../Components/Page'
-import { Card, CardGrid } from '../../styled/Card'
-import Hero from './Hero'
+import { CardGrid } from '../../styled/Card'
 import useAPI from '../../utils/hooks/useAPI'
-import Spinner from '../../Components/Spinner'
+import Hero from './Hero'
+import TagCard from './TagCard'
 const HomeGrid = styled.div`
   display: grid;
   grid-rows: minmax(50vh, auto) auto;
