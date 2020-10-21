@@ -8,9 +8,10 @@ const UserModel = require('../models/users')
 
 // user auth
 apiRouter.use('/', (req, res, next) => {
-  console.log(req.headers)
+  // console.log(req)
+  // console.log('headers', req.headers)
   const authHeader = req.headers.authorization
-  console.log('authHeader', authHeader)
+  // console.log('authHeader', authHeader)
   if (authHeader == null) {
     req.user = {
       roles: ['guest'],
@@ -18,7 +19,7 @@ apiRouter.use('/', (req, res, next) => {
     next()
   } else {
     const token = authHeader && authHeader.split(' ')[1]
-    console.log('token', token)
+    // console.log('token', token)
     if (token == null) {
       req.user = {
         roles: ['guest'],

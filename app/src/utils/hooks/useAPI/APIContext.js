@@ -3,7 +3,7 @@ export const initState = {
   words: [],
   isLoading: false,
   error: null,
-  headers: {},
+  options: { headers: { Authorization: 'JWT ' } },
   roles: [],
   tags: [],
 }

@@ -88,12 +88,13 @@ const WordDetail = () => {
   const [currentWord, setCurrentWord] = React.useState(null)
   const history = useHistory()
 
-  const { Words: WordsAPI } = useAPI()
   useEffect(() => {
     if (params._id != null) {
       setCurrentWord(() => {
         return words.find((entry) => entry._id === params._id)
       })
+    } else {
+      setCurrentWord(null)
     }
   }, [words, params])
   const handleRedirect = (i) => {

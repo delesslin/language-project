@@ -9,7 +9,7 @@ const LandingDiv = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: auto auto 1fr;
   grid-template-areas: 'header' 'nav' 'content';
-  grid-gap: 20px;
+  grid-gap: 40px;
 `
 const AdminNav = styled.div`
   grid-area: nav;
@@ -23,6 +23,11 @@ const NavButton = styled(Button)`
 `
 const Content = styled.div`
   grid-area: content;
+`
+const Header = styled.div`
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
 `
 const Link = ({ children, to }) => {
   const history = useHistory()
@@ -38,54 +43,40 @@ const Landing = ({ children }) => {
   const params = useParams()
   useEffect(() => console.log(params), [params])
   return (
-    <Page
-      title={`editor panel [ ${words.filter((e) => e.public).length} / ${
-        words.length
-      } ]`}
-    >
+    <Page>
       <LandingDiv>
+        <Header>
+          <Text size={3}>🔒 </Text>
+          <div>
+            <Text size={1.3}>{`[ ${words.filter((e) => e.public).length} / ${
+              words.length
+            } ]`}</Text>
+          </div>
+        </Header>
         <AdminNav>
-          <Link to='/admin/new'>
-            <Text>add new word</Text>
-          </Link>
-          <Link to='/admin/bulk-new'>
-            <Text>bulk upload</Text>
-          </Link>
-          <Link to='/admin/export'>
-            <Text>export</Text>
-          </Link>
-          <Link to='/admin/users'>
-            <Text>users</Text>
-          </Link>
+          {roles.includes('editor') || roles.includes('admin') ? (
+            <>
+              <Link to='/admin/new'>
+                <Text>add new word</Text>
+              </Link>
+              <Link to='/admin/bulk-new'>
+                <Text>bulk upload</Text>
+              </Link>
+              <Link to='/admin/export'>
+                <Text>export</Text>
+              </Link>
+              {roles.includes('admin') ? (
+                <Link to='/admin/users'>
+                  <Text>users</Text>
+                </Link>
+              ) : null}
+            </>
+          ) : null}
         </AdminNav>
         <Content>{children}</Content>
       </LandingDiv>
     </Page>
   )
-  // return (
-  //   <LandingDiv>
-  //     <Grid item container spacing={2} justify='center'>
-  //       <Grid item></Grid>
-  //       <Grid item></Grid>
-  //       <Grid item></Grid>
-  //       <Grid item>
-  //         <Button
-  //           variant='outlined'
-  //           onClick={() => history.push('/admin/users')}
-  //         >
-  //           users
-  //         </Button>
-  //       </Grid>
-  //     </Grid>
-  //     <Page
-  //       title={`editor panel [ ${words.filter((e) => e.public).length} / ${
-  //         words.length
-  //       } ]`}
-  //     >
-  //       <WordDetail />
-  //     </Page>
-  //   </LandingDiv>
-  // )
 }
 
 export default Landing

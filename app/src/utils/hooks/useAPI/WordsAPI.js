@@ -6,8 +6,10 @@ const api = {
   create: async (payload, headers) => {
     return Axios.post('/api/words', payload, headers)
   },
-  read: async (headers) => {
-    return Axios.get('/api/words', headers)
+  read: async (options) => {
+    console.log('read')
+    console.log(options)
+    return Axios.get('/api/words', options)
       .then(({ data }) => {
         return data
       })

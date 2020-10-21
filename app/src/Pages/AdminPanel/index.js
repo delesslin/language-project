@@ -2,7 +2,7 @@ import React from 'react'
 import { isMobile } from 'react-device-detect'
 import { Route, Switch, useRouteMatch } from 'react-router-dom'
 import Page from '../../Components/Page'
-import { Words } from '../../context'
+import Words from './Words'
 import useAPI from '../../utils/hooks/useAPI'
 import BatchUpload from './BatchUpload'
 import Edit from './Edit'
@@ -46,7 +46,7 @@ export const AdminPanel = () => {
             <Edit />
           </Route>
           <Route path={path + '/:_id?'}>
-            <Landing />
+            <Words />
           </Route>
         </Switch>
       ) : (
