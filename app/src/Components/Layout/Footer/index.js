@@ -45,10 +45,8 @@ const AdminButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  ${media('<tablet')} {
-    justify-content: center;
-  }
-  ${media('<tablet')} {
+
+  ${media('<desktop')} {
     display: none;
   }
 `
