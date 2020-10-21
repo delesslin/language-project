@@ -29,7 +29,7 @@ const CardPaper = styled(Paper)`
   `
       : ``}
 `
-const PlayButton = styled(Button)`
+const Play = styled(Player)`
   display: grid;
   place-items: center;
   grid-area: play;
@@ -60,11 +60,9 @@ const WordCard = ({ data, href, link, children }) => {
   return (
     <CardPaper href={href} expanded={isExpanded}>
       {data.recordings.length < 1 ? null : (
-        <PlayButton round={true} color='green'>
-          <Player base64={data.recordings[0]}>
-            <RecordVoiceOverIcon />
-          </Player>
-        </PlayButton>
+        <Play base64={data.recordings[0]} color='green'>
+          <RecordVoiceOverIcon />
+        </Play>
       )}
 
       <EntryPaper>

@@ -1,9 +1,10 @@
-import { Fab, Grid } from '@material-ui/core'
-import React, { useEffect, useState } from 'react'
-import PlayArrowIcon from '@material-ui/icons/PlayArrow'
-import ErrorOutlineIcon from '@material-ui/icons/ErrorOutline'
+import React, { useState } from 'react'
+import { Button } from '../Surfaces/Button'
+import { RiUserVoiceLine } from 'react-icons/ri'
+import { Text } from '../Surfaces'
 
-const Player = ({ base64, children }) => {
+const Player = (props) => {
+  const { base64 } = props
   const AUDIO = new Audio(base64)
   const [isPlaying, setIsPlaying] = useState(false)
   const [error, setError] = useState(false)
@@ -24,7 +25,13 @@ const Player = ({ base64, children }) => {
       })
   }
 
-  return <div onClick={handlePlay}>{children}</div>
+  return (
+    <Button round={true} onClick={handlePlay} {...props}>
+      <Text size={1.5}>
+        <RiUserVoiceLine />
+      </Text>
+    </Button>
+  )
 }
 
 export default React.memo(Player)

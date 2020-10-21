@@ -1,18 +1,12 @@
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
+import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver'
 import React from 'react'
-import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-import CardPaper from '../../styled/Card/CardPaper'
-import { SearchResult } from '../../styled/Content'
-import { SearchResultText } from '../../styled/Content/Search'
 import useAPI from '../../utils/hooks/useAPI'
-import IconButton from '../Buttons/IconButton'
 import Player from '../Player'
 import { Button } from '../Surfaces/Button'
 import { Paper } from '../Surfaces/Paper'
-import ChipBag from './ChipBag'
-import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver'
 import { Text } from '../Surfaces/Text'
+import ChipBag from './ChipBag'
 
 const WordPaper = styled(Paper)`
   display: grid;

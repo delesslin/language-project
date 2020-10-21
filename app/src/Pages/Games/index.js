@@ -1,12 +1,11 @@
-import { Button, CircularProgress, LinearProgress } from '@material-ui/core'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { RiGamepadLine } from 'react-icons/ri'
 import Page from '../../Components/Page'
-import { Words } from '../../context'
-import SelectEnglish from './SelectEnglish'
-import uniqueRandomArray from 'unique-random-array'
-import useAPI from '../../utils/hooks/useAPI'
 import Spinner from '../../Components/Spinner'
-
+import useAPI from '../../utils/hooks/useAPI'
+import Finished from './Finished'
+import { ProgressBar } from './ProgressBar'
+import SelectEnglish from './SelectEnglish'
 // TODO: create GameContext
 // TODO: progress bar
 // TODO: mobile first
@@ -22,6 +21,7 @@ const Game = () => {
     setAnswered(-1)
   }
   const incrementProgress = (x) => {
+    console.log(x)
     if (x < 0) {
       setAnswered(0)
     }
@@ -31,17 +31,18 @@ const Game = () => {
     setProgress((prog) => prog + x)
   }
   const resetOptions = () => {
-    const random = uniqueRandomArray(lesson)
-    console.log('resetting options')
-    const arr = [random(), random(), random(), random()]
-    console.log(arr[0])
-    setOptions(arr)
+    const randoms = lesson.sort((a, b) => 0.5 - Math.random())
+    console.log(randoms)
+    const newOpts = [randoms[0], randoms[1], randoms[2], randoms[3]]
+
+    setOptions(newOpts)
   }
 
   const setupLesson = () => {
-    const randomArr = words.sort((word) => Math.random() >= 0.5)
+    const randomArr = words.sort((word) => 0.5 - Math.random())
     // setLesson to first 10 words
-    setLesson(() => randomArr.slice(0, 10))
+    setLesson(() => randomArr.slice(0, 20))
+
     setProgress(0)
     setAnswered(-1)
   }
@@ -60,25 +61,22 @@ const Game = () => {
 
   if (lesson.length < 1) {
     return (
-      <Page title='practice'>
+      <Page icon={RiGamepadLine}>
         <Spinner />
       </Page>
     )
   } else {
     if (progress >= 100) {
       return (
-        <Page title='practice'>
-          <LinearProgress variant='determinate' value={progress} />
-          <div>
-            <h4>You finished!</h4>
-          </div>
-          <Button onClick={handleReset}>PLAY ANOTHER GAME</Button>
+        <Page icon={RiGamepadLine}>
+          <ProgressBar percent={progress} />
+          <Finished reset={handleReset}></Finished>
         </Page>
       )
     }
     return (
-      <Page title='practice'>
-        <LinearProgress variant='determinate' value={progress} />
+      <Page Icon={RiGamepadLine}>
+        <ProgressBar percent={progress} />
         <SelectEnglish
           options={options}
           onAnswer={incrementProgress}

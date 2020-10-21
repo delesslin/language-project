@@ -1,4 +1,3 @@
-import { Button, Chip } from '@material-ui/core'
 import React, { useEffect } from 'react'
 import styled, { keyframes } from 'styled-components'
 import Player from '../../../Components/Player'
@@ -9,51 +8,48 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext'
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver'
 import media from 'css-in-js-media'
 import Options from '../Options'
-import { RoundButton as NextButton } from '../../../Components/Buttons/RoundButton'
-import { Paper } from '../../../Components/Surfaces'
-const GameGrid = styled.div`
+// import { RoundButton as NextButton } from '../../../Components/Buttons/RoundButton'
+import { Button, Paper, Text } from '../../../Components/Surfaces'
+const GameGrid = styled(Paper)`
   display: grid;
-  grid-template-rows: 1fr auto;
-  grid-gap: 25px;
-  margin-top: 25px;
-`
-
-const OutcomeDiv = styled.div`
-
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  place-items: center;
-  font-weight: bold;
-  grid-gap: 10px
-  border-radius: 10px;
-  padding: 7px;
-  > p {
-    text-align: center;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 'play prompt next' 'options options options';
+  ${media('<tablet')} {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 'play next' 'prompt prompt' 'options options';
   }
-`
-const moveVertical = (lean) => keyframes`
-0%: { right: 0px;}
-100% { right: ${lean !== 0 ? lean * -1 : '0px'};}
-
-
+  margin-top: 25px;
+  place-items: center;
+  grid-gap: 25px;
+  min-height: 50vh;
 `
 
-const LanguageDiv = styled(RotatedDiv)`
+const Language = styled(Paper)`
+  grid-area: prompt;
   font-size: 1.5rem;
-  font-weight: bold;
-  // padding: 5px 50px;
+
+  padding: 10px 50px;
+  transform: rotate(-2deg);
+  border-radius: 2px;
 `
-const TranslationDiv = styled(RotatedDiv)`
-  font-size: 1.2em;
-  // padding: 3px 40px;
+
+const NextButton = styled(Button)`
+  grid-area: next;
+`
+const Play = styled(Player)`
+  grid-area: play;
+  padding: 30px;
+  background-color: ${({ theme }) => theme.green};
 `
 // TODO: move this logic to ./Games
 // TODO: a game componenet should only receive lesson and incrementProgress
 const SelectEnglish = ({ options, onAnswer, status, next }) => {
   const [answer, setAnswer] = React.useState(null)
+  const [choice, setChoice] = React.useState('')
   useEffect(() => {
-    const randomArr = options.sort(() => Math.random() >= 0.5)
-    setAnswer(randomArr[0])
+    setAnswer(() => options[Math.floor(Math.random() * options.length)])
   }, [options])
 
   const handleAnswer = (id) => {
@@ -62,54 +58,36 @@ const SelectEnglish = ({ options, onAnswer, status, next }) => {
     } else {
       onAnswer(-10)
     }
+    setChoice(id)
+  }
+  const handleNext = () => {
+    setAnswer(null)
+    setChoice('')
+    next()
   }
   if (answer == null) {
     return null
   }
-
-  if (status > -1) {
-    return (
-      <GameGrid>
-        <CardGrid columns={1}>
-          <Paper success={status}>
-            {answer.recordings.length > 0 ? (
-              <NextButton variant='secondary' size='10vw' lean={-5}>
-                <Player base64={answer.recordings[0]}>
-                  <RecordVoiceOverIcon />
-                  {/* <Player base64={answer.recordings[0]} /> */}
-                </Player>
-              </NextButton>
-            ) : null}
-            <div>
-              <LanguageDiv>
-                <p>{answer.language_entry}</p>
-              </LanguageDiv>
-              <TranslationDiv>{answer.translations[0]}</TranslationDiv>
-            </div>
-            <NextButton size='15vw' onClick={next} color='primary'>
-              <div>👍</div> <NavigateNextIcon />
-            </NextButton>
-          </Paper>
-        </CardGrid>
-      </GameGrid>
-    )
-  }
   return (
     <GameGrid>
-      <CardGrid columns={1}>
-        <Paper color='light'>
-          {answer.recordings.length > 0 ? (
-            <NextButton variant='secondary' size='10vw' lean={-5}>
-              <Player base64={answer.recordings[0]}>
-                <RecordVoiceOverIcon />
-                {/* <Player base64={answer.recordings[0]} /> */}
-              </Player>
-            </NextButton>
-          ) : null}
-          <LanguageDiv>{answer.language_entry}</LanguageDiv>
-        </Paper>
-      </CardGrid>
-      <Options options={options} handleAnswer={handleAnswer} />
+      {answer.recordings.length > 0 ? (
+        <Play base64={answer.recordings[0]} color='green'></Play>
+      ) : null}
+      <Language color='green'>
+        <Text size={3}>{answer.language_entry}</Text>
+      </Language>
+
+      <Options
+        options={options}
+        handleAnswer={handleAnswer}
+        choice={choice}
+        answer={answer._id}
+      />
+      {status < 0 ? null : (
+        <NextButton onClick={handleNext} round={true} color='secondary'>
+          <div>👍</div> <NavigateNextIcon />
+        </NextButton>
+      )}
     </GameGrid>
   )
 }

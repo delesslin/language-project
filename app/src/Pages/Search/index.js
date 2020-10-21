@@ -8,6 +8,7 @@ import Results from './Results'
 import SearchButton from './SearchButton'
 import SearchField from './SearchField'
 import media from 'css-in-js-media'
+import { RiSearch2Line } from 'react-icons/ri'
 // TODO: Error check that something is actually input
 // TODO: redirect to /search/?SEARCHTERM
 export const SearchBox = styled.div`
@@ -48,7 +49,7 @@ const Search = () => {
     }
   }
   return (
-    <Page title='search'>
+    <Page Icon={RiSearch2Line}>
       <SearchBox>
         <SearchField
           loading={isSearching}

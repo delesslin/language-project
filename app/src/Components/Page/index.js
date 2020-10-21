@@ -7,19 +7,26 @@ import styled from 'styled-components'
 const PagePaper = styled(Paper)`
   grid-area: page;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
-
-  grid-template-areas: 'title' 'content';
+  grid-gap: 20px;
+  grid-template-areas: 'icon title' 'content content';
 `
 const Title = styled(Text)`
   grid-area: title;
-  padding: 20px 0px 40px 0px;
+
+  display: flex;
+  align-items: center;
 `
 const Content = styled.div`
   grid-area: content;
 `
-const Page = ({ children, title = '' }) => {
+const IconDiv = styled(Text)`
+  grid-area: icon;
+  display: grid;
+  place-items: center;
+`
+const Page = ({ children, title = '', Icon = null }) => {
   const { isLoading, words } = useAPI()
   if (isLoading) {
     return (
@@ -30,6 +37,7 @@ const Page = ({ children, title = '' }) => {
   }
   return (
     <PagePaper color='transparent'>
+      <IconDiv size={3}>{Icon == null ? null : <Icon />}</IconDiv>
       {title.length > 0 ? <Title size={2}>{title.toUpperCase()}</Title> : null}
       <Content>{children}</Content>
     </PagePaper>
