@@ -1,27 +1,28 @@
 import { Button, Grid, TextField, Typography } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
 import React, { useContext, useRef } from 'react'
+import { RiLock2Line } from 'react-icons/ri'
 import Page from '../../../Components/Page'
 import { Auth } from '../../../context'
 import useAPI from '../../../utils/hooks/useAPI'
+import useAuth from '../../../utils/hooks/useAuth'
 
 const Login = () => {
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
   const { login, error } = useAPI()
   const handleSubmit = () => {
-    console.log(emailRef.current.value)
     const email = emailRef.current.value
     const password = passwordRef.current.value
     login(email, password)
   }
 
   return (
-    <Page title='⛓ login ⛓'>
+    <Page Icon={RiLock2Line}>
       <Grid container direction='column' alignItems='center' spacing={3}>
         {error ? (
           <Grid item>
-            <Alert severity='error'>Email or password are wrong</Alert>
+            <Alert severity='error'>Email or password is wrong</Alert>
           </Grid>
         ) : null}
         <Grid item>

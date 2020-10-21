@@ -34,8 +34,13 @@ const createAdmin = async () => {
   // encrypt password
   const salt = await bcrypt.genSalt(10)
   user.password = await bcrypt.hash(password, salt)
-  const owner = await userModel.findOneAndUpdate({ username: 'admin' }, user)
+  let owner = await userModel.findOneAndUpdate({ username: 'admin' }, user)
+  if (owner == null) {
+    owner = new userModel(user)
+    owner.save()
+  }
   console.log('owner initalized')
+  console.log(owner)
 }
 createAdmin()
 
@@ -185,11 +190,12 @@ userRouter.post(
     }),
   ],
   async (req, res) => {
+    console.log(req.body)
     // get any errors that were returned by the array
     const errors = validationResult(req)
     // if there was an error, return error to client
     if (!errors.isEmpty()) {
-      console.error(errors)
+      console.error('ERRPRS', errors)
       return res.status(400).json({
         errors: errors.array(),
       })

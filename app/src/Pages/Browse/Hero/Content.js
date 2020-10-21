@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import media from 'css-in-js-media'
-import { RotatedDiv } from '../../../Components/Text'
+
+import { Paper, Text } from '../../../Components'
 const HeroContent = styled.div`
   padding: 20px;
   grid-area: content;
@@ -9,26 +9,30 @@ const HeroContent = styled.div`
   place-items: center;
   grid-gap: 10px;
 `
-const Primary = styled(RotatedDiv)`
+const Primary = styled(Paper)`
   text-align: center;
-  padding: 0px 30px;
+  padding: 10px 50px;
   background-color: ${({ theme }) => theme.secondary};
   font-size: 1.2rem;
+  border-radius: 2px;
+  transform: rotate(${() => (0.5 - Math.floor() ? '-2' : '2')}deg);
 `
-const Secondary = styled(RotatedDiv)`
+const Secondary = styled(Paper)`
   text-align: center;
-  padding: 0px 30px;
+  padding: 10px 40px;
   background-color: ${({ theme }) => theme.green};
+  border-radius: 2px;
+  transform: rotate(${() => (0.5 - Math.floor() ? '-2' : '2')}deg);
 `
 
 const Content = ({ word }) => {
   return (
     <HeroContent>
       <Primary>
-        <p>{word.language_entry}</p>
+        <Text size={2}>{word.language_entry}</Text>
       </Primary>
       <Secondary>
-        <p>{word.translations[0]}</p>
+        <Text size={1.7}>{word.translations[0]}</Text>
       </Secondary>
     </HeroContent>
   )
