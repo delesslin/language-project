@@ -82,12 +82,6 @@ const Header = () => {
   const history = useHistory()
   return (
     <HeaderDiv disabled={location.pathname == '/'}>
-      <Back disabled={location.pathname == '/'}>
-        <NavButton variant='transparent' to='/browse'>
-          <ArrowBackIcon />
-        </NavButton>
-      </Back>
-
       <Title angle={1}>{'Catawba Language Project'.toUpperCase()}</Title>
 
       <Nav>
