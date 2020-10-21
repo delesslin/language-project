@@ -7,8 +7,8 @@ import WordDetail from './WordDetail'
 const LandingDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr;
-  grid-template-areas: 'nav' 'content';
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas: 'header' 'nav' 'content';
   grid-gap: 20px;
 `
 const AdminNav = styled.div`
@@ -32,7 +32,7 @@ const Link = ({ children, to }) => {
     </NavButton>
   )
 }
-const Landing = () => {
+const Landing = ({ children }) => {
   const { words, reload, roles } = useAPI()
   const history = useAPI()
   const params = useParams()
@@ -58,7 +58,7 @@ const Landing = () => {
             <Text>users</Text>
           </Link>
         </AdminNav>
-        <WordDetail />
+        <Content>{children}</Content>
       </LandingDiv>
     </Page>
   )

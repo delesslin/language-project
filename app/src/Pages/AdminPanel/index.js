@@ -24,7 +24,7 @@ export const AdminPanel = () => {
     )
   }
   return (
-    <>
+    <Landing>
       {loggedIn ? (
         <Switch>
           <Route path={path + '/new'}>
@@ -52,6 +52,6 @@ export const AdminPanel = () => {
       ) : (
         <Login />
       )}
-    </>
+    </Landing>
   )
 }

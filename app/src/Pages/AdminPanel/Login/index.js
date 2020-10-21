@@ -6,7 +6,6 @@ import Page from '../../../Components/Page'
 import { Auth } from '../../../context'
 import useAPI from '../../../utils/hooks/useAPI'
 import useAuth from '../../../utils/hooks/useAuth'
-
 const Login = () => {
   const emailRef = useRef(null)
   const passwordRef = useRef(null)
@@ -18,32 +17,26 @@ const Login = () => {
   }
 
   return (
-    <Page Icon={RiLock2Line}>
-      <Grid container direction='column' alignItems='center' spacing={3}>
-        {error ? (
-          <Grid item>
-            <Alert severity='error'>Email or password is wrong</Alert>
-          </Grid>
-        ) : null}
+    <Grid container direction='column' alignItems='center' spacing={3}>
+      {error ? (
         <Grid item>
-          <Typography>Email</Typography>
-          <TextField
-            inputRef={emailRef}
-            variant='outlined'
-            required
-          ></TextField>
+          <Alert severity='error'>Email or password is wrong</Alert>
         </Grid>
-        <Grid item>
-          <Typography>Password</Typography>
-          <TextField inputRef={passwordRef} variant='outlined'></TextField>
-        </Grid>
-        <Grid item>
-          <Button variant='contained' onClick={handleSubmit}>
-            Submit
-          </Button>
-        </Grid>
+      ) : null}
+      <Grid item>
+        <Typography>Email</Typography>
+        <TextField inputRef={emailRef} variant='outlined' required></TextField>
       </Grid>
-    </Page>
+      <Grid item>
+        <Typography>Password</Typography>
+        <TextField inputRef={passwordRef} variant='outlined'></TextField>
+      </Grid>
+      <Grid item>
+        <Button variant='contained' onClick={handleSubmit}>
+          Submit
+        </Button>
+      </Grid>
+    </Grid>
   )
 }
 
