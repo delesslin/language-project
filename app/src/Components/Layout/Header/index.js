@@ -1,4 +1,3 @@
-import ArrowBackIcon from '@material-ui/icons/ArrowBack'
 import HomeIcon from '@material-ui/icons/Home'
 import SearchIcon from '@material-ui/icons/Search'
 import VideogameAssetIcon from '@material-ui/icons/VideogameAsset'
@@ -6,19 +5,10 @@ import media from 'css-in-js-media'
 import React from 'react'
 import { useHistory, useLocation } from 'react-router'
 import styled from 'styled-components'
-import useAPI from '../../../utils/hooks/useAPI'
-import { Nav, NavButton } from '../Nav'
 import { hexColor } from '../../Buttons/IconButton'
+import { Nav, NavButton } from '../Nav'
+import { FaKeyboard } from 'react-icons/fa'
 
-// const random = () => Math.floor(Math.random() * 10 - 5)
-// const rotate = (a = 5) => {
-//   return `
-//   transform: rotate(${a}deg);
-//   > * {
-//     transform: rotate(${-a}deg);
-//   }
-//   `
-// }
 export const HeaderDiv = styled.header`
   padding: 10px;
   display: grid;
@@ -93,6 +83,9 @@ const Header = () => {
         </NavButton>
         <NavButton to='/game'>
           <VideogameAssetIcon />
+        </NavButton>
+        <NavButton to='/type'>
+          <FaKeyboard />
         </NavButton>
       </Nav>
     </HeaderDiv>
