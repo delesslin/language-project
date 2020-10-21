@@ -27,18 +27,11 @@ const IconDiv = styled(Text)`
 `
 export const Page = ({ children, title = '', Icon = null }) => {
   const { isLoading, words } = useAPI()
-  if (isLoading) {
-    return (
-      <Paper color='transparent'>
-        <Spinner />
-      </Paper>
-    )
-  }
   return (
     <PagePaper color='transparent'>
       <IconDiv size={3}>{Icon == null ? null : <Icon />}</IconDiv>
       {title.length > 0 ? <Title size={2}>{title.toUpperCase()}</Title> : null}
-      <Content>{children}</Content>
+      <Content>{isLoading ? <Spinner /> : children}</Content>
     </PagePaper>
   )
 }
