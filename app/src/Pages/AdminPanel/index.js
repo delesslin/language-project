@@ -26,31 +26,29 @@ export const AdminPanel = () => {
   return (
     <>
       {loggedIn ? (
-        <Words.Provider>
-          <Switch>
-            <Route path={path + '/new'}>
-              <NewWord />
-            </Route>
-            <Route path={path + '/bulk-new'}>
-              <BatchUpload />
-            </Route>
-            <Route path={path + '/export'}>
-              <Export />
-            </Route>
-            <Route path={path + '/users/:_id?'}>
-              <Users />
-            </Route>
-            <Route path={path + '/signup'}>
-              <Signup />
-            </Route>
-            <Route path={path + '/edit/:_id'}>
-              <Edit />
-            </Route>
-            <Route path={path + '/:_id?'}>
-              <Landing />
-            </Route>
-          </Switch>
-        </Words.Provider>
+        <Switch>
+          <Route path={path + '/new'}>
+            <NewWord />
+          </Route>
+          <Route path={path + '/bulk-new'}>
+            <BatchUpload />
+          </Route>
+          <Route path={path + '/export'}>
+            <Export />
+          </Route>
+          <Route path={path + '/users/:_id?'}>
+            <Users />
+          </Route>
+          <Route path={path + '/signup'}>
+            <Signup />
+          </Route>
+          <Route path={path + '/edit/:_id'}>
+            <Edit />
+          </Route>
+          <Route path={path + '/:_id?'}>
+            <Landing />
+          </Route>
+        </Switch>
       ) : (
         <Login />
       )}

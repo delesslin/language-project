@@ -6,10 +6,11 @@ const useAuth = () => {
   const [headers, setHeaders] = useState({ Authorization: `Bearer ` })
   const [error, setError] = useState(false)
 
-  const login = (email, password) => {
-    Auth.login(email, password, headers)
+  const login = async (email, password) => {
+    return Auth.login(email, password, headers)
       .then((res) => {
-        setHeaders({ Authorization: `Bearer ${res.data.headers}` })
+        console.log(res.data)
+        setHeaders({ headers: { authorization: `Bearer ${res.data.token}` } })
         setLoggedIn(true)
       })
       .catch((e) => setError(true))

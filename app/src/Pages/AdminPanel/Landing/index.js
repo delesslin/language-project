@@ -8,10 +8,9 @@ import useAPI from '../../../utils/hooks/useAPI'
 import WordDetail from './WordDetail'
 
 const Landing = () => {
-  const { words, refetchWords } = useAPI()
+  const { words, reload } = useAPI()
   const history = useAPI()
   const params = useParams()
-  useEffect(() => refetchWords(), [])
   useEffect(() => console.log(params), [params])
   return (
     <>

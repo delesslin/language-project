@@ -2,16 +2,18 @@ import React, { useEffect } from 'react'
 import { useHistory } from 'react-router'
 import { APIContext, initState } from './APIContext'
 import genTags from './genTags'
-import useWordsAPI from './useWordsAPI'
+
 import useUsersAPI from './useUsersAPI'
 import useAuth from '../useAuth'
+import WordsAPI from './WordsAPI'
 
 export const APIProvider = ({ children }) => {
   const [{ words, isLoading, tags, error }, setState] = React.useState(
     initState
   )
-  const WordsAPI = useWordsAPI()
-  const { loggedIn, login, error: authError, headers } = useAuth()
+
+  const Auth = useAuth()
+  const { loggedIn, login, error: authError, headers } = Auth
   const setWords = async (words) => {
     const tags = await genTags(words)
     console.log(Array.isArray(tags))
@@ -32,15 +34,27 @@ export const APIProvider = ({ children }) => {
     })
   }
 
+  const reload = async () => {
+    setIsLoading(true)
+    await WordsAPI.read(headers).then(setWords)
+    setIsLoading(false)
+  }
   useEffect(() => {
     if (words.length == 0) {
-      WordsAPI.read().then(setWords)
+      reload()
     }
   }, [])
-
+  const updateWord = async (_id, obj) => {
+    console.log(headers)
+    const res = await WordsAPI.update(_id, obj, headers)
+    console.log(res)
+    await reload()
+    console.log('DONE')
+  }
   return (
     <APIContext.Provider
       value={{
+        updateWord,
         isLoading,
         words,
         tags,
@@ -49,6 +63,7 @@ export const APIProvider = ({ children }) => {
         authError,
         headers,
         error,
+        reload,
       }}
     >
       {children}

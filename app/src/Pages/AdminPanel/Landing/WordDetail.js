@@ -83,7 +83,7 @@ const ScrollTranslation = styled.div`
   }
 `
 const WordDetail = () => {
-  const { words, refetchWords, isLoading, headers } = useAPI()
+  const { words, isLoading, updateWord } = useAPI()
   const params = useParams()
   const [currentWord, setCurrentWord] = React.useState(null)
   const history = useHistory()
@@ -101,9 +101,8 @@ const WordDetail = () => {
     history.push(`/admin/${words[i]._id}`)
   }
   const onSave = (obj) => {
-    WordsAPI.update(params._id, obj)
+    updateWord(params._id, obj)
       .then((e) => {
-        refetchWords()
         setCurrentWord(null)
         history.push(`/admin`)
       })

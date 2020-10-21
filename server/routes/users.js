@@ -201,7 +201,7 @@ userRouter.post(
       })
     }
     // destructure request body
-    const { email, password } = req.body
+    const { email, password, roles } = req.body
     try {
       // see if there is a user with this email
       let user = await userModel.findOne({ email })
@@ -224,6 +224,7 @@ userRouter.post(
       const payload = {
         user: {
           id: user.id,
+          roles,
         },
       }
       // create JWT token
