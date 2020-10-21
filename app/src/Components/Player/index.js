@@ -3,7 +3,7 @@ import { Button } from '../Surfaces/Button'
 import { RiUserVoiceLine } from 'react-icons/ri'
 import { Text } from '../Surfaces'
 
-const Player = (props) => {
+const PlayerComponent = (props) => {
   const { base64 } = props
   const AUDIO = new Audio(base64)
   const [isPlaying, setIsPlaying] = useState(false)
@@ -34,4 +34,4 @@ const Player = (props) => {
   )
 }
 
-export default React.memo(Player)
+export const Player = React.memo(PlayerComponent)

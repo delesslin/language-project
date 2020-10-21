@@ -1,7 +1,7 @@
 import { Button, Grid, Paper } from '@material-ui/core'
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import Player from '../../Player'
+import { Player } from '../../'
 import Recorder from '../../Recorder'
 import Context from '../context'
 import { ADD_MULTI, REMOVE_MULTI } from '../reducer'

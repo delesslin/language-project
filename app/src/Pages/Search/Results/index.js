@@ -2,10 +2,8 @@ import React from 'react'
 import { RiMoreFill } from 'react-icons/ri'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { Button, Paper, Text } from '../../../Components'
-import Player from '../../../Components/Player'
-import Spinner from '../../../Components/Spinner'
-import WordCard from '../../../Components/WordCard'
+import { Button, Paper, Text, Player, Spinner } from '../../../Components'
+
 import Request from './Request'
 
 const ResultsDiv = styled.div`

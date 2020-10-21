@@ -1,28 +1,13 @@
-import { Fab, IconButton } from '@material-ui/core'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver'
+import media from 'css-in-js-media'
 import React from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import { RoundButton } from '../../../Components/Buttons/RoundButton'
-import Player from '../../../Components/Player'
-import { Paper, Text } from '../../../Components/Surfaces'
-import { RotatedText } from '../../../Components/Text'
-import { Card, CardGrid } from '../../../styled/Card'
-import Content from './Content'
-import media from 'css-in-js-media'
-const HeroGrid = styled.div`
-  display: grid;
-  place-items: center;
-`
-const IconDiv = styled.div`
-  display: grid;
-  place-items: center;
-`
-// TODO: refactor HERO to have left and right buttons
-// TODO: refactor HERO to be taller
+
+import { Paper, Player } from '../../../Components'
 
 const HeroPaper = styled(Paper)`
   display: grid;

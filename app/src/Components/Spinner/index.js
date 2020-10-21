@@ -9,7 +9,7 @@ const SpinnerWrapper = styled.div`
   place-items: center;
 `
 
-const Spinner = ({ theme, size = 30 }) => {
+const SpinnerComponent = ({ theme, size = 30 }) => {
   return (
     <SpinnerWrapper>
       {/* <ScalingSquaresSpinner color='#000000' size='200' /> */}
@@ -21,5 +21,6 @@ const Spinner = ({ theme, size = 30 }) => {
     </SpinnerWrapper>
   )
 }
+export const Spinner = withTheme(SpinnerComponent)
 
-export default withTheme(Spinner)
+export default withTheme(SpinnerComponent)

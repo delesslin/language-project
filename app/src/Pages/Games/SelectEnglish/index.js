@@ -1,15 +1,10 @@
-import React, { useEffect } from 'react'
-import styled, { keyframes } from 'styled-components'
-import Player from '../../../Components/Player'
-import { RotatedDiv, RotatedText } from '../../../Components/Text'
-import { Card, CardGrid } from '../../../styled/Card'
-import IconButton from '../../../Components/Buttons/IconButton'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext'
-import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver'
 import media from 'css-in-js-media'
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
+import { Button, Paper, Player, Text } from '../../../Components'
 import Options from '../Options'
-// import { RoundButton as NextButton } from '../../../Components/Buttons/RoundButton'
-import { Button, Paper, Text } from '../../../Components/Surfaces'
+
 const GameGrid = styled(Paper)`
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;

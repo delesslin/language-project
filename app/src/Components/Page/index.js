@@ -1,9 +1,8 @@
 import React from 'react'
-import { Page as StyledPage, PageContent, PageTitle } from '../../styled/Layout'
+import styled from 'styled-components'
+import { Paper, Text } from '../'
 import useAPI from '../../utils/hooks/useAPI'
 import Spinner from '../Spinner'
-import { Paper, Text } from '../'
-import styled from 'styled-components'
 const PagePaper = styled(Paper)`
   grid-area: page;
   display: grid;
@@ -26,7 +25,7 @@ const IconDiv = styled(Text)`
   display: grid;
   place-items: center;
 `
-const Page = ({ children, title = '', Icon = null }) => {
+export const Page = ({ children, title = '', Icon = null }) => {
   const { isLoading, words } = useAPI()
   if (isLoading) {
     return (

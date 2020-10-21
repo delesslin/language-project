@@ -1,14 +1,10 @@
-import { Fab } from '@material-ui/core'
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
+import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver'
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { Paper } from '../../Components'
-import Player from '../../Components/Player'
-import { Button, Text } from '../../Components/Surfaces'
-import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver'
-import Extra from './Extra'
-import media from 'css-in-js-media'
+import { Button, Paper, Player, Text } from '../../Components'
+
 const CardPaper = styled(Paper)`
   min-height: 150px;
   transition: all 0.2s;
