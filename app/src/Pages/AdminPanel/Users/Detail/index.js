@@ -21,9 +21,9 @@ const Detail = ({
   const [locked, setLocked] = useState(true)
 
   const { _id } = useParams()
-  const history = useAPI()
+  const history = useHistory()
   const [user, setUser] = useState(null)
-  const { Users } = useAPI()
+  const { deleteUser, updateUser } = useAPI()
 
   const lock = (bool) => setLocked(bool)
   useEffect(() => {
@@ -43,7 +43,6 @@ const Detail = ({
   }, [_id, users])
 
   const handleRoleChange = (e, role) => {
-    const checked = e.target.checked
     console.log('role change')
     setUser((user) => {
       if (user.roles.includes(role)) {
@@ -62,7 +61,7 @@ const Detail = ({
     })
   }
   const onSubmit = () => {
-    Users.update(user)
+    updateUser(user)
       .then(() => {
         refresh()
         console.log('success!')
@@ -71,7 +70,7 @@ const Detail = ({
       .catch(console.error)
   }
   const onDelete = () => {
-    Users.delete(_id)
+    deleteUser(_id)
       .then(() => {
         setUser(null)
         history.push('/admin/users')

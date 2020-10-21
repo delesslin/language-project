@@ -70,6 +70,18 @@ export const APIProvider = ({ children }) => {
     await reload()
     console.log('DONE')
   }
+  const readUsers = () => {
+    return Auth.read(options)
+  }
+  const createUser = (payload) => {
+    return Auth.create(payload, options)
+  }
+  const deleteUser = (_id) => {
+    return Auth.delete(_id, options)
+  }
+  const updateUser = (user) => {
+    return Auth.update(user, options)
+  }
   return (
     <APIContext.Provider
       value={{
@@ -82,6 +94,11 @@ export const APIProvider = ({ children }) => {
         error,
         reload,
         roles,
+        getUsers: readUsers,
+        readUsers,
+        createUser,
+        deleteUser,
+        updateUser,
       }}
     >
       {children}

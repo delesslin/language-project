@@ -54,7 +54,7 @@ const Landing = ({ children }) => {
           </div>
         </Header>
         <AdminNav>
-          {roles.includes('editor') || roles.includes('admin') ? (
+          {roles.includes('admin') ? (
             <>
               <Link to='/admin/new'>
                 <Text>add new word</Text>

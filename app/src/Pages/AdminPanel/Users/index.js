@@ -53,11 +53,11 @@ const Users = () => {
   const [users, setUsers] = useState([])
 
   const [unauthorized, setUnauthorized] = useState(true)
-  const history = useAPI()
+  const history = useHistory()
 
-  const { Users } = useAPI()
-  const getUsers = () => {
-    Users.read()
+  const { getUsers } = useAPI()
+  const fetchUsers = () => {
+    getUsers()
       .then((res) => {
         setUsers(res.data)
         setUnauthorized(false)
@@ -67,7 +67,7 @@ const Users = () => {
       })
   }
   useEffect(() => {
-    getUsers()
+    fetchUsers()
   }, [])
   const handleClick = (_id) => {
     history.push(`/admin/users/${_id}`)

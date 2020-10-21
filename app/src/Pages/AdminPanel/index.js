@@ -14,7 +14,7 @@ import Signup from './Signup'
 import Users from './Users'
 
 export const AdminPanel = () => {
-  const { loggedIn } = useAPI()
+  const { loggedIn, roles } = useAPI()
   const { path } = useRouteMatch()
   if (isMobile) {
     return (
@@ -30,18 +30,22 @@ export const AdminPanel = () => {
           <Route path={path + '/new'}>
             <NewWord />
           </Route>
-          <Route path={path + '/bulk-new'}>
-            <BatchUpload />
-          </Route>
-          <Route path={path + '/export'}>
-            <Export />
-          </Route>
-          <Route path={path + '/users/:_id?'}>
-            <Users />
-          </Route>
-          <Route path={path + '/signup'}>
-            <Signup />
-          </Route>
+          {roles.includes('admin') ? (
+            <>
+              <Route path={path + '/bulk-new'}>
+                <BatchUpload />
+              </Route>
+              <Route path={path + '/export'}>
+                <Export />
+              </Route>
+              <Route path={path + '/users/:_id?'}>
+                <Users />
+              </Route>
+              <Route path={path + '/signup'}>
+                <Signup />
+              </Route>
+            </>
+          ) : null}
           <Route path={path + '/edit/:_id'}>
             <Edit />
           </Route>

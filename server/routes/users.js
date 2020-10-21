@@ -142,6 +142,7 @@ userRouter.post(
 // UPDATE
 // ======================
 userRouter.patch('/', async (req, res) => {
+  console.log('UPDATE USER')
   // console.log('REQ')
   const user = req.body
   // console.log(user)
@@ -149,7 +150,10 @@ userRouter.patch('/', async (req, res) => {
     res.sendStatus(403)
   }
   try {
-    await userModel.findOneAndUpdate({ _id: user._id }, user)
+    await userModel.findOneAndUpdate(
+      { _id: user._id },
+      { ...user, roles: user.roles }
+    )
     // if (!Words) res.status(404).send('No item found')
     res.status(200).send()
   } catch (err) {

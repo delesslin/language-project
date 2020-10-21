@@ -10,14 +10,14 @@ const Signup = () => {
   const emailRef = useRef(null)
   const passRef = useRef(null)
   const [error, setError] = useState(false)
-  const history = useAPI()
-  const { headers } = useAPI()
-  const { Users } = useAPI()
+  const history = useHistory()
+  const { createUser } = useAPI()
   const handleSubmit = () => {
-    Users.create({
+    createUser({
       username: userRef.current.value,
       email: emailRef.current.value,
       password: passRef.current.value,
+      roles: ['user'],
     })
       .then((res) => {
         history.push('/admin/users')
