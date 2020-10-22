@@ -17,12 +17,12 @@ const HeroPaper = styled(Paper)`
   grid-template-columns: 100px 1fr 1fr 100px;
   grid-template-rows: 1fr auto;
   grid-template-areas: 'back content content next' 'back play more next';
-  ${media('<phone')} {
+  ${media('<tablet')} {
     grid-template-rows: auto 1fr auto;
     grid-template-columns: auto 1fr 1fr auto;
     grid-template-areas: '. back next .' '. content content .' '. play more .';
   }
-  ${media('>tablet')} {
+  ${media('>=tablet')} {
     grid-template-columns: 100px 1fr 1fr 1fr 100px;
     grid-template-areas: 'back play content more next';
   }
@@ -84,7 +84,7 @@ const HeroBack = styled(Button)`
 
     box-shadow: 2px 2px 1px #000;
   }
-  ${media('>phone')} {
+  ${media('>tablet')} {
     place-self: center;
     left: -35px;
     &:hover {
@@ -104,7 +104,7 @@ const HeroNext = styled(Button)`
     box-shadow: 3px 3px 2px #000;
   }
   box-shadow: 2px 2px 1px #000;
-  ${media('>phone')} {
+  ${media('>tablet')} {
     left: 35px;
     &:hover {
       left: 40px;
