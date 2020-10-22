@@ -17,7 +17,7 @@ const HeroPaper = styled(Paper)`
   grid-template-columns: 100px 1fr 1fr 100px;
   grid-template-rows: 1fr auto;
   grid-template-areas: 'back content content next' 'back play more next';
-  ${media('<tablet')} {
+  ${media('<desktop')} {
     grid-template-rows: auto 1fr auto;
     grid-template-columns: auto 1fr 1fr auto;
     grid-template-areas: '. back next .' '. content content .' '. play more .';
