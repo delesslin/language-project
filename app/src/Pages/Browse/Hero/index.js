@@ -22,7 +22,7 @@ const HeroPaper = styled(Paper)`
     grid-template-columns: auto 1fr 1fr auto;
     grid-template-areas: '. back next .' '. content content .' '. play more .';
   }
-  ${media('>=tablet')} {
+  ${media('>=desktop')} {
     grid-template-columns: 100px 1fr 1fr 1fr 100px;
     grid-template-areas: 'back play content more next';
   }
