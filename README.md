@@ -1,20 +1,21 @@
 # TODOs 📎
 
-1.  Add second exercise
-2.  Implement request page
-3.  Overflow scroll on Image Modal
-4.  Remove console.logs
-5. Sanitize data so that strings don't begin or end with ' '
-6. Search should use query string to make shareable and navigable
-7. image search by wikipedia article, not by whatever is happening now
-8. Refactor React app state to only use the native react Context and State
+1.  Refactor media queries into theme queries
+2.  Refactor image search to use wikipedia images by article
+3.  Implement request page
+4.  Overflow scroll on Image Modal
+5.  Remove console.logs
+6. Sanitize data so that strings don't begin or end with ' '
+7. Search should use query string to make shareable and navigable
+8. image search by wikipedia article, not by whatever is happening now
+9. Refactor React app state to only use the native react Context and State
    1. Only remaining componenet using ATOMS is KeyboardComponent
    2. Refactor keyboard componenet anyways to be responsive
-9.  Refactor /styled into isolated Components <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
-10. Add custom image url to edit/new word
-11. Consolidate batch-upload & word-upload...should presuume an Array of length > 0
-12. Stop multiple api calls from react app
-13. Export data as .csv file
+10. Refactor /styled into isolated Components <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
+11. Add custom image url to edit/new word
+12. Consolidate batch-upload & word-upload...should presuume an Array of length > 0
+13. Stop multiple api calls from react app
+14. Export data as .csv file
 
 # Minimum Viable Product
 
@@ -22,7 +23,7 @@
 
 #### Public Features
 
-- Users can play at least 2 games to practice words
+- Users can play at least 2 Exercises to practice words
 - App easily available to the public on android, iOS, and web platforms (defer to MVP 2)
 - Users can search for words
 - Users can hear pronunciations for all words
