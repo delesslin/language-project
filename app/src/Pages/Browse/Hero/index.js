@@ -37,7 +37,6 @@ const HeroPaper = styled(Paper)`
     grid-template-rows: auto 1fr auto;
     grid-template-columns: auto 1fr 1fr auto;
     grid-template-areas: '. back next .' '. content content .' '. play more .';
-    background-color: red;
   }
   @media ${device.tablet} {
     grid-template-columns: 100px 1fr 1fr 100px;

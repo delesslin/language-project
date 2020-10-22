@@ -8,6 +8,7 @@ import Hero from './Hero'
 import TagCard from './TagCard'
 const HomeGrid = styled.div`
   display: grid;
+  grid-columns: 1fr;
   grid-rows: minmax(50vh, auto) auto;
   grid-auto-flow: rows;
   grid-gap: 50px;
