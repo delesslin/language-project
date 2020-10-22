@@ -37,17 +37,17 @@ const HeroPaper = styled(Paper)`
     grid-template-rows: auto 1fr auto;
     grid-template-columns: auto 1fr 1fr auto;
     grid-template-areas: '. back next .' '. content content .' '. play more .';
-  }
-  @media ${device.tablet} {
-    grid-template-columns: 100px 1fr 1fr 100px;
-    grid-template-rows: 1fr auto;
-    grid-template-areas: 'back content content next' 'back play more next';
-  }
-  @media ${device.laptop} {
-    grid-template-rows: 1fr;
-    grid-template-columns: 100px 1fr 1fr 1fr 100px;
-    grid-template-areas: 'back play content more next';
-    place-items: center;
+    @media ${device.tablet} {
+      grid-template-columns: auto 1fr 1fr auto;
+      grid-template-rows: 1fr auto;
+      grid-template-areas: 'back content content next' 'back play more next';
+      @media ${device.laptop} {
+        grid-template-rows: 1fr;
+        grid-template-columns: 100px 1fr 1fr 1fr 100px;
+        grid-template-areas: 'back play content more next';
+        place-items: center;
+      }
+    }
   }
 `
 const Play = styled(Player)`
