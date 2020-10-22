@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import { Button, Paper, Player, Text } from '../../Components'
-
+import media from 'css-in-js-media'
 const CardPaper = styled(Paper)`
   min-height: 150px;
   transition: all 0.2s;
@@ -14,6 +14,10 @@ const CardPaper = styled(Paper)`
   grid-template-areas: 'play word more' 'play english more' 'extra extra extra';
   place-items: center;
   padding: 10px;
+  ${media('<phone')} {
+    grid-template-rows: auto auto;
+    grid-template-areas: 'play word .' 'more english .';
+  }
 
   ${({ expanded }) =>
     expanded

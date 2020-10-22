@@ -40,6 +40,7 @@ const Play = styled(Player)`
   }
   bottom: -20px;
   box-shadow: 2px 2px 2px #000;
+
   ${media('>tablet')} {
     width: 150px;
     height: 150px;
@@ -71,18 +72,24 @@ const More = styled(Button)`
 `
 
 const HeroBack = styled(Button)`
-  place-self: center;
   grid-area: back;
   display: grid;
   place-items: center;
   position: relative;
-  left: -35px;
-  bottom: 0px;
+  bottom: 20px;
+
   &:hover {
-    left: -40px;
+    left: -10px;
     box-shadow: 3px 3px 2px #000;
 
     box-shadow: 2px 2px 1px #000;
+  }
+  ${media('>phone')} {
+    place-self: center;
+    left: -35px;
+    &:hover {
+      left: -40px;
+    }
   }
 `
 const HeroNext = styled(Button)`
@@ -91,12 +98,18 @@ const HeroNext = styled(Button)`
   display: grid;
   place-items: center;
   position: relative;
-  left: 35px;
+  bottom: 20px;
   &:hover {
-    left: 40px;
+    left: 10px;
     box-shadow: 3px 3px 2px #000;
   }
   box-shadow: 2px 2px 1px #000;
+  ${media('>phone')} {
+    left: 35px;
+    &:hover {
+      left: 40px;
+    }
+  }
 `
 
 const Hero = ({ word, handleIncrement = (i) => console.log(i) }) => {
