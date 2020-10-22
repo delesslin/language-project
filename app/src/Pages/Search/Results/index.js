@@ -73,7 +73,7 @@ const Results = ({ loading, results }) => {
             </Result>
           )
         })}
-        <Request />
+        {/* <Request /> */}
       </ResultsDiv>
     )
   } else {
