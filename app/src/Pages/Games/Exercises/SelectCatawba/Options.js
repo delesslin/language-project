@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
-import { Paper, Text } from '../../../../Components'
+import { Chip, Paper, Text } from '../../../../Components'
 
 const OptionsGrid = styled.div`
   grid-area: options;
@@ -12,7 +12,7 @@ const OptionsGrid = styled.div`
   }
 `
 
-const OptionPaper = styled(Paper)`
+const OptionPaper = styled(Chip)`
   transition: all 0.3s;
   opacity: 1;
 

@@ -3,7 +3,7 @@ import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver'
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { Button, Paper, Player, Text } from '../../Components'
+import { Button, Chip, Paper, Player, Text } from '../../Components'
 import media from 'css-in-js-media'
 const CardPaper = styled(Paper)`
   min-height: 150px;
@@ -37,7 +37,7 @@ const Play = styled(Player)`
 const MoreButton = styled(Button)`
   grid-area: more;
 `
-const EntryPaper = styled(Paper)`
+const EntryPaper = styled(Chip)`
   padding: 20px 50px;
   border-radius: 2px;
   grid-area: word;

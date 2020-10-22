@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Paper } from './Paper'
 import media from 'css-in-js-media'
-export const Button = styled(Paper)`
+export const StyledButton = styled(Paper)`
   transition: all 0.2s;
   opacity: 1;
   position: relative;
@@ -60,3 +60,12 @@ ${({ round = false, size = 3 }) =>
     }
 `}
 `
+export const Button = (props) => {
+  const { color = 'primary' } = props
+
+  return (
+    <StyledButton {...props} color={color}>
+      {props.children}
+    </StyledButton>
+  )
+}

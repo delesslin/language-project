@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import media from 'css-in-js-media'
-import { Button, Paper, Text } from '../../Components'
+import { Button, Chip, Paper, Text } from '../../Components'
 import ReplayIcon from '@material-ui/icons/Replay'
 const FinishPaper = styled(Paper)`
   display: grid;
@@ -14,7 +14,7 @@ const FinishPaper = styled(Paper)`
   min-height: 50vh;
   background-color: ${({ theme }) => theme.green};
 `
-const Title = styled(Paper)`
+const Title = styled(Chip)`
   grid-area: prompt;
   padding: 10px 30px;
   border-radius: 2px;

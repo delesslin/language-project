@@ -28,7 +28,7 @@ body,
   height: 100%;
 }
 `
-// Move WordProvider to Pages
+
 export const App = () => {
   return (
     <React.Fragment>
