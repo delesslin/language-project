@@ -9,22 +9,45 @@ import styled from 'styled-components'
 
 import { Button, Paper, Player } from '../../../Components'
 import Content from './Content'
+const size = {
+  mobileS: '320px',
+  mobileM: '375px',
+  mobileL: '425px',
+  tablet: '768px',
+  laptop: '1024px',
+  laptopL: '1440px',
+  desktop: '2560px',
+}
+export const device = {
+  mobileS: `(min-width: ${size.mobileS})`,
+  mobileM: `(min-width: ${size.mobileM})`,
+  mobileL: `(min-width: ${size.mobileL})`,
+  tablet: `(min-width: ${size.tablet})`,
+  laptop: `(min-width: ${size.laptop})`,
+  laptopL: `(min-width: ${size.laptopL})`,
+  desktop: `(min-width: ${size.desktop})`,
+  desktopL: `(min-width: ${size.desktop})`,
+}
 
 const HeroPaper = styled(Paper)`
   display: grid;
   place-items: center;
   min-height: 300px;
-  grid-template-columns: 100px 1fr 1fr 100px;
-  grid-template-rows: 1fr auto;
-  grid-template-areas: 'back content content next' 'back play more next';
-  ${media('<desktop')} {
+  @media ${device.mobileS} {
     grid-template-rows: auto 1fr auto;
     grid-template-columns: auto 1fr 1fr auto;
     grid-template-areas: '. back next .' '. content content .' '. play more .';
   }
-  ${media('>=desktop')} {
+  @media ${device.tablet} {
+    grid-template-columns: 100px 1fr 1fr 100px;
+    grid-template-rows: 1fr auto;
+    grid-template-areas: 'back content content next' 'back play more next';
+  }
+  @media ${device.laptop} {
+    grid-template-rows: 1fr;
     grid-template-columns: 100px 1fr 1fr 1fr 100px;
     grid-template-areas: 'back play content more next';
+    place-items: center;
   }
 `
 const Play = styled(Player)`
@@ -41,7 +64,7 @@ const Play = styled(Player)`
   bottom: -20px;
   box-shadow: 2px 2px 2px #000;
 
-  ${media('>desktop')} {
+  ${media('>tablet')} {
     width: 150px;
     height: 150px;
     bottom: 0px;
@@ -84,7 +107,7 @@ const HeroBack = styled(Button)`
 
     box-shadow: 2px 2px 1px #000;
   }
-  ${media('>tablet')} {
+  ${media('>phone')} {
     place-self: center;
     left: -35px;
     &:hover {
@@ -104,7 +127,7 @@ const HeroNext = styled(Button)`
     box-shadow: 3px 3px 2px #000;
   }
   box-shadow: 2px 2px 1px #000;
-  ${media('>tablet')} {
+  ${media('>phone')} {
     left: 35px;
     &:hover {
       left: 40px;
