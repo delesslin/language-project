@@ -1,20 +1,20 @@
 # TODOs 📎
 
-1. Create
-2. Implement audio play in game - refactor Player to usePlayer
-3. Remove Admin login on cell
-4.  Stop multiple api calls from react app
-5.  Refactor /styled into isolated Components <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
-6.  Remove console.logs
-7. Sanitize data so that strings don't begin or end with ' '
-8. Search should use query string to make shareable and navigable
-9. Refactor React app state to only use the native react Context and State
+1.  Add second exercise
+2.  Implement request page
+3.  Overflow scroll on Image Modal
+4.  Remove console.logs
+5. Sanitize data so that strings don't begin or end with ' '
+6. Search should use query string to make shareable and navigable
+7. image search by wikipedia article, not by whatever is happening now
+8. Refactor React app state to only use the native react Context and State
    1. Only remaining componenet using ATOMS is KeyboardComponent
    2. Refactor keyboard componenet anyways to be responsive
-10. Implement request page
-11. Export data as .csv file
-12. Add custom image url to edit/new word
-13. Consolidate batch-upload & word-upload...should presuume an Array of length > 0
+9.  Refactor /styled into isolated Components <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
+10. Add custom image url to edit/new word
+11. Consolidate batch-upload & word-upload...should presuume an Array of length > 0
+12. Stop multiple api calls from react app
+13. Export data as .csv file
 
 # Minimum Viable Product
 

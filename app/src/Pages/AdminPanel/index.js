@@ -44,8 +44,15 @@ export const AdminPanel = () => {
               <Route path={path + '/signup'}>
                 <Signup />
               </Route>
+              <Route path={path + '/edit/:_id'}>
+                <Edit />
+              </Route>
+              <Route path={path + '/:_id?'}>
+                <Words />
+              </Route>
             </>
           ) : null}
+
           <Route path={path + '/edit/:_id'}>
             <Edit />
           </Route>

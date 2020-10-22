@@ -3,6 +3,7 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import React, { useContext, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router'
 import styled from 'styled-components'
+import { Spinner } from '../../../Components'
 import EditWord from '../../../Components/EditWord'
 import Loading from '../../../Components/Loading'
 import { Auth, Words } from '../../../context'
@@ -110,7 +111,7 @@ const WordDetail = () => {
       .catch(console.error)
   }
   if (isLoading) {
-    return <Loading />
+    return <Spinner />
   }
   return (
     <EditGrid>

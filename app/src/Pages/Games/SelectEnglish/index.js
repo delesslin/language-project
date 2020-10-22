@@ -64,7 +64,11 @@ const SelectEnglish = ({ options, onAnswer, status, next }) => {
     return null
   }
   return (
-    <GameGrid>
+    <GameGrid
+      href={
+        choice.length > 0 && answer.images.length > 0 ? answer.images[0] : ''
+      }
+    >
       {answer.recordings.length > 0 ? (
         <Play base64={answer.recordings[0]} color='green'></Play>
       ) : null}
