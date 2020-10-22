@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Paper, Text } from '../../../Components'
+import { Chip, Paper, Text } from '../../../Components'
 const HeroContent = styled.div`
   padding: 20px;
   grid-area: content;
@@ -9,7 +9,7 @@ const HeroContent = styled.div`
   place-items: center;
   grid-gap: 10px;
 `
-const Primary = styled(Paper)`
+const Primary = styled(Chip)`
   text-align: center;
   padding: 10px 50px;
   background-color: ${({ theme }) => theme.secondary};
@@ -17,7 +17,7 @@ const Primary = styled(Paper)`
   border-radius: 2px;
   transform: rotate(${() => (0.5 - Math.floor() ? '-2' : '2')}deg);
 `
-const Secondary = styled(Paper)`
+const Secondary = styled(Chip)`
   text-align: center;
   padding: 10px 40px;
   background-color: ${({ theme }) => theme.green};

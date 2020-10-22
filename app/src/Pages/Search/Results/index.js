@@ -2,8 +2,8 @@ import React from 'react'
 import { RiMoreFill } from 'react-icons/ri'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { Button, Paper, Text, Player, Spinner } from '../../../Components'
-
+import { Button, Paper, Text, Player, Spinner, Chip } from '../../../Components'
+import media from 'css-in-js-media'
 import Request from './Request'
 
 const ResultsDiv = styled.div`
@@ -20,15 +20,18 @@ const Result = styled(Paper)`
   grid-template-areas: 'play word more' 'play content more';
   min-height: 250px;
   padding: 20px;
+  ${media('<tablet')} {
+    grid-template-areas: 'play word .' 'more content .';
+  }
 `
-const Word = styled(Paper)`
+const Word = styled(Chip)`
   grid-area: word;
   background-color: ${({ theme }) => theme.primary};
   padding: 15px 60px;
   border-radius: 2px;
   transform: rotate(${() => (Math.random() < 0.5 ? -2 : 2)}deg);
 `
-const Detail = styled(Paper)`
+const Detail = styled(Chip)`
   grid-area: content;
   background-color: ${({ theme }) => theme.secondary};
   border-radius: 2px;
