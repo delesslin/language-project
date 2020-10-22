@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Paper } from './Paper'
-
+import media from 'css-in-js-media'
 export const Button = styled(Paper)`
   transition: all 0.2s;
   opacity: 1;
@@ -54,5 +54,9 @@ ${({ round = false, size = 3 }) =>
 
   width: ${size}rem;
   height: ${size}rem;
+  ${media('<tablet')} {
+      width: ${0.4 * size}rem;
+      height: ${0.4 * size}rem;
+    }
 `}
 `

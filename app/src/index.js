@@ -14,6 +14,12 @@ import { Normalize } from 'styled-normalize'
 import { createGlobalStyle } from 'styled-components'
 import GlobalTheme from './Components/GlobalTheme'
 import { APIProvider } from './utils/hooks/useAPI'
+import { setBreakPoints, getBreakPoints } from 'css-in-js-media'
+// const bp = getBreakPoints()
+// setBreakPoints({
+//   ...bp,
+//   smallTablet: 500,
+// })
 const GlobalStyle = createGlobalStyle`
 html,
 body,
