@@ -58,11 +58,6 @@ export const APIProvider = ({ children }) => {
   useEffect(() => {
     reload()
   }, [options])
-  useEffect(() => {
-    if (words.length == 0) {
-      reload()
-    }
-  }, [])
   const updateWord = async (_id, obj) => {
     console.log(options)
     const res = await WordsAPI.update(_id, obj, options)

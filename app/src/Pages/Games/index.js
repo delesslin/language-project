@@ -5,20 +5,24 @@ import Spinner from '../../Components/Spinner'
 import useAPI from '../../utils/hooks/useAPI'
 import Finished from './Finished'
 import { ProgressBar } from './ProgressBar'
-import SelectEnglish from './SelectEnglish'
+import SelectCatawba from './Exercises/SelectCatawba'
+import SelectEnglish from './Exercises/SelectEnglish'
 // TODO: create GameContext
 // TODO: progress bar
 // TODO: mobile first
-
+const Exercises = [SelectCatawba, SelectEnglish]
+const randEx = () => Exercises[Math.floor(Math.random() * Exercises.length)]
 const Game = () => {
   const { words } = useAPI()
   const [lesson, setLesson] = useState([])
   const [options, setOptions] = useState([])
   const [progress, setProgress] = React.useState(0)
   const [answered, setAnswered] = React.useState(-1)
+  const [Exercise, setExercise] = React.useState(() => randEx())
   const next = () => {
     resetOptions()
     setAnswered(-1)
+    setExercise(() => randEx())
   }
   const incrementProgress = (x) => {
     console.log(x)
@@ -77,7 +81,7 @@ const Game = () => {
     return (
       <Page Icon={RiGamepadLine}>
         <ProgressBar percent={progress} />
-        <SelectEnglish
+        <Exercise
           options={options}
           onAnswer={incrementProgress}
           status={answered}

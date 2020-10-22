@@ -2,8 +2,8 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext'
 import media from 'css-in-js-media'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { Button, Paper, Player, Text } from '../../../Components'
-import Options from '../Options'
+import { Button, Paper, Player, Text } from '../../../../Components'
+import Options from './Options'
 
 const GameGrid = styled(Paper)`
   display: grid;
