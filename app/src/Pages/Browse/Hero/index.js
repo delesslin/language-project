@@ -41,7 +41,7 @@ const Play = styled(Player)`
   bottom: -20px;
   box-shadow: 2px 2px 2px #000;
 
-  ${media('>tablet')} {
+  ${media('>desktop')} {
     width: 150px;
     height: 150px;
     bottom: 0px;
