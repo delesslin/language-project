@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router'
+import { Redirect, useHistory, useParams } from 'react-router'
 import Page from '../../Components/Page'
 import Spinner from '../../Components/Spinner'
 import useAPI from '../../utils/hooks/useAPI'

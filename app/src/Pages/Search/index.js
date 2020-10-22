@@ -28,16 +28,13 @@ const Search = () => {
   const { results, search, reset, isSearching } = useSearch()
   const [error, setError] = useState(false)
   const inputRef = useRef(null)
-  // useEffect(() => {
-  //   console.log('results', results)
-  // }, [results])
+
   const handleClick = () => {
-    if (inputRef.current.value.length > 0) {
+    if (inputRef.current.value != null && inputRef.current.value.length > 0) {
       search(inputRef.current.value)
     } else {
       setError(true)
     }
-    // console.log('results', results)
   }
   const handleChange = () => {
     if (results !== null) {

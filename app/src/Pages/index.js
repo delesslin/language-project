@@ -25,9 +25,9 @@ const Public = () => (
     <Route path='/search'>
       <Search />
     </Route>
-    <Route path='/request'>
+    {/* <Route path='/request'>
       <Request />
-    </Route>
+    </Route> */}
     <Route path='/game'>
       <Game />
     </Route>
