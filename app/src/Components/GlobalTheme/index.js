@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Theme from './context'
-import MuiProvider from './MuiProvider'
 import StyledProvider from './StyledProvider'
-
+// TODO: move theme context into this file
+// TODO: add media breakpoints
 const GlobalTheme = ({ children }) => {
   const [state, setState] = useState({
     primary: '#fbc10b',

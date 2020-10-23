@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import { hexColor } from '../../Buttons/IconButton'
 import { Nav, NavButton } from '../Nav'
 import { FaKeyboard } from 'react-icons/fa'
+import { Text } from '../../Surfaces'
 
 export const HeaderDiv = styled.header`
   padding: 10px;
@@ -85,7 +86,9 @@ const Header = () => {
           <VideogameAssetIcon />
         </NavButton>
         <NavButton to='/type'>
-          <FaKeyboard />
+          <Text size={1.5}>
+            <FaKeyboard />
+          </Text>
         </NavButton>
       </Nav>
     </HeaderDiv>
