@@ -77,10 +77,16 @@ export const APIProvider = ({ children }) => {
   const updateUser = (user) => {
     return Auth.update(user, options)
   }
+  const deleteWord = async (_id) => {
+    const res = await WordsAPI.delete(_id, options)
+    await reload()
+    return res
+  }
   return (
     <APIContext.Provider
       value={{
         updateWord,
+        deleteWord,
         isLoading,
         words,
         tags,

@@ -1,8 +1,9 @@
 # Before Release 1 1️⃣
-1. Delete and NVM words
-2. Solicit feedback
-3. Sort feedback into MVP 1, 2, 3, or longterm
-4. add 30 more words (currently 112)
+1. Sharing image etc
+2. Delete and NVM words
+3. Solicit feedback
+4. Sort feedback into MVP 1, 2, 3, or longterm
+5. add 30 more words (currently 112)
 
 # TODOs 📎
 

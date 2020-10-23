@@ -1,19 +1,16 @@
-import { Button, Divider, Grid } from '@material-ui/core'
 import React, { useEffect, useReducer } from 'react'
+import { useHistory } from 'react-router'
+import styled from 'styled-components'
 import {
-  AltInput,
-  ButtonInput,
-  ImgInput,
   InputGrid,
   NoteInput,
-  PronInput,
   RecInput,
   TagInput,
   TransInput,
-  WordInput,
 } from '../../styled/Inputs'
+import useAPI from '../../utils/hooks/useAPI'
+import { Button } from '../Surfaces'
 import AltSpellings from './AltSpellings'
-
 import blankState from './blankState'
 import Context from './context'
 import Images from './Inputs/Images'
@@ -24,17 +21,26 @@ import Notes from './Notes'
 import RecordingsInput from './RecordingsInput'
 import reducer, { INIT } from './reducer'
 import VisibleInput from './VisibleInput'
-const Divide = () => (
-  <Grid item>
-    <Divider />
-  </Grid>
-)
+
+const ButtonGrid = styled.div`
+  grid-area: b;
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+`
+const InputButton = styled(Button)`
+  width: 80%;
+  height: 10%;
+  padding: 10px;
+`
 const EditWord = ({
   data = null,
   onSave = () => console.log('saving'),
   children,
 }) => {
   const [state, dispatch] = useReducer(reducer, blankState)
+  const { deleteWord = () => console.error('no fn') } = useAPI()
+  const history = useHistory()
   useEffect(() => {
     if (data !== null) {
       dispatch({ type: INIT, data })
@@ -43,6 +49,11 @@ const EditWord = ({
   const onSubmit = () => {
     console.log(state)
     onSave(state)
+  }
+  const onDelete = () => {
+    deleteWord(state._id).then(() => {
+      history.push('/admin')
+    })
   }
   // add _id
   // Shouldn't _id be handled by parent element???
@@ -66,16 +77,15 @@ const EditWord = ({
           <Notes />
         </NoteInput>
         <VisibleInput></VisibleInput>
-        <ButtonInput>
-          <Grid item container spacing={3}>
-            <Grid item>
-              <Button variant='contained' color='primary' onClick={onSubmit}>
-                SUBMIT
-              </Button>
-            </Grid>
-            {children}
-          </Grid>
-        </ButtonInput>
+        <ButtonGrid>
+          <InputButton color='secondary' onClick={onSubmit}>
+            SUBMIT
+          </InputButton>
+          <InputButton variant='contained' color='red' onClick={onDelete}>
+            DELETE
+          </InputButton>
+          {children}
+        </ButtonGrid>
       </InputGrid>
     </Context.Provider>
   )
