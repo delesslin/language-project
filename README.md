@@ -1,21 +1,28 @@
+# Before Release 1 1️⃣
+1. Delete and NVM words
+2. Solicit feedback
+3. Sort feedback into MVP 1, 2, 3, or longterm
+4. add 30 more words (currently 112)
+
 # TODOs 📎
 
-1.  Refactor media queries into theme queries
-2.  Refactor image search to use wikipedia images by article
-3.  Implement request page
-4.  Overflow scroll on Image Modal
-5.  Remove console.logs
-6. Sanitize data so that strings don't begin or end with ' '
-7. Search should use query string to make shareable and navigable
-8. image search by wikipedia article, not by whatever is happening now
-9. Refactor React app state to only use the native react Context and State
+1.  Delete & NVM words
+2.  Refactor media queries into theme queries
+3.  Refactor image search to use wikipedia images by article
+4.  Implement request page
+5.  Overflow scroll on Image Modal
+6.  Remove console.logs
+7. Sanitize data so that strings don't begin or end with ' '
+8. Search should use query string to make shareable and navigable
+9. image search by wikipedia article, not by whatever is happening now
+10. Refactor React app state to only use the native react Context and State
    1. Only remaining componenet using ATOMS is KeyboardComponent
    2. Refactor keyboard componenet anyways to be responsive
-10. Refactor /styled into isolated Components <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
-11. Add custom image url to edit/new word
-12. Consolidate batch-upload & word-upload...should presuume an Array of length > 0
-13. Stop multiple api calls from react app
-14. Export data as .csv file
+11. Refactor /styled into isolated Components <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
+12. Add custom image url to edit/new word
+13. Consolidate batch-upload & word-upload...should presuume an Array of length > 0
+14. Stop multiple api calls from react app
+15. Export data as .csv file
 
 # Minimum Viable Product
 
