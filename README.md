@@ -1,3 +1,9 @@
+Expo branch
+-expo
+-webview direct to language-project
+
+
+
 # Before Release 1 1️⃣
 1. Sharing image etc
 2. Delete and NVM words

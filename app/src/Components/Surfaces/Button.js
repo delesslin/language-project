@@ -12,6 +12,10 @@ export const StyledButton = styled(Paper)`
   &:hover {
     cursor: pointer;
   }
+  > * {
+    display: grid;
+    place-items: center;
+  }
   ${({ active = true }) =>
     active
       ? ``
