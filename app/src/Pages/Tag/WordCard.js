@@ -22,7 +22,7 @@ const CardPaper = styled(Paper)`
   grid-template-areas: 'play word more' 'play english more' 'extra extra extra';
   place-items: center;
   padding: 10px;
-  ${media('<phone')} {
+  ${media('<tablet')} {
     grid-template-rows: auto auto;
     grid-template-areas: 'play word .' 'more english .';
   }
