@@ -50,15 +50,6 @@ box-shadow: 2px 2px 1px #222;
   box-shadow: 4px 4px 2px #222;
 }
 `}
-${({ move = 'center' }) =>
-    (move = 'center'
-      ? ``
-      : `
-${move}: -5;
-&:hover {
-  ${move}: -10;
-}
-`)}
 `
 export const Button = (props) => {
   const { color = 'primary' } = props
