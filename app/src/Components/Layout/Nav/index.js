@@ -32,6 +32,16 @@ const StyledButton = styled(IconButton)`
   }
   `}
 `
+
+export const NavLink = ({ href, variant, children }) => {
+  return (
+    <ButtonWrapper>
+      <StyledButton as='a' variant={variant} href={href}>
+        {children}
+      </StyledButton>
+    </ButtonWrapper>
+  )
+}
 export const NavButton = ({ to, children, href = '', variant }) => {
   const history = useHistory()
   const location = useLocation()

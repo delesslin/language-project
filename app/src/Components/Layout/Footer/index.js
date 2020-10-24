@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import media from 'css-in-js-media'
 import FacebookIcon from '@material-ui/icons/Facebook'
-import { NavButton } from '../Nav'
+import { NavButton, NavLink } from '../Nav'
 import LockIcon from '@material-ui/icons/Lock'
 import IconButton from '../../Buttons/IconButton'
 export const FooterDiv = styled.footer`
@@ -54,12 +54,12 @@ const Footer = () => {
   return (
     <FooterDiv>
       <FooterNav>
-        <NavButton
+        <NavLink
           href='https://www.facebook.com/catawbalanguage'
           variant='light'
         >
           <FacebookIcon />
-        </NavButton>
+        </NavLink>
       </FooterNav>
       <FooterText>
         <p>A project of the Catawba Cultural Preservation Project</p>
