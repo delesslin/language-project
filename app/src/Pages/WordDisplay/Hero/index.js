@@ -7,7 +7,14 @@ import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import { RoundButton } from '../../../Components/Buttons/RoundButton'
 
-import { Paper, Player } from '../../../Components'
+import {
+  BackIcon,
+  FwdIcon,
+  MoreIcon,
+  Paper,
+  Player,
+  SoundIcon,
+} from '../../../Components'
 
 const HeroPaper = styled(Paper)`
   display: grid;
@@ -117,7 +124,7 @@ const Hero = ({ word, handleIncrement = (i) => console.log(i) }) => {
           <PlayerWrapper>
             <Player base64={word.recordings[0]}>
               <PlayerButton variant='secondary' size='15vw' lean={0}>
-                <RecordVoiceOverIcon />
+                <SoundIcon />
               </PlayerButton>
             </Player>
           </PlayerWrapper>
@@ -125,12 +132,12 @@ const Hero = ({ word, handleIncrement = (i) => console.log(i) }) => {
 
         <HeroBack>
           <RoundButton lean={0} onClick={handleNext}>
-            <ChevronLeftIcon />
+            <BackIcon />
           </RoundButton>
         </HeroBack>
         <HeroNext>
           <RoundButton onClick={handleNext}>
-            <ChevronRightIcon />
+            <FwdIcon />
           </RoundButton>
         </HeroNext>
       </HeroPaper>

@@ -2,7 +2,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext'
 import media from 'css-in-js-media'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { Button, Paper, Player, Text } from '../../../../Components'
+import { Button, FwdIcon, Paper, Player, Text } from '../../../../Components'
 import Options from './Options'
 
 const GameGrid = styled(Paper)`
@@ -70,9 +70,12 @@ const SelectEnglish = ({ options, onAnswer, status, next }) => {
       }
     >
       {answer.recordings.length > 0 ? (
-        <Play base64={answer.recordings[0]} color='green'></Play>
+        <Play
+          base64={answer.recordings[0]}
+          color={status < 0 ? 'primary' : 'green'}
+        ></Play>
       ) : null}
-      <Language color='green'>
+      <Language color={status < 0 ? 'primary' : 'green'}>
         <Text size={3}>{answer.language_entry}</Text>
       </Language>
 
@@ -83,8 +86,12 @@ const SelectEnglish = ({ options, onAnswer, status, next }) => {
         answer={answer._id}
       />
       {status < 0 ? null : (
-        <NextButton onClick={handleNext} round={true} color='secondary'>
-          <div>👍</div> <NavigateNextIcon />
+        <NextButton
+          onClick={handleNext}
+          round={true}
+          color={status ? 'primary' : 'red'}
+        >
+          <FwdIcon />
         </NextButton>
       )}
     </GameGrid>

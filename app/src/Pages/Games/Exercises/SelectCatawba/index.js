@@ -2,7 +2,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext'
 import media from 'css-in-js-media'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { Button, Paper, Player, Text } from '../../../../Components'
+import { Button, FwdIcon, Paper, Player, Text } from '../../../../Components'
 import useAPI from '../../../../utils/hooks/useAPI'
 import Options from './Options'
 
@@ -37,7 +37,6 @@ const NextButton = styled(Button)`
 const Play = styled(Player)`
   grid-area: play;
   padding: 30px;
-  background-color: ${({ theme }) => theme.green};
 `
 // TODO: move this logic to ./Games
 // TODO: a game componenet should only receive lesson and incrementProgress
@@ -68,9 +67,12 @@ const SelectCatawba = ({ options, onAnswer, status, next }) => {
   return (
     <GameGrid href={answer.images.length > 0 ? answer.images[0] : ''}>
       {answer.recordings.length > 0 ? (
-        <Play base64={answer.recordings[0]} color='green'></Play>
+        <Play
+          base64={answer.recordings[0]}
+          color={status < 0 ? 'primary' : 'green'}
+        ></Play>
       ) : null}
-      <Language color='green'>
+      <Language color={status < 0 ? 'primary' : 'green'}>
         <Text size={3}>{answer.translations[0]}</Text>
       </Language>
 
@@ -81,8 +83,12 @@ const SelectCatawba = ({ options, onAnswer, status, next }) => {
         answer={answer._id}
       />
       {status < 0 ? null : (
-        <NextButton onClick={handleNext} round={true} color='secondary'>
-          <div>👍</div> <NavigateNextIcon />
+        <NextButton
+          onClick={handleNext}
+          round={true}
+          color={status ? 'primary' : 'red'}
+        >
+          <FwdIcon />
         </NextButton>
       )}
     </GameGrid>

@@ -7,7 +7,15 @@ import React from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
 
-import { Button, Paper, Player } from '../../../Components'
+import {
+  BackIcon,
+  Button,
+  FwdIcon,
+  MoreIcon,
+  Paper,
+  Player,
+  SoundIcon,
+} from '../../../Components'
 import Content from './Content'
 const size = {
   mobileS: '320px',
@@ -147,19 +155,19 @@ const Hero = ({ word, handleIncrement = (i) => console.log(i) }) => {
       <HeroPaper success={-1} href={word.images[0]}>
         {word.recordings.length > 0 ? (
           <Play base64={word.recordings[0]} color='secondary'>
-            <RecordVoiceOverIcon />
+            <SoundIcon />
           </Play>
         ) : null}
         <Content word={word} />
         <More onClick={handleClick} color='primary' round={true}>
-          <MoreHorizIcon />
+          <MoreIcon />
         </More>
 
         <HeroBack onClick={() => handleIncrement(-1)} round={true}>
-          <ChevronLeftIcon />
+          <BackIcon />
         </HeroBack>
         <HeroNext round={true} onClick={() => handleIncrement(1)}>
-          <ChevronRightIcon />
+          <FwdIcon />
         </HeroNext>
       </HeroPaper>
     )

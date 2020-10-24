@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button } from '../Surfaces/Button'
 import { RiUserVoiceLine } from 'react-icons/ri'
 import { Text } from '../Surfaces'
+import { SoundIcon } from '../Surfaces/Icon'
 
 const PlayerComponent = (props) => {
   const { base64 } = props
@@ -28,7 +29,7 @@ const PlayerComponent = (props) => {
   return (
     <Button round={true} onClick={handlePlay} {...props}>
       <Text size={1.5}>
-        <RiUserVoiceLine />
+        <SoundIcon />
       </Text>
     </Button>
   )

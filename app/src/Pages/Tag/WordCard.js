@@ -3,7 +3,15 @@ import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver'
 import React, { useState } from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { Button, Chip, Paper, Player, Text } from '../../Components'
+import {
+  Button,
+  Chip,
+  MoreIcon,
+  Paper,
+  Player,
+  SoundIcon,
+  Text,
+} from '../../Components'
 import media from 'css-in-js-media'
 const CardPaper = styled(Paper)`
   min-height: 150px;
@@ -61,7 +69,7 @@ const WordCard = ({ data, href, link, children }) => {
     <CardPaper href={href} expanded={isExpanded}>
       {data.recordings.length < 1 ? null : (
         <Play base64={data.recordings[0]} color='green'>
-          <RecordVoiceOverIcon />
+          <SoundIcon />
         </Play>
       )}
 
@@ -75,7 +83,7 @@ const WordCard = ({ data, href, link, children }) => {
       </InfoPaper>
 
       <MoreButton round={true} onClick={handleClick} color='light'>
-        <MoreHorizIcon />
+        <MoreIcon />
       </MoreButton>
     </CardPaper>
   )
