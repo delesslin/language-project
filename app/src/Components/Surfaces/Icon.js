@@ -3,13 +3,7 @@ import styled from 'styled-components'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { MdRecordVoiceOver } from 'react-icons/md'
 import { CgMore } from 'react-icons/cg'
-const IconWrapper = styled.div`
-  > * {
-    width: 100%;
-    height: 100%;
-    display: relative;
-  }
-`
+const IconWrapper = styled.div``
 const Icon = (props) => {
   const { Component, size = 25 } = props
   return (
