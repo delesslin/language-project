@@ -6,7 +6,7 @@ export const StyledButton = styled(Paper)`
   transition: all 0.2s;
   opacity: 1;
   position: relative;
-  padding: 20px;
+
   display: grid;
   place-items: center;
   &:hover {
@@ -16,6 +16,16 @@ export const StyledButton = styled(Paper)`
     display: grid;
     place-items: center;
   }
+  ${({ round = false, size = 6 }) =>
+    !round
+      ? `width: ${size}rem;`
+      : `
+    border-radius: 50%;
+
+    width: ${size}rem;
+    height: ${size}rem;
+
+  `}
   ${({ active = true }) =>
     active
       ? ``
@@ -49,20 +59,6 @@ ${move}: -5;
   ${move}: -10;
 }
 `)}
-
-${({ round = false, size = 3 }) =>
-    !round
-      ? `width: ${size}rem;`
-      : `
-  border-radius: 50%;
-
-  width: ${size}rem;
-  height: ${size}rem;
-  ${media('<tablet')} {
-      width: ${0.4 * size}rem;
-      height: ${0.4 * size}rem;
-    }
-`}
 `
 export const Button = (props) => {
   const { color = 'primary' } = props
