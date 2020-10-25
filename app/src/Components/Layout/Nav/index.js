@@ -10,10 +10,8 @@ export const Nav = styled.div`
 
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  ${media('>tablet')} {
-    justify-content: flex-end;
-  }
+
+  justify-content: flex-end;
 `
 const ButtonWrapper = styled.div`
   display: grid;
