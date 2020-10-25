@@ -31,7 +31,7 @@ body,
 html {
   overflow-y: scroll;
   overflow-x: hidden;
-  box-shadow: 100px 100px 0px 0px background-color: #FBC10B;
+
 }
 
 `
