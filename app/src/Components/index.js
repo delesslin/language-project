@@ -5,4 +5,10 @@ export { Player } from './Player'
 export { Page } from './Page'
 export { Spinner } from './Spinner'
 export { Chip } from './Surfaces/Chip'
-export { BackIcon, FwdIcon, SoundIcon, MoreIcon } from './Surfaces/Icon'
+export {
+  BackIcon,
+  FwdIcon,
+  SoundIcon,
+  MoreIcon,
+  InfoIcon,
+} from './Surfaces/Icon'

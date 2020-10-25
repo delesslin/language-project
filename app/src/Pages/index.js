@@ -10,11 +10,15 @@ import Search from './Search'
 import Tag from './Tag'
 import Type from './Type'
 import WordDisplay from './WordDisplay'
+import About from './About'
 
 const Public = () => (
   <Switch>
     <Route path='/type'>
       <Type />
+    </Route>
+    <Route path='/about'>
+      <About />
     </Route>
     <Route path='/word/:_id'>
       <WordDisplay />

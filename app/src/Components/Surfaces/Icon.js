@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { MdRecordVoiceOver } from 'react-icons/md'
 import { CgMore } from 'react-icons/cg'
+import { TiInfoLarge } from 'react-icons/ti'
 const IconWrapper = styled.div``
 const Icon = (props) => {
   const { Component, size = 25 } = props
@@ -25,3 +26,5 @@ export const SoundIcon = (props) => (
 )
 
 export const MoreIcon = (props) => <Icon {...props} Component={CgMore} />
+
+export const InfoIcon = (props) => <Icon {...props} Component={TiInfoLarge} />
