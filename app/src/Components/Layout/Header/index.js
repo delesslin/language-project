@@ -74,19 +74,20 @@ const MenuButton = styled(Button)`
 const NavDiv = styled.div`
   justify-self: end;
   grid-area: nav;
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-auto-flow: column;
+  place-items: center;
+  grid-gap: 15px;
   background-color: ${({ theme }) => theme.primary};
 
   position: absolute;
-  justify-content: space-around;
 
   ${media('<=tablet')} {
     transition: opacity 0.3s;
     grid-area: main;
     opacity: ${({ showing }) => (showing ? 1 : 0)};
     width: 100%;
-    display: flex;
   }
 `
 const Header = () => {
