@@ -10,7 +10,7 @@ import {
   Paper,
   Player,
   SoundIcon,
-} from '../../../Components'
+} from '../'
 import Content from './Content'
 
 const size = {
@@ -33,14 +33,23 @@ export const device = {
   desktopL: `(min-width: ${size.desktop})`,
 }
 
+const genCoord = (x, y) => {
+  return `
+  position: relative;
+    left: ${x}px;
+    top: ${y}px;
+  `
+}
+
 const HeroPaper = styled(Paper)`
   display: grid;
   place-items: center;
   min-height: 300px;
   @media ${device.mobileS} {
+    grid-template-columns: auto 1fr auto;
     grid-template-rows: auto 1fr auto;
-    grid-template-columns: auto 1fr 1fr auto;
-    grid-template-areas: '. back next .' '. content content .' '. play more .';
+    grid-template-areas: 'back . next' 'content content content' 'play . more';
+
     @media ${device.tablet} {
       grid-template-columns: auto 1fr 1fr auto;
       grid-template-rows: 1fr auto;
@@ -59,15 +68,8 @@ const Play = styled(Player)`
   place-self: center;
   display: grid;
   place-items: center;
-  display: grid;
-  place-items: center;
-  &:hover {
-    bottom: -30px;
-    box-shadow: 3px 3px 2px #000;
-  }
-  bottom: -20px;
   box-shadow: 2px 2px 2px #000;
-
+  ${genCoord(-15, 15)}
   ${media('>tablet')} {
     width: 150px;
     height: 150px;
@@ -81,13 +83,10 @@ const More = styled(Button)`
   grid-area: more;
   position: relative;
   transition: all 0.2s;
-  &:hover {
-    bottom: -30px;
-    box-shadow: 3px 3px 2px #000;
-  }
-  bottom: -20px;
+
   box-shadow: 2px 2px 2px #000;
   background-color: ${({ theme }) => theme.secondary};
+  ${genCoord(15, 15)}
   ${media('>tablet')} {
     width: 150px;
     height: 150px;
@@ -102,20 +101,12 @@ const HeroBack = styled(Button)`
   grid-area: back;
   display: grid;
   place-items: center;
-  position: relative;
-  bottom: 20px;
+  ${genCoord(-15, -15)}
+  ${media('>tablet')} {
+    ${genCoord(-35, 0)}
 
-  &:hover {
-    left: -10px;
-    box-shadow: 3px 3px 2px #000;
-
-    box-shadow: 2px 2px 1px #000;
-  }
-  ${media('>phone')} {
-    place-self: center;
-    left: -35px;
     &:hover {
-      left: -40px;
+      ${genCoord(-40, 0)}
     }
   }
 `
@@ -125,16 +116,14 @@ const HeroNext = styled(Button)`
   display: grid;
   place-items: center;
   position: relative;
-  bottom: 20px;
-  &:hover {
-    left: 10px;
-    box-shadow: 3px 3px 2px #000;
-  }
+
   box-shadow: 2px 2px 1px #000;
-  ${media('>phone')} {
-    left: 35px;
+  ${genCoord(15, -15)}
+  ${media('>tablet')} {
+    ${genCoord(35, 0)}
+
     &:hover {
-      left: 40px;
+      ${genCoord(40, 0)}
     }
   }
 `

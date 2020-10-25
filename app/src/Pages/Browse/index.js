@@ -1,10 +1,11 @@
 import { Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import Hero from '../../Components/Hero'
 import Page from '../../Components/Page'
 import { CardGrid } from '../../styled/Card'
 import useAPI from '../../utils/hooks/useAPI'
-import Hero from './Hero'
+
 import TagCard from './TagCard'
 const HomeGrid = styled.div`
   display: grid;

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Chip, Text } from '../../../Components'
+import { Chip, Text } from '../'
 
 const HeroContent = styled.div`
   padding: 20px;

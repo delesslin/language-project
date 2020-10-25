@@ -5,8 +5,6 @@ import { NoteInput } from '../../../styled/Inputs'
 import Context from '../context'
 import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
 
-// TODO: Switch to Paper to preview
-// TODO: Switch to TextField for typing
 const Notes = () => {
   const [{ notes }, dispatch] = useContext(Context)
   const [currText, setCurrText] = useState('')
