@@ -1,16 +1,21 @@
-import HomeIcon from '@material-ui/icons/Home'
-import SearchIcon from '@material-ui/icons/Search'
 import VideogameAssetIcon from '@material-ui/icons/VideogameAsset'
+import { FaKeyboard } from 'react-icons/fa'
+import { RiMenuFill } from 'react-icons/ri'
 import media from 'css-in-js-media'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router'
 import styled from 'styled-components'
 import { hexColor } from '../../Buttons/IconButton'
 import { Nav, NavButton } from '../Nav'
-import { FaKeyboard } from 'react-icons/fa'
-import { Text } from '../../Surfaces'
+import { Button, Text } from '../../Surfaces'
 import IconButton from '../../Buttons/IconButton'
-import { RiMenuFill } from 'react-icons/ri'
+import {
+  KeyboardIcon,
+  GameIcon,
+  SearchIcon,
+  HomeIcon,
+} from '../../../Components'
+
 export const HeaderDiv = styled.header`
   padding: 10px;
   display: grid;
@@ -48,10 +53,20 @@ const HeaderTitle = styled(Title)`
     grid-area: main;
   }
 `
-const MenuButton = styled(IconButton)`
+const MenuButton = styled(Button)`
+  transition: all 0.3s;
   grid-area: menu;
   display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  box-shadow: none;
+  &:hover {
+    box-shadow: none;
+  }
+  background-color: ${({ theme }) => theme.red};
   transform: rotate(${({ turned }) => (turned ? '0' : '90')}deg);
+  opacity: ${({ turned }) => (turned ? '0.7' : '0.5')};
   ${media('>tablet')} {
     display: none;
   }
@@ -77,6 +92,9 @@ const NavDiv = styled.div`
 const Header = () => {
   const location = useLocation()
   const [hidden, setHidden] = React.useState(true)
+  useEffect(() => {
+    setHidden(true)
+  }, [location.pathname])
   return (
     <HeaderDiv disabled={location.pathname == '/'}>
       <HeaderTitle>{'Catawba Language Project'.toUpperCase()}</HeaderTitle>
@@ -89,15 +107,17 @@ const Header = () => {
           <SearchIcon />
         </NavButton>
         <NavButton to='/game'>
-          <VideogameAssetIcon />
+          <GameIcon />
         </NavButton>
         <NavButton to='/type'>
-          <Text size={1.5}>
-            <FaKeyboard />
-          </Text>
+          <KeyboardIcon size='20' />
         </NavButton>
       </NavDiv>
-      <MenuButton onClick={() => setHidden((bool) => !bool)} turned={hidden}>
+      <MenuButton
+        onClick={() => setHidden((bool) => !bool)}
+        turned={hidden}
+        round={true}
+      >
         <RiMenuFill />
       </MenuButton>
     </HeaderDiv>

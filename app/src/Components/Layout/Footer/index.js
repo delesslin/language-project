@@ -1,13 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import media from 'css-in-js-media'
-import FacebookIcon from '@material-ui/icons/Facebook'
+import { FacebookIcon, InfoIcon, LockIcon } from '../../'
 import { NavButton, NavLink } from '../Nav'
-import LockIcon from '@material-ui/icons/Lock'
-import IconButton from '../../Buttons/IconButton'
-import { InfoIcon } from '../../Surfaces/Icon'
+
 export const FooterDiv = styled.footer`
-  padding: 0px 10px 0px 10px;
+  padding: 10px 10px;
   display: flex;
   justify-content: space-between;
 
@@ -18,14 +15,14 @@ export const FooterDiv = styled.footer`
 const Footer = () => {
   return (
     <FooterDiv>
-      <NavLink href='https://www.facebook.com/catawbalanguage' variant='light'>
+      <NavLink href='https://www.facebook.com/catawbalanguage' color='light'>
         <FacebookIcon />
       </NavLink>
-      <NavButton variant='light' to='/about'>
+      <NavButton to='/about' color='light'>
         <InfoIcon />
       </NavButton>
 
-      <NavButton variant='primary' to='/admin'>
+      <NavButton color='light' to='/admin'>
         <LockIcon />
       </NavButton>
     </FooterDiv>
