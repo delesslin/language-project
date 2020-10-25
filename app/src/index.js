@@ -26,10 +26,12 @@ body,
 #root {
   width: 100%;
   height: 100%;
+
 }
 html {
   overflow-y: scroll;
   overflow-x: hidden;
+  box-shadow: 100px 100px 0px 0px background-color: #FBC10B;
 }
 
 `
