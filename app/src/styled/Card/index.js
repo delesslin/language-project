@@ -1,6 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
 import media from 'css-in-js-media'
+import styled from 'styled-components'
 const columns = (x, max = 10) => {
   let cols = x < max ? x : max
   return `grid-template-columns: repeat(${cols}, 1fr);`

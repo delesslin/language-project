@@ -1,5 +1,5 @@
+import { Button } from '@material-ui/core'
 import React from 'react'
-import { Button, Grid, Typography, Fab } from '@material-ui/core'
 const FileButton = ({ handleChange }) => (
   <label htmlFor='upload-photo'>
     <input

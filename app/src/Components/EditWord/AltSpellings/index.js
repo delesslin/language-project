@@ -74,7 +74,6 @@ const AltSpellings = () => {
       />
     </>
   )
-  return null
 }
 
 export default AltSpellings

@@ -1,20 +1,17 @@
-import VideogameAssetIcon from '@material-ui/icons/VideogameAsset'
-import { FaKeyboard } from 'react-icons/fa'
-import { RiMenuFill } from 'react-icons/ri'
 import media from 'css-in-js-media'
 import React, { useEffect } from 'react'
-import { useHistory, useLocation } from 'react-router'
+import { RiMenuFill } from 'react-icons/ri'
+import { useLocation } from 'react-router'
 import styled from 'styled-components'
-import { hexColor } from '../../Buttons/IconButton'
-import { Nav, NavButton } from '../Nav'
-import { Button, Text } from '../../Surfaces'
-import IconButton from '../../Buttons/IconButton'
 import {
-  KeyboardIcon,
   GameIcon,
-  SearchIcon,
   HomeIcon,
+  KeyboardIcon,
+  SearchIcon,
 } from '../../../Components'
+import { hexColor } from '../../Buttons/IconButton'
+import { Button } from '../../Surfaces'
+import { NavButton } from '../Nav'
 
 export const HeaderDiv = styled.header`
   padding: 10px;
@@ -97,7 +94,8 @@ const Header = () => {
     setHidden(true)
   }, [location.pathname])
   return (
-    <HeaderDiv disabled={location.pathname == '/'}>
+    // prettier-ignore
+    <HeaderDiv disabled={location.pathname === '/'}>
       <HeaderTitle>{'Catawba Language Project'.toUpperCase()}</HeaderTitle>
 
       <NavDiv showing={!hidden}>

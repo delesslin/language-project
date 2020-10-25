@@ -1,4 +1,3 @@
-import NavigateNextIcon from '@material-ui/icons/NavigateNext'
 import media from 'css-in-js-media'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'

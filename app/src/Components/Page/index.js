@@ -26,7 +26,7 @@ const IconDiv = styled(Text)`
   place-items: center;
 `
 export const Page = ({ children, title = '', Icon = null }) => {
-  const { isLoading, words } = useAPI()
+  const { isLoading } = useAPI()
   return (
     <PagePaper color='transparent'>
       <IconDiv size={3}>{Icon == null ? null : <Icon />}</IconDiv>

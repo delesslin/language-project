@@ -1,5 +1,4 @@
 import Axios from 'axios'
-import React, { useContext, useEffect } from 'react'
 
 const api = {
   create: (payload, headers) =>

@@ -1,18 +1,11 @@
-import React, { useEffect } from 'react'
-import { Fab, Grid, Typography, TextField, Button } from '@material-ui/core'
-import { ModalStandard } from '../../../../styled/Modals'
+import { Button, Fab, Grid, TextField, Typography } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
-import searchWiki from '../../../../utils/searchWiki'
-import styled from 'styled-components'
-
-import ImgResult from './ImgResult'
+import React, { useEffect } from 'react'
 import { CardGrid } from '../../../../styled/Card'
-// TODO: Should be able to highlight images that you want to add
-// TODO: SHould be able to click to unhighlight images you no longer want to add
+import { ModalStandard } from '../../../../styled/Modals'
+import searchWiki from '../../../../utils/searchWiki'
+import ImgResult from './ImgResult'
 
-const ResultsGrid = styled(Grid)`
-  min-height: 600px;
-`
 const ImageModal = ({ open, save, close, currentImages }) => {
   const [searchTerm, setSearchTerm] = React.useState('')
   const [searchResults, setSearchResults] = React.useState([])
@@ -44,7 +37,7 @@ const ImageModal = ({ open, save, close, currentImages }) => {
       setSearchTerm('')
       setSearchResults([])
     }
-  }, [open])
+  }, [open, currentImages])
   return (
     <ModalStandard open={open} width='90vw' height='75vh'>
       <Grid container direction='column' spacing={2}>

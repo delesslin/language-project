@@ -1,21 +1,19 @@
-import { Button, styled } from '@material-ui/core'
-import React from 'react'
+import { Button } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
-import IconButton from '../../Components/Buttons/IconButton'
+import React from 'react'
 
-const StyledButton = styled(IconButton)``
 const SearchButton = ({ loading, onClick }) => {
   if (loading) {
     return (
-      <StyledButton color='primary' variant='secondary' disabled>
+      <Button color='primary' variant='secondary' disabled>
         <SearchIcon />
-      </StyledButton>
+      </Button>
     )
   } else {
     return (
-      <StyledButton color='primary' variant='secondary' onClick={onClick}>
+      <Button color='primary' variant='secondary' onClick={onClick}>
         <SearchIcon />
-      </StyledButton>
+      </Button>
     )
   }
 }

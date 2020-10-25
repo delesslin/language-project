@@ -1,9 +1,9 @@
-import { Chip, Fab, Grid, Paper, TextField } from '@material-ui/core'
+import { Chip, Fab, Grid, TextField } from '@material-ui/core'
+import AddIcon from '@material-ui/icons/Add'
 import React, { useContext, useState } from 'react'
+import { NoteInput } from '../../../styled/Inputs'
 import Context from '../context'
 import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
-import AddIcon from '@material-ui/icons/Add'
-import { NoteInput } from '../../../styled/Inputs'
 
 // TODO: Switch to Paper to preview
 // TODO: Switch to TextField for typing

@@ -9,7 +9,7 @@ const ImgResult = ({ result, selections, add, remove }) => {
     } else {
       setSelected(false)
     }
-  }, [selections])
+  }, [selections, result])
   const handleClick = () => {
     if (selected) {
       remove(result)

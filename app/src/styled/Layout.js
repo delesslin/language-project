@@ -1,7 +1,5 @@
-import React from 'react'
-import styled from 'styled-components'
 import media from 'css-in-js-media'
-import { Paper } from '@material-ui/core'
+import styled from 'styled-components'
 export const Layout = styled.div`
   min-height: 100%;
   display: grid;

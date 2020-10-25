@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react'
 import { RiGamepadLine } from 'react-icons/ri'
 import Page from '../../Components/Page'
@@ -36,7 +37,7 @@ const Game = () => {
   }
   const resetOptions = () => {
     const randoms = lesson.sort((a, b) => 0.5 - Math.random())
-    console.log(randoms)
+
     const newOpts = [randoms[0], randoms[1], randoms[2], randoms[3]]
 
     setOptions(newOpts)

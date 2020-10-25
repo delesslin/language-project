@@ -1,8 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
-import media from 'css-in-js-media'
-import { Paper, Text } from '../../Components'
 import { useHistory } from 'react-router'
+import styled from 'styled-components'
+import { Paper, Text } from '../../Components'
 const TagsDiv = styled.div`
   margin-top: 50px;
   display: grid;

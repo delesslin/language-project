@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import media from 'css-in-js-media'
-import { Paper } from '../../Components'
 
 const Container = styled.div`
   height: 1rem;

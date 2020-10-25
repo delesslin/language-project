@@ -1,11 +1,7 @@
 import { Button, Grid, TextField, Typography } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
-import React, { useContext, useRef } from 'react'
-import { RiLock2Line } from 'react-icons/ri'
-import Page from '../../../Components/Page'
-import { Auth } from '../../../context'
+import React, { useRef } from 'react'
 import useAPI from '../../../utils/hooks/useAPI'
-import useAuth from '../../../utils/hooks/useAuth'
 const Login = () => {
   const emailRef = useRef(null)
   const passwordRef = useRef(null)

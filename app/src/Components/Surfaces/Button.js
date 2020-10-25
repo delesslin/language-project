@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Paper } from './Paper'
-import media from 'css-in-js-media'
+
 export const StyledButton = styled(Paper)`
   transition: all 0.2s;
   opacity: 1;

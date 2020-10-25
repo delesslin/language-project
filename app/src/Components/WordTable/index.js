@@ -1,19 +1,15 @@
-import React from 'react'
 import { Button, Fab } from '@material-ui/core'
 import DeleteIcon from '@material-ui/icons/Delete'
+import React from 'react'
 import StyledLink from '../../styled/StyledLink'
 import {
-  TableDiv,
+  Cell,
+  HeadCell,
   HeaderDiv,
   RowDiv,
-  HeadCell,
   TableBody,
-  Cell,
+  TableDiv,
 } from '../../styled/WordTable'
-import { useHistory } from 'react-router'
-// Create two exports
-// 1. EditTable
-// 2. DeleteTable
 
 const Row = ({ word, children }) => (
   <RowDiv key={word._id} error={word.error !== undefined ? true : false}>

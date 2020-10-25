@@ -1,8 +1,7 @@
+import ReplayIcon from '@material-ui/icons/Replay'
 import React from 'react'
 import styled from 'styled-components'
-import media from 'css-in-js-media'
 import { Button, Chip, Paper, Text } from '../../Components'
-import ReplayIcon from '@material-ui/icons/Replay'
 const FinishPaper = styled(Paper)`
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;

@@ -1,23 +1,11 @@
+import media from 'css-in-js-media'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
-import { Grid, Typography } from '@material-ui/core'
-import { Words } from '../../context'
-import WordCard from './WordCard'
+import styled from 'styled-components'
 // import { CardGrid } from '../../styled/Card'
 import Page from '../../Components/Page'
-import styled from 'styled-components'
 import useAPI from '../../utils/hooks/useAPI'
-import media from 'css-in-js-media'
-const MainText = styled(Typography)`
-  background-color: #f8f4dd;
-  padding: 5px 10px;
-  margin: 30px;
-`
-const SecondText = styled(Typography)`
-  background-color: #a2d2f6;
-  padding: 5px 20px;
-  margin: 10px;
-`
+import WordCard from './WordCard'
 
 const CardGrid = styled.div`
   display: grid;
@@ -46,8 +34,6 @@ const Tag = () => {
     <Page title={_tagname}>
       <CardGrid columns={2}>
         {taggedWords.map((entry, i) => {
-          const image = ''
-
           return (
             <WordCard
               key={i}

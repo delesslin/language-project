@@ -89,10 +89,6 @@ const EditWord = ({
       </InputGrid>
     </Context.Provider>
   )
-  if (data == null) {
-    return null
-  } else {
-  }
 }
 
 export default EditWord

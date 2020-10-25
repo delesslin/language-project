@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Chip, Text } from '../../../Components'
 
-import { Chip, Paper, Text } from '../../../Components'
 const HeroContent = styled.div`
   padding: 20px;
   grid-area: content;

@@ -1,15 +1,17 @@
+import HomeIconO from '@material-ui/icons/Home'
+import LockIconO from '@material-ui/icons/Lock'
+import SearchIconO from '@material-ui/icons/Search'
+import MicIconO from '@material-ui/icons/Mic'
+import MicOffIcon from '@material-ui/icons/MicOff'
+import VideogameAssetIcon from '@material-ui/icons/VideogameAsset'
 import React from 'react'
-import styled from 'styled-components'
+import { CgMore } from 'react-icons/cg'
+import { FaKeyboard } from 'react-icons/fa'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { MdRecordVoiceOver } from 'react-icons/md'
-import { CgMore } from 'react-icons/cg'
+import { RiFacebookBoxFill } from 'react-icons/ri'
 import { TiInfoLarge } from 'react-icons/ti'
-import HomeIconO from '@material-ui/icons/Home'
-import SearchIconO from '@material-ui/icons/Search'
-import VideogameAssetIcon from '@material-ui/icons/VideogameAsset'
-import { FaKeyboard, FaFacebook } from 'react-icons/fa'
-import { RiMenuFill, RiFacebookBoxFill } from 'react-icons/ri'
-import LockIconO from '@material-ui/icons/Lock'
+import styled from 'styled-components'
 const IconWrapper = styled.div``
 const Icon = (props) => {
   const { Component, size = 25 } = props
@@ -52,3 +54,7 @@ export const FacebookIcon = (props) => (
   <Icon {...props} Component={RiFacebookBoxFill} />
 )
 export const LockIcon = (props) => <Icon {...props} Component={LockIconO} />
+
+export const MicIcon = (props) => <Icon {...props} Component={MicIconO} />
+
+export const NoMicIcon = (props) => <Icon {...props} Component={MicOffIcon} />

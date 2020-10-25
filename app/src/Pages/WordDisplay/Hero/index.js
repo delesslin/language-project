@@ -1,20 +1,14 @@
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver'
 import media from 'css-in-js-media'
 import React from 'react'
-import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { RoundButton } from '../../../Components/Buttons/RoundButton'
-
 import {
   BackIcon,
   FwdIcon,
-  MoreIcon,
   Paper,
   Player,
   SoundIcon,
 } from '../../../Components'
+import { RoundButton } from '../../../Components/Buttons/RoundButton'
 
 const HeroPaper = styled(Paper)`
   display: grid;
@@ -51,26 +45,6 @@ const PlayerButton = styled(RoundButton)`
   box-shadow: 2px 2px 2px #000;
   ${media('>tablet')} {
 `
-const MoreWrapper = styled.div`
-  grid-area: more;
-  display: grid;
-  place-items: center;
-`
-const More = styled(RoundButton)`
-  position: relative;
-  transition: all 0.2s;
-  &:hover {
-    bottom: -30px;
-    box-shadow: 3px 3px 2px #000;
-  }
-  bottom: -20px;
-  box-shadow: 2px 2px 2px #000;
-  ${media('>tablet')} {
-    width: 150px;
-    height: 150px;
-    bottom: 0px;
-  }
-`
 
 const HeroBack = styled.div`
   grid-area: back;
@@ -102,16 +76,8 @@ const HeroNext = styled.div`
     box-shadow: 2px 2px 1px #000;
   }
 `
-const Extra = styled(Paper)`
-  grid-area: extra;
-  padding: 10px;
-  margin: 10px;
-`
+
 const Hero = ({ word, handleIncrement = (i) => console.log(i) }) => {
-  const history = useHistory()
-  const handleClick = () => {
-    history.push(`/word/${word._id}`)
-  }
   const handleNext = () => {
     handleIncrement()
   }

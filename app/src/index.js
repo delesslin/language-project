@@ -1,20 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-// which one??? vvv
-// import { CssBaseline } from '@material-ui/core'
-import ScopedCssBaseline from '@material-ui/core/ScopedCssBaseline'
-import Pages from './Pages'
-import { RecoilRoot } from 'recoil'
 import { BrowserRouter as Router } from 'react-router-dom'
-import Layout from './Components/Layout'
-import { Words } from './context'
+import { RecoilRoot } from 'recoil'
+import { createGlobalStyle } from 'styled-components'
 import { Normalize } from 'styled-normalize'
+import GlobalTheme from './Components/GlobalTheme'
+import Layout from './Components/Layout'
+import Pages from './Pages'
+import { APIProvider } from './utils/hooks/useAPI'
 // TODO: Move app contents into ReactDOM.render
 // TODO: Refactor to remove RecoilRoot
-import { createGlobalStyle } from 'styled-components'
-import GlobalTheme from './Components/GlobalTheme'
-import { APIProvider } from './utils/hooks/useAPI'
-import { setBreakPoints, getBreakPoints } from 'css-in-js-media'
 // const bp = getBreakPoints()
 // setBreakPoints({
 //   ...bp,

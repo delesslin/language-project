@@ -1,12 +1,10 @@
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
-import React, { useContext, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useHistory, useParams } from 'react-router'
 import styled from 'styled-components'
 import { Spinner } from '../../../Components'
 import EditWord from '../../../Components/EditWord'
-import Loading from '../../../Components/Loading'
-import { Auth, Words } from '../../../context'
 import useAPI from '../../../utils/hooks/useAPI'
 const EditGrid = styled.div`
   display: grid;
@@ -128,7 +126,7 @@ const WordDetail = () => {
                   <ScrollItem
                     onClick={() => handleRedirect(i)}
                     key={i}
-                    selected={params._id == word._id}
+                    selected={params._id === word._id}
                   >
                     <ScrollIcon>
                       {word.public ? <VisibilityIcon /> : <VisibilityOffIcon />}

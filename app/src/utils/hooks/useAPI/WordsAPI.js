@@ -1,6 +1,4 @@
 import Axios from 'axios'
-import React, { useContext, useEffect } from 'react'
-import { APIContext } from './APIContext'
 
 const api = {
   create: async (payload, headers) => {

@@ -1,7 +1,5 @@
-import React from 'react'
 import styled from 'styled-components'
-import { Card } from '../../styled/Card'
-import Patterns, { LinesInMotion } from './Patterns'
+import Patterns from './Patterns'
 
 export const Paper = styled.div`
   transition: all 0.3;

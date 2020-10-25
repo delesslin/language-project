@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react'
 import { useHistory, useParams } from 'react-router'
-import { Button, Page, Text } from '../../../Components'
 import styled from 'styled-components'
+import { Button, LockIcon, Page, Text } from '../../../Components'
 import useAPI from '../../../utils/hooks/useAPI'
-import WordDetail from './WordDetail'
 const LandingDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -38,15 +37,17 @@ const Link = ({ children, to }) => {
   )
 }
 const Landing = ({ children }) => {
-  const { words, reload, roles } = useAPI()
-  const history = useAPI()
+  const { words, roles } = useAPI()
+
   const params = useParams()
   useEffect(() => console.log(params), [params])
   return (
     <Page>
       <LandingDiv>
         <Header>
-          <Text size={3}>🔒 </Text>
+          <Text size={3}>
+            <LockIcon />
+          </Text>
           <div>
             <Text size={1.3}>{`[ ${words.filter((e) => e.public).length} / ${
               words.length

@@ -1,15 +1,14 @@
 import { Button, Grid, TextField } from '@material-ui/core'
-import React, { useContext, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { useHistory } from 'react-router'
 import Page from '../../../Components/Page'
-import { Auth } from '../../../context'
 import useAPI from '../../../utils/hooks/useAPI'
 
 const Signup = () => {
   const userRef = useRef(null)
   const emailRef = useRef(null)
   const passRef = useRef(null)
-  const [error, setError] = useState(false)
+  // const [error, setError] = useState(false)
   const history = useHistory()
   const { createUser } = useAPI()
   const handleSubmit = () => {
@@ -24,7 +23,7 @@ const Signup = () => {
       })
       .catch((e) => {
         console.error(e)
-        setError(true)
+        // setError(true)
       })
   }
   return (

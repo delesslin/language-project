@@ -1,3 +1,5 @@
+// TODO: make this unnecessary
+/* eslint-disable*/
 import React, { useEffect, useState } from 'react'
 import { APIContext, initState } from './APIContext'
 import genTags from './genTags'

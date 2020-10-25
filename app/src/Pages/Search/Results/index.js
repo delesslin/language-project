@@ -4,7 +4,7 @@ import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import { Button, Paper, Text, Player, Spinner, Chip } from '../../../Components'
 import media from 'css-in-js-media'
-import Request from './Request'
+// import Request from './Request'
 
 const ResultsDiv = styled.div`
   display: grid;

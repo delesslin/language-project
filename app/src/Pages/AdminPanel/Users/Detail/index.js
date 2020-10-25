@@ -1,9 +1,8 @@
 import { Checkbox, Grid, TextField, Typography } from '@material-ui/core'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router'
 import styled from 'styled-components'
 import Buttons from '../../../../Components/Buttons/AdminEditButtons'
-import { Auth } from '../../../../context'
 import useAPI from '../../../../utils/hooks/useAPI'
 
 const DetailGrid = styled.div`
@@ -40,7 +39,7 @@ const Detail = ({
     } else {
       setUser(null)
     }
-  }, [_id, users])
+  }, [_id, users, history, locked])
 
   const handleRoleChange = (e, role) => {
     console.log('role change')
@@ -49,7 +48,7 @@ const Detail = ({
         console.log('delete?')
         return {
           ...user,
-          roles: user.roles.filter((r) => r != role),
+          roles: user.roles.filter((r) => r !== role),
         }
       } else {
         console.log('add??')

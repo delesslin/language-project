@@ -1,16 +1,14 @@
 import React from 'react'
 import { Redirect, Route, Switch } from 'react-router-dom'
-import useAPI from '../utils/hooks/useAPI'
+import About from './About'
 import { AdminPanel } from './AdminPanel'
-import Game from './Games'
 import Browse from './Browse'
+import Game from './Games'
 import NotFound from './NotFound'
-import Request from './Request'
 import Search from './Search'
 import Tag from './Tag'
 import Type from './Type'
 import WordDisplay from './WordDisplay'
-import About from './About'
 
 const Public = () => (
   <Switch>

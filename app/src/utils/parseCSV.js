@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Papa from 'papaparse'
 
 const parseCSV = (file) => {

@@ -76,7 +76,7 @@ export const NavButton = ({
       <StyledButton
         onClick={redirect}
         variant={variant}
-        current={location.pathname == to}
+        current={location.pathname === to}
         round={true}
         color={color}
       >

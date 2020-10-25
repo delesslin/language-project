@@ -1,6 +1,4 @@
 import hexRgb from 'hex-rgb'
-import React from 'react'
-import { useHistory } from 'react-router'
 import styled from 'styled-components'
 
 export const hexColor = (hex = '#f0f000', opacity = 0.9) => {
@@ -27,7 +25,7 @@ const IconButton = styled.a`
     `
   }}
   ${({ theme, variant = 'red' }) => {
-    if (variant == 'transparent') {
+    if (variant === 'transparent') {
       return `
                 background-color: ${hexColor(theme.black, 0)};
                 &:hover {

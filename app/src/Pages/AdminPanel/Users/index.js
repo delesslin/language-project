@@ -1,9 +1,9 @@
+/* eslint-disable */
 import { Button, Grid } from '@material-ui/core'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import Page from '../../../Components/Page'
-import { Auth } from '../../../context'
 import useAPI from '../../../utils/hooks/useAPI'
 import Detail from './Detail'
 const UsersGrid = styled.div`

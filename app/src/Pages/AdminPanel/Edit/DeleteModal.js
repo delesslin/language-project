@@ -7,10 +7,8 @@ import {
   Typography,
 } from '@material-ui/core'
 import React from 'react'
-import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import useAPI from '../../../utils/hooks/useAPI'
-import { Words as ContextWords } from '../../../context'
 const ModalDiv = styled.div`
   display: grid;
   place-items: center;

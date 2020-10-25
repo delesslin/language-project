@@ -1,7 +1,6 @@
-import React, { useContext, useState } from 'react'
-import parseCSV from '../../parseCSV'
 import axios from 'axios'
-import { Words } from '../../../context'
+import { useState } from 'react'
+import parseCSV from '../../parseCSV'
 import useAPI from '../useAPI'
 
 const useBatchUpload = () => {

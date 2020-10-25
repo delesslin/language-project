@@ -1,7 +1,9 @@
 import React from 'react'
-import MicIcon from '@material-ui/icons/Mic'
+
 import MicRecorder from 'mic-recorder-to-mp3'
 import { Fab } from '@material-ui/core'
+import { MicIcon } from '../'
+import { NoMicIcon } from '../Surfaces/Icon'
 const recorder = new MicRecorder({ bitRate: 128 })
 const reader = new FileReader()
 // TODO: style for when it is isRecording
@@ -38,15 +40,23 @@ const Recorder = ({ add = (base64) => console.log(base64) }) => {
         )
       })
   }
-  return (
-    <Fab
-      onMouseDown={handleDown}
-      onMouseUp={handleUp}
-      color={isRecording ? 'secondary' : 'primary'}
-    >
-      <MicIcon />
-    </Fab>
-  )
+  if (isBlocked) {
+    return (
+      <Fab>
+        <NoMicIcon />
+      </Fab>
+    )
+  } else {
+    return (
+      <Fab
+        onMouseDown={handleDown}
+        onMouseUp={handleUp}
+        color={isRecording ? 'secondary' : 'primary'}
+      >
+        <MicIcon />
+      </Fab>
+    )
+  }
 }
 
 export default Recorder

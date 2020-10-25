@@ -1,6 +1,5 @@
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
-import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver'
-import React, { useState } from 'react'
+import media from 'css-in-js-media'
+import React from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import {
@@ -12,7 +11,6 @@ import {
   SoundIcon,
   Text,
 } from '../../Components'
-import media from 'css-in-js-media'
 const CardPaper = styled(Paper)`
   min-height: 150px;
   transition: all 0.2s;
@@ -58,15 +56,13 @@ const InfoPaper = styled(Paper)`
 
 const WordCard = ({ data, href, link, children }) => {
   const history = useHistory()
-  const [isExpanded, setIsExpanded] = useState(false)
+
   const handleClick = () => {
     history.push(link)
-
-    // setIsExpanded((isExpanded) => !isExpanded)
   }
 
   return (
-    <CardPaper href={href} expanded={isExpanded}>
+    <CardPaper href={href} expanded={false}>
       {data.recordings.length < 1 ? null : (
         <Play base64={data.recordings[0]} color='green'>
           <SoundIcon />

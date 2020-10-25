@@ -39,8 +39,6 @@ const createAdmin = async () => {
     owner = new userModel(user)
     owner.save()
   }
-  console.log('owner initalized')
-  console.log(owner)
 }
 createAdmin()
 

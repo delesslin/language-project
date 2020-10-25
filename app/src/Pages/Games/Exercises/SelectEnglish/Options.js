@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
-import { Chip, Paper, Text } from '../../../../Components'
+import styled from 'styled-components'
+import { Chip, Text } from '../../../../Components'
 
 const OptionsGrid = styled.div`
   grid-area: options;
@@ -44,6 +44,17 @@ const OptionPaper = styled(Chip)`
         return `
           background-color: ${theme.green};
         `
+      default:
+        return `
+      cursor: pointer;
+      background-color: ${theme.secondary};
+      box-shadow: 2px 2px 1px #555;
+              &:hover {
+                box-shadow: 5px 5px 5px #555;
+                cursor: pointer;
+              }
+
+      `
     }
   }}
   transform: rotate(${(props) => props.lean * -2}deg);

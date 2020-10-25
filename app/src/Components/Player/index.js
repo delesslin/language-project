@@ -1,28 +1,27 @@
-import React, { useState } from 'react'
-import { Button } from '../Surfaces/Button'
-import { RiUserVoiceLine } from 'react-icons/ri'
+import React from 'react'
 import { Text } from '../Surfaces'
+import { Button } from '../Surfaces/Button'
 import { SoundIcon } from '../Surfaces/Icon'
 
 const PlayerComponent = (props) => {
   const { base64 } = props
   const AUDIO = new Audio(base64)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [error, setError] = useState(false)
+  // const [isPlaying, setIsPlaying] = useState(false)
+  // const [error, setError] = useState(false)
   const hasEnded = (event) => {
-    setIsPlaying(false)
+    // setIsPlaying(false)
     console.log('done!')
     event.currentTarget.removeEventListener(event.type, hasEnded)
   }
   const handlePlay = () => {
-    setIsPlaying(true)
+    // setIsPlaying(true)
     AUDIO.play()
       .then(() => {
         AUDIO.addEventListener('ended', hasEnded)
       })
       .catch((e) => {
         console.error(e)
-        setError(true)
+        // setError(true)
       })
   }
 

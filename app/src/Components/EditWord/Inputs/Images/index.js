@@ -1,18 +1,11 @@
-import { Button, Grid } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import React from 'react'
-
-import styled from 'styled-components'
 import { CardGrid } from '../../../../styled/Card'
 import { ImgInput } from '../../../../styled/Inputs'
 import Context from '../../context'
 import { ADD_MULTI, REMOVE_MULTI } from '../../reducer'
 import ImageModal from './ImageModal'
 import SelectedImage from './SelectedImage'
-
-const StyledInputGrid = styled(Grid)`
-  padding: 20px 30px;
-  min-height: 200px;
-`
 
 const Images = () => {
   const [{ images }, dispatch] = React.useContext(Context)

@@ -1,12 +1,7 @@
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import ChevronRightIcon from '@material-ui/icons/ChevronRight'
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
-import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver'
 import media from 'css-in-js-media'
 import React from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
-
 import {
   BackIcon,
   Button,
@@ -17,6 +12,7 @@ import {
   SoundIcon,
 } from '../../../Components'
 import Content from './Content'
+
 const size = {
   mobileS: '320px',
   mobileM: '375px',

@@ -1,6 +1,6 @@
 import { Button, Grid } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
-import { useHistory, useRouteMatch } from 'react-router-dom'
+import { useRouteMatch } from 'react-router-dom'
 import EditWord from '../../../Components/EditWord'
 import Loading from '../../../Components/Loading'
 import Page from '../../../Components/Page'
@@ -9,7 +9,7 @@ import useAPI from '../../../utils/hooks/useAPI'
 import DeleteModal from './DeleteModal'
 
 const Edit = () => {
-  const { words, headers } = useAPI()
+  const { words } = useAPI()
   const [openDelete, setOpenDelete] = useState(false)
   const {
     params: { _id },
@@ -19,7 +19,7 @@ const Edit = () => {
   const { Words: WordsAPI } = useAPI()
   useEffect(() => {
     setInitialState(words.find((entry) => entry._id === _id))
-  }, [words])
+  }, [words, _id])
 
   const handleUpdate = (obj) => {
     // send to update api

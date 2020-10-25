@@ -21,7 +21,7 @@ const KeyboardModal = ({
   }
   useEffect(() => {
     setText(currentText)
-  }, [open])
+  }, [open, currentText])
 
   return (
     <ModalStandard open={open}>

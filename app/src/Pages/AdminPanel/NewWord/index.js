@@ -1,11 +1,7 @@
-import { Button, Grid, Paper } from '@material-ui/core'
-import React, { useContext } from 'react'
-import { useHistory } from 'react-router'
-import { atom } from 'recoil'
-import styled from 'styled-components'
+import { Button, Grid } from '@material-ui/core'
+import React from 'react'
 import EditWord from '../../../Components/EditWord'
 import Page from '../../../Components/Page'
-import { Auth, Words } from '../../../context'
 import StyledLink from '../../../styled/StyledLink'
 import useAPI from '../../../utils/hooks/useAPI'
 
