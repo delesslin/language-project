@@ -27,7 +27,7 @@ export const CopyKeyboard = () => {
       setShowAlert(false)
     }
   }, [value, showAlert])
-
+  return <KeyboardComponent text={value} setText={setValue} />
   return (
     <>
       <Grid container direction='column' alignItems='center' spacing={2}>

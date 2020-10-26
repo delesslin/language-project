@@ -8,9 +8,16 @@ export const Paper = styled.div`
     if (color === 'transparent') {
       return `background-color: none;`
     }
-    if (color === 'pattern' && href === '') {
+    if (href.length > 0) {
+      return `background-image: url(${href});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;`
+    }
+    if (color === 'pattern') {
       return Patterns[Math.floor(Math.random() * Patterns.length - 1)]
     }
+
     if (success < 0) {
       if (href.length > 0) {
         return `background-image: url(${href});

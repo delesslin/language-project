@@ -49,10 +49,6 @@
       "key": "p",
       "char": "p",
       "shift": "P"
-    },
-    {
-      "key": "BACKSPACE",
-      "char": "BACKSPACE"
     }
   ],
   [
@@ -104,7 +100,7 @@
   ],
   [
     {
-      "key": "LEFT_SHIFT",
+      "key": "SHIFT",
       "char": "SHIFT"
     },
     {
@@ -143,8 +139,8 @@
       "shift": "M"
     },
     {
-      "key": "RIGHT_SHIFT",
-      "char": "SHIFT"
+      "key": "BACKSPACE",
+      "char": "BACKSPACE"
     }
   ],
   [

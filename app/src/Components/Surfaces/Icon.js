@@ -10,7 +10,9 @@ import { FaKeyboard } from 'react-icons/fa'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { MdRecordVoiceOver } from 'react-icons/md'
 import { RiFacebookBoxFill } from 'react-icons/ri'
-import { TiInfoLarge } from 'react-icons/ti'
+import { TiInfoLarge, TiBackspaceOutline } from 'react-icons/ti'
+import { BsShift } from 'react-icons/bs'
+import { BiCopy } from 'react-icons/bi'
 import styled from 'styled-components'
 const IconWrapper = styled.div``
 const Icon = (props) => {
@@ -58,3 +60,11 @@ export const LockIcon = (props) => <Icon {...props} Component={LockIconO} />
 export const MicIcon = (props) => <Icon {...props} Component={MicIconO} />
 
 export const NoMicIcon = (props) => <Icon {...props} Component={MicOffIcon} />
+
+export const BackspaceIcon = (props) => (
+  <Icon {...props} Component={TiBackspaceOutline} />
+)
+
+export const ShiftIcon = (props) => <Icon {...props} Component={BsShift} />
+
+export const CopyIcon = (props) => <Icon {...props} Component={BiCopy} />
