@@ -43,7 +43,7 @@
     "styled-normalize": "^8.0.7",
     "styled-reset": "^4.2.3",
     "unique-random-array": "^2.0.0",
-    "use-clippy": "^1.0.6"
+    "use-clippy": "^1.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
