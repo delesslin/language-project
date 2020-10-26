@@ -3,6 +3,7 @@ import React from 'react'
 import { Paper, Text } from '../Surfaces'
 import { BackspaceIcon, ShiftIcon } from '../Surfaces/Icon'
 import { useState } from 'react'
+import media from 'css-in-js-media'
 const StyledPaper = styled(Paper)`
   padding: 5px 10px;
   background-color: ${({ theme }) => theme.primary};
@@ -18,6 +19,21 @@ const StyledPaper = styled(Paper)`
   &:hover {
     box-shadow 4px 4px 2px #555;
     cursor: pointer;
+  }
+  ${media('<tablet')}{
+    padding: 2px;
+  }
+`
+const KeyText = styled(Text)`
+  font-size: 1rem;
+  ${media('>phone')} {
+    font-size: 1.1rem;
+    ${media('>tablet')} {
+      font-size: 1.3rem;
+      ${media('>desktop')} {
+        font-size: 1.5rem;
+      }
+    }
   }
 `
 const isThisKey = (e, thisKey) => {
@@ -115,9 +131,9 @@ export const Key = ({ data, isShifted = false, setIsShifted, setString }) => {
         onMouseUp={handleMouseUp}
         clicked={isClicked}
       >
-        <Text size={1.5}>
+        <KeyText>
           {isShifted && data.shift != null ? data.shift : data.char}
-        </Text>
+        </KeyText>
       </StyledPaper>
     )
   }
