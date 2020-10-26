@@ -34,8 +34,7 @@ const CopyButton = styled(Button)`
   display: grid;
   grid-template-columns: minmax(50px, auto) 1fr;
   place-items: center;
-  min-width: 150px;
-  padding: 5px;
+
   ${media('<tablet')} {
     width: 100%;
     display: flex;

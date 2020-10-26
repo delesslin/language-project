@@ -1,9 +1,8 @@
-import { Key } from './Key'
-import LAYOUT from './layout.json'
-import { Grid } from '@material-ui/core'
+import media from 'css-in-js-media'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import media from 'css-in-js-media'
+import { Key } from './Key'
+import LAYOUT from './layout.json'
 const KeyboardGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;

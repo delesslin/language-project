@@ -1,5 +1,6 @@
 {
   "files": {
+<<<<<<< HEAD
     "main.js": "/static/js/main.fbba09e3.chunk.js",
     "main.js.map": "/static/js/main.fbba09e3.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.92ee656d.js",
@@ -15,5 +16,22 @@
     "static/js/runtime-main.92ee656d.js",
     "static/js/2.1424fee4.chunk.js",
     "static/js/main.fbba09e3.chunk.js"
+=======
+    "main.js": "/static/js/main.cc15b141.chunk.js",
+    "main.js.map": "/static/js/main.cc15b141.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.92ee656d.js",
+    "runtime-main.js.map": "/static/js/runtime-main.92ee656d.js.map",
+    "static/js/2.99dd374b.chunk.js": "/static/js/2.99dd374b.chunk.js",
+    "static/js/2.99dd374b.chunk.js.map": "/static/js/2.99dd374b.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.fedb7cd520eec6ead42057d15cebbb57.js": "/precache-manifest.fedb7cd520eec6ead42057d15cebbb57.js",
+    "service-worker.js": "/service-worker.js",
+    "static/js/2.99dd374b.chunk.js.LICENSE.txt": "/static/js/2.99dd374b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.92ee656d.js",
+    "static/js/2.99dd374b.chunk.js",
+    "static/js/main.cc15b141.chunk.js"
+>>>>>>> keyboard
   ]
 }
