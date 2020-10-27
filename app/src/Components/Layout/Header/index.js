@@ -1,7 +1,7 @@
 import media from 'css-in-js-media'
 import React, { useEffect } from 'react'
 import { RiMenuFill } from 'react-icons/ri'
-import { useLocation } from 'react-router'
+import { useHistory, useLocation } from 'react-router'
 import styled from 'styled-components'
 import {
   GameIcon,
@@ -41,6 +41,9 @@ export const Title = styled.h1`
   ${(props) => props.theme.fonts.primary};
   ${media('<phone')} {
     font-size: 1.2rem;
+  }
+  &:hover {
+    cursor: pointer;
   }
 `
 
@@ -89,6 +92,7 @@ const NavDiv = styled.div`
 `
 const Header = () => {
   const location = useLocation()
+  const history = useHistory()
   const [hidden, setHidden] = React.useState(true)
   useEffect(() => {
     setHidden(true)
@@ -96,7 +100,7 @@ const Header = () => {
   return (
     // prettier-ignore
     <HeaderDiv disabled={location.pathname === '/'}>
-      <HeaderTitle>{'Catawba Language Project'.toUpperCase()}</HeaderTitle>
+      <HeaderTitle onClick={() => history.push('/')}>{'Catawba Language Project'.toUpperCase()}</HeaderTitle>
 
       <NavDiv showing={!hidden}>
         <NavButton to='/'>
