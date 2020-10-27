@@ -8,12 +8,11 @@ import useAPI from '../../../utils/hooks/useAPI'
 // Handle submit
 export const NewWord = () => {
   const history = useAPI()
-  const { refetchWords } = useAPI()
+  const { refetchWords, createWord } = useAPI()
 
-  const { Words: WordAPI } = useAPI()
   const handleSubmit = (payload) => {
     console.log('Sending new word to server', payload)
-    WordAPI.create(payload)
+    createWord(payload)
       .then((res) => {
         console.log('==============================================')
         console.log('SUCCESS!')
@@ -23,11 +22,6 @@ export const NewWord = () => {
       })
       .catch((e) => {
         console.error(e)
-        // setAlert({
-        //   isOpen: true,
-        //   severity: 'error',
-        //   msg: `${e}`,
-        // })
       })
   }
   return (

@@ -84,6 +84,11 @@ export const APIProvider = ({ children }) => {
     await reload()
     return res
   }
+  const createWord = async (payload) => {
+    const res = await WordsAPI.create(payload, options)
+    await reload()
+    return res
+  }
   return (
     <APIContext.Provider
       value={{
@@ -102,6 +107,7 @@ export const APIProvider = ({ children }) => {
         createUser,
         deleteUser,
         updateUser,
+        createWord,
       }}
     >
       {children}
