@@ -3,6 +3,7 @@ const apiRouter = express()
 const wordsRouter = require('./words')
 const userRouter = require('./users')
 const batchRouter = require('./batch')
+const messageRouter = require('./message')
 const jwt = require('jsonwebtoken')
 const UserModel = require('../models/users')
 
@@ -44,7 +45,7 @@ apiRouter.use('/', (req, res, next) => {
   }
 })
 apiRouter.use('/words', wordsRouter)
-
+apiRouter.use('/message', messageRouter)
 apiRouter.use('/users', userRouter)
 apiRouter.use('/batch', batchRouter)
 

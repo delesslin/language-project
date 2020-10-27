@@ -85,6 +85,7 @@ export const Key = ({ data, isShifted = false, setIsShifted, setString }) => {
       handleMouseUp()
     }
   }
+
   React.useEffect(() => {
     document.addEventListener('keydown', handleKeyDown)
     document.addEventListener('keyup', handleKeyUp)
@@ -92,6 +93,7 @@ export const Key = ({ data, isShifted = false, setIsShifted, setString }) => {
       document.removeEventListener('keydown', handleKeyDown)
       document.removeEventListener('keyup', handleKeyUp)
     }
+    /*eslint-disable*/
   }, [])
 
   if (data.key === 'SHIFT') {

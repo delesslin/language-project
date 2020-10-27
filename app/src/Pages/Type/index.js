@@ -55,6 +55,7 @@ const Icon = styled(CopyIcon)`
 const Type = () => {
   const [state, setState] = React.useState('')
   const [isCopied, setIsCopied] = React.useState(false)
+  /*eslint-disable */
   const [clipboard, setClipboard] = useClippy()
   const handleCopy = () => {
     if (state.length > 0) {

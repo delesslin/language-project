@@ -108,6 +108,7 @@ export const APIProvider = ({ children }) => {
         deleteUser,
         updateUser,
         createWord,
+        headers: options,
       }}
     >
       {children}

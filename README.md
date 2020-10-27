@@ -3,7 +3,6 @@ Expo branch
 -webview direct to language-project
 
 # Feedback:
-- I tested the search feature. It works well for words that are in the CLP dictionary. I initially searched for "water" which isn't in the CLP, so it might make sense to have some sort of redirect or submit for words that are searched for but not in the CLP.
 - Were the words ‘hello’ and ‘goodbye’ on there? I didn’t see that, but maybe I missed it.
 
 # Before Release 1 1️⃣
