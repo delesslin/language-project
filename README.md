@@ -2,7 +2,11 @@ Expo branch
 -expo
 -webview direct to language-project
 
-
+# Feedback:
+- I was always trying to click on your left header (the text "Catawba Language Project") to take me to the home page, so it may make sense to make that a button that redirects to your home page.
+- I got the same cards in the game multiple times in the same game. Not a huge deal, but not sure if there's a way to "increase" the randomness or only play the game with certain words (i.e. numbers only, phrases only, etc.).
+- I tested the search feature. It works well for words that are in the CLP dictionary. I initially searched for "water" which isn't in the CLP, so it might make sense to have some sort of redirect or submit for words that are searched for but not in the CLP.
+- Were the words ‘hello’ and ‘goodbye’ on there? I didn’t see that, but maybe I missed it.
 
 # Before Release 1 1️⃣
 1. Sharing image etc

@@ -31,6 +31,7 @@ const LanguageEntry = () => {
     setTerm(tempString)
     setOpenModal(false)
   }
+  const closeModal = () => setOpenModal(false)
   return (
     <>
       <WordInput>
@@ -52,9 +53,10 @@ const LanguageEntry = () => {
           </Grid>
         </Grid>
       </WordInput>
-      <Modal open={openModal} handleClose={() => setOpenModal(false)}>
+      <Modal open={openModal} handleClose={closeModal}>
         <input type='text' value={tempString} readOnly={true} />
         <Button onClick={handleSave}>SAVE</Button>
+        <Button onClick={closeModal}>NEVERMIND</Button>
         <KeyboardComponent setText={setTempString} />
       </Modal>
     </>
