@@ -3,7 +3,7 @@ Expo branch
 -webview direct to language-project
 
 # Feedback:
-- Were the words ‘hello’ and ‘goodbye’ on there? I didn’t see that, but maybe I missed it.
+
 
 # Before Release 1 1️⃣
 1. Sharing image etc

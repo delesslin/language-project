@@ -3,14 +3,15 @@ import React from 'react'
 import useAPI from '../useAPI'
 const findMatches = async (term, words) => {
   const fuse = new Fuse(words, {
-    // keys: ['language_entry', 'notes', 'tags', 'translations'],
-    keys: ['translations'],
+    keys: ['language_entry', 'notes', 'tags', 'translations'],
+    findAllMatches: true,
+    threshold: 0.3,
+    // keys: ['translations'],
   })
   const results = await fuse.search(term)
   return results
 }
 const useSearch = () => {
-  // refactor using CONTEXT
   const { words } = useAPI()
   const [results, setResults] = React.useState(null)
   const [isSearching, setIsSearching] = React.useState(false)

@@ -32,12 +32,23 @@ const Word = styled(Chip)`
   border-radius: 2px;
   transform: rotate(${() => (Math.random() < 0.5 ? -2 : 2)}deg);
 `
-const Detail = styled(Chip)`
+const Details = styled.div`
   grid-area: content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`
+const Detail = styled(Chip)`
   background-color: ${({ theme }) => theme.secondary};
   border-radius: 2px;
   padding: 15px 40px;
   transform: rotate(${() => (Math.random() < 0.5 ? -2 : 2)}deg);
+  margin: 3px;
+  display flex;
+  justify-content: center;
+  > * {
+    text-align: center;
+  }
 `
 const Play = styled(Player)`
   grid-area: play;
@@ -63,9 +74,16 @@ const Results = ({ loading, results }) => {
               <Word>
                 <Text size={2.3}>{entry.language_entry}</Text>
               </Word>
-              <Detail>
-                <Text size={2}>{entry.translations[0]}</Text>
-              </Detail>
+              <Details>
+                {entry.translations.map((entry) => {
+                  return (
+                    <Detail>
+                      <Text size={2}>{entry}</Text>
+                    </Detail>
+                  )
+                })}
+              </Details>
+
               <More
                 round={true}
                 onClick={() => history.push(`/word/${entry._id}`)}
