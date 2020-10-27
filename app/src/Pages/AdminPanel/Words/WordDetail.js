@@ -3,14 +3,14 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import React, { useEffect } from 'react'
 import { useHistory, useParams } from 'react-router'
 import styled from 'styled-components'
-import { Spinner } from '../../../Components'
+import { Button, Spinner } from '../../../Components'
 import EditWord from '../../../Components/EditWord'
 import useAPI from '../../../utils/hooks/useAPI'
 const EditGrid = styled.div`
   display: grid;
   grid-template-columns: minmax(10vw, auto) 1fr;
-  grid-template-rows: minmax(50vh, auto);
-  grid-template-areas: 's v';
+  grid-template-rows: minmax(50vh, auto) auto;
+  grid-template-areas: 's v' 'new new';
   grid-gap: 30px;
 `
 const DetailGrid = styled.div`
@@ -81,8 +81,12 @@ const ScrollTranslation = styled.div`
     background-color: #b2e1e6;
   }
 `
+const NewButton = styled(Button)`
+  grid-area: new;
+  width: 100%;
+`
 const WordDetail = () => {
-  const { words, isLoading, updateWord } = useAPI()
+  const { words, isLoading, updateWord, createWord } = useAPI()
   const params = useParams()
   const [currentWord, setCurrentWord] = React.useState(null)
   const history = useHistory()
@@ -101,12 +105,25 @@ const WordDetail = () => {
     history.push(`/admin/${words[i]._id}`)
   }
   const onSave = (obj) => {
-    updateWord(params._id, obj)
-      .then((e) => {
-        setCurrentWord(null)
-        history.push(`/admin`)
-      })
-      .catch(console.error)
+    if (currentWord == null) {
+      createWord(obj)
+        .then((res) => {
+          console.log('==============================================')
+          console.log('SUCCESS!')
+          console.log(res)
+          history.push('/admin')
+        })
+        .catch((e) => {
+          console.error(e)
+        })
+    } else {
+      updateWord(params._id, obj)
+        .then((e) => {
+          setCurrentWord(null)
+          history.push(`/admin`)
+        })
+        .catch(console.error)
+    }
   }
   if (isLoading) {
     return <Spinner />
@@ -142,12 +159,16 @@ const WordDetail = () => {
               })}
       </ScrollGrid>
       <DetailGrid>
-        {currentWord == null ? (
-          <h4>Please select a word</h4>
-        ) : (
-          <EditWord data={currentWord} onSave={onSave} />
-        )}
+        <EditWord data={currentWord} onSave={onSave} />
       </DetailGrid>
+      <NewButton
+        onClick={() => {
+          setCurrentWord(null)
+          history.push('/admin')
+        }}
+      >
+        NEW WORD
+      </NewButton>
     </EditGrid>
   )
 }

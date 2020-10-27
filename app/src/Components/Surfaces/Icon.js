@@ -13,6 +13,7 @@ import { RiFacebookBoxFill } from 'react-icons/ri'
 import { TiInfoLarge, TiBackspaceOutline } from 'react-icons/ti'
 import { BsShift } from 'react-icons/bs'
 import { BiCopy } from 'react-icons/bi'
+import { GrClose } from 'react-icons/gr'
 import styled from 'styled-components'
 const IconWrapper = styled.div``
 const Icon = (props) => {
@@ -68,3 +69,5 @@ export const BackspaceIcon = (props) => (
 export const ShiftIcon = (props) => <Icon {...props} Component={BsShift} />
 
 export const CopyIcon = (props) => <Icon {...props} Component={BiCopy} />
+
+export const CloseIcon = (props) => <Icon {...props} Component={GrClose} />

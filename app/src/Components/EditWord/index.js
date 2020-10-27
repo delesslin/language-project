@@ -53,6 +53,7 @@ const EditWord = ({
   const onDelete = () => {
     deleteWord(state._id).then(() => {
       history.push('/admin')
+      dispatch({ type: INIT, blankState })
     })
   }
   // add _id

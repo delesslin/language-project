@@ -1,6 +1,6 @@
 import { Fab, Grid, TextField } from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { WordInput } from '../../../styled/Inputs'
 import { KeyboardComponent } from '../../Keyboard/KeyboardComponent'
 import KeyboardModal from '../../Keyboard/KeyboardModal'
@@ -14,6 +14,9 @@ const LanguageEntry = () => {
   const [openModal, setOpenModal] = React.useState(false)
   const [tempString, setTempString] = React.useState(language_entry)
   const property = 'language_entry'
+  useEffect(() => {
+    setTempString(language_entry)
+  }, [language_entry])
   const handleFocus = () => {
     console.log('OOOOH FOCUS')
   }
@@ -49,8 +52,8 @@ const LanguageEntry = () => {
           </Grid>
         </Grid>
       </WordInput>
-      <Modal open={openModal}>
-        <input type='text' value={tempString} />
+      <Modal open={openModal} handleClose={() => setOpenModal(false)}>
+        <input type='text' value={tempString} readOnly={true} />
         <Button onClick={handleSave}>SAVE</Button>
         <KeyboardComponent setText={setTempString} />
       </Modal>

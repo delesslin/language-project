@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Button } from './Button'
+import { CloseIcon } from './Icon'
 import { Paper } from './Paper'
+
 const Background = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
   position: absolute;
@@ -19,11 +22,19 @@ const Content = styled(Paper)`
   width: 80vw;
   background-color: ${({ theme }) => theme.light};
 `
-const Modal = ({ open = true, children }) => {
+const Modal = ({
+  open = true,
+  children,
+  handleClose = () => console.log('CLOSE!'),
+}) => {
   if (open) {
     return (
       <Background>
-        <Content color='light'>{children}</Content>
+        <Content color='white'>
+          <CloseIcon onClick={handleClose} />
+
+          {children}
+        </Content>
       </Background>
     )
   } else {
