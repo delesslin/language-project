@@ -3,7 +3,7 @@ Expo branch
 -webview direct to language-project
 
 # Feedback:
-
+- Get permission before recording
 
 # Before Release 1 1️⃣
 1. Sharing image etc
