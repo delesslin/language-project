@@ -46,7 +46,7 @@ const Game = () => {
   const setupLesson = () => {
     const randomArr = words.sort((word) => 0.5 - Math.random())
     // setLesson to first 10 words
-    setLesson(() => randomArr.slice(0, 20))
+    setLesson(() => randomArr.slice(0, 40))
 
     setProgress(0)
     setAnswered(-1)
