@@ -21,6 +21,10 @@ const MessageSchema = mongoose.Schema({
     type: Date,
     default: Date.now(),
   },
+  completed: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 // export model user with UserSchema

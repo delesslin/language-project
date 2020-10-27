@@ -45,9 +45,8 @@ const Landing = ({ children }) => {
     <Page>
       <LandingDiv>
         <Header>
-          <Text size={3}>
-            <LockIcon />
-          </Text>
+          <LockIcon size={3} />
+
           <div>
             <Text size={1.3}>{`[ ${words.filter((e) => e.public).length} / ${
               words.length

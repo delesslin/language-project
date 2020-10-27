@@ -12,6 +12,7 @@ import Login from './Login'
 import { NewWord } from './NewWord'
 import Signup from './Signup'
 import Users from './Users'
+import Requests from './Requests'
 
 export const AdminPanel = () => {
   const { loggedIn, roles } = useAPI()
@@ -46,6 +47,9 @@ export const AdminPanel = () => {
               </Route>
               <Route path={path + '/edit/:_id'}>
                 <Edit />
+              </Route>
+              <Route path={path + '/requests'}>
+                <Requests />
               </Route>
               <Route path={path + '/:_id?'}>
                 <Words />
