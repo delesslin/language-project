@@ -29,6 +29,7 @@
     "react-icons": "^3.11.0",
     "react-keyboard-event-handler": "^1.5.4",
     "react-material-ui-keyboard": "^6.2.1",
+    "react-media-recorder": "^1.4.0",
     "react-mic": "^12.4.6",
     "react-mp3-recorder": "^1.1.2",
     "react-player": "^2.6.0",
