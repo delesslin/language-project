@@ -4,6 +4,8 @@ Expo branch
 
 # Feedback:
 - Get permission before recording
+- -Recording symbol is permanent
+-
 
 # Before Release 1 1️⃣
 1. Sharing image etc
