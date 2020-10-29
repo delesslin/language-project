@@ -3,7 +3,7 @@ import React from 'react'
 import { CardGrid } from '../../../../styled/Card'
 import { ImgInput } from '../../../../styled/Inputs'
 import Context from '../../context'
-import { ADD_MULTI, REMOVE_MULTI } from '../../reducer'
+import { ADD_MULTI, REMOVE_MULTI, REPLACE } from '../../reducer'
 import ImageModal from './ImageModal'
 import SelectedImage from './SelectedImage'
 
@@ -20,7 +20,7 @@ const Images = () => {
   }
   const setImages = (value) => {
     dispatch({
-      type: ADD_MULTI,
+      type: REPLACE,
       property: 'images',
       value,
     })

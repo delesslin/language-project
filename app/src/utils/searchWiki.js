@@ -44,11 +44,13 @@ const getWikiImages = async (term) => {
     )
     const images = resPages.reduce((acc, curr) => {
       const keys = Object.keys(curr)
+      console.log('keys', keys)
       const urls = keys.reduce((arr, key) => {
         const obj = curr[key]
         console.log('obj', obj)
+        const keys = Object.keys(obj)
 
-        const strings = obj['-1'].imageinfo.map((imgObj) => imgObj.url)
+        const strings = obj[keys[0]].imageinfo.map((imgObj) => imgObj.url)
         console.log(strings)
         return [...arr, ...strings]
         // if (obj.imageInfo != null) {

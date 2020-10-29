@@ -111,7 +111,7 @@ const WordDetail = () => {
           console.log('==============================================')
           console.log('SUCCESS!')
           console.log(res)
-          history.push('/admin')
+          history.push(`/admin/${obj._id}`)
         })
         .catch((e) => {
           console.error(e)
@@ -120,7 +120,7 @@ const WordDetail = () => {
       updateWord(params._id, obj)
         .then((e) => {
           setCurrentWord(null)
-          history.push(`/admin`)
+          history.push(`/admin/${params._id}`)
         })
         .catch(console.error)
     }
