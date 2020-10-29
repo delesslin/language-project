@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Button } from './Button'
 import { CloseIcon } from './Icon'
 import { Paper } from './Paper'
 
@@ -21,6 +22,9 @@ const Content = styled(Paper)`
   width: 80vw;
   background-color: ${({ theme }) => theme.light};
 `
+const Close = styled(Button)`
+  margin: 5px;
+`
 const Modal = ({
   open = true,
   children,
@@ -30,7 +34,9 @@ const Modal = ({
     return (
       <Background>
         <Content color='white'>
-          <CloseIcon onClick={handleClose} />
+          <Close onClick={handleClose} round={true} color='red' size={2.8}>
+            <CloseIcon />
+          </Close>
 
           {children}
         </Content>

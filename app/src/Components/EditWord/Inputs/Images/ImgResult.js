@@ -1,6 +1,10 @@
 import { Grid } from '@material-ui/core'
 import React, { useEffect } from 'react'
+import styled from 'styled-components'
 import Image from '../../../../styled/Image'
+const StyledImage = styled(Image)`
+  margin: 5px;
+`
 const ImgResult = ({ result, selections, add, remove }) => {
   const [selected, setSelected] = React.useState(false)
   useEffect(() => {
@@ -19,7 +23,7 @@ const ImgResult = ({ result, selections, add, remove }) => {
   }
   return (
     <Grid item key={result}>
-      <Image
+      <StyledImage
         size='150px'
         src={result}
         selected={selected}
