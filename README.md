@@ -5,7 +5,11 @@ Expo branch
 # Feedback:
 - Get permission before recording
 - -Recording symbol is permanent
--
+- Check that no existing word for language-entry -> different modal screen
+- move new word button on admin to scroll side at top or maybe at the bottom
+- progressively introduce required parts of word and submit button
+- check that the language_entry doesn't already exist
+- handle multiple images and multiple recordings and multiple translations and multipl etc
 
 # Before Release 1 1️⃣
 1. Sharing image etc
