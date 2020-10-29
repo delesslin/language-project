@@ -5,10 +5,10 @@ Expo branch
 # Feedback:
 - Get permission before recording
 - -Recording symbol is permanent
-- Check that no existing word for language-entry -> different modal screen
+
 - move new word button on admin to scroll side at top or maybe at the bottom
 - progressively introduce required parts of word and submit button
-- check that the language_entry doesn't already exist
+
 - handle multiple images and multiple recordings and multiple translations and multipl etc
 
 # Before Release 1 1️⃣
@@ -20,23 +20,20 @@ Expo branch
 
 # TODOs 📎
 
-1.  Delete & NVM words
+1.  Remove console.logs
 2.  Refactor media queries into theme queries
-3.  Refactor image search to use wikipedia images by article
-4.  Implement request page
-5.  Overflow scroll on Image Modal
-6.  Remove console.logs
-7. Sanitize data so that strings don't begin or end with ' '
-8. Search should use query string to make shareable and navigable
-9. image search by wikipedia article, not by whatever is happening now
-10. Refactor React app state to only use the native react Context and State
+3. Sanitize data so that strings don't begin or end with ' '
+4. Search should use query string to make shareable and navigable
+   1. Change to routing solution
+5. image search by wikipedia article, not by whatever is happening now
+6.  Refactor React app state to only use the native react Context and State
    1. Only remaining componenet using ATOMS is KeyboardComponent
    2. Refactor keyboard componenet anyways to be responsive
-11. Refactor /styled into isolated Components <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
-12. Add custom image url to edit/new word
-13. Consolidate batch-upload & word-upload...should presuume an Array of length > 0
-14. Stop multiple api calls from react app
-15. Export data as .csv file
+7.  Refactor /styled into isolated Components <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
+8.  Add custom image url to edit/new word
+9.  Consolidate batch-upload & word-upload...should presuume an Array of length > 0
+10. Stop multiple api calls from react app
+11. Export data as .csv file
 
 # Minimum Viable Product
 
