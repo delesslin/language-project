@@ -59,7 +59,7 @@ wordsRouter.get('/', async (req, res) => {
 wordsRouter.patch('/:_id', async (req, res) => {
   if (req.user.roles.includes('editor')) {
     try {
-      // console.log(req.body)
+      console.log('PATCH: ', req.body)
       const Word = await wordModel.findOneAndUpdate(
         { _id: req.params._id },
         req.body

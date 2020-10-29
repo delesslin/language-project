@@ -19,7 +19,10 @@ const ImageModal = ({ open, save, close, currentImages }) => {
 
   const handleSearch = () => {
     console.log(`searching for ${searchTerm}`)
-    searchWiki(searchTerm, 30).then((results) => setSearchResults(results))
+    searchWiki(searchTerm, 30).then((results) => {
+      console.log(results)
+      setSearchResults(results)
+    })
   }
   const handleSave = () => {
     console.log('saving!')
