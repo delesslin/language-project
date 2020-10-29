@@ -63,7 +63,7 @@ const Users = () => {
         setUnauthorized(false)
       })
       .catch((e) => {
-        console.log(e.response)
+        console.error(e.response)
       })
   }
   useEffect(() => {

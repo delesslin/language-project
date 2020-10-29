@@ -25,7 +25,6 @@ const Edit = () => {
     // send to update api
     WordsAPI.update(_id, obj)
       .then((res) => {
-        console.log(res)
         history.push('/admin')
       })
       .catch((e) => console.error(e))

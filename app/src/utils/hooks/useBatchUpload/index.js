@@ -14,7 +14,6 @@ const useBatchUpload = () => {
   const onChange = (e) => {
     const file = e.target.files[0]
     parseCSV(file, words)
-      // .then(console.log)
       .then((data) => {
         setError(false)
         setState(data)
@@ -22,7 +21,6 @@ const useBatchUpload = () => {
       .catch(console.error)
   }
   const onDelete = (i) => {
-    console.log(`OMG DELETE ${i}`)
     setState((state) => {
       return state.filter((entry, index) => index !== i)
     })
@@ -31,7 +29,6 @@ const useBatchUpload = () => {
     axios
       .post('/api/batch', state)
       .then((res) => {
-        console.log(res)
         handleSuccess()
       })
       .catch((e) => {
@@ -39,7 +36,6 @@ const useBatchUpload = () => {
       })
   }
   const handleFailure = (e) => {
-    console.log(e)
     setError(e)
     setState([])
   }

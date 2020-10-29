@@ -97,7 +97,6 @@ const WordDetail = () => {
     }
   }, [words, params])
   const handleRedirect = (i) => {
-    console.log('change word', words[i]._id)
     history.push(`/admin/${words[i]._id}`)
   }
   const onSave = (obj) => {

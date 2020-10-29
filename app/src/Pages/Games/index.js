@@ -26,7 +26,6 @@ const Game = () => {
     setExercise(() => randEx())
   }
   const incrementProgress = (x) => {
-    console.log(x)
     if (x < 0) {
       setAnswered(0)
     }
@@ -52,7 +51,6 @@ const Game = () => {
     setAnswered(-1)
   }
   const handleReset = () => {
-    console.log("let's reset")
     setupLesson()
   }
   useEffect(() => {

@@ -10,8 +10,6 @@ const useGetWords = () => {
   const { Words: WordsAPI } = useAPI()
 
   const refetchWords = () => {
-    console.log('fetching words again')
-
     setIsLoading(true)
     WordsAPI.read().then((data) => {
       setWords(data)
@@ -25,10 +23,8 @@ const useGetWords = () => {
   }
   // useEffect get data and set state
   React.useEffect(() => {
-    console.log('fetching...')
     setIsLoading(true)
     WordsAPI.read().then((data) => {
-      // console.log(data)
       setWords(() => {
         let sanitized = data.map((entry) => {
           return {
@@ -65,8 +61,7 @@ const useGetWords = () => {
           },
         ]
       }, [])
-      // console.log(objArray)
-      // reverse alphabetize tags
+
       const reverseAlphabet = objArray.sort((a, b) => {
         if (a.tag < b.tag) {
           return 1
@@ -76,11 +71,8 @@ const useGetWords = () => {
         }
         return 0
       })
-      // console.log('alphabetized', reverseAlphabet)
-      // consolidate
+
       const consolidated = reverseAlphabet.reduce((acc, curr) => {
-        // does acc contain a pluralized form of the curr?
-        // console.log(pluralize.plural(curr.tag))
         const i = acc.findIndex((el) => el.tag === pluralize.plural(curr.tag))
 
         // if it does, add curr's words to acc[i].words & return acc
@@ -92,8 +84,7 @@ const useGetWords = () => {
           return [...acc, curr]
         }
       }, [])
-      // console.log(consolidated)
-      // add img to each object
+
       const imagedTags = consolidated.map((entry) => {
         // check if entry.words includes an images.length > 0
         let image = ''
@@ -109,15 +100,11 @@ const useGetWords = () => {
           ...entry,
         }
       })
-      // console.log(imagedTags)
+
       const shuffled = arrayShuffle(imagedTags)
       setTags(shuffled)
     }
   }, [words])
-
-  React.useEffect(() => {
-    console.log('tags', tags)
-  }, [tags])
 
   return { words, tags, refetchWords, isLoading, replaceItem }
 }

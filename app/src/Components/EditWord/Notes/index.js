@@ -10,7 +10,6 @@ const Notes = () => {
   const [currText, setCurrText] = useState('')
   const property = 'notes'
   const add = (value) => {
-    console.log(value)
     dispatch({
       type: ADD_MULTI,
       property,

@@ -109,16 +109,12 @@ const WordDetail = () => {
     }
   }, [words, params])
   const handleRedirect = (i) => {
-    console.log('change word', words[i]._id)
     history.push(`/admin/${words[i]._id}`)
   }
   const onSave = (obj) => {
     if (currentWord == null) {
       createWord(obj)
         .then((res) => {
-          console.log('==============================================')
-          console.log('SUCCESS!')
-          console.log(res)
           history.push(`/admin/${obj._id}`)
         })
         .catch((e) => {

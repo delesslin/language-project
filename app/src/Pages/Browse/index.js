@@ -30,16 +30,14 @@ const Home = () => {
     setCurrentIndex((i) => i + x)
   }
   useEffect(() => {
-    console.log('use effect')
     let length = words.length
     if (length > 0) {
       const randIndex = Math.floor(Math.random() * length - 1)
-      console.log(randIndex)
+
       setCurrentIndex(randIndex)
     }
   }, [words])
-  // TODO: add RANDOM WORD for the top
-  // console.log(Array.isArray(tags))
+
   return (
     <Page>
       {isLoading || words == null || tags == null ? null : (

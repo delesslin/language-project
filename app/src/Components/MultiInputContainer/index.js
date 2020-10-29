@@ -13,9 +13,7 @@ const MultiInputContainer = ({
   handleDelete = () => {},
   state = [],
   label = 'input',
-  buttonClick = () => {
-    console.log('click!')
-  },
+  buttonClick = () => {},
   disabledInput = false,
 }) => {
   return (

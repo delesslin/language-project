@@ -16,9 +16,8 @@ const message = require('../models/message.js')
 // CREATE
 // ============================
 messageRouter.post('/', async (req, res) => {
-  console.log('write new message!')
   //TODO: Expand Error codes (Specifically error code for duplicate values)
-  // console.log(req.user.roles)
+
   const Message = new message(req.body)
 
   try {
@@ -35,9 +34,8 @@ messageRouter.post('/', async (req, res) => {
 messageRouter.get('/', async (req, res) => {
   try {
     if (req.user.roles.includes('editor')) {
-      console.log('all words!')
       const Messages = await message.find({})
-      // console.log(Words)
+
       res.status(200).send(Messages)
     } else {
       res.sendStatus(403)
@@ -53,7 +51,6 @@ messageRouter.get('/', async (req, res) => {
 messageRouter.patch('/:_id', async (req, res) => {
   if (req.user.roles.includes('editor')) {
     try {
-      // console.log(req.body)
       const Message = await message.findOneAndUpdate(
         { _id: req.params._id },
         req.body

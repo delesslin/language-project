@@ -10,10 +10,8 @@ const UserModel = require('../models/users')
 
 // user auth
 apiRouter.use('/', (req, res, next) => {
-  // console.log(req)
-  // console.log('headers', req.headers)
   const authHeader = req.headers.authorization
-  // console.log('authHeader', authHeader)
+
   if (authHeader == null) {
     req.user = {
       roles: ['guest'],
@@ -21,7 +19,7 @@ apiRouter.use('/', (req, res, next) => {
     next()
   } else {
     const token = authHeader && authHeader.split(' ')[1]
-    // console.log('token', token)
+
     if (token == null) {
       req.user = {
         roles: ['guest'],
@@ -29,12 +27,11 @@ apiRouter.use('/', (req, res, next) => {
       next()
     } else {
       jwt.verify(token, process.env.SECRET, async (err, user) => {
-        console.log(err)
         if (err) {
+          console.error(err)
           return res.sendStatus(403)
         } else {
           const data = await UserModel.find({ id: user.id })
-          console.log('roles', data[0].roles)
 
           req.user = {
             roles: data[0].roles,

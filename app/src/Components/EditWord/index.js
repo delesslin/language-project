@@ -35,7 +35,7 @@ const InputButton = styled(Button)`
 `
 const EditWord = ({
   data = null,
-  onSave = () => console.log('saving'),
+  onSave = () => console.log('no saving fn'),
   children,
 }) => {
   const [state, dispatch] = useReducer(reducer, blankState)
@@ -47,7 +47,6 @@ const EditWord = ({
     }
   }, [data])
   const onSubmit = () => {
-    console.log(state)
     onSave(state)
   }
   const onDelete = () => {

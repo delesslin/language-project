@@ -42,7 +42,7 @@ export const RowDiv = styled.tr`
   // }
 
   ${({ error }) => {
-    console.log(error)
+    console.error(error)
     if (error) {
       return `background-color: #F49390`
     } else {

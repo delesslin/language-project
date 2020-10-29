@@ -70,7 +70,6 @@ userRouter.post(
     }),
   ],
   async (req, res) => {
-    console.log('request to sign up!')
     if (!req.user.roles.includes('admin')) {
       res.sendStatus(403)
     }
@@ -140,10 +139,8 @@ userRouter.post(
 // UPDATE
 // ======================
 userRouter.patch('/', async (req, res) => {
-  console.log('UPDATE USER')
-  // console.log('REQ')
   const user = req.body
-  // console.log(user)
+
   if (!req.user.roles.includes('admin')) {
     res.sendStatus(403)
   }
@@ -164,7 +161,6 @@ userRouter.patch('/', async (req, res) => {
 // DELETE
 // ====================================
 userRouter.delete('/:_id', async (req, res) => {
-  console.log("let's delete")
   if (!req.user.roles.includes('admin')) {
     res.sendStatus(403)
   }
@@ -192,7 +188,6 @@ userRouter.post(
     }),
   ],
   async (req, res) => {
-    console.log(req.body)
     // get any errors that were returned by the array
     const errors = validationResult(req)
     // if there was an error, return error to client
@@ -217,7 +212,6 @@ userRouter.post(
       const isMatch = await bcrypt.compare(password, user.password)
       // if there is no match, send error
       if (!isMatch) {
-        console.log('bad pword')
         return res.status(400).json({
           message: 'Incorrect Password !',
         })

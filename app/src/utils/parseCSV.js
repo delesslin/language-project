@@ -6,7 +6,6 @@ const parseCSV = (file) => {
     var reader = new FileReader()
     reader.readAsText(file)
     reader.onload = function (e) {
-      // console.log(e.target.result)
       Papa.parse(e.target.result, {
         header: true,
         complete: function (results) {
@@ -30,8 +29,6 @@ const split = (str) => {
 export default async (file, words = []) => {
   return await parseCSV(file)
     .then((res) => {
-      // console.log(res)
-      // setState(res.data)
       return res.data
     })
     .then((words) => {

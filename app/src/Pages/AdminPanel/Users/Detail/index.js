@@ -15,7 +15,7 @@ const DetailGrid = styled.div`
 const Detail = ({
   users = [],
 
-  refresh = () => console.log('refresh!'),
+  refresh = () => console.log('no refresh fn!'),
 }) => {
   const [locked, setLocked] = useState(true)
 
@@ -42,16 +42,13 @@ const Detail = ({
   }, [_id, users, history, locked])
 
   const handleRoleChange = (e, role) => {
-    console.log('role change')
     setUser((user) => {
       if (user.roles.includes(role)) {
-        console.log('delete?')
         return {
           ...user,
           roles: user.roles.filter((r) => r !== role),
         }
       } else {
-        console.log('add??')
         return {
           ...user,
           roles: [...user.roles, role],
@@ -63,7 +60,7 @@ const Detail = ({
     updateUser(user)
       .then(() => {
         refresh()
-        console.log('success!')
+
         setLocked(true)
       })
       .catch(console.error)
@@ -93,7 +90,6 @@ const Detail = ({
             onChange={(e) => {
               const { value } = e.target
               setUser(() => {
-                console.log(e)
                 return { ...user, username: value }
               })
             }}

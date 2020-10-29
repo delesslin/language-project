@@ -11,7 +11,6 @@ batchRouter.post('/', (req, res) => {
       res.status(200).send('Succesfully uploaded words!')
     }
   })
-  // console.log(req.body)
 })
 
 module.exports = batchRouter

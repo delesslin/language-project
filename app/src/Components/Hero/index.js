@@ -128,7 +128,10 @@ const HeroNext = styled(Button)`
   }
 `
 
-const Hero = ({ word, handleIncrement = (i) => console.log(i) }) => {
+const Hero = ({
+  word,
+  handleIncrement = (i) => console.log('no increment fn. i: ', i),
+}) => {
   const history = useHistory()
   const handleClick = () => {
     history.push(`/word/${word._id}`)

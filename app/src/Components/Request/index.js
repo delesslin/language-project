@@ -35,7 +35,6 @@ const Request = () => {
     const message = messageRef.current.value
     Axios.post('/api/message', { name, email, message, type }, headers)
       .then((res) => {
-        console.log(res)
         setSuccess(1)
       })
       .catch(console.error)

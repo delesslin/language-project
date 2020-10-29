@@ -28,7 +28,7 @@ const Close = styled(Button)`
 const Modal = ({
   open = true,
   children,
-  handleClose = () => console.log('CLOSE!'),
+  handleClose = () => console.log('no handleClose fn'),
 }) => {
   if (open) {
     return (

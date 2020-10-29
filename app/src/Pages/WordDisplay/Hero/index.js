@@ -77,7 +77,10 @@ const HeroNext = styled.div`
   }
 `
 
-const Hero = ({ word, handleIncrement = (i) => console.log(i) }) => {
+const Hero = ({
+  word,
+  handleIncrement = (i) => console.log('no increment fn. i: ', i),
+}) => {
   const handleNext = () => {
     handleIncrement()
   }

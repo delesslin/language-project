@@ -21,8 +21,7 @@ const genTags = async (words = []) => {
       },
     ]
   }, [])
-  // console.log(objArray)
-  // reverse alphabetize tags
+
   const reverseAlphabet = objArray.sort((a, b) => {
     if (a.tag < b.tag) {
       return 1
@@ -32,11 +31,8 @@ const genTags = async (words = []) => {
     }
     return 0
   })
-  // console.log('alphabetized', reverseAlphabet)
-  // consolidate
+
   const consolidated = reverseAlphabet.reduce((acc, curr) => {
-    // does acc contain a pluralized form of the curr?
-    // console.log(pluralize.plural(curr.tag))
     const i = acc.findIndex((el) => el.tag === pluralize.plural(curr.tag))
 
     // if it does, add curr's words to acc[i].words & return acc
@@ -48,8 +44,7 @@ const genTags = async (words = []) => {
       return [...acc, curr]
     }
   }, [])
-  // console.log(consolidated)
-  // add img to each object
+
   const imagedTags = consolidated.map((entry) => {
     // check if entry.words includes an images.length > 0
     let image = ''
@@ -65,7 +60,7 @@ const genTags = async (words = []) => {
       ...entry,
     }
   })
-  console.log(imagedTags)
+
   const shuffled = await arrayShuffle(imagedTags)
   return shuffled
 }

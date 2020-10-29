@@ -5,8 +5,6 @@ const express = require('express')
 const { serveBuildFolder } = require('./serveBuildFolder')
 const apiRouter = require('./routes/index.js')
 const InitiateMongoServer = require('./config/db')
-const userModel = require('../server/models/users')
-const bcrypt = require('bcryptjs')
 
 console.log('----------------------------------------')
 

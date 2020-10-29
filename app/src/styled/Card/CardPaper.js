@@ -1,16 +1,7 @@
-// import { parse } from 'coolors-io'
 import media from 'css-in-js-media'
-// import hexRGB from 'hex-rgb'
+
 import styled from 'styled-components'
-// const colors = parse('https://coolors.co/ffe74c-ff5964-ffffff-38618c-35a7ff')
-// const rgb = colors.map((hex) => hexRGB(hex))
-// const genGradient = () => {
-//   const [a, b] = arrayShuffle(rgb)
-//   console.log(a, b)
-//   const deg = Math.floor(Math.random() * 360)
-//   return `background: rgb(${a.red},${a.green},${a.blue});
-//   background: linear-gradient(${deg}deg, rgba(${a.red},${a.green},${a.blue},1) 18%, rgba(${b.red},${b.green},${b.blue},1) 100%);`
-// }
+
 const CardPaper = styled.div`
   ${({ href, theme, success = -1 }) => {
     if (success < 0) {

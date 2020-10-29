@@ -5,8 +5,6 @@ const api = {
     return Axios.post('/api/words', payload, headers)
   },
   read: async (options) => {
-    console.log('read')
-    console.log(options)
     return Axios.get('/api/words', options)
       .then(({ data }) => {
         return data
@@ -14,7 +12,6 @@ const api = {
       .catch(console.error)
   },
   update: async (_id, obj, headers) => {
-    console.log('headers delivered to update: ', headers)
     return Axios.patch(`/api/words/${_id}`, obj, headers)
   },
   delete: async (_id, headers) => {

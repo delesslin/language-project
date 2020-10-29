@@ -16,10 +16,8 @@ const useSearch = () => {
   const [results, setResults] = React.useState(null)
   const [isSearching, setIsSearching] = React.useState(false)
   const search = (term) => {
-    console.log(words)
     setIsSearching(true)
 
-    console.log(term)
     findMatches(term, words).then((results) => {
       setResults(results)
       setIsSearching(false)

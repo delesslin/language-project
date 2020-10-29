@@ -51,24 +51,19 @@ const ImageModal = ({ open, save, close, currentImages }) => {
   }
 
   const handleSearch = () => {
-    console.log(`searching for ${searchTerm}`)
     searchWiki(searchTerm, 30)
       .then((results) => {
-        console.log(results)
         setSearchResults(results)
       })
       .catch((e) => {
-        console.log(e)
         setError(e)
       })
   }
   const handleSave = () => {
-    console.log('saving!')
     save(selected)
     close()
   }
   const handleClose = () => {
-    console.log('closing!')
     close()
   }
   useEffect(() => {

@@ -45,8 +45,6 @@ const Link = ({ children, to }) => {
 const Landing = ({ children }) => {
   const { words, roles } = useAPI()
 
-  const params = useParams()
-  useEffect(() => console.log(params), [params])
   return (
     <Page>
       <LandingDiv>

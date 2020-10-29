@@ -13,11 +13,10 @@ const useAuth = () => {
     })
       .then(({ data }) => {
         const { token: newToken } = data
-        console.log(newToken)
-        console.log(typeof newToken)
-        setToken()
+
+        setToken(newToken)
         setRoles(data.roles)
-        console.log(token)
+
         setLoggedIn(true)
       })
       .catch((e) => setError(true))

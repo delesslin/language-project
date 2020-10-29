@@ -30,9 +30,7 @@ const LanguageEntry = () => {
   useEffect(() => {
     setTempString(language_entry)
   }, [language_entry])
-  const handleFocus = () => {
-    console.log('OOOOH FOCUS')
-  }
+  const handleFocus = () => {}
   const setTerm = (value) => {
     dispatch({
       type: REPLACE,

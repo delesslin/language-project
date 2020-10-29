@@ -8,7 +8,7 @@ export const useRecorder = (initBlobs = []) => {
   const handleBlob = (blob) => {
     // const blobURL = URL.createObjectURL(blob)
     const blobURL = blob
-    console.log(blob)
+
     const config = { responseType: 'blob' }
     Axios.get(blobURL, config).then((res) => {
       const { data } = res

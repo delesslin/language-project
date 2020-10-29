@@ -10,7 +10,6 @@ const useUsersAPI = () => {
     update: (payload) => Axios.patch('/api/users', payload, headers),
     delete: (_id) => Axios.delete(`/api/users/${_id}`, headers),
     login: async (email, password) => {
-      console.log('login-api:', { email, password })
       return Axios.post(
         '/api/users/login',
         {

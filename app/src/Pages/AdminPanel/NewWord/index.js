@@ -12,16 +12,11 @@ export const NewWord = () => {
   const { refetchWord, createWord } = useAPI()
 
   const handleSubmit = (payload) => {
-    console.log('Sending new word to server', payload)
     createWord(payload)
       .then((res) => {
-        console.log('==============================================')
-        console.log('SUCCESS!')
-        console.log(res)
         return res.data._id
       })
       .then((_id) => {
-        console.log(_id)
         refetchWord()
         history.push(`/admin/${_id}`)
       })

@@ -47,7 +47,6 @@ export const Key = ({ data, isShifted = false, setIsShifted, setString }) => {
   const [isClicked, setIsClicked] = useState(false)
   const handleClick = (char) => {
     if (char === 'BACKSPACE') {
-      // console.log(newString)
       setString((string) => string.slice(0, -1))
     } else {
       setString((str) => str + char)

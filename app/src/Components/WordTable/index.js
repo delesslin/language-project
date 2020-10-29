@@ -62,7 +62,7 @@ export const EditTable = ({ words }) => {
 
 export const DeleteTable = ({
   words,
-  handleDelete = (i) => console.log(i),
+  handleDelete = (i) => console.log('no handleDelete fn: ', i),
 }) => (
   <TableDiv>
     <Head>

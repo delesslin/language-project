@@ -7,7 +7,6 @@ const VisibleInput = () => {
   const [{ public: isPublic }, dispatch] = useContext(Context)
   const property = 'public'
   const handleSwitch = (e) => {
-    console.log(e.target.checked)
     const { checked: value } = e.target
     dispatch({
       type: REPLACE,

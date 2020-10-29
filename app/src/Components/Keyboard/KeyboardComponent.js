@@ -35,7 +35,7 @@ const Row = styled.div`
 `
 
 export const KeyboardComponent = ({
-  setText = (string) => console.log(string),
+  setText = (string) => console.log('no setText fn.string: ', string),
 }) => {
   const [isShifted, setIsShifted] = useState(false)
 

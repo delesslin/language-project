@@ -5,9 +5,7 @@ import useAPI from '../../../utils/hooks/useAPI'
 // Makes all words available as a .csv file
 const Export = () => {
   const { words } = useAPI()
-  const handleClick = () => {
-    console.log(words)
-  }
+  const handleClick = () => {}
   return (
     <Grid container direction='column' spacing={3}>
       <Grid item>

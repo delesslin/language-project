@@ -10,7 +10,7 @@ const PlayerComponent = (props) => {
   // const [error, setError] = useState(false)
   const hasEnded = (event) => {
     // setIsPlaying(false)
-    console.log('done!')
+
     event.currentTarget.removeEventListener(event.type, hasEnded)
   }
   const handlePlay = () => {

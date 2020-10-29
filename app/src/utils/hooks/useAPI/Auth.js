@@ -7,7 +7,6 @@ const api = {
   update: (payload, headers) => Axios.patch('/api/users', payload, headers),
   delete: (_id, headers) => Axios.delete(`/api/users/${_id}`, headers),
   login: async (email, password, headers = {}) => {
-    console.log('login-api:', { email, password })
     return Axios.post(
       '/api/users/login',
       {

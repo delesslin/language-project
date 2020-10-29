@@ -3,7 +3,6 @@ export const ADD_MULTI = 'ADD_MULTI'
 export const REMOVE_MULTI = 'REMOVE_MULTI'
 export const REPLACE = 'REPLACE'
 const reducer = (state, action) => {
-  console.log(action)
   switch (action.type) {
     case INIT:
       return action.data
@@ -35,7 +34,6 @@ const reducer = (state, action) => {
         ),
       }
     default:
-      console.log('OMG REDUCING defaultt')
       return state
   }
 }

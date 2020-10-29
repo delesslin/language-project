@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const CONNECTION_URL = process.env.CONNECTION_URL
 // getting this error: DeprecationWarning: collection.ensureIndex is deprecated. Use createIndexes instead
 const InitiateMongoServer = async () => {
+  console.log('Connecting to DB...')
   try {
     await mongoose.connect(CONNECTION_URL, {
       useNewUrlParser: true,
@@ -13,7 +14,7 @@ const InitiateMongoServer = async () => {
     mongoose.set('useCreateIndex', true)
     console.log('Connected to DB !!')
   } catch (e) {
-    console.log(e)
+    console.error(e)
     throw e
   }
 }

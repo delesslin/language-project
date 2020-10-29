@@ -8,12 +8,13 @@ const recorder = new MicRecorder({ bitRate: 256 })
 const reader = new FileReader()
 // TODO: style for when it is isRecording
 // TODO: style for when permission is denied
-const Recorder = ({ add = (base64) => console.log(base64) }) => {
+const Recorder = ({
+  add = (base64) => console.log('no add fn. base64: ', base64),
+}) => {
   const [isRecording, setIsRecording] = React.useState(false)
   const [isBlocked, setIsBlocked] = React.useState(false)
 
   const handleDown = () => {
-    console.log('mouse down!')
     setIsRecording(true)
     recorder
       .start()
@@ -24,7 +25,6 @@ const Recorder = ({ add = (base64) => console.log(base64) }) => {
       })
   }
   const handleUp = () => {
-    console.log('mouse up')
     setIsRecording(false)
     recorder
       .stop()
