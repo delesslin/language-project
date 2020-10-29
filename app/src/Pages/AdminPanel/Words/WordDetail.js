@@ -16,8 +16,8 @@ import { NewWord } from '../NewWord'
 const EditGrid = styled.div`
   display: grid;
   grid-template-columns: minmax(10vw, auto) 1fr;
-  grid-template-rows: minmax(50vh, auto) auto;
-  grid-template-areas: 's v' 'new new';
+  grid-template-rows: auto minmax(50vh, auto);
+  grid-template-areas: 'new v' 's v';
   grid-gap: 30px;
 `
 const DetailGrid = styled.div`
