@@ -1,12 +1,14 @@
 import { Button, Fab, Grid, TextField, Typography } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CardGrid } from '../../../../styled/Card'
 import { ModalStandard } from '../../../../styled/Modals'
 import searchWiki from '../../../../utils/searchWiki'
+import { Paper, Text } from '../../../Surfaces'
 import ImgResult from './ImgResult'
 
 const ImageModal = ({ open, save, close, currentImages }) => {
+  const [error, setError] = useState(null)
   const [searchTerm, setSearchTerm] = React.useState('')
   const [searchResults, setSearchResults] = React.useState([])
   const [selected, setSelected] = React.useState([])
@@ -19,10 +21,15 @@ const ImageModal = ({ open, save, close, currentImages }) => {
 
   const handleSearch = () => {
     console.log(`searching for ${searchTerm}`)
-    searchWiki(searchTerm, 30).then((results) => {
-      console.log(results)
-      setSearchResults(results)
-    })
+    searchWiki(searchTerm, 30)
+      .then((results) => {
+        console.log(results)
+        setSearchResults(results)
+      })
+      .catch((e) => {
+        console.log(e)
+        setError(e)
+      })
   }
   const handleSave = () => {
     console.log('saving!')
@@ -56,6 +63,14 @@ const ImageModal = ({ open, save, close, currentImages }) => {
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.currentTarget.value)}
             />
+            {error != null ? (
+              <Paper color='red'>
+                <Text>
+                  Error searching that term. Please close this window and try
+                  again
+                </Text>
+              </Paper>
+            ) : null}
           </Grid>
           <Grid item>
             <Fab onClick={handleSearch}>
