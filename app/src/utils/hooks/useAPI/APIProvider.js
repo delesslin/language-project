@@ -109,6 +109,7 @@ export const APIProvider = ({ children }) => {
         updateUser,
         createWord,
         headers: options,
+        refetchWord: reload,
       }}
     >
       {children}

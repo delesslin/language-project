@@ -1,11 +1,18 @@
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import React, { useEffect } from 'react'
-import { useHistory, useParams } from 'react-router'
+import {
+  Route,
+  Switch,
+  useHistory,
+  useParams,
+  useRouteMatch,
+} from 'react-router'
 import styled from 'styled-components'
 import { Button, Spinner } from '../../../Components'
 import EditWord from '../../../Components/EditWord'
 import useAPI from '../../../utils/hooks/useAPI'
+import { NewWord } from '../NewWord'
 const EditGrid = styled.div`
   display: grid;
   grid-template-columns: minmax(10vw, auto) 1fr;
@@ -88,6 +95,7 @@ const NewButton = styled(Button)`
 const WordDetail = () => {
   const { words, isLoading, updateWord, createWord } = useAPI()
   const params = useParams()
+  const { path } = useRouteMatch()
   const [currentWord, setCurrentWord] = React.useState(null)
   const history = useHistory()
 
@@ -158,13 +166,27 @@ const WordDetail = () => {
                 )
               })}
       </ScrollGrid>
-      <DetailGrid>
-        <EditWord data={currentWord} onSave={onSave} />
-      </DetailGrid>
+      <Switch>
+        <Route path={path + '/new'}>
+          <DetailGrid>
+            <NewWord />
+          </DetailGrid>
+        </Route>
+        <Route path={path + '/:_id'}>
+          <DetailGrid>
+            <EditWord data={currentWord} onSave={onSave} />
+          </DetailGrid>
+        </Route>
+        <Route exact path={path + '/'}>
+          <DetailGrid>
+            <NewWord />
+          </DetailGrid>
+        </Route>
+      </Switch>
       <NewButton
         onClick={() => {
           setCurrentWord(null)
-          history.push('/admin')
+          history.push('/admin/new')
         }}
       >
         NEW WORD

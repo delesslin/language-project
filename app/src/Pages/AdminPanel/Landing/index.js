@@ -1,7 +1,14 @@
 import React, { useEffect } from 'react'
 import { useHistory, useParams } from 'react-router'
 import styled from 'styled-components'
-import { Button, LockIcon, Page, Text } from '../../../Components'
+import {
+  Button,
+  LockIcon,
+  Page,
+  Text,
+  UsersIcon,
+  WordIcon,
+} from '../../../Components'
 import useAPI from '../../../utils/hooks/useAPI'
 const LandingDiv = styled.div`
   display: grid;
@@ -13,12 +20,11 @@ const LandingDiv = styled.div`
 const AdminNav = styled.div`
   grid-area: nav;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
 `
 const NavButton = styled(Button)`
-  width: auto;
-  padding: 5px 30px;
-  border-radius: 5px;
+  background-color: #ccc;
+  margin: 5px;
 `
 const Content = styled.div`
   grid-area: content;
@@ -31,7 +37,7 @@ const Header = styled.div`
 const Link = ({ children, to }) => {
   const history = useHistory()
   return (
-    <NavButton color='light' onClick={() => history.push(to)}>
+    <NavButton color='#666' round={true} onClick={() => history.push(to)}>
       {children}
     </NavButton>
   )
@@ -56,20 +62,13 @@ const Landing = ({ children }) => {
         <AdminNav>
           {roles.includes('admin') ? (
             <>
-              <Link to='/admin/new'>
-                <Text>add new word</Text>
+              <Link to='/admin'>
+                <WordIcon />
               </Link>
-              <Link to='/admin/bulk-new'>
-                <Text>bulk upload</Text>
+
+              <Link to='/admin/users'>
+                <UsersIcon />
               </Link>
-              <Link to='/admin/export'>
-                <Text>export</Text>
-              </Link>
-              {roles.includes('admin') ? (
-                <Link to='/admin/users'>
-                  <Text>users</Text>
-                </Link>
-              ) : null}
             </>
           ) : null}
         </AdminNav>

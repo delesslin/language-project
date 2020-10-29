@@ -1,6 +1,6 @@
 import React from 'react'
 import { isMobile } from 'react-device-detect'
-import { Route, Switch, useRouteMatch } from 'react-router-dom'
+import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom'
 import Page from '../../Components/Page'
 import Words from './Words'
 import useAPI from '../../utils/hooks/useAPI'
@@ -14,6 +14,14 @@ import Signup from './Signup'
 import Users from './Users'
 import Requests from './Requests'
 
+const AdminRoute = ({ path, children }) => {
+  const { roles } = useAPI()
+  return (
+    <Route path={path}>
+      {roles.includes('admin') ? children : <Redirect to={path} />}
+    </Route>
+  )
+}
 export const AdminPanel = () => {
   const { loggedIn, roles } = useAPI()
   const { path } = useRouteMatch()
@@ -28,38 +36,23 @@ export const AdminPanel = () => {
     <Landing>
       {loggedIn ? (
         <Switch>
-          <Route path={path + '/new'}>
-            <NewWord />
-          </Route>
-          {roles.includes('admin') ? (
-            <>
-              <Route path={path + '/bulk-new'}>
-                <BatchUpload />
-              </Route>
-              <Route path={path + '/export'}>
-                <Export />
-              </Route>
-              <Route path={path + '/users/:_id?'}>
-                <Users />
-              </Route>
-              <Route path={path + '/signup'}>
-                <Signup />
-              </Route>
-              <Route path={path + '/edit/:_id'}>
-                <Edit />
-              </Route>
-              <Route path={path + '/requests'}>
-                <Requests />
-              </Route>
-              <Route path={path + '/:_id?'}>
-                <Words />
-              </Route>
-            </>
-          ) : null}
+          <AdminRoute path={path + '/bulk-new'}>
+            <BatchUpload />
+          </AdminRoute>
+          <AdminRoute path={path + '/export'}>
+            <Export />
+          </AdminRoute>
+          <AdminRoute path={path + '/users/:_id?'}>
+            <Users />
+          </AdminRoute>
+          <AdminRoute path={path + '/signup'}>
+            <Signup />
+          </AdminRoute>
 
-          <Route path={path + '/edit/:_id'}>
-            <Edit />
+          <Route path={path + '/requests'}>
+            <Requests />
           </Route>
+
           <Route path={path + '/:_id?'}>
             <Words />
           </Route>

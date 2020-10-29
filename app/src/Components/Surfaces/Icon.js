@@ -11,9 +11,10 @@ import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { MdRecordVoiceOver } from 'react-icons/md'
 import { RiFacebookBoxFill } from 'react-icons/ri'
 import { TiInfoLarge, TiBackspaceOutline } from 'react-icons/ti'
-import { BsShift } from 'react-icons/bs'
+import { BsShift, BsPeopleFill } from 'react-icons/bs'
 import { BiCopy } from 'react-icons/bi'
 import { GrClose } from 'react-icons/gr'
+import { AiOutlineFontColors } from 'react-icons/ai'
 import styled from 'styled-components'
 const IconWrapper = styled.div``
 const Icon = (props) => {
@@ -71,3 +72,7 @@ export const ShiftIcon = (props) => <Icon {...props} Component={BsShift} />
 export const CopyIcon = (props) => <Icon {...props} Component={BiCopy} />
 
 export const CloseIcon = (props) => <Icon {...props} Component={GrClose} />
+export const WordIcon = (props) => (
+  <Icon {...props} Component={AiOutlineFontColors} />
+)
+export const UsersIcon = (props) => <Icon {...props} Component={BsPeopleFill} />
