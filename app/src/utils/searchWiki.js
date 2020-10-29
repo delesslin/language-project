@@ -6,7 +6,7 @@ const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5)
 const getWikiImages = async (term) => {
   try {
     const response = await Axios.get(
-      `https://en.wikipedia.org/w/api.php?action=query&titles=${term}&prop=images&format=json&pithumbsize=100`
+      `https://en.wikipedia.org/w/api.php?action=query&titles=${term}&prop=images&format=json&pithumbsize=100&origin=*`
     )
 
     const { pages } = response.data.query
@@ -21,7 +21,7 @@ const getWikiImages = async (term) => {
     const resPages = await Promise.all(
       fileNames.map((name) => {
         return Axios(
-          `https://en.wikipedia.org/w/api.php?action=query&titles=${name}&format=json&prop=imageinfo&iiprop=url`
+          `https://en.wikipedia.org/w/api.php?action=query&titles=${name}&format=json&prop=imageinfo&iiprop=url&origin=*`
         ).then((res) => {
           return res.data.query
         })
