@@ -1,5 +1,5 @@
 const express = require('express')
-const Axios = require('axios')
+const Axios = require('axios').default
 const router = express()
 const getWikiImages = async (term) => {
   try {
