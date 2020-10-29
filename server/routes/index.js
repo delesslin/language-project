@@ -4,6 +4,7 @@ const wordsRouter = require('./words')
 const userRouter = require('./users')
 const batchRouter = require('./batch')
 const messageRouter = require('./message')
+const imageRouter = require('./image')
 const jwt = require('jsonwebtoken')
 const UserModel = require('../models/users')
 
@@ -48,5 +49,6 @@ apiRouter.use('/words', wordsRouter)
 apiRouter.use('/message', messageRouter)
 apiRouter.use('/users', userRouter)
 apiRouter.use('/batch', batchRouter)
+apiRouter.use('/image', imageRouter)
 
 module.exports = apiRouter
