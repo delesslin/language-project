@@ -1,7 +1,13 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import Patterns from './Patterns'
-
+const fadeIn = keyframes`
+ 0% { opacity: 0; }
+ 100% { opacity: 1; }
+`
 export const Paper = styled.div`
+  animation-name: ${fadeIn};
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
   transition: all 0.3;
   border-radius: 10px;
   ${({ href = '', theme, success = -1, color = 'pattern' }) => {

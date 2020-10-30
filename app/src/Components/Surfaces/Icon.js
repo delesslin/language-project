@@ -1,6 +1,7 @@
 import HomeIconO from '@material-ui/icons/Home'
 import LockIconO from '@material-ui/icons/Lock'
 import SearchIconO from '@material-ui/icons/Search'
+import LockOpenIcon from '@material-ui/icons/LockOpen'
 import MicIconO from '@material-ui/icons/Mic'
 import MicOffIcon from '@material-ui/icons/MicOff'
 import VideogameAssetIcon from '@material-ui/icons/VideogameAsset'
@@ -58,6 +59,9 @@ export const FacebookIcon = (props) => (
   <Icon {...props} Component={RiFacebookBoxFill} />
 )
 export const LockIcon = (props) => <Icon {...props} Component={LockIconO} />
+export const UnlockIcon = (props) => (
+  <Icon {...props} Component={LockOpenIcon} />
+)
 
 export const MicIcon = (props) => <Icon {...props} Component={MicIconO} />
 

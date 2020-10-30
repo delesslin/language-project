@@ -13,10 +13,11 @@ import { Button, Spinner } from '../../../Components'
 import EditWord from '../../../Components/EditWord'
 import useAPI from '../../../utils/hooks/useAPI'
 import { NewWord } from '../NewWord'
+
 const EditGrid = styled.div`
   display: grid;
   grid-template-columns: minmax(10vw, auto) 1fr;
-  grid-template-rows: auto minmax(50vh, auto);
+  grid-template-rows: 40px minmax(50vh, auto);
   grid-template-areas: 'new v' 's v';
   grid-gap: 30px;
 `
@@ -91,6 +92,7 @@ const ScrollTranslation = styled.div`
 const NewButton = styled(Button)`
   grid-area: new;
   width: 100%;
+  height: 100%;
 `
 const WordDetail = () => {
   const { words, isLoading, updateWord, createWord } = useAPI()
