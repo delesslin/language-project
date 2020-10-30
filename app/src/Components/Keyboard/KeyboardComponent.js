@@ -41,7 +41,7 @@ export const KeyboardComponent = ({
 
   return (
     <KeyboardGrid>
-      {LAYOUT.map((row) => {
+      {LAYOUT.map((row, index) => {
         const keys = row.map((entry, i) => {
           return (
             <Key
@@ -53,7 +53,7 @@ export const KeyboardComponent = ({
             />
           )
         })
-        return <Row>{keys}</Row>
+        return <Row key={index}>{keys}</Row>
       })}
     </KeyboardGrid>
   )

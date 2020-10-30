@@ -38,7 +38,7 @@ const Requests = () => {
         setRequests(data)
       })
       .catch(console.error)
-  }, [])
+  }, [headers])
   return (
     <Grid>
       <Text size={1.5}>REQUESTS</Text>

@@ -21,7 +21,7 @@ const AdminRoute = ({ path, children }) => {
   )
 }
 export const AdminPanel = () => {
-  const { loggedIn, roles } = useAPI()
+  const { loggedIn } = useAPI()
   const { path } = useRouteMatch()
   if (isMobile) {
     return (

@@ -1,15 +1,10 @@
-// TODO: custom hook  returns {blobs, startRecord, stopRecord}: https://www.npmjs.com/package/react-media-recorder
-// TODO: add useEffect to update context whenever blobs changes
-// TODO: where do blobs get converted to base64?
-
 import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { Player } from '../../'
-import Recorder from '../../Recorder'
-import Context from '../context'
-import { REPLACE } from '../reducer'
 import { Button, Paper } from '../../Surfaces'
 import { MicIcon } from '../../Surfaces/Icon'
+import Context from '../context'
+import { REPLACE } from '../reducer'
 import { useRecorder } from './useRecorder'
 const RecordingsGrid = styled.div`
   display: flex;
@@ -44,6 +39,7 @@ const Recordings = () => {
   }
   useEffect(() => {
     update(blobs)
+    /*eslint-disable */
   }, [blobs])
   return (
     <RecordingsGrid>

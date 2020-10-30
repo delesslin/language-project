@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
-import { useHistory, useParams } from 'react-router'
+import React from 'react'
+import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import {
   Button,
   LockIcon,
   Page,
-  Text,
   UnlockIcon,
   UsersIcon,
   WordIcon,
@@ -52,7 +51,7 @@ const Link = ({ children, to }) => {
   )
 }
 const Landing = ({ children }) => {
-  const { words, roles } = useAPI()
+  const { roles } = useAPI()
 
   return (
     <Page>
