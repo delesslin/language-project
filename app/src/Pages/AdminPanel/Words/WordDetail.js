@@ -12,7 +12,7 @@ import styled from 'styled-components'
 import { Button, Spinner } from '../../../Components'
 import EditWord from '../../../Components/EditWord'
 import useAPI from '../../../utils/hooks/useAPI'
-import { NewWord } from '../NewWord'
+import { NewWord } from './NewWord'
 
 const EditGrid = styled.div`
   display: grid;
