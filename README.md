@@ -1,5 +1,4 @@
 # 📎 Before Release 1 1️⃣
-- double check sm previews
 - implement feedback
 
 # Minimum Viable Product
