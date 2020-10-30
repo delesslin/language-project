@@ -1,7 +1,3 @@
-Expo branch
--expo
--webview direct to language-project
-
 # Feedback:
 - Get permission before recording
 - -Recording symbol is permanent
@@ -16,20 +12,18 @@ Expo branch
 
 # TODOs 📎
 
-1.  Remove console.logs
-2.  Refactor media queries into theme queries
-3. Sanitize data so that strings don't begin or end with ' '
-4. Search should use query string to make shareable and navigable
+1.  Refactor media queries into theme queries
+2. Sanitize data so that strings don't begin or end with ' '
+3. Search should use query string to make shareable and navigable
    1. Change to routing solution
-5. image search by wikipedia article, not by whatever is happening now
-6.  Refactor React app state to only use the native react Context and State
-   1. Only remaining componenet using ATOMS is KeyboardComponent
-   2. Refactor keyboard componenet anyways to be responsive
-7.  Refactor /styled into isolated Components <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
-8.  Add custom image url to edit/new word
-9.  Consolidate batch-upload & word-upload...should presuume an Array of length > 0
-10. Stop multiple api calls from react app
-11. Export data as .csv file
+4.  Refactor React app state to only use the native react Context and State
+   2. Only remaining componenet using ATOMS is KeyboardComponent
+   3. Refactor keyboard componenet anyways to be responsive
+5.  Refactor /styled into isolated Components <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
+6.  Add custom image url to edit/new word
+7.  Consolidate batch-upload & word-upload...should presuume an Array of length > 0
+8.  Stop multiple api calls from react app
+9.  Export data as .csv file
 
 # Minimum Viable Product
 

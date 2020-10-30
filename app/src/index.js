@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-import { RecoilRoot } from 'recoil'
+
 import { createGlobalStyle } from 'styled-components'
 import { Normalize } from 'styled-normalize'
 import GlobalTheme from './Components/GlobalTheme'
@@ -9,7 +9,7 @@ import Layout from './Components/Layout'
 import Pages from './Pages'
 import { APIProvider } from './utils/hooks/useAPI'
 // TODO: Move app contents into ReactDOM.render
-// TODO: Refactor to remove RecoilRoot
+
 // const bp = getBreakPoints()
 // setBreakPoints({
 //   ...bp,
@@ -38,13 +38,11 @@ export const App = () => {
       <GlobalStyle />
       <GlobalTheme>
         <APIProvider>
-          <RecoilRoot>
-            <Router>
-              <Layout>
-                <Pages />
-              </Layout>
-            </Router>
-          </RecoilRoot>
+          <Router>
+            <Layout>
+              <Pages />
+            </Layout>
+          </Router>
         </APIProvider>
       </GlobalTheme>
     </React.Fragment>

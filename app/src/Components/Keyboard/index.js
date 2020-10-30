@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import useClippy from 'use-clippy'
 import { CopyAlert } from './CopyAlert'
-import { KeyboardComponent } from './KeyboardComponent'
+export { KeyboardComponent as Keyboard } from './KeyboardComponent'
 
 export const CopyKeyboard = () => {
   const [showAlert, setShowAlert] = useState(false)
@@ -28,39 +28,6 @@ export const CopyKeyboard = () => {
     }
   }, [value, showAlert])
   return <KeyboardComponent text={value} setText={setValue} />
-  return (
-    <>
-      <Grid container direction='column' alignItems='center' spacing={2}>
-        <Grid item container justify='center'>
-          <Grid item>
-            <TextField disabled variant='filled' value={value} />
-          </Grid>
-        </Grid>
-        <Grid item container justify='center'>
-          <Grid item>
-            <KeyboardComponent text={value} setText={setValue} />
-          </Grid>
-        </Grid>
-        <Grid item container justify='center' spacing={2}>
-          <Grid item>
-            <Button variant='contained' color='primary' onClick={handleCopy}>
-              Copy
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button variant='outlined' color='secondary' onClick={handleClear}>
-              Clear
-            </Button>
-          </Grid>
-        </Grid>
-        <Grid container item justify='center'>
-          <Grid item>
-            <CopyAlert open={showAlert} str={clipboard} />
-          </Grid>
-        </Grid>
-      </Grid>
-    </>
-  )
 }
 const ModalContainer = styled(Box)`
   position: fixed;
