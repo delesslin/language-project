@@ -12,11 +12,7 @@ Expo branch
 - handle multiple images and multiple recordings and multiple translations and multipl etc
 
 # Before Release 1 1️⃣
-1. Sharing image etc
-2. Delete and NVM words
-3. Solicit feedback
-4. Sort feedback into MVP 1, 2, 3, or longterm
-5. add 30 more words (currently 112)
+1. add 30 more words (currently 112)
 
 # TODOs 📎
 
@@ -54,6 +50,10 @@ Expo branch
 - Admins can add or edit words in the application
 - Admins can record pronunciations in the app
 - Admins can add photographs in the app
+
+#### Future Feature Requests:
+- the audio files are inconsistent in terms of volume and clarity.
+- grammar lessons
 
 # Opinions 👽
 
