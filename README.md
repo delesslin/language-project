@@ -1,7 +1,6 @@
-# 📎 Before Release 1 1️⃣
-- implement feedback
+# V0.1.0 - Initial Public Release
 
-# Minimum Viable Product
+## Minimum Viable Product
 
 ### Goal: Jan 1, 2021
 
