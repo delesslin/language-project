@@ -2,7 +2,7 @@ import media from 'css-in-js-media'
 import React, { useEffect } from 'react'
 import { RiMenuFill } from 'react-icons/ri'
 import { useHistory, useLocation } from 'react-router'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import logo from './logo.png'
 import {
   GameIcon,
@@ -15,9 +15,8 @@ import { Button } from '../../Surfaces'
 import { NavButton } from '../Nav'
 
 export const HeaderDiv = styled.header`
-  padding: 10px 10px 10px 0px;
   display: grid;
-
+  padding-right: 10px;
   grid-column-gap: 15px;
   grid-template-columns: auto repeat(6, 1fr) auto;
   grid-template-rows: 1fr;
@@ -25,6 +24,7 @@ export const HeaderDiv = styled.header`
   position: relative;
   border-radius: 0px 0px 5px 5px;
   align-items: center;
+  overflow: hidden;
   background-color: ${({ theme }) => theme.primary};
   ${media('>tablet')} {
     grid-template-columns: auto repeat(5, 1fr);
