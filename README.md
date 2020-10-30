@@ -1,4 +1,7 @@
 # V0.1.0 - Initial Public Release
+## 🐛 Bugs
+- Recently inputted words don't have sound on user end
+
 
 ## Minimum Viable Product
 
