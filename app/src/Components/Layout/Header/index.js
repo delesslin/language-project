@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { RiMenuFill } from 'react-icons/ri'
 import { useHistory, useLocation } from 'react-router'
 import styled from 'styled-components'
+import logo from './logo.png'
 import {
   GameIcon,
   HomeIcon,
@@ -14,21 +15,21 @@ import { Button } from '../../Surfaces'
 import { NavButton } from '../Nav'
 
 export const HeaderDiv = styled.header`
-  padding: 10px;
+  padding: 10px 10px 10px 0px;
   display: grid;
 
   grid-column-gap: 15px;
-  grid-template-columns: repeat(6, 1fr) auto;
+  grid-template-columns: auto repeat(6, 1fr) auto;
   grid-template-rows: 1fr;
-  grid-template-areas: 'main main main main main main menu';
+  grid-template-areas: 'logo main main main main main main menu';
   position: relative;
   border-radius: 0px 0px 5px 5px;
   align-items: center;
   background-color: ${({ theme }) => theme.primary};
   ${media('>tablet')} {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: auto repeat(5, 1fr);
 
-    grid-template-areas: 'title title title nav nav';
+    grid-template-areas: 'logo title title title nav nav';
   }
 `
 export const Title = styled.h1`
@@ -90,6 +91,10 @@ const NavDiv = styled.div`
     width: 100%;
   }
 `
+const Logo = styled.img`
+  height: 100px;
+  width: 100px;
+`
 const Header = () => {
   const location = useLocation()
   const history = useHistory()
@@ -100,6 +105,7 @@ const Header = () => {
   return (
     // prettier-ignore
     <HeaderDiv disabled={location.pathname === '/'}>
+      <Logo src={logo} />
       <HeaderTitle onClick={() => history.push('/')}>{'Catawba Language Project'.toUpperCase()}</HeaderTitle>
 
       <NavDiv showing={!hidden}>
