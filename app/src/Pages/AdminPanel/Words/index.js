@@ -9,16 +9,26 @@ import {
   useRouteMatch,
 } from 'react-router'
 import styled from 'styled-components'
-import { Button, Spinner } from '../../../Components'
+import {
+  Button,
+  ImageIcon,
+  MicIcon,
+  Paper,
+  Spinner,
+  TagsIcon,
+  Text,
+} from '../../../Components'
 import EditWord from '../../../Components/EditWord'
 import useAPI from '../../../utils/hooks/useAPI'
+import Filters from './Filters'
 import { NewWord } from './NewWord'
+import useFilters from './useFilters'
 
 const EditGrid = styled.div`
   display: grid;
   grid-template-columns: minmax(10vw, auto) 1fr;
-  grid-template-rows: 40px minmax(50vh, auto);
-  grid-template-areas: 'new v' 's v';
+  grid-template-rows: 40px auto minmax(50vh, auto);
+  grid-template-areas: 'new v' 'filters v' 's v';
   grid-gap: 30px;
 `
 const DetailGrid = styled.div`
@@ -66,10 +76,17 @@ const ScrollItem = styled.div`
     }
   }}
 `
-const ScrollIcon = styled.div`
+const ScrollIcons = styled.div`
   grid-area: v;
   display: grid;
-  place-items: center;
+  place-items: space-around;
+  grid-template-columns: 1fr;
+  grid-auto-flow: columns;
+  > div {
+    display: flex;
+    place-items: flex-start;
+    align-items: center;
+  }
 `
 const ScrollEntry = styled.div`
   grid-area: e;
@@ -94,11 +111,13 @@ const NewButton = styled(Button)`
   width: 100%;
   height: 100%;
 `
+
 const WordDetail = () => {
   const { words, isLoading, updateWord, createWord } = useAPI()
   const params = useParams()
   const { path } = useRouteMatch()
   const [currentWord, setCurrentWord] = React.useState(null)
+  const { filters, selectFilter, orderedWords } = useFilters()
   const history = useHistory()
 
   useEffect(() => {
@@ -136,33 +155,48 @@ const WordDetail = () => {
   }
   return (
     <EditGrid>
+      <NewButton
+        onClick={() => {
+          setCurrentWord(null)
+          history.push('/admin/new')
+        }}
+      >
+        NEW WORD
+      </NewButton>
+      <Filters filters={filters} selectFilter={selectFilter} />
       <ScrollGrid>
-        {words == null
-          ? null
-          : words
-              .sort((a, b) => {
-                // put non-public items first
-                return a.public > b.public
-              })
-              .map((word, i) => {
-                return (
-                  <ScrollItem
-                    onClick={() => handleRedirect(i)}
-                    key={i}
-                    selected={params._id === word._id}
-                  >
-                    <ScrollIcon>
-                      {word.public ? <VisibilityIcon /> : <VisibilityOffIcon />}
-                    </ScrollIcon>
-                    <ScrollEntry>
-                      <p>{word.language_entry}</p>
-                    </ScrollEntry>
-                    <ScrollTranslation>
-                      <p>{word.translations[0]}</p>
-                    </ScrollTranslation>
-                  </ScrollItem>
-                )
-              })}
+        {orderedWords.map((word, i) => {
+          return (
+            <ScrollItem
+              onClick={() => handleRedirect(i)}
+              key={i}
+              selected={params._id === word._id}
+            >
+              <ScrollIcons>
+                <div>
+                  <ImageIcon />{' '}
+                  <Text size={1}>{`: ${word.images.length}`}</Text>
+                </div>
+                <div>
+                  <MicIcon />{' '}
+                  <Text size={1}>{`: ${word.recordings.length}`}</Text>
+                </div>
+                <div>
+                  <TagsIcon /> <Text size={1}>{`: ${word.tags.length}`}</Text>
+                </div>
+                <div>
+                  {word.public ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                </div>
+              </ScrollIcons>
+              <ScrollEntry>
+                <p>{word.language_entry}</p>
+              </ScrollEntry>
+              <ScrollTranslation>
+                <p>{word.translations[0]}</p>
+              </ScrollTranslation>
+            </ScrollItem>
+          )
+        })}
       </ScrollGrid>
       <Switch>
         <Route path={path + '/new'}>
@@ -181,14 +215,6 @@ const WordDetail = () => {
           </DetailGrid>
         </Route>
       </Switch>
-      <NewButton
-        onClick={() => {
-          setCurrentWord(null)
-          history.push('/admin/new')
-        }}
-      >
-        NEW WORD
-      </NewButton>
     </EditGrid>
   )
 }
