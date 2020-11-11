@@ -14,10 +14,11 @@ export const useRecorder = (recordings = [], update = () => {}) => {
   const [isRecording, setIsRecording] = useState(false)
   const [blobs, setBlobs] = useState(recordings)
   const [chunks, setChunks] = useState([])
-  const [isDenied, setIsDenied] = useState(false)
+  const [isDenied, setIsDenied] = useState(true)
+  const [isInit, setIsInit] = useState(false)
   // const [recorder, setRecorder] = useState(null)
 
-  useEffect(() => {
+  const init = () => {
     initRecorder(setChunks).then((recorder) => {
       Recorder = recorder
       Recorder.ondataavailable = (e) => {
@@ -38,8 +39,9 @@ export const useRecorder = (recordings = [], update = () => {}) => {
           }
         }
       }
+      setIsInit(true)
     })
-  }, [])
+  }
 
   const start = async () => {
     console.log('start')
@@ -72,5 +74,7 @@ export const useRecorder = (recordings = [], update = () => {}) => {
     stopRecord: stop,
     isRecording,
     isDenied,
+    isInit,
+    init,
   }
 }

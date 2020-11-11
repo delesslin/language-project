@@ -16,7 +16,6 @@ const RecordingsGrid = styled.div`
   flex-wrap: wrap;
 `
 const AudioPaper = styled(Paper)`
-  background-color: ${({ theme }) => theme.light};
   margin: 5px;
   padding: 10px;
   grid-template-columns: 1fr;
@@ -25,8 +24,18 @@ const AudioPaper = styled(Paper)`
   grid-gap: 10px;
 `
 const MicButton = styled(Button)`
-  background-color: ${({ theme, status }) =>
-    status === 'recording' ? theme.red : theme.secondary};
+  background-color: ${({ theme, status, disabled = false, isRecording }) => {
+    // status === 'recording' ? theme.red : theme.secondary};
+    if (disabled) {
+      return '#ccc'
+    } else {
+      if (isRecording) {
+        return theme.red
+      } else {
+        return theme.yellow
+      }
+    }
+  }};
 `
 const Recordings = () => {
   const [{ recordings }, dispatch] = useContext(Context)
@@ -43,8 +52,11 @@ const Recordings = () => {
     stopRecord,
     isDenied,
     status,
+    isInit,
+    init,
     removeRecording,
     setBlobs,
+    isRecording,
   } = useRecorder(recordings, update)
   useEffect(() => {
     setBlobs(recordings)
@@ -54,15 +66,15 @@ const Recordings = () => {
     <RecordingsGrid>
       {recordings.map((base64, i) => {
         return (
-          <AudioPaper key={i} color='light'>
+          <AudioPaper key={i} color='transparent'>
             <Player base64={base64} />
             <Button onClick={() => removeRecording(i)}>Delete</Button>
           </AudioPaper>
         )
       })}
-      <AudioPaper color='light'>
-        {isDenied ? (
-          <MicButton round={true}>
+      <AudioPaper color='transparent'>
+        {!isInit ? (
+          <MicButton round={true} onClick={init} disabled={true}>
             <NoMicIcon />
           </MicButton>
         ) : (
@@ -70,7 +82,7 @@ const Recordings = () => {
             round={true}
             onMouseDown={startRecord}
             onMouseUp={stopRecord}
-            status={status}
+            isRecording={isRecording}
           >
             <MicIcon />
           </MicButton>
