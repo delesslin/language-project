@@ -1,66 +1,70 @@
-import Axios from 'axios'
-import React, { useState } from 'react'
-import { useReactMediaRecorder } from 'react-media-recorder'
-var reader = new FileReader()
-let Recorder
-const audioChunks = []
-export const useRecorder = (initBlobs = []) => {
-  const [blobs, setBlobs] = useState(initBlobs)
+import { useEffect, useState } from 'react'
+import { getMedia } from './getMedia'
 
-  // const [audioChunks, setAudioChunks] = useState([])
-  React.useEffect(() => {
-    navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
-      Recorder = new MediaRecorder(stream)
+let Recorder
+
+const initRecorder = async (setChunks, isRecording) => {
+  return await getMedia().then((stream) => new MediaRecorder(stream))
+}
+export const useRecorder = (recordings = [], update = () => {}) => {
+  const [isRecording, setIsRecording] = useState(false)
+  const [blobs, setBlobs] = useState(recordings)
+  const [chunks, setChunks] = useState([])
+  // const [recorder, setRecorder] = useState(null)
+
+  useEffect(() => {
+    initRecorder(setChunks).then((recorder) => {
+      Recorder = recorder
+      Recorder.ondataavailable = (e) => {
+        console.log('data!', e.data)
+        if (!isRecording) {
+          // let blob = new Blob(e.data, { type: 'audio/mpeg-3' })
+          let blob = e.data
+          console.log('blob', blob)
+          let reader = new FileReader()
+          reader.readAsDataURL(blob)
+          reader.onloadend = () => {
+            let base64 = reader.result
+            setBlobs((blobs) => {
+              let arr = [...blobs, base64]
+              update(arr)
+              return arr
+            })
+          }
+        }
+      }
     })
   }, [])
-  const handleBlob = (blob) => {
-    // const blobURL = URL.createObjectURL(blob)
-    console.log('blob: ', blob)
-    reader.onloadend = () => {
-      var base64data = reader.result
-      console.log('base64: ', base64data)
-      setBlobs((blobs) => [...blobs, base64data])
+
+  const start = async () => {
+    console.log('start')
+    try {
+      setIsRecording(true)
+
+      Recorder.start()
+    } catch (e) {
+      console.error(e)
     }
-    reader.readAsDataURL(blob)
-    // const blobURL = blob
-
-    // const config = { responseType: 'blob' }
-    // Axios.get(blobURL, config).then((res) => {
-    //   const { data } = res
-
-    //   reader.onloadend = function () {
-    //     var base64data = reader.result.split(',')[1]
-    //     console.log('base64: ', base64data)
-    //     setBlobs((blobs) => [...blobs, base64data])
-    //   }
-    //   reader.readAsDataURL(data)
-    // })
   }
-  const { startRecording, stopRecording, status } = useReactMediaRecorder({
-    onStop: handleBlob,
-    blobPropertyBag: {
-      type: 'audio/mp3',
-    },
-  })
-
-  const startRecord = () => {
-    console.log('recording')
-    Recorder.addEventListener('dataavailable', (event) => {
-      console.log(event.data)
-      audioChunks.push(event.data)
-    })
-    Recorder.addEventListener('stop', () => {
-      const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' })
-      handleBlob(audioBlob)
-    })
-    Recorder.start()
-  }
-  const stopRecord = () => {
-    console.log('ending recording')
+  const stop = () => {
+    console.log('stop')
     Recorder.stop()
+    setIsRecording(false)
   }
-  const removeBlob = (i) => {
-    setBlobs((blobs) => blobs.filter((e, index) => index !== i))
+  const removeRecording = (i) => {
+    setBlobs((blobs) => {
+      let arr = blobs.filter((e, index) => index !== i)
+      update(arr)
+      return arr
+    })
   }
-  return { blobs, startRecord, stopRecord, status, removeBlob }
+  return {
+    start,
+    stop,
+    setBlobs,
+    removeRecording,
+    startRecord: start,
+    stopRecord: stop,
+    isRecording,
+  }
 }

@@ -30,9 +30,6 @@ const MicButton = styled(Button)`
 `
 const Recordings = () => {
   const [{ recordings }, dispatch] = useContext(Context)
-  const { startRecord, stopRecord, blobs, status, removeBlob } = useRecorder(
-    recordings
-  )
   const property = 'recordings'
   const update = (blobs) => {
     dispatch({
@@ -41,17 +38,25 @@ const Recordings = () => {
       value: blobs,
     })
   }
+  const {
+    startRecord,
+    stopRecord,
+
+    status,
+    removeRecording,
+    setBlobs,
+  } = useRecorder(recordings, update)
   useEffect(() => {
-    update(blobs)
+    setBlobs(recordings)
     /*eslint-disable */
-  }, [blobs])
+  }, [recordings])
   return (
     <RecordingsGrid>
       {recordings.map((base64, i) => {
         return (
           <AudioPaper key={i} color='light'>
             <Player base64={base64} />
-            <Button onClick={() => removeBlob(i)}>Delete</Button>
+            <Button onClick={() => removeRecording(i)}>Delete</Button>
           </AudioPaper>
         )
       })}

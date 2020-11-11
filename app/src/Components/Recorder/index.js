@@ -1,11 +1,11 @@
 import React from 'react'
-
+// BUG: error recording on words that already have a word
 import MicRecorder from 'mic-recorder-to-mp3'
 import { Fab } from '@material-ui/core'
 import { MicIcon } from '../'
 import { NoMicIcon } from '../Surfaces/Icon'
 const recorder = new MicRecorder({ bitRate: 256 })
-const reader = new FileReader()
+
 // TODO: style for when it is isRecording
 // TODO: style for when permission is denied
 const Recorder = ({
@@ -26,6 +26,7 @@ const Recorder = ({
   }
   const handleUp = () => {
     setIsRecording(false)
+    const reader = new FileReader()
     recorder
       .stop()
       .getMp3()
