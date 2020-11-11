@@ -6,7 +6,7 @@ import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { Player } from '../../'
 import { Button, Paper } from '../../Surfaces'
-import { MicIcon } from '../../Surfaces/Icon'
+import { MicIcon, NoMicIcon } from '../../Surfaces/Icon'
 import Context from '../context'
 import { REPLACE } from '../reducer'
 import { useRecorder } from './useRecorder'
@@ -41,7 +41,7 @@ const Recordings = () => {
   const {
     startRecord,
     stopRecord,
-
+    isDenied,
     status,
     removeRecording,
     setBlobs,
@@ -61,14 +61,20 @@ const Recordings = () => {
         )
       })}
       <AudioPaper color='light'>
-        <MicButton
-          round={true}
-          onMouseDown={startRecord}
-          onMouseUp={stopRecord}
-          status={status}
-        >
-          <MicIcon />
-        </MicButton>
+        {isDenied ? (
+          <MicButton round={true}>
+            <NoMicIcon />
+          </MicButton>
+        ) : (
+          <MicButton
+            round={true}
+            onMouseDown={startRecord}
+            onMouseUp={stopRecord}
+            status={status}
+          >
+            <MicIcon />
+          </MicButton>
+        )}
       </AudioPaper>
     </RecordingsGrid>
   )

@@ -3,13 +3,18 @@ import { getMedia } from './getMedia'
 
 let Recorder
 
-const initRecorder = async (setChunks, isRecording) => {
-  return await getMedia().then((stream) => new MediaRecorder(stream))
+const initRecorder = async (setChunks, isRecording, setIsDenied) => {
+  try {
+    return await getMedia().then((stream) => new MediaRecorder(stream))
+  } catch (e) {
+    setIsDenied(true)
+  }
 }
 export const useRecorder = (recordings = [], update = () => {}) => {
   const [isRecording, setIsRecording] = useState(false)
   const [blobs, setBlobs] = useState(recordings)
   const [chunks, setChunks] = useState([])
+  const [isDenied, setIsDenied] = useState(false)
   // const [recorder, setRecorder] = useState(null)
 
   useEffect(() => {
@@ -66,5 +71,6 @@ export const useRecorder = (recordings = [], update = () => {}) => {
     startRecord: start,
     stopRecord: stop,
     isRecording,
+    isDenied,
   }
 }
