@@ -3,8 +3,8 @@ import { Button, Grid } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import Page from '../../../Components/Page'
-import useAPI from '../../../utils/hooks/useAPI'
+import Page from 'Components/Page'
+import useAPI from 'utils/hooks/useAPI'
 import Detail from './Detail'
 const UsersGrid = styled.div`
 transition: all 0.2s;

@@ -17,9 +17,9 @@ import {
   Spinner,
   TagsIcon,
   Text,
-} from '../../../Components'
-import EditWord from '../../../Components/EditWord'
-import useAPI from '../../../utils/hooks/useAPI'
+} from 'Components'
+import EditWord from './EditWord'
+import useAPI from 'utils/hooks/useAPI'
 import Filters from './Filters'
 import { NewWord } from './NewWord'
 import useFilters from './useFilters'

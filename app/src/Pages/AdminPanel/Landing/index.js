@@ -8,8 +8,8 @@ import {
   UnlockIcon,
   UsersIcon,
   WordIcon,
-} from '../../../Components'
-import useAPI from '../../../utils/hooks/useAPI'
+} from 'Components'
+import useAPI from 'utils/hooks/useAPI'
 const LandingDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr;

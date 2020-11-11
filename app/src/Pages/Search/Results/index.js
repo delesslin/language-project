@@ -2,9 +2,9 @@ import React from 'react'
 import { RiMoreFill } from 'react-icons/ri'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { Button, Paper, Text, Player, Spinner, Chip } from '../../../Components'
+import { Button, Paper, Text, Player, Spinner, Chip } from 'Components'
 import media from 'css-in-js-media'
-import Request from '../../../Components/Request'
+import Request from 'Components/Request'
 // import Request from './Request'
 
 const ResultsDiv = styled.div`

@@ -1,8 +1,8 @@
 import { Button, Grid, TextField } from '@material-ui/core'
 import React, { useRef } from 'react'
 import { useHistory } from 'react-router'
-import Page from '../../../Components/Page'
-import useAPI from '../../../utils/hooks/useAPI'
+import Page from 'Components/Page'
+import useAPI from 'utils/hooks/useAPI'
 
 const Signup = () => {
   const userRef = useRef(null)

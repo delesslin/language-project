@@ -1,7 +1,7 @@
 import { Button, Grid, TextField, Typography } from '@material-ui/core'
 import Alert from '@material-ui/lab/Alert'
 import React, { useRef } from 'react'
-import useAPI from '../../../utils/hooks/useAPI'
+import useAPI from 'utils/hooks/useAPI'
 const Login = () => {
   const emailRef = useRef(null)
   const passwordRef = useRef(null)

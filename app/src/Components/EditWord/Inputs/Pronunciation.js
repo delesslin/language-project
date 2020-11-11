@@ -1,5 +1,5 @@
 import React from 'react'
-import { PronInput } from '../../../styled/Inputs'
+import { PronInput } from 'styled/Inputs'
 import MultiText from '../MultiText'
 
 const Pronunciation = () => {

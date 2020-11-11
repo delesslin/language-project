@@ -1,8 +1,8 @@
 import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Button, Paper, Text } from '../../../Components'
-import useAPI from '../../../utils/hooks/useAPI'
+import { Button, Paper, Text } from 'Components'
+import useAPI from 'utils/hooks/useAPI'
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr;

@@ -1,14 +1,8 @@
 import media from 'css-in-js-media'
 import React from 'react'
 import styled from 'styled-components'
-import {
-  BackIcon,
-  FwdIcon,
-  Paper,
-  Player,
-  SoundIcon,
-} from '../../../Components'
-import { RoundButton } from '../../../Components/Buttons/RoundButton'
+import { BackIcon, FwdIcon, Paper, Player, SoundIcon } from 'Components'
+import { RoundButton } from 'Components/Buttons/RoundButton'
 
 const HeroPaper = styled(Paper)`
   display: grid;

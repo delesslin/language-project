@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import media from 'css-in-js-media'
-import { RotatedDiv } from '../../../Components/Text'
+import { RotatedDiv } from 'Components/Text'
 const HeroContent = styled.div`
   padding: 20px;
   grid-area: content;

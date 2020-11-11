@@ -1,7 +1,7 @@
 import media from 'css-in-js-media'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { Button, FwdIcon, Paper, Player, Text } from '../../../../Components'
+import { Button, FwdIcon, Paper, Player, Text } from 'Components'
 import Options from './Options'
 
 const GameGrid = styled(Paper)`

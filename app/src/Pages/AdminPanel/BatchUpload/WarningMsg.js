@@ -1,6 +1,6 @@
 import { Typography } from '@material-ui/core'
 import React from 'react'
-import Span from '../../../styled/Span'
+import Span from 'styled/Span'
 const RedSpan = ({ children }) => <Span color='#F49390'>{children}</Span>
 const WarningMsg = () => {
   return (

@@ -4,7 +4,7 @@ import Context from '../context'
 import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
 import EditIcon from '@material-ui/icons/Edit'
 import KeyboardModal from '../../Keyboard/KeyboardModal'
-import { AltInput, MultiInput } from '../../../styled/Inputs'
+import { AltInput, MultiInput } from 'styled/Inputs'
 
 const AltSpellings = () => {
   const [{ alternative_spellings }, dispatch] = useContext(Context)

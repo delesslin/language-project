@@ -2,8 +2,8 @@ import { Checkbox, Grid, TextField, Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router'
 import styled from 'styled-components'
-import Buttons from '../../../../Components/Buttons/AdminEditButtons'
-import useAPI from '../../../../utils/hooks/useAPI'
+import Buttons from 'Components/Buttons/AdminEditButtons'
+import useAPI from 'utils/hooks/useAPI'
 
 const DetailGrid = styled.div`
   grid-area: detail;

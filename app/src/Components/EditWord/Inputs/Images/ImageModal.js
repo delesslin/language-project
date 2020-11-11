@@ -2,10 +2,9 @@ import { TextField } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
-import searchWiki from '../../../../utils/searchWiki'
-import { Button, Paper, Text } from '../../../Surfaces'
-import { SearchIcon } from '../../../Surfaces/Icon'
-import Modal from '../../../Surfaces/Modal'
+import searchWiki from 'utils/searchWiki'
+import { Button, Paper, Text, SearchIcon, Modal } from 'Components'
+
 import ImgResult from './ImgResult'
 const ImgSearchDiv = styled.div`
   padding: 20px;

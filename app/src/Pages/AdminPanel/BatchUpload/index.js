@@ -1,8 +1,8 @@
 import { Button, Grid, Paper, Typography } from '@material-ui/core'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { DeleteTable } from '../../../Components/WordTable'
-import useBatchUpload from '../../../utils/hooks/useBatchUpload'
+import { DeleteTable } from 'Components/WordTable'
+import useBatchUpload from 'utils/hooks/useBatchUpload'
 import FileButton from './FileButton'
 import WarningMsg from './WarningMsg'
 

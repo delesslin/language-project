@@ -1,6 +1,6 @@
 import { Button, Grid } from '@material-ui/core'
 import React from 'react'
-import Image from '../../../../styled/Image'
+import Image from 'styled/Image'
 import styled from 'styled-components'
 const StyledDiv = styled.div`
   display: grid;

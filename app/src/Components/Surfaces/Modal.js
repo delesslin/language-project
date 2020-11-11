@@ -25,7 +25,7 @@ const Content = styled(Paper)`
 const Close = styled(Button)`
   margin: 5px;
 `
-const Modal = ({
+export const Modal = ({
   open = true,
   children,
   handleClose = () => console.log('no handleClose fn'),

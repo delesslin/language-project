@@ -1,11 +1,12 @@
 import { Button, Grid } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { useRouteMatch } from 'react-router-dom'
-import EditWord from '../../../Components/EditWord'
-import Loading from '../../../Components/Loading'
-import Page from '../../../Components/Page'
-import StyledLink from '../../../styled/StyledLink'
-import useAPI from '../../../utils/hooks/useAPI'
+// TODO: remove this page. is this page necessary?
+import EditWord from 'Components/EditWord'
+import Loading from 'Components/Loading'
+import Page from 'Components/Page'
+import StyledLink from 'styled/StyledLink'
+import useAPI from 'utils/hooks/useAPI'
 import DeleteModal from './DeleteModal'
 
 const Edit = () => {

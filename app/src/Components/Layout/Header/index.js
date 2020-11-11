@@ -4,12 +4,8 @@ import { RiMenuFill } from 'react-icons/ri'
 import { useHistory, useLocation } from 'react-router'
 import styled, { keyframes } from 'styled-components'
 import logo from './logo.png'
-import {
-  GameIcon,
-  HomeIcon,
-  KeyboardIcon,
-  SearchIcon,
-} from '../../../Components'
+import { GameIcon, HomeIcon, KeyboardIcon, SearchIcon } from 'Components'
+// TODO: why is this here?
 import { hexColor } from '../../Buttons/IconButton'
 import { Button } from '../../Surfaces'
 import { NavButton } from '../Nav'

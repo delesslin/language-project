@@ -3,10 +3,10 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 import React, { useContext, useEffect } from 'react'
 import { useHistory, useParams } from 'react-router'
 import styled from 'styled-components'
-import EditWord from '../../../Components/EditWord'
-import Loading from '../../../Components/Loading'
-import { Auth, Words } from '../../../context'
-import useAPI from '../../../utils/hooks/useAPI'
+import EditWord from 'Components/EditWord'
+import Loading from 'Components/Loading'
+import { Auth, Words } from 'context'
+import useAPI from 'utils/hooks/useAPI'
 const EditGrid = styled.div`
   display: grid;
   grid-template-columns: minmax(10vw, auto) 1fr;

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Text } from '../../../Components'
+import { Text } from 'Components'
 const FiltersDiv = styled.div`
   grid-area: filters;
   display: flex;

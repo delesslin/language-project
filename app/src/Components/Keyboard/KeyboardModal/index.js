@@ -2,7 +2,7 @@
 import { Button, Grid, TextField, Typography } from '@material-ui/core'
 import React, { useEffect } from 'react'
 import { KeyboardComponent } from '../KeyboardComponent'
-import { ModalStandard } from '../../../styled/Modals'
+import { ModalStandard } from 'styled/Modals'
 const KeyboardModal = ({
   submitText = () => {},
   openModal = () => {},

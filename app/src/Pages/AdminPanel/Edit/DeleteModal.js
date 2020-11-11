@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core'
 import React from 'react'
 import styled from 'styled-components'
-import useAPI from '../../../utils/hooks/useAPI'
+import useAPI from 'utils/hooks/useAPI'
 const ModalDiv = styled.div`
   display: grid;
   place-items: center;

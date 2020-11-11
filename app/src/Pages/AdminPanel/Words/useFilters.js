@@ -1,5 +1,5 @@
 import React from 'react'
-import useAPI from '../../../utils/hooks/useAPI'
+import useAPI from 'utils/hooks/useAPI'
 
 const noRecordingsFirst = (arr) => {
   return arr.sort((a, b) => {

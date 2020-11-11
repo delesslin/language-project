@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Chip, Text } from '../../../../Components'
+import { Chip, Text } from 'Components'
 
 const OptionsGrid = styled.div`
   grid-area: options;

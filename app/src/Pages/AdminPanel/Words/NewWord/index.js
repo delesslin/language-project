@@ -1,9 +1,9 @@
 import { Button, Grid } from '@material-ui/core'
 import React from 'react'
 import { useHistory } from 'react-router'
-import { Page } from '../../../../Components'
-import EditWord from '../../../../Components/EditWord'
-import useAPI from '../../../../utils/hooks/useAPI'
+import { Page } from 'Components'
+import EditWord from 'Components/EditWord'
+import useAPI from 'utils/hooks/useAPI'
 
 // Handle submit
 export const NewWord = () => {

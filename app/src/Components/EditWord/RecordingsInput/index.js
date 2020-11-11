@@ -4,9 +4,9 @@
 
 import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
-import { Player } from '../../'
-import { Button, Paper } from '../../Surfaces'
-import { MicIcon, NoMicIcon } from '../../Surfaces/Icon'
+import { Player } from 'Components'
+import { Button, Paper, MicIcon, NoMicIcon } from '../../'
+
 import Context from '../context'
 import { REPLACE } from '../reducer'
 import { useRecorder } from './useRecorder'
