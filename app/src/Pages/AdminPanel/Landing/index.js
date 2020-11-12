@@ -3,10 +3,14 @@ import { useHistory } from 'react-router'
 import styled from 'styled-components'
 import {
   Button,
+  HiddenIcon,
   LockIcon,
   Page,
+  Paper,
+  Text,
   UnlockIcon,
   UsersIcon,
+  VisibleIcon,
   WordIcon,
 } from 'Components'
 import useAPI from 'utils/hooks/useAPI'
@@ -27,15 +31,41 @@ const Content = styled.div`
 `
 const Header = styled.div`
   grid-area: header;
-  display: flex;
-  justify-content: flex-start;
-d`
+  display: grid;
+
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas: 'icon buttons info';
+`
 const AdminButton = styled(Button)`
+  grid-area: icon;
   background-color: transparent;
   box-shadow: none;
   &:hover {
     box-shadow: 1px 1px 1px #ccc;
   }
+`
+const Buttons = styled.div`
+  grid-area: buttons;
+  display: flex;
+  justify-content: flex-start;
+`
+const Info = styled.div`
+  grid-area: info;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+`
+const InfoChip = styled(Paper)`
+  display: grid;
+  place-items: center;
+  grid-template-columns: auto auto;
+  grid-auto-flow: column;
+  grid-gap: 10px;
+  background-color: transparent;
+  border-radius: 50px;
+  border: 2px solid #111;
+  padding: 10px 25px;
+  margin: 5px;
 `
 const Link = ({ children, to }) => {
   const history = useHistory()
@@ -51,7 +81,7 @@ const Link = ({ children, to }) => {
   )
 }
 const Landing = ({ children }) => {
-  const { roles } = useAPI()
+  const { roles, words } = useAPI()
 
   return (
     <Page>
@@ -64,23 +94,39 @@ const Landing = ({ children }) => {
               <LockIcon size={3} />
             )}
           </AdminButton>
-          {roles.includes('admin') ? (
-            <>
-              <Link to='/admin'>
-                <WordIcon />
-              </Link>
+          <Buttons>
+            {roles.includes('admin') ? (
+              <>
+                <Link to='/admin'>
+                  <WordIcon />
+                </Link>
 
-              <Link to='/admin/users'>
-                <UsersIcon />
-              </Link>
-            </>
-          ) : null}
+                <Link to='/admin/users'>
+                  <UsersIcon />
+                </Link>
+              </>
+            ) : null}
+          </Buttons>
 
-          {/* <div>
-            <Text size={1.3}>{`[ ${words.filter((e) => e.public).length} / ${
+          <Info>
+            <InfoChip color='transparent'>
+              <VisibleIcon />
+              <Text size={1.3}>
+                {` ${words.filter((e) => e.public).length}`}
+              </Text>
+            </InfoChip>
+            {roles.includes('editor') ? (
+              <InfoChip color='transparent'>
+                <HiddenIcon />
+                <Text size={1.3}>
+                  {` ${words.filter((e) => !e.public).length}`}
+                </Text>
+              </InfoChip>
+            ) : null}
+            {/* <Text size={1.3}>{`[ ${words.filter((e) => e.public).length} / ${
               words.length
-            } ]`}</Text>
-          </div> */}
+            } ]`}</Text> */}
+          </Info>
         </Header>
         <Content>{children}</Content>
       </LandingDiv>

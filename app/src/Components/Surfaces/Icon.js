@@ -7,7 +7,7 @@ import MicOffIcon from '@material-ui/icons/MicOff'
 import VideogameAssetIcon from '@material-ui/icons/VideogameAsset'
 import React from 'react'
 import { CgMore } from 'react-icons/cg'
-import { FaKeyboard } from 'react-icons/fa'
+import { FaKeyboard, FaRegEye, FaRegEyeSlash } from 'react-icons/fa'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { MdRecordVoiceOver } from 'react-icons/md'
 import { RiFacebookBoxFill } from 'react-icons/ri'
@@ -84,3 +84,9 @@ export const UsersIcon = (props) => <Icon {...props} Component={BsPeopleFill} />
 export const ImageIcon = (props) => <Icon {...props} Component={BsImages} />
 
 export const TagsIcon = (props) => <Icon {...props} Component={AiFillTags} />
+
+export const VisibleIcon = (props) => <Icon {...props} Component={FaRegEye} />
+
+export const HiddenIcon = (props) => (
+  <Icon {...props} Component={FaRegEyeSlash} />
+)
