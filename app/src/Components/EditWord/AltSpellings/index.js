@@ -4,8 +4,19 @@ import Context from '../context'
 import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
 import EditIcon from '@material-ui/icons/Edit'
 import KeyboardModal from '../../Keyboard/KeyboardModal'
-import { AltInput, MultiInput } from 'styled/Inputs'
-
+import styled from 'styled-components'
+const MultiInput = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto minmax(50px, auto);
+  grid-auto-flow: column;
+  grid-row-gap: 10px;
+`
+const trilight = '#FFEBF1'
+const AltInput = styled.div`
+  grid-area: a;
+  background-color: ${trilight};
+`
 const AltSpellings = () => {
   const [{ alternative_spellings }, dispatch] = useContext(Context)
   const [openModal, setOpenModal] = useState(false)

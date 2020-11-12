@@ -1,10 +1,15 @@
 import { Chip, Fab, Grid, TextField } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import React, { useContext, useState } from 'react'
-import { NoteInput } from 'styled/Inputs'
+
 import Context from '../context'
 import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
-
+import styled from 'styled-components'
+const secondlight = '#FFFED6'
+const NoteInput = styled.div`
+  grid-area: n;
+  background-color: ${secondlight};
+`
 const Notes = () => {
   const [{ notes }, dispatch] = useContext(Context)
   const [currText, setCurrText] = useState('')

@@ -1,7 +1,11 @@
 import React from 'react'
-import { PronInput } from 'styled/Inputs'
+import styled from 'styled-components'
 import MultiText from '../MultiText'
-
+const trilight = '#FFEBF1'
+const PronInput = styled.div`
+  grid-area: p;
+  background-color: ${trilight};
+`
 const Pronunciation = () => {
   return (
     <PronInput>

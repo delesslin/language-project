@@ -3,8 +3,14 @@ import React, { useContext, useState } from 'react'
 import Context from '../context'
 import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
 import AddIcon from '@material-ui/icons/Add'
-import { MultiInput } from 'styled/Inputs'
-
+import styled from 'styled-components'
+export const MultiInput = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto minmax(50px, auto);
+  grid-auto-flow: column;
+  grid-row-gap: 10px;
+`
 const MultiText = ({ property, label = '' }) => {
   const [state, dispatch] = useContext(Context)
   const [currVal, setCurrVal] = useState('')

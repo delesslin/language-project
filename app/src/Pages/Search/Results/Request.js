@@ -1,7 +1,13 @@
 import { Button, Grid, Paper, Typography } from '@material-ui/core'
 import styled from 'styled-components'
 import React from 'react'
-import StyledLink from 'styled/StyledLink'
+
+import { Link } from 'react-router-dom'
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`
 const RequestPaper = styled(Paper)`
   padding: 20px 30px;
   &:hover {

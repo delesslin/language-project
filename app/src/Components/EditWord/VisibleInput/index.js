@@ -1,8 +1,16 @@
 import { Switch } from '@material-ui/core'
 import React, { useContext } from 'react'
-import { VisibleInput as StyledGrid } from 'styled/Inputs'
+
 import Context from '../context'
 import { REPLACE } from '../reducer'
+import styled from 'styled-components'
+const highlight = '#eefafc'
+const StyledGrid = styled.div`
+  grid-area: v;
+  display: grid;
+  place-items: center;
+  background-color: ${highlight};
+`
 const VisibleInput = () => {
   const [{ public: isPublic }, dispatch] = useContext(Context)
   const property = 'public'

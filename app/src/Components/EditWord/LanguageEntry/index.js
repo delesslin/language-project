@@ -1,7 +1,7 @@
 import { Fab, Grid, TextField } from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
 import React, { useContext, useEffect } from 'react'
-import { WordInput } from 'styled/Inputs'
+
 import useAPI from 'utils/hooks/useAPI'
 import { KeyboardComponent } from '../../Keyboard/KeyboardComponent'
 import { Button, Modal } from '../../'
@@ -10,7 +10,13 @@ import Context from '../context'
 import { REPLACE } from '../reducer'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
-
+const trilight = '#FFEBF1'
+const WordInput = styled.div`
+  grid-area: word;
+  display: grid;
+  place-items: center;
+  background-color: ${trilight};
+`
 const ModalGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
