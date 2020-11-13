@@ -4,7 +4,6 @@ const router = express()
 const fs = require('fs')
 const Word = require('../models/word')
 const filePath = path.resolve(__dirname, '../../app/build', 'index.html')
-router.use(express.static(path.resolve(__dirname, '../../app/build')))
 
 const readPublic = () => {
   return new Promise((resolve, reject) => {
@@ -60,13 +59,17 @@ router.get('/word/:_id', async ({ params }, res) => {
     res.send(html)
   }
 })
-router.get('*', async (req, res) => {
+router.get('/', async (req, res) => {
+  console.log('gotten')
   let html = await customizeHTML(
     default_description,
     default_title,
     default_img
   )
+  // console.log(html)
   res.send(html)
 })
+// Must come after other routes
+router.use(express.static(path.resolve(__dirname, '../../app/build')))
 
 module.exports = router
