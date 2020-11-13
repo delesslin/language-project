@@ -37,7 +37,7 @@ const customizeHTML = async (
     })
 }
 router.get('/logo.png', (req, res) => {
-  res.sendFile(path.resolve('build/logo.png'))
+  res.sendFile('./logo.png')
 })
 
 router.get('/word/:_id', async ({ params }, res) => {
