@@ -1,7 +1,6 @@
 const express = require('express')
 const path = require('path')
 const router = express()
-
 const Word = require('../../models/word')
 const { customizeHTML } = require('./customizeHTML')
 
@@ -10,6 +9,14 @@ const default_img =
   'https://language-project-app.herokuapp.com/static/media/logo.a2754d4a.png'
 const default_description = 'Learn Catawba online!'
 const default_title = 'Catawba Language Project'
+
+router.get('/type', async (req, res) => {
+  let title = 'Catawba Keyboard'
+  let description = 'Type using Catawba characters'
+  let image = default_img
+  let html = await customizeHTML({ description, title, image })
+  res.send(html)
+})
 router.get('/search', async (req, res) => {
   let title = 'Search'
   let description = 'Find Catawba translations'
