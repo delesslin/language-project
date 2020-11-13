@@ -36,7 +36,7 @@ const customizeHTML = async (
       return data.replace(/{{image}}/gi, image)
     })
 }
-router.get('/logo.png', (req, res) => {})
+// router.get('/logo.png', (req, res) => {})
 router.get('/word/:_id', async ({ params }, res) => {
   const { _id } = params
   console.log(`got /word/${_id}`)
