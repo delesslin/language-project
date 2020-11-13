@@ -70,6 +70,17 @@ router.get('/:other', async (req, res) => {
   // console.log(html)
   res.send(html)
 })
+
+router.get('/', async (req, res) => {
+  console.log('gotten')
+  let html = await customizeHTML(
+    default_description,
+    default_title,
+    default_img
+  )
+  // console.log(html)
+  res.send(html)
+})
 // Must come after other routes
 router.use(express.static(path.resolve(__dirname, '../../app/build')))
 
