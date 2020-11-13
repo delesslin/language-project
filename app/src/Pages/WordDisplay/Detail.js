@@ -22,18 +22,30 @@ const ShareDiv = styled.div`
     margin: 5px;
   }
 `
-
+const series = (strArray) => {
+  return strArray.reduce((acc, curr, i, arr) => {
+    if (curr.length === 0) {
+      return acc
+    }
+    if (i === 0) {
+      return `${curr}`
+    }
+    return `${acc}, ${curr}`
+  }, '')
+}
 const Detail = ({ word }) => {
   const quote = `${word.language_entry} (${word.translations[0]})`
+  const pronunciations = series(word.pronunciation)
+  const translations = series(word.translations)
   return (
     <DetailPaper color='transparent'>
       <Text size={2}>
         <b>{word.language_entry}</b>
       </Text>
       <Text size={1.3}>
-        <i>{word.pronunciation[0]}</i>
+        <i>{pronunciations}</i>
       </Text>
-      <Text size={1.5}>{word.translations[0]}</Text>
+      <Text size={1.5}>{translations}</Text>
       {word.notes.length === 0 ? null : (
         <div>
           <Text size={1.3}>Notes:</Text>
