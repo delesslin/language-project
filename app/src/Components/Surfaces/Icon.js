@@ -16,7 +16,9 @@ import { BsShift, BsPeopleFill, BsImages } from 'react-icons/bs'
 import { BiCopy } from 'react-icons/bi'
 import { GrClose } from 'react-icons/gr'
 import { AiOutlineFontColors, AiFillTags } from 'react-icons/ai'
+import { FiTwitter } from 'react-icons/fi'
 import styled from 'styled-components'
+// TODO: use react icons theme provider to allow for styling
 const IconWrapper = styled.div``
 const Icon = (props) => {
   const { Component, size = 25 } = props
@@ -90,3 +92,5 @@ export const VisibleIcon = (props) => <Icon {...props} Component={FaRegEye} />
 export const HiddenIcon = (props) => (
   <Icon {...props} Component={FaRegEyeSlash} />
 )
+
+export const TwitterIcon = (props) => <Icon {...props} Component={FiTwitter} />
