@@ -56,16 +56,16 @@ router.get('/word/:_id', async ({ params }, res) => {
     let html = await customizeHTML(description, title, image)
     res.send(html)
   } else {
-    let html = await customizeHTML(
-      default_description,
-      default_title,
-      default_img
-    )
+    let html = await customizeHTML()
     res.send(html)
   }
 })
 router.get('*', async (req, res) => {
-  let html = await customizeHTML()
+  let html = await customizeHTML(
+    default_description,
+    default_title,
+    default_img
+  )
   res.send(html)
 })
 
