@@ -16,7 +16,8 @@ const readPublic = () => {
   })
 }
 // const default_img = path.resolve(__dirname, '../../app/public', 'logo.png')
-const default_img = path.resolve('logo.png')
+const default_img =
+  'https://language-project-app.herokuapp.com/static/media/logo.a2754d4a.png'
 
 const default_description = 'Learn Catawba online!'
 const default_title = 'Catawba Language Project'
@@ -36,9 +37,6 @@ const customizeHTML = async (
       return data.replace(/{{image}}/gi, image)
     })
 }
-router.get('/logo.png', (req, res) => {
-  res.sendFile(path.resolve('./logo.png'))
-})
 
 router.get('/word/:_id', async ({ params }, res) => {
   const { _id } = params
