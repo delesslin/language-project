@@ -16,7 +16,7 @@ const readPublic = () => {
   })
 }
 // const default_img = path.resolve(__dirname, '../../app/public', 'logo.png')
-const default_img = path.resolve('../../app/build', 'logo.png')
+const default_img = path.resolve('logo.png')
 
 const default_description = 'Learn Catawba online!'
 const default_title = 'Catawba Language Project'
