@@ -94,6 +94,9 @@ const Logo = styled.img`
   grid-area: logo;
   height: 100px;
   width: 100px;
+  &:hover {
+    cursor: pointer;
+  }
 `
 const HeaderTitle = styled(Title)`
   grid-area: title;
@@ -114,7 +117,7 @@ const Header = () => {
     <HeaderDiv disabled={location.pathname === '/'}>
       <TitleDiv>
 
-      <Logo src={logo} />
+      <Logo onClick={() => history.push('/')} src={logo} />
       <HeaderTitle onClick={() => history.push('/')}>{'Catawba Language Project'.toUpperCase()}</HeaderTitle>
       </TitleDiv>
 
