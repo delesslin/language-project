@@ -15,10 +15,10 @@ const readPublic = () => {
     })
   })
 }
-// const default_img = path.resolve(__dirname, '../../app/public', 'logo.png')
+
+// TODO: Make this relative, not based on deployment url
 const default_img =
   'https://language-project-app.herokuapp.com/static/media/logo.a2754d4a.png'
-
 const default_description = 'Learn Catawba online!'
 const default_title = 'Catawba Language Project'
 const customizeHTML = async (
@@ -37,13 +37,14 @@ const customizeHTML = async (
       return data.replace(/{{image}}/gi, image)
     })
 }
-
+// TODO: handle other top level routes: search, game, keyboard
 router.get('/word/:_id', async ({ params }, res) => {
   const { _id } = params
   console.log(`got /word/${_id}`)
   const words = await Word.find({ _id })
   if (words.length > 0) {
     const { language_entry, images, translations } = words[0]
+    // TODO: handle no image
     const image = images[0]
     const title = language_entry
     const description = translations.reduce((acc, curr) => {
