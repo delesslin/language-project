@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 3333
 const express = require('express')
 
 const apiRouter = require('./routes/index.js')
-const publicRouter = require('./routes/public.js')
+const publicRouter = require('./routes/public/index.js')
 const InitiateMongoServer = require('./config/db')
 
 console.log('----------------------------------------')
