@@ -1,10 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { RiMoreFill } from 'react-icons/ri'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
-import { Button, Paper, Text, Player, Spinner, Chip } from 'Components'
+import {
+  Button,
+  Paper,
+  Text,
+  Player,
+  Spinner,
+  Chip,
+  Notification,
+} from 'Components'
 import media from 'css-in-js-media'
 import Request from 'Components/Request'
+import useCopy from 'utils/hooks/useCopy'
 // import Request from './Request'
 
 const ResultsDiv = styled.div`
@@ -58,7 +67,13 @@ const More = styled(Button)`
 `
 // TODO: insert dividers between results
 const Results = ({ loading, results }) => {
+  const [open, setOpen] = useState(false)
+  const copy = useCopy()
   const history = useHistory()
+  const handleCopy = (entry) => {
+    copy(entry)
+    setOpen(true)
+  }
   if (loading) {
     return <Spinner />
   } else if (results !== null) {
@@ -71,9 +86,12 @@ const Results = ({ loading, results }) => {
               {entry.recordings.length > 0 ? (
                 <Play base64={entry.recordings[0]}>~~~</Play>
               ) : null}
-              <Word>
+              <Word onClick={() => handleCopy(entry.language_entry)}>
                 <Text size={2.3}>{entry.language_entry}</Text>
               </Word>
+              <Notification open={open} handleClose={() => setOpen(false)}>
+                {entry.language_entry} copied to clipboard!
+              </Notification>
               <Details>
                 {entry.translations.map((entry) => {
                   return (
