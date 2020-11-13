@@ -1,6 +1,6 @@
 import { Spinner } from 'Components'
 import media from 'css-in-js-media'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import styled from 'styled-components'
 
@@ -19,9 +19,9 @@ const CardGrid = styled.div`
 `
 const Tag = () => {
   const { _tagname } = useParams()
-  const { tags, isLoading } = useAPI()
+  const { tags } = useAPI()
   const [taggedWords, setTaggedWords] = React.useState([])
-
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     if (tags.length > 0) {
       const [tagObj] = tags.filter((el) => {
@@ -29,6 +29,7 @@ const Tag = () => {
       })
 
       setTaggedWords(tagObj.words)
+      setIsLoading(false)
     }
   }, [_tagname, tags])
   return (
