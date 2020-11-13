@@ -10,7 +10,7 @@ const default_img =
 const default_description = 'Learn Catawba online!'
 const default_title = 'Catawba Language Project'
 router.get('/admin', async (req, res) => {
-  let title = 'Admin Portal for Catawba Language Project'
+  let title = '🔒 Admin Portal for Catawba Language Project'
   let description = 'Only available on Desktop. Must have username & password'
   let image = default_img
   let html = await customizeHTML({ description, title, image })
@@ -19,7 +19,7 @@ router.get('/admin', async (req, res) => {
 router.get('/about', async (req, res) => {
   let title = 'About the Catawba Language Project'
   let description =
-    'An Open-Source project of the Catawba Cultural Preservation Project.'
+    'An Open-Source project of the Catawba Cultural Preservation Project, a division of Catawba Indian Nation.'
   let image = default_img
   let html = await customizeHTML({ description, title, image })
   res.send(html)
