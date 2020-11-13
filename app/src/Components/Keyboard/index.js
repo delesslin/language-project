@@ -2,17 +2,18 @@ import { Box, Grid, Paper, TextField } from '@material-ui/core'
 import Button from '@material-ui/core/Button'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import useClippy from 'use-clippy'
+
+import useCopy from 'utils/hooks/useCopy'
 import { CopyAlert } from './CopyAlert'
 export { KeyboardComponent as Keyboard } from './KeyboardComponent'
 
 export const CopyKeyboard = () => {
   const [showAlert, setShowAlert] = useState(false)
-  const [clipboard, setClipboard] = useClippy()
+  const copy = useCopy()
   const [value, setValue] = useState('')
 
   const handleCopy = () => {
-    setClipboard(value)
+    copy(value)
     setShowAlert(true)
   }
 

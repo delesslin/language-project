@@ -1,11 +1,13 @@
 import media from 'css-in-js-media'
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router'
 import styled from 'styled-components'
+import useCopy from 'utils/hooks/useCopy'
 import {
   Button,
   Chip,
   MoreIcon,
+  Notification,
   Paper,
   Player,
   SoundIcon,
@@ -47,6 +49,14 @@ const EntryPaper = styled(Chip)`
   padding: 20px 50px;
   border-radius: 2px;
   grid-area: word;
+  &:hover {
+    box-shadow: 2px 2px 1px #555;
+  }
+  &:active {
+    box-shadow {
+      bod-shadow: 1px 1px 1px #333;
+    }
+  }
 `
 const InfoPaper = styled(Paper)`
   grid-area: english;
@@ -55,8 +65,13 @@ const InfoPaper = styled(Paper)`
 `
 
 const WordCard = ({ data, href, link, children }) => {
+  const copy = useCopy()
+  const [open, setOpen] = useState(false)
   const history = useHistory()
-
+  const handleCopy = () => {
+    copy(data.language_entry)
+    setOpen(true)
+  }
   const handleClick = () => {
     history.push(link)
   }
@@ -69,7 +84,7 @@ const WordCard = ({ data, href, link, children }) => {
         </Play>
       )}
 
-      <EntryPaper>
+      <EntryPaper onClick={handleCopy}>
         <Text>
           <b>{data.language_entry}</b>
         </Text>
@@ -81,6 +96,9 @@ const WordCard = ({ data, href, link, children }) => {
       <MoreButton round={true} onClick={handleClick} color='light'>
         <MoreIcon />
       </MoreButton>
+      <Notification open={open} handleClose={() => setOpen(false)}>
+        {data.language_entry} copied to clipboard!
+      </Notification>
     </CardPaper>
   )
 }

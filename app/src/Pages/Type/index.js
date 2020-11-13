@@ -3,8 +3,9 @@ import { FaKeyboard } from 'react-icons/fa'
 import styled from 'styled-components'
 import { Button, CopyIcon, Page, Text } from '../../Components'
 import { KeyboardComponent } from '../../Components/Keyboard/KeyboardComponent'
-import useClippy from 'use-clippy'
+
 import media from 'css-in-js-media'
+import useCopy from 'utils/hooks/useCopy'
 const Input = styled.input`
   border: none;
   background-color: ${({ theme, copied }) =>
@@ -56,10 +57,10 @@ const Type = () => {
   const [state, setState] = React.useState('')
   const [isCopied, setIsCopied] = React.useState(false)
   /*eslint-disable */
-  const [clipboard, setClipboard] = useClippy()
+  const copy = useCopy()
   const handleCopy = () => {
     if (state.length > 0) {
-      setClipboard(state)
+      copy(state)
       setIsCopied(true)
     }
   }
