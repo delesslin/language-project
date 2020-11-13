@@ -16,11 +16,13 @@ const readPublic = () => {
     })
   })
 }
-
+// const default_img = path.resolve(__dirname, '../../app/public', 'logo.png')
+const default_img =
+  'https://scontent.frkh1-1.fna.fbcdn.net/v/t1.0-9/p960x960/91007970_2540252832902492_232174159516401664_o.png?_nc_cat=100&ccb=2&_nc_sid=85a577&_nc_ohc=1Cjh0t-Ldl4AX-CfBMr&_nc_ht=scontent.frkh1-1.fna&oh=1c61cb99e6f1ad73930f4dc017a302d4&oe=5FD3C7FE'
 const customizeHTML = async (
   description = 'Learn Catawba online!',
   title = 'Catawba Language Project',
-  image = path.resolve(__dirname, '../../app/public', 'logo.png')
+  image = default_img
 ) => {
   return await readPublic()
     .then((data) => {
