@@ -16,7 +16,7 @@ const readPublic = () => {
   })
 }
 // const default_img = path.resolve(__dirname, '../../app/public', 'logo.png')
-const default_img = path.resolve(__dirname, '../../app/public', 'logo.png')
+const default_img = path.resolve(__dirname, '../../app/build', 'logo.png')
 
 const default_description = 'Learn Catawba online!'
 const default_title = 'Catawba Language Project'
@@ -36,6 +36,7 @@ const customizeHTML = async (
       return data.replace(/{{image}}/gi, image)
     })
 }
+router.get('/logo.png', (req, res) => {})
 router.get('/word/:_id', async ({ params }, res) => {
   const { _id } = params
   console.log(`got /word/${_id}`)
