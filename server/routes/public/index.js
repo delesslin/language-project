@@ -9,7 +9,28 @@ const default_img =
   'https://language-project-app.herokuapp.com/static/media/logo.a2754d4a.png'
 const default_description = 'Learn Catawba online!'
 const default_title = 'Catawba Language Project'
-
+router.get('/admin', async (req, res) => {
+  let title = 'Admin Portal for Catawba Language Project'
+  let description = 'Only available on Desktop. Must have username & password'
+  let image = default_img
+  let html = await customizeHTML({ description, title, image })
+  res.send(html)
+})
+router.get('/about', async (req, res) => {
+  let title = 'About the Catawba Language Project'
+  let description =
+    'An Open-Source project of the Catawba Cultural Preservation Project.'
+  let image = default_img
+  let html = await customizeHTML({ description, title, image })
+  res.send(html)
+})
+router.get('/game', async (req, res) => {
+  let title = 'Practice Catawba'
+  let description = 'Play games to practice Catawba!'
+  let image = default_img
+  let html = await customizeHTML({ description, title, image })
+  res.send(html)
+})
 router.get('/type', async (req, res) => {
   let title = 'Catawba Keyboard'
   let description = 'Type using Catawba characters'
