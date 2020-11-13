@@ -20,7 +20,7 @@ const readPublic = () => {
 const customizeHTML = async (
   description = 'Learn Catawba online!',
   title = 'Catawba Language Project',
-  image = '%PUBLIC_URL%/logo.png'
+  image = path.resolve(__dirname, '../../app/build', 'logo.png')
 ) => {
   return await readPublic()
     .then((data) => {
