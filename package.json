@@ -4,7 +4,6 @@
   "description": "Framework for language apps",
   "main": "server/index.js",
   "scripts": {
-
     "dev": "concurrently \"nodemon server/index.js\" \"cd app && npm start\"",
     "start": "node server/index.js",
     "build": "cd app && npm run build"
