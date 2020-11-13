@@ -1,3 +1,4 @@
+import { Spinner } from 'Components'
 import media from 'css-in-js-media'
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router'
@@ -18,7 +19,7 @@ const CardGrid = styled.div`
 `
 const Tag = () => {
   const { _tagname } = useParams()
-  const { tags } = useAPI()
+  const { tags, isLoading } = useAPI()
   const [taggedWords, setTaggedWords] = React.useState([])
 
   useEffect(() => {
@@ -32,18 +33,22 @@ const Tag = () => {
   }, [_tagname, tags])
   return (
     <Page title={_tagname}>
-      <CardGrid columns={2}>
-        {taggedWords.map((entry, i) => {
-          return (
-            <WordCard
-              key={i}
-              data={entry}
-              href={entry.images[0]}
-              link={`/word/${entry._id}`}
-            />
-          )
-        })}
-      </CardGrid>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <CardGrid columns={2}>
+          {taggedWords.map((entry, i) => {
+            return (
+              <WordCard
+                key={i}
+                data={entry}
+                href={entry.images[0]}
+                link={`/word/${entry._id}`}
+              />
+            )
+          })}
+        </CardGrid>
+      )}
     </Page>
   )
 }
