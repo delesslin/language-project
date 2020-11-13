@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "concurrently \"nodemon server/index.js\" \"cd app && npm start\"",
     "start": "node server/index.js",
-    "build": "cd app && npm run build"
+    "prepare": "cd app && npm run build && cd ../ && git add . && git commit -am"
   },
   "keywords": [
     "js",
