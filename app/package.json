@@ -20,6 +20,7 @@
     "hex-rgb": "^4.2.0",
     "material-ui-fullscreen-dialog": "^1.1.0",
     "mic-recorder-to-mp3": "^2.2.2",
+    "mp3-recorder": "^3.1.4",
     "papaparse": "^5.3.0",
     "pluralize": "^8.0.0",
     "react": "^16.14.0",

@@ -9,7 +9,7 @@ import { Button, Paper, MicIcon, NoMicIcon, Player } from 'Components'
 
 import Context from '../context'
 import { REPLACE } from '../reducer'
-import { useRecorder } from './useRecorder'
+import { useRecorder } from 'Components/EditWord/RecordingsInput/useRecorder'
 const RecordingsGrid = styled.div`
   display: flex;
   flex-direction: rows;

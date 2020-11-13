@@ -10,7 +10,7 @@ const PlayerComponent = (props) => {
     event.currentTarget.removeEventListener(event.type, hasEnded)
   }
   const handlePlay = () => {
-    console.log(base64.slice(0, 30))
+    console.log(base64.slice(0, 50))
     AUDIO.play()
       .then(() => {
         AUDIO.addEventListener('ended', hasEnded)
