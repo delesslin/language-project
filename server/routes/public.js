@@ -59,7 +59,8 @@ router.get('/word/:_id', async ({ params }, res) => {
     res.send(html)
   }
 })
-router.get('/', async (req, res) => {
+// the '/:other' feels hackish, but '/' doesn't work for eg '/search' and '*' doesn't work at all
+router.get('/:other', async (req, res) => {
   console.log('gotten')
   let html = await customizeHTML(
     default_description,
