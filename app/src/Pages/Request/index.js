@@ -1,23 +1,13 @@
 import { Grid, TextField, Typography } from '@material-ui/core'
+import { Feedback, Page } from 'Components'
 import React from 'react'
 
 // TODO: Implement request feature
 const Request = () => {
   return (
-    <Grid container direction='column'>
-      <Grid item>
-        <Typography variant='h6'>Make a translation request!</Typography>
-      </Grid>
-      <Grid item>
-        <TextField>name</TextField>
-      </Grid>
-      <Grid item>
-        <TextField>email</TextField>
-      </Grid>
-      <Grid item>
-        <TextField>request</TextField>
-      </Grid>
-    </Grid>
+    <Page>
+      <Feedback />
+    </Page>
   )
 }
 

@@ -5,6 +5,7 @@ import { AdminPanel } from './AdminPanel'
 import Browse from './Browse'
 import Game from './Games'
 import NotFound from './NotFound'
+import Request from './Request'
 import Search from './Search'
 import Tag from './Tag'
 import Type from './Type'
@@ -35,6 +36,9 @@ const Public = () => (
     </Route>
     <Route path='/browse'>
       <Redirect to='/' />
+    </Route>
+    <Route path='/issue'>
+      <Request />
     </Route>
     <Route exact path='/'>
       <Browse />

@@ -24,12 +24,8 @@ export const NewWord = () => {
       })
   }
   return (
-    <Page title='add new word'>
-      <EditWord onSave={handleSubmit}>
-        <Grid item>
-          <Button onClick={() => history.push('/admin')}>nevermind</Button>
-        </Grid>
-      </EditWord>
+    <Page title=''>
+      <EditWord onSave={handleSubmit}></EditWord>
     </Page>
   )
 }

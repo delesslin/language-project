@@ -17,6 +17,7 @@ import { BiCopy } from 'react-icons/bi'
 import { GrClose } from 'react-icons/gr'
 import { AiOutlineFontColors, AiFillTags } from 'react-icons/ai'
 import { FiTwitter } from 'react-icons/fi'
+import { VscIssues } from 'react-icons/vsc'
 import styled from 'styled-components'
 // TODO: use react icons theme provider to allow for styling
 const IconWrapper = styled.div``
@@ -94,3 +95,5 @@ export const HiddenIcon = (props) => (
 )
 
 export const TwitterIcon = (props) => <Icon {...props} Component={FiTwitter} />
+
+export const IssueIcon = (props) => <Icon {...props} Component={VscIssues} />
