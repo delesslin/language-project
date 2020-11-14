@@ -64,6 +64,7 @@ const Search = () => {
           onChange={handleChange}
           ref={inputRef}
           error={error}
+          defaultValue={_term}
         />
         <SearchButton loading={isSearching} onClick={handleClick} />
       </SearchBox>
