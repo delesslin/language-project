@@ -7,10 +7,11 @@ const KeyboardGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 5px;
+  width: 100%;
   ${media('>tablet')} {
     grid-gap 7px;
     ${media('>desktop')}{
-      padding: 0px 20%;
+      width: 80%;
     }
   }
 `
@@ -34,13 +35,14 @@ const Row = styled.div`
   }
 `
 
-export const KeyboardComponent = ({
-  setText = (string) => console.log('no setText fn.string: ', string),
-}) => {
+export const KeyboardComponent = (props) => {
+  const {
+    setText = (string) => console.log('no setText fn.string: ', string),
+  } = props
   const [isShifted, setIsShifted] = useState(false)
 
   return (
-    <KeyboardGrid>
+    <KeyboardGrid {...props}>
       {LAYOUT.map((row, index) => {
         const keys = row.map((entry, i) => {
           return (

@@ -6,11 +6,12 @@ import { useState } from 'react'
 import media from 'css-in-js-media'
 const StyledPaper = styled(Paper)`
   padding: 5px 10px;
-  background-color: ${({ theme }) => theme.primary};
+  background-color: ${({ theme, clicked = false }) =>
+    clicked ? theme.light : theme.primary};
   display: grid;
   place-items: center;
   border-radius: 5px;
-  transition: all 0.1s;
+  transition: all 0.01ds;
 
   box-shadow: ${({ clicked = false }) =>
     clicked ? `1px 1px 1px #555` : `3px 3px #555`};

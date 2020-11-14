@@ -12,7 +12,7 @@ import WordDisplay from './WordDisplay'
 
 const Public = () => (
   <Switch>
-    <Route path='/type'>
+    <Route path='/type/:_input?'>
       <Type />
     </Route>
     <Route path='/about'>

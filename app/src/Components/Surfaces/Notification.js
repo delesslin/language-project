@@ -48,11 +48,12 @@ const Close = styled(CloseIcon)`
     cursor: pointer;
   }
 `
-export const Notification = ({
-  open,
-  children,
-  handleClose = () => console.log('No handleClose fn defined'),
-}) => {
+export const Notification = (props) => {
+  const {
+    open,
+    children,
+    handleClose = () => console.log('No handleClose fn defined'),
+  } = props
   const [exiting, setExiting] = useState(false)
   const handleExit = () => {
     setExiting(true)
@@ -74,7 +75,7 @@ export const Notification = ({
 
   if (open) {
     return (
-      <Wrapper animation={exiting ? fadeOut : fadeIn}>
+      <Wrapper {...props} animation={exiting ? fadeOut : fadeIn}>
         <Content color='secondary'>
           <Text size={1.2}>{children}</Text>
           <Close size={15} onClick={handleExit} />
