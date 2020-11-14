@@ -13,8 +13,9 @@ import SearchField from './SearchField'
 // TODO: redirect to /search/?SEARCHTERM
 export const SearchBox = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   width: 100%;
   padding-bottom: 20px;
 
@@ -57,7 +58,7 @@ const Search = () => {
   }
 
   return (
-    <Page Icon={RiSearch2Line}>
+    <Page>
       <SearchBox>
         <SearchField
           loading={isSearching}
