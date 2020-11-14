@@ -1,9 +1,28 @@
-import React, { useEffect } from 'react'
-import styled from 'styled-components'
+import React, { useEffect, useState } from 'react'
+import styled, { keyframes } from 'styled-components'
 import { CloseIcon } from './Icon'
 import { Paper } from './Paper'
 import { Text } from './Text'
-
+const fadeIn = keyframes`
+  0% {
+    bottom: -300px;
+    opacity: 0;
+  }
+  100% {
+    bottom: 0px;
+    opacity: 1;
+  }
+`
+const fadeOut = keyframes`
+  100% {
+    bottom: -300px;
+    opacity: 0;
+  }
+  0% {
+    bottom: 0px;
+    opacity: 1;
+  }
+`
 const Wrapper = styled.div`
   display: block;
   position: fixed;
@@ -12,6 +31,8 @@ const Wrapper = styled.div`
   z-index: 500;
   display: grid;
   place-items: stretch;
+  animation-name: ${({ animation }) => animation};
+  animation-duration: 0.35s;
 `
 const Content = styled(Paper)`
   padding: 15px;
@@ -32,10 +53,19 @@ export const Notification = ({
   children,
   handleClose = () => console.log('No handleClose fn defined'),
 }) => {
+  const [exiting, setExiting] = useState(false)
+  const handleExit = () => {
+    setExiting(true)
+    const timer = setTimeout(() => {
+      handleClose()
+      setExiting(false)
+      clearTimeout(timer)
+    }, 350)
+  }
   useEffect(() => {
     if (open) {
       const timer = setTimeout(() => {
-        handleClose()
+        handleExit()
       }, 3000)
       return () => clearTimeout(timer)
     }
@@ -43,10 +73,10 @@ export const Notification = ({
 
   if (open) {
     return (
-      <Wrapper>
-        <Content color='red'>
+      <Wrapper animation={exiting ? fadeOut : fadeIn}>
+        <Content color='secondary'>
           <Text size={1.2}>{children}</Text>
-          <Close size={15} onClick={handleClose} />
+          <Close size={15} onClick={handleExit} />
         </Content>
       </Wrapper>
     )
