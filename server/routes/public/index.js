@@ -38,9 +38,16 @@ router.get('/type', async (req, res) => {
   let html = await customizeHTML({ description, title, image })
   res.send(html)
 })
-router.get('/search', async (req, res) => {
-  let title = 'Search'
-  let description = 'Find Catawba translations'
+router.get('/search/:_term?', async (req, res) => {
+  console.log('server here')
+
+  const { _term } = req.params
+  console.log('_term', _term)
+  let title = _term == null ? 'Search' : `Search for '${_term}'`
+  let description =
+    _term == null
+      ? 'Find Catawba translations'
+      : `Find Catawba translations for '${_term}'!`
   let image = default_img
   let html = await customizeHTML({ description, title, image })
   res.send(html)
@@ -87,7 +94,7 @@ router.get('/:other', async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-  console.log('gotten')
+  console.log('/')
   let html = await customizeHTML({
     description: default_description,
     title: default_title,

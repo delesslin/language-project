@@ -93,9 +93,9 @@ const Results = ({ loading, results }) => {
                 {entry.language_entry} copied to clipboard!
               </Notification>
               <Details>
-                {entry.translations.map((entry) => {
+                {entry.translations.map((entry, i) => {
                   return (
-                    <Detail>
+                    <Detail key={i}>
                       <Text size={2}>{entry}</Text>
                     </Detail>
                   )

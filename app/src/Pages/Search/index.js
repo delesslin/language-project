@@ -1,6 +1,7 @@
 import media from 'css-in-js-media'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { RiSearch2Line } from 'react-icons/ri'
+import { useHistory, useParams } from 'react-router'
 import styled from 'styled-components'
 import { Page } from '../../Components'
 import useSearch from '../../utils/hooks/useSearch'
@@ -25,13 +26,23 @@ export const SearchBox = styled.div`
   }
 `
 const Search = () => {
-  const { results, search, reset, isSearching } = useSearch()
+  const { results, search, reset, isSearching, isLoading } = useSearch()
+  const history = useHistory()
   const [error, setError] = useState(false)
   const inputRef = useRef(null)
-
+  const { _term = '' } = useParams()
+  console.log(_term)
+  useEffect(() => {
+    if (_term == null || _term.length === 0) {
+      reset()
+    } else {
+      search(_term)
+    }
+    // eslint-disable-next-line
+  }, [_term, isLoading])
   const handleClick = () => {
     if (inputRef.current.value != null && inputRef.current.value.length > 0) {
-      search(inputRef.current.value)
+      history.push(`/search/${inputRef.current.value}`)
     } else {
       setError(true)
     }
@@ -44,6 +55,7 @@ const Search = () => {
       setError(false)
     }
   }
+
   return (
     <Page Icon={RiSearch2Line}>
       <SearchBox>

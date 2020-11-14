@@ -24,7 +24,7 @@ const Public = () => (
     <Route path='/tags/:_tagname'>
       <Tag />
     </Route>
-    <Route path='/search'>
+    <Route path='/search/:_term?'>
       <Search />
     </Route>
     {/* <Route path='/request'>

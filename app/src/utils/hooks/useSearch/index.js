@@ -12,7 +12,7 @@ const findMatches = async (term, words) => {
   return results
 }
 const useSearch = () => {
-  const { words } = useAPI()
+  const { words, isLoading } = useAPI()
   const [results, setResults] = React.useState(null)
   const [isSearching, setIsSearching] = React.useState(false)
   const search = (term) => {
@@ -32,6 +32,7 @@ const useSearch = () => {
     search,
     reset,
     isSearching,
+    isLoading,
   }
 }
 
