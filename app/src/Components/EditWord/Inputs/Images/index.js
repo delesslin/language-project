@@ -7,6 +7,7 @@ import ImageModal from './ImageModal'
 import SelectedImage from './SelectedImage'
 import media from 'css-in-js-media'
 import styled from 'styled-components'
+import useEdit from 'Components/EditWord/useEdit'
 const secondlight = '#FFFED6'
 const ImgInput = styled.div`
   grid-area: i;
@@ -39,7 +40,7 @@ export const CardGrid = styled.div`
 `
 
 const Images = () => {
-  const [{ images }, dispatch] = React.useContext(Context)
+  const { images, dispatch } = useEdit()
   const [openModal, setOpenModal] = React.useState(false)
   const property = 'images'
   const remove = (index) => {
@@ -66,11 +67,12 @@ const Images = () => {
         </div>
         <div>
           <CardGrid columns={3}>
-            {images.map((img, i) => {
-              return (
-                <SelectedImage key={i} src={img} remove={() => remove(i)} />
-              )
-            })}
+            {images &&
+              images.map((img, i) => {
+                return (
+                  <SelectedImage key={i} src={img} remove={() => remove(i)} />
+                )
+              })}
           </CardGrid>
         </div>
       </ImgInput>

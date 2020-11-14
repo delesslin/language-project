@@ -1,11 +1,7 @@
-import React, { useEffect, useReducer } from 'react'
-import { useHistory } from 'react-router'
+import React from 'react'
 import styled from 'styled-components'
-
-import useAPI from '../../utils/hooks/useAPI'
 import { Button } from '../Surfaces'
 import AltSpellings from './AltSpellings'
-import blankState from './blankState'
 import Context from './context'
 import Images from './Inputs/Images'
 import Pronunciation from './Inputs/Pronunciation'
@@ -13,13 +9,14 @@ import LanguageEntry from './LanguageEntry'
 import MultiText from './MultiText'
 import Notes from './Notes'
 import RecordingsInput from './RecordingsInput'
-import reducer, { INIT } from './reducer'
+import useEdit from './useEdit'
 import VisibleInput from './VisibleInput'
+import { EditProvider } from './useEdit'
 
 const highlight = '#eefafc'
 const secondlight = '#FFFED6'
 const trilight = '#FFEBF1'
-export const InputGrid = styled.div`
+const InputGrid = styled.div`
   transition: all 0.2s;
   border-radius: 25px;
   overflow: hidden;
@@ -27,13 +24,15 @@ export const InputGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto;
-  // background-color: #555;
+
   grid-gap: 9px;
   grid-template-areas:
-    'v word word a a a'
-    'b tr tr tr r r'
-    'b p p t t t'
-    'n n n i i i';
+    'word word word word a a'
+    'tr tr p p t t'
+    'n n n n n n'
+    'r r r i i i'
+    'v v b b b b';
+
   > div {
     padding: 10px;
     :hover {
@@ -41,56 +40,14 @@ export const InputGrid = styled.div`
     }
   }
 `
-export const WordInput = styled.div`
-  grid-area: word;
-  display: grid;
-  place-items: center;
-  background-color: ${trilight};
-`
-export const AltInput = styled.div`
-  grid-area: a;
-  // grid-template-columns: 1fr;
-  // grid-template-rows: auto minmax(50px, auto);
-  // grid-auto-flow: column;
-  // background-color: red;
-  background-color: ${trilight};
-`
-export const PronInput = styled.div`
-  grid-area: p;
-  background-color: ${trilight};
-`
-export const ImgInput = styled.div`
-  grid-area: i;
-  display: flex;
-  flex-direction: column;
-  background-color: ${secondlight};
-`
-export const TransInput = styled.div`
+const TransInput = styled.div`
   grid-area: tr;
   background-color: ${trilight};
 `
-export const RecInput = styled.div`
-  grid-area: r;
-  background-color: ${secondlight};
-`
-export const NoteInput = styled.div`
-  grid-area: n;
-  background-color: ${secondlight};
-`
-export const TagInput = styled.div`
+
+const TagInput = styled.div`
   grid-area: t;
   background-color: ${secondlight};
-`
-export const ButtonInput = styled.div`
-  grid-area: b;
-  background-color: ${highlight};
-`
-export const MultiInput = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto minmax(50px, auto);
-  grid-auto-flow: column;
-  grid-row-gap: 10px;
 `
 
 const ButtonGrid = styled.div`
@@ -104,62 +61,59 @@ const InputButton = styled(Button)`
   height: 10%;
   padding: 10px;
 `
-const EditWord = ({
-  data = null,
-  onSave = () => console.log('no saving fn'),
-  children,
-}) => {
-  const [state, dispatch] = useReducer(reducer, blankState)
-  const { deleteWord = () => console.error('no fn') } = useAPI()
-  const history = useHistory()
-  useEffect(() => {
-    if (data !== null) {
-      dispatch({ type: INIT, data })
-    }
-  }, [data])
-  const onSubmit = () => {
-    onSave(state)
-  }
-  const onDelete = () => {
-    deleteWord(state._id).then(() => {
-      history.push('/admin')
-      dispatch({ type: INIT, blankState })
-    })
-  }
+const EditWord = () => {
+  const {
+    language_entry = '',
+    tags = [],
+    pronunciation = [],
+    translations = [],
+    onDelete,
+    dispatch,
+    onSave,
+  } = useEdit()
+  console.log(language_entry)
   // add _id
   // Shouldn't _id be handled by parent element???
   return (
-    <Context.Provider value={[state, dispatch]}>
-      <InputGrid>
-        <LanguageEntry />
-        <AltSpellings />
-        <Pronunciation />
-        <Images />
-        <TransInput>
-          <MultiText property='translations' label='Translations' />
-        </TransInput>
-        <TagInput>
-          <MultiText property='tags' label='Tags' />
-        </TagInput>
-        <RecInput>
-          <RecordingsInput />
-        </RecInput>
-        <NoteInput>
-          <Notes />
-        </NoteInput>
-        <VisibleInput></VisibleInput>
-        <ButtonGrid>
-          <InputButton color='secondary' onClick={onSubmit}>
-            SUBMIT
-          </InputButton>
-          <InputButton variant='contained' color='red' onClick={onDelete}>
-            DELETE
-          </InputButton>
-          {children}
-        </ButtonGrid>
-      </InputGrid>
-    </Context.Provider>
+    <InputGrid>
+      <LanguageEntry />
+      {language_entry.length > 0 ? (
+        <>
+          <AltSpellings />
+          <Pronunciation />
+          <TransInput>
+            <MultiText property='translations' label='Translations' />
+          </TransInput>
+          <TagInput>
+            <MultiText property='tags' label='Tags' />
+          </TagInput>
+          {tags.length > 0 &&
+          pronunciation.length > 0 &&
+          translations.length > 0 ? (
+            <>
+              <Images />
+              <RecordingsInput />
+              <Notes />
+              <VisibleInput></VisibleInput>
+              <ButtonGrid>
+                <InputButton color='secondary' onClick={onSave}>
+                  SUBMIT
+                </InputButton>
+                <InputButton variant='contained' color='red' onClick={onDelete}>
+                  DELETE
+                </InputButton>
+              </ButtonGrid>
+            </>
+          ) : null}
+        </>
+      ) : null}
+    </InputGrid>
   )
 }
 
-export default EditWord
+// Need this outer wrapper to get useEdit to work in EditWord
+export default (props) => (
+  <EditProvider {...props}>
+    <EditWord {...props}></EditWord>
+  </EditProvider>
+)

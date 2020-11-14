@@ -193,7 +193,7 @@ const WordDetail = () => {
       <Switch>
         <Route path={path + '/new'}>
           <DetailGrid>
-            <NewWord />
+            <NewWord onSave={onSave} />
           </DetailGrid>
         </Route>
         <Route path={path + '/:_id'}>
@@ -203,7 +203,7 @@ const WordDetail = () => {
         </Route>
         <Route exact path={path + '/'}>
           <DetailGrid>
-            <NewWord />
+            <NewWord onSave={onSave} />
           </DetailGrid>
         </Route>
       </Switch>

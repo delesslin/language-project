@@ -10,7 +10,12 @@ import { Button, Paper, MicIcon, NoMicIcon } from '../../'
 import Context from '../context'
 import { REPLACE } from '../reducer'
 import { useRecorder } from './useRecorder'
-const RecordingsGrid = styled.div`
+import useEdit from '../useEdit'
+export const RecInput = styled.div`
+  grid-area: r;
+  background-color: ${({ theme }) => theme.light};
+`
+const RecordingsGrid = styled(RecInput)`
   display: flex;
   flex-direction: rows;
   flex-wrap: wrap;
@@ -38,7 +43,7 @@ const MicButton = styled(Button)`
   }};
 `
 const Recordings = () => {
-  const [{ recordings }, dispatch] = useContext(Context)
+  const { recordings, dispatch } = useEdit()
   const property = 'recordings'
   const update = (blobs) => {
     dispatch({
@@ -63,14 +68,15 @@ const Recordings = () => {
   }, [recordings])
   return (
     <RecordingsGrid>
-      {recordings.map((base64, i) => {
-        return (
-          <AudioPaper key={i} color='transparent'>
-            <Player base64={base64} />
-            <Button onClick={() => removeRecording(i)}>Delete</Button>
-          </AudioPaper>
-        )
-      })}
+      {recordings &&
+        recordings.map((base64, i) => {
+          return (
+            <AudioPaper key={i} color='transparent'>
+              <Player base64={base64} />
+              <Button onClick={() => removeRecording(i)}>Delete</Button>
+            </AudioPaper>
+          )
+        })}
       <AudioPaper color='transparent'>
         {!isInit ? (
           <MicButton round={true} onClick={init} disabled={true}>

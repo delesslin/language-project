@@ -4,6 +4,8 @@ import Context from '../context'
 import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
 import AddIcon from '@material-ui/icons/Add'
 import styled from 'styled-components'
+import { Button } from 'Components/Surfaces'
+import useEdit from '../useEdit'
 const MultiInput = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -11,16 +13,29 @@ const MultiInput = styled.div`
   grid-auto-flow: column;
   grid-row-gap: 10px;
 `
-const MultiText = ({ property, label = '' }) => {
-  const [state, dispatch] = useContext(Context)
-  const [currVal, setCurrVal] = useState('')
-  const add = (value) => {
-    dispatch({
-      type: ADD_MULTI,
-      property,
-      value,
-    })
-    setCurrVal('')
+const AddButton = styled(Button)`
+  ${({ disabled }) => {
+    return disabled
+      ? `
+    background-color: #bbb;
+    box-shadow: none;
+    &:hover {
+      box-shadow: none;
+      cursor: default;
+    }
+  `
+      : ``
+  }}
+`
+const useMulti = (property) => {
+  const { state, dispatch, addMulti } = useEdit()
+  const [isClickable, setIsClickable] = useState(false)
+  const [current, setCurrent] = useState('')
+  const add = () => {
+    if (current.length > 0) {
+      addMulti(property, current.trim())
+      setCurrent('')
+    }
   }
   const remove = (index) => {
     dispatch({
@@ -29,24 +44,52 @@ const MultiText = ({ property, label = '' }) => {
       index,
     })
   }
+  const handleTextChange = (e) => {
+    setCurrent(e.currentTarget.value)
+  }
+  return {
+    current,
+    stringArray: state && state[property] ? state[property] : [],
+    add,
+    remove,
+    handleTextChange,
+  }
+}
+const MultiText = ({ property, label = '' }) => {
+  const { current, stringArray, handleTextChange, add, remove } = useMulti(
+    property
+  )
+
   return (
     <MultiInput>
       <Grid item container spacing={1} justify='center' alignItems='center'>
         <Grid item>
           <TextField
-            value={currVal}
-            onChange={(e) => setCurrVal(e.currentTarget.value)}
+            value={current}
+            onChange={handleTextChange}
             label={label}
           />
         </Grid>
         <Grid item>
-          <Fab onClick={() => add(currVal)}>
+          <AddButton
+            disabled={current.length < 1}
+            color='secondary'
+            round='true'
+            onClick={
+              current.length < 1
+                ? () => {
+                    console.log('nothing to add')
+                  }
+                : () => add(current.trim())
+            }
+            size={2.5}
+          >
             <AddIcon />
-          </Fab>
+          </AddButton>
         </Grid>
       </Grid>
       <Grid item container spacing={1}>
-        {state[property].map((entry, i) => {
+        {stringArray.map((entry, i) => {
           return (
             <Grid item key={i}>
               <Chip color='primary' onDelete={() => remove(i)} label={entry} />

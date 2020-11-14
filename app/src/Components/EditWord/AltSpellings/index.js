@@ -5,6 +5,7 @@ import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
 import EditIcon from '@material-ui/icons/Edit'
 import KeyboardModal from '../../Keyboard/KeyboardModal'
 import styled from 'styled-components'
+import useEdit from '../useEdit'
 const MultiInput = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -18,15 +19,11 @@ const AltInput = styled.div`
   background-color: ${trilight};
 `
 const AltSpellings = () => {
-  const [{ alternative_spellings }, dispatch] = useContext(Context)
+  const { alternative_spellings, addMulti, dispatch } = useEdit()
   const [openModal, setOpenModal] = useState(false)
   const property = 'alternative_spellings'
   const add = (value) => {
-    dispatch({
-      type: ADD_MULTI,
-      property,
-      value,
-    })
+    addMulti(property, value)
   }
   const remove = (index) => {
     dispatch({
@@ -63,17 +60,18 @@ const AltSpellings = () => {
           </div>
           <div>
             <Grid container item spacing={1}>
-              {alternative_spellings.map((entry, i) => {
-                return (
-                  <Grid item key={i}>
-                    <Chip
-                      label={entry}
-                      onDelete={() => remove(i)}
-                      color='primary'
-                    />
-                  </Grid>
-                )
-              })}
+              {alternative_spellings &&
+                alternative_spellings.map((entry, i) => {
+                  return (
+                    <Grid item key={i}>
+                      <Chip
+                        label={entry}
+                        onDelete={() => remove(i)}
+                        color='primary'
+                      />
+                    </Grid>
+                  )
+                })}
             </Grid>
           </div>
         </MultiInput>

@@ -10,6 +10,7 @@ import Context from '../context'
 import { REPLACE } from '../reducer'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import useEdit from '../useEdit'
 const trilight = '#FFEBF1'
 const WordInput = styled.div`
   grid-area: word;
@@ -26,7 +27,8 @@ const ModalGrid = styled.div`
   place-items: stretch;
 `
 const LanguageEntry = () => {
-  const [{ language_entry }, dispatch] = useContext(Context)
+  // const [{ language_entry }, dispatch] = useContext(Context)
+  const { language_entry = '', replace } = useEdit()
   const { words } = useAPI()
   const history = useHistory()
   const [openModal, setOpenModal] = React.useState(false)
@@ -38,11 +40,7 @@ const LanguageEntry = () => {
   }, [language_entry])
   const handleFocus = () => {}
   const setTerm = (value) => {
-    dispatch({
-      type: REPLACE,
-      property,
-      value,
-    })
+    replace(property, value)
   }
   const handleSave = () => {
     setTerm(tempString)

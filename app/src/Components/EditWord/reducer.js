@@ -3,6 +3,8 @@ export const ADD_MULTI = 'ADD_MULTI'
 export const REMOVE_MULTI = 'REMOVE_MULTI'
 export const REPLACE = 'REPLACE'
 const reducer = (state, action) => {
+  // console.log('state', state)
+  // console.log('action', action)
   switch (action.type) {
     case INIT:
       return action.data

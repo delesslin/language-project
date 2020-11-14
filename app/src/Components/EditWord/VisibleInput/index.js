@@ -4,6 +4,7 @@ import React, { useContext } from 'react'
 import Context from '../context'
 import { REPLACE } from '../reducer'
 import styled from 'styled-components'
+import useEdit from '../useEdit'
 const highlight = '#eefafc'
 const StyledGrid = styled.div`
   grid-area: v;
@@ -12,7 +13,7 @@ const StyledGrid = styled.div`
   background-color: ${highlight};
 `
 const VisibleInput = () => {
-  const [{ public: isPublic }, dispatch] = useContext(Context)
+  const { public: isPublic, dispatch } = useEdit()
   const property = 'public'
   const handleSwitch = (e) => {
     const { checked: value } = e.target
