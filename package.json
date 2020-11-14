@@ -7,7 +7,8 @@
     "dev": "concurrently \"nodemon server/index.js\" \"cd app && npm start\"",
     "start": "node server/index.js",
     "client-build": "cd app && npm run build",
-    "commit": "git add . && git commit -am"
+    "commit": "git add . && git commit -am",
+    "deploy": "git push heroku master && git push origin master"
   },
   "keywords": [
     "js",
