@@ -50,8 +50,7 @@ const Recordings = () => {
   const {
     startRecord,
     stopRecord,
-    isDenied,
-    status,
+
     isInit,
     init,
     removeRecording,

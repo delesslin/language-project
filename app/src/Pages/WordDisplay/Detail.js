@@ -8,7 +8,7 @@ import {
   Text,
   TwitterIcon,
 } from '../../Components'
-const FBButton = styled(Button)``
+
 const DetailPaper = styled(Paper)`
   display: grid;
   grid-template-columns: 1fr;

@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react'
-import { getMedia } from './getMedia'
 import MicRecorder from 'mic-recorder-to-mp3'
+import { useState } from 'react'
 
 let Recorder
 
@@ -19,8 +18,8 @@ const initRecorder = async (setIsDenied) => {
 }
 export const useRecorder = (recordings = [], update = () => {}) => {
   const [isRecording, setIsRecording] = useState(false)
-  const [blobs, setBlobs] = useState(recordings)
-  const [chunks, setChunks] = useState([])
+  const [, setBlobs] = useState(recordings)
+  // const [chunks, setChunks] = useState([])
   const [isDenied, setIsDenied] = useState(true)
   const [isInit, setIsInit] = useState(false)
   // const [recorder, setRecorder] = useState(null)

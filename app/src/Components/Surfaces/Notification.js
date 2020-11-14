@@ -69,6 +69,7 @@ export const Notification = ({
       }, 3000)
       return () => clearTimeout(timer)
     }
+    // eslint-disable-next-line
   }, [open])
 
   if (open) {

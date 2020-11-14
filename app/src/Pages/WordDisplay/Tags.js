@@ -42,11 +42,14 @@ const TagText = styled(Text)`
 const SectionText = styled(Text)`
   text-align: right;
 `
+// TODO: add images to tag cards. May need to extrapolate tag generation to useAPI()
 const Tags = ({ tags }) => {
   const history = useHistory()
+
   const handleClick = (tag) => {
     history.push(`/tags/${tag}`)
   }
+
   return (
     <TagsDiv>
       <SectionText size={2}>

@@ -1,5 +1,7 @@
 import VisibilityIcon from '@material-ui/icons/Visibility'
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
+import { Button, ImageIcon, MicIcon, Spinner, TagsIcon, Text } from 'Components'
+import EditWord from 'Components/EditWord'
 import React, { useEffect } from 'react'
 import {
   Route,
@@ -9,16 +11,6 @@ import {
   useRouteMatch,
 } from 'react-router'
 import styled from 'styled-components'
-import {
-  Button,
-  ImageIcon,
-  MicIcon,
-  Paper,
-  Spinner,
-  TagsIcon,
-  Text,
-} from 'Components'
-import EditWord from './EditWord'
 import useAPI from 'utils/hooks/useAPI'
 import Filters from './Filters'
 import { NewWord } from './NewWord'

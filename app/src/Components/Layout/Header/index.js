@@ -1,14 +1,14 @@
+import { GameIcon, HomeIcon, KeyboardIcon, SearchIcon } from 'Components'
 import media from 'css-in-js-media'
 import React, { useEffect } from 'react'
 import { RiMenuFill } from 'react-icons/ri'
 import { useHistory, useLocation } from 'react-router'
-import styled, { keyframes } from 'styled-components'
-import logo from './logo.png'
-import { GameIcon, HomeIcon, KeyboardIcon, SearchIcon } from 'Components'
+import styled from 'styled-components'
 // TODO: why is this here?
 import { hexColor } from '../../Buttons/IconButton'
 import { Button } from '../../Surfaces'
 import { NavButton } from '../Nav'
+import logo from './logo.png'
 
 export const HeaderDiv = styled.header`
   display: grid;

@@ -1,8 +1,8 @@
 import useClippy from 'use-clippy'
 
 const useCopy = () => {
-  const [clipboard, setClipboard] = useClippy()
-  return setClipboard
+  const clippy = useClippy()
+  return clippy[1]
 }
 
 export default useCopy
