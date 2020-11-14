@@ -5,7 +5,9 @@
   "main": "server/index.js",
   "scripts": {
     "dev": "concurrently \"nodemon server/index.js\" \"cd app && npm start\"",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "client-build": "cd app && npm run build",
+    "commit": "git add . && git commit -am"
   },
   "keywords": [
     "js",

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { CloseIcon } from './Icon'
 import { Paper } from './Paper'
@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   display: block;
   position: fixed;
   bottom: 0px;
-  padding: 5px;
+  padding: 25px;
   z-index: 500;
   display: grid;
   place-items: stretch;
@@ -32,11 +32,20 @@ export const Notification = ({
   children,
   handleClose = () => console.log('No handleClose fn defined'),
 }) => {
+  useEffect(() => {
+    if (open) {
+      const timer = setTimeout(() => {
+        handleClose()
+      }, 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [open])
+
   if (open) {
     return (
       <Wrapper>
-        <Content color='light'>
-          <Text>{children}</Text>
+        <Content color='red'>
+          <Text size={1.2}>{children}</Text>
           <Close size={15} onClick={handleClose} />
         </Content>
       </Wrapper>
