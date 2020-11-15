@@ -13,7 +13,12 @@ import { MdRecordVoiceOver } from 'react-icons/md'
 import { RiFacebookBoxFill } from 'react-icons/ri'
 import { TiInfoLarge, TiBackspaceOutline } from 'react-icons/ti'
 import { BsShift, BsPeopleFill, BsImages } from 'react-icons/bs'
-import { BiCopy, BiMessageSquareError } from 'react-icons/bi'
+import {
+  BiCopy,
+  BiMessageError,
+  BiMessageEdit,
+  BiMessageX,
+} from 'react-icons/bi'
 import { GrClose } from 'react-icons/gr'
 import { AiOutlineFontColors, AiFillTags } from 'react-icons/ai'
 import { FiTwitter } from 'react-icons/fi'
@@ -30,74 +35,39 @@ const Icon = (props) => {
   )
 }
 
-// Icon gen fn?
-export const BackIcon = (props) => (
-  <Icon {...props} Component={IoIosArrowBack} />
-)
-export const FwdIcon = (props) => (
-  <Icon {...props} Component={IoIosArrowForward} />
-)
+const genIcon = (Component) => {
+  const Generated = (props) => {
+    return <Icon {...props} Component={Component} />
+  }
+  return Generated
+}
 
-export const SoundIcon = (props) => (
-  <Icon {...props} Component={MdRecordVoiceOver} />
-)
-
-export const MoreIcon = (props) => <Icon {...props} Component={CgMore} />
-
-export const InfoIcon = (props) => <Icon {...props} Component={TiInfoLarge} />
-
-export const KeyboardIcon = (props) => (
-  <Icon {...props} Component={FaKeyboard} />
-)
-
-export const GameIcon = (props) => (
-  <Icon {...props} Component={VideogameAssetIcon} />
-)
-
-export const SearchIcon = (props) => <Icon {...props} Component={SearchIconO} />
-
-export const HomeIcon = (props) => <Icon {...props} Component={HomeIconO} />
-
-export const FacebookIcon = (props) => (
-  <Icon {...props} Component={RiFacebookBoxFill} />
-)
-export const LockIcon = (props) => <Icon {...props} Component={LockIconO} />
-export const UnlockIcon = (props) => (
-  <Icon {...props} Component={LockOpenIcon} />
-)
-
-export const MicIcon = (props) => <Icon {...props} Component={MicIconO} />
-
-export const NoMicIcon = (props) => <Icon {...props} Component={MicOffIcon} />
-
-export const BackspaceIcon = (props) => (
-  <Icon {...props} Component={TiBackspaceOutline} />
-)
-
-export const ShiftIcon = (props) => <Icon {...props} Component={BsShift} />
-
-export const CopyIcon = (props) => <Icon {...props} Component={BiCopy} />
-
-export const CloseIcon = (props) => <Icon {...props} Component={GrClose} />
-export const WordIcon = (props) => (
-  <Icon {...props} Component={AiOutlineFontColors} />
-)
-export const UsersIcon = (props) => <Icon {...props} Component={BsPeopleFill} />
-
-export const ImageIcon = (props) => <Icon {...props} Component={BsImages} />
-
-export const TagsIcon = (props) => <Icon {...props} Component={AiFillTags} />
-
-export const VisibleIcon = (props) => <Icon {...props} Component={FaRegEye} />
-
-export const HiddenIcon = (props) => (
-  <Icon {...props} Component={FaRegEyeSlash} />
-)
-
-export const TwitterIcon = (props) => <Icon {...props} Component={FiTwitter} />
-
-export const IssueIcon = (props) => <Icon {...props} Component={VscIssues} />
-
-export const RequestIcon = (props) => (
-  <Icon {...props} Component={BiMessageSquareError} />
-)
+export const BackIcon = genIcon(IoIosArrowBack)
+export const FwdIcon = genIcon(IoIosArrowForward)
+export const SoundIcon = genIcon(MdRecordVoiceOver)
+export const MoreIcon = genIcon(CgMore)
+export const InfoIcon = genIcon(TiInfoLarge)
+export const KeyboardIcon = genIcon(FaKeyboard)
+export const GameIcon = genIcon(VideogameAssetIcon)
+export const SearchIcon = genIcon(SearchIconO)
+export const HomeIcon = genIcon(HomeIconO)
+export const FacebookIcon = genIcon(RiFacebookBoxFill)
+export const LockIcon = genIcon(LockIconO)
+export const UnlockIcon = genIcon(LockOpenIcon)
+export const MicIcon = genIcon(MicIconO)
+export const NoMicIcon = genIcon(MicOffIcon)
+export const BackspaceIcon = genIcon(TiBackspaceOutline)
+export const ShiftIcon = genIcon(BsShift)
+export const CopyIcon = genIcon(BiCopy)
+export const CloseIcon = genIcon(GrClose)
+export const WordIcon = genIcon(AiOutlineFontColors)
+export const UsersIcon = genIcon(BsPeopleFill)
+export const ImageIcon = genIcon(BsImages)
+export const TagsIcon = genIcon(AiFillTags)
+export const VisibleIcon = genIcon(FaRegEye)
+export const HiddenIcon = genIcon(FaRegEyeSlash)
+export const TwitterIcon = genIcon(FiTwitter)
+export const IssueIcon = genIcon(VscIssues)
+export const RequestIcon = genIcon(BiMessageError)
+export const IgnoreRequestIcon = genIcon(BiMessageX)
+export const ReplyRequestIcon = genIcon(BiMessageEdit)

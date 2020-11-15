@@ -26,8 +26,8 @@ const AddButton = styled(Button)`
   }}
 `
 const useMulti = (property) => {
-  const { state, dispatch, addMulti, removeMulti } = useEdit()
-  const [isClickable, setIsClickable] = useState(false)
+  const { state, addMulti, removeMulti } = useEdit()
+
   const [current, setCurrent] = useState('')
   const add = () => {
     if (current.length > 0) {

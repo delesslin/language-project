@@ -57,6 +57,7 @@ const SpinnerComponent = ({ theme, size = 75 }) => {
       exit()
     }, 1500)
     return () => clearInterval(interval)
+    // eslint-disable-next-line
   }, [colors])
   return (
     <SpinnerWrapper animation={exiting ? fadeOut : fadeIn}>

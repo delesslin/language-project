@@ -3,7 +3,6 @@ import useEdit from 'Components/EditWord/useEdit'
 import media from 'css-in-js-media'
 import React from 'react'
 import styled from 'styled-components'
-import { REMOVE_MULTI, REPLACE } from '../useEdit/reducer'
 import ImageModal from './ImageModal'
 import SelectedImage from './SelectedImage'
 
@@ -41,11 +40,11 @@ export const CardGrid = styled.div`
 `
 
 const Images = ({ show }) => {
-  const { images, dispatch, removeMulti, replace } = useEdit()
+  const { images, replace, removeMulti } = useEdit()
   const [openModal, setOpenModal] = React.useState(false)
   const property = 'images'
   const remove = (index) => {
-    remove(property, index)
+    removeMulti(property, index)
   }
   const setImages = (value) => {
     replace(property, value)

@@ -1,24 +1,22 @@
+import { Notification } from 'Components/Surfaces/Notification'
+import media from 'css-in-js-media'
 import React, { useState } from 'react'
-import { FaKeyboard } from 'react-icons/fa'
-import styled, { css, keyframes } from 'styled-components'
+import styled from 'styled-components'
+import useCopy from 'utils/hooks/useCopy'
 import { Button, CopyIcon, Page, Text } from '../../Components'
 import { KeyboardComponent } from '../../Components/Keyboard/KeyboardComponent'
 
-import media from 'css-in-js-media'
-import useCopy from 'utils/hooks/useCopy'
-import { Notification } from 'Components/Surfaces/Notification'
-import { useHistory, useParams } from 'react-router'
-const flash = keyframes`
-0% {
-  background-color: ${({ theme }) => theme.light};
-}
-50% {
-  background-color: ${({ theme }) => theme.secondary};
-}
-100% {
-  background-color: ${({ theme }) => theme.light};
-}
-`
+// const flash = keyframes`
+// 0% {
+//   background-color: ${({ theme }) => theme.light};
+// }
+// 50% {
+//   background-color: ${({ theme }) => theme.secondary};
+// }
+// 100% {
+//   background-color: ${({ theme }) => theme.light};
+// }
+// `
 const Input = styled.input`
   border: none;
   background-color: ${({ theme, copied }) =>
@@ -87,16 +85,15 @@ const StyledNotification = styled(Notification)`
   width: 80%;
 `
 const Type = () => {
-  // const { _input = '' } = useParams()
   const [_input, setState] = React.useState('')
-  const [isCopied, setIsCopied] = React.useState(false)
+
   const [open, setOpen] = useState(false)
-  // const history = useHistory()
+
   const copy = useCopy()
   const handleCopy = () => {
     if (_input.length > 0) {
       copy(_input)
-      setIsCopied(true)
+
       setOpen(true)
     }
   }

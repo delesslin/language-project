@@ -1,7 +1,13 @@
 import Axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Button, Paper, Text } from 'Components'
+import {
+  Button,
+  IgnoreRequestIcon,
+  Paper,
+  ReplyRequestIcon,
+  Text,
+} from 'Components'
 import useAPI from 'utils/hooks/useAPI'
 const Grid = styled.div`
   display: grid;
@@ -55,12 +61,11 @@ const Requests = () => {
             <Name>{request.name}</Name>
             <Email>{request.email}</Email>
             <Buttons>
-              <Button round={true}>RESPOND</Button>
-              <Button round={true} color='secondary'>
-                IGNORE
+              <Button round={true}>
+                <ReplyRequestIcon />
               </Button>
-              <Button round={true} color='red'>
-                DELETE
+              <Button round={true} color='secondary'>
+                <IgnoreRequestIcon />
               </Button>
             </Buttons>
           </Request>

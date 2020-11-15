@@ -2,7 +2,6 @@ import { Chip, Fab, Grid, TextField } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { ADD_MULTI, REMOVE_MULTI } from '../useEdit/reducer'
 import useEdit from '../useEdit'
 
 const secondlight = '#FFFED6'
@@ -14,7 +13,7 @@ const NoteInput = styled.div`
   opacity: ${({ show = true }) => (show ? `1` : `0`)};
 `
 const Notes = ({ show }) => {
-  const { notes, dispatch, removeMulti, addMulti } = useEdit()
+  const { notes, removeMulti, addMulti } = useEdit()
   const [currText, setCurrText] = useState('')
   const property = 'notes'
   const add = (value) => {

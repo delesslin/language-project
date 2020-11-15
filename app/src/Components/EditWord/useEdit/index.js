@@ -55,7 +55,7 @@ export const EditProvider = ({
     onSave: () => onSave(state),
     replace,
     addMulti,
-    dispatch,
+
     removeMulti,
   }
   return <Context.Provider value={api}>{children}</Context.Provider>

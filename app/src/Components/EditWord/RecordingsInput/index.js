@@ -1,12 +1,6 @@
-// data:audio/mp3;base64,
-// data:audio/mp3;base64,//uQxAADwAABpA
-// data:audio/mp3;base64,T2dn
-
-import { Player } from 'Components'
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { Button, MicIcon, NoMicIcon, Paper } from '../../'
-import { REPLACE } from '../useEdit/reducer'
+import { Button, MicIcon, NoMicIcon, Paper, Player } from 'Components'
 import useEdit from '../useEdit'
 import { useRecorder } from './useRecorder'
 
@@ -44,7 +38,7 @@ const MicButton = styled(Button)`
   }};
 `
 const Recordings = ({ show }) => {
-  const { recordings, dispatch, replace } = useEdit()
+  const { recordings, replace } = useEdit()
   const property = 'recordings'
   const update = (blobs) => {
     replace(property, blobs)

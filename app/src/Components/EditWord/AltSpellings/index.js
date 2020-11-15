@@ -20,7 +20,7 @@ const AltInput = styled.div`
   opacity: ${({ show = true }) => (show ? `1` : `0`)};
 `
 const AltSpellings = ({ show }) => {
-  const { alternative_spellings, addMulti, dispatch, removeMulti } = useEdit()
+  const { alternative_spellings, addMulti, removeMulti } = useEdit()
   const [openModal, setOpenModal] = useState(false)
   const property = 'alternative_spellings'
   const add = (value) => {

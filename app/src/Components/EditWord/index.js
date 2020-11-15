@@ -74,7 +74,6 @@ const EditWord = () => {
     pronunciation = [],
     translations = [],
     onDelete,
-    dispatch,
     onSave,
   } = useEdit()
   console.log(language_entry)

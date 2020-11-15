@@ -1,6 +1,5 @@
 import media from 'css-in-js-media'
 import React, { useEffect, useRef, useState } from 'react'
-import { RiSearch2Line } from 'react-icons/ri'
 import { useHistory, useParams } from 'react-router'
 import styled from 'styled-components'
 import { Page } from '../../Components'
