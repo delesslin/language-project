@@ -2,11 +2,10 @@ console.log('Starting server')
 require('dotenv').config()
 const PORT = process.env.PORT || 3333
 const express = require('express')
-const sslRedirect = require('heroku-ssl-redirect')
-
 const apiRouter = require('./routes/index.js')
 const publicRouter = require('./routes/public/index.js')
 const InitiateMongoServer = require('./config/db')
+const forceSsl = require('./config/forceSsl.js')
 
 console.log('----------------------------------------')
 
@@ -17,13 +16,6 @@ InitiateMongoServer()
 const app = express()
 const env = process.env.NODE_ENV || 'development'
 app.use(express.json())
-
-var forceSsl = function (req, res, next) {
-  if (req.headers['x-forwarded-proto'] !== 'https') {
-    return res.redirect(['https://', req.get('Host'), req.url].join(''))
-  }
-  return next()
-}
 
 // redirect to https
 if (env === 'production') {
