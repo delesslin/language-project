@@ -2,6 +2,7 @@ console.log('Starting server')
 require('dotenv').config()
 const PORT = process.env.PORT || 3333
 const express = require('express')
+const sslRedirect = require('heroku-ssl-redirect')
 
 const apiRouter = require('./routes/index.js')
 const publicRouter = require('./routes/public/index.js')
@@ -16,6 +17,8 @@ InitiateMongoServer()
 const app = express()
 app.use(express.json())
 
+// redirect to https
+app.use(sslRedirect())
 // Handle API requests
 app.use('/api', apiRouter)
 
