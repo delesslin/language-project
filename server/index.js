@@ -15,10 +15,21 @@ InitiateMongoServer()
 
 // Init express server
 const app = express()
+const env = process.env.NODE_ENV || 'development'
 app.use(express.json())
 
+var forceSsl = function (req, res, next) {
+  if (req.headers['x-forwarded-proto'] !== 'https') {
+    return res.redirect(['https://', req.get('Host'), req.url].join(''))
+  }
+  return next()
+}
+
 // redirect to https
-app.use(sslRedirect())
+if (env === 'production') {
+  app.use(forceSsl)
+}
+
 // Handle API requests
 app.use('/api', apiRouter)
 
