@@ -10,7 +10,7 @@ const express = require('express')
 
 const wordsRouter = express()
 
-const wordModel = require('../models/word.js')
+const wordModel = require('../../models/word.js')
 
 // ============================
 // CREATE

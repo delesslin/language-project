@@ -1,7 +1,7 @@
 const express = require('express')
 
 const batchRouter = express()
-const wordModel = require('../models/word.js')
+const wordModel = require('../../models/word.js')
 // TODO: IMPLEMENT MONGOOSE BATCH UPLOAD
 batchRouter.post('/', (req, res) => {
   wordModel.insertMany(req.body, (err, docs) => {

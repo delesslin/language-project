@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const userRouter = express()
 
-const userModel = require('../models/users.js')
+const userModel = require('../../models/users.js')
 // ===============================
 // SETUP OWNER
 // ===============================

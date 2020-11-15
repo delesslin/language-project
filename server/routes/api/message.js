@@ -10,7 +10,7 @@ const express = require('express')
 
 const messageRouter = express()
 
-const message = require('../models/message.js')
+const message = require('../../models/message.js')
 
 // ============================
 // CREATE
