@@ -2,18 +2,19 @@
 // data:audio/mp3;base64,//uQxAADwAABpA
 // data:audio/mp3;base64,T2dn
 
-import React, { useContext, useEffect } from 'react'
-import styled from 'styled-components'
 import { Player } from 'Components'
-import { Button, Paper, MicIcon, NoMicIcon } from '../../'
-
-import Context from '../context'
-import { REPLACE } from '../reducer'
-import { useRecorder } from './useRecorder'
+import React, { useEffect } from 'react'
+import styled from 'styled-components'
+import { Button, MicIcon, NoMicIcon, Paper } from '../../'
+import { REPLACE } from '../useEdit/reducer'
 import useEdit from '../useEdit'
+import { useRecorder } from './useRecorder'
+
 export const RecInput = styled.div`
   grid-area: r;
   background-color: ${({ theme }) => theme.light};
+  transition: all 1s;
+  opacity: ${({ show = true }) => (show ? `1` : `0`)};
 `
 const RecordingsGrid = styled(RecInput)`
   display: flex;
@@ -42,15 +43,11 @@ const MicButton = styled(Button)`
     }
   }};
 `
-const Recordings = () => {
-  const { recordings, dispatch } = useEdit()
+const Recordings = ({ show }) => {
+  const { recordings, dispatch, replace } = useEdit()
   const property = 'recordings'
   const update = (blobs) => {
-    dispatch({
-      type: REPLACE,
-      property,
-      value: blobs,
-    })
+    replace(property, blobs)
   }
   const {
     startRecord,
@@ -67,7 +64,7 @@ const Recordings = () => {
     /*eslint-disable */
   }, [recordings])
   return (
-    <RecordingsGrid>
+    <RecordingsGrid show={show}>
       {recordings &&
         recordings.map((base64, i) => {
           return (

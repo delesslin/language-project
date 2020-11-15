@@ -1,10 +1,9 @@
 import { Chip, Fab, Grid, TextField } from '@material-ui/core'
-import React, { useContext, useState } from 'react'
-import Context from '../context'
-import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
 import EditIcon from '@material-ui/icons/Edit'
-import KeyboardModal from '../../Keyboard/KeyboardModal'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+
+import KeyboardModal from '../../Keyboard/KeyboardModal'
 import useEdit from '../useEdit'
 const MultiInput = styled.div`
   display: grid;
@@ -17,24 +16,22 @@ const trilight = '#FFEBF1'
 const AltInput = styled.div`
   grid-area: a;
   background-color: ${trilight};
+  transition: all 1s;
+  opacity: ${({ show = true }) => (show ? `1` : `0`)};
 `
-const AltSpellings = () => {
-  const { alternative_spellings, addMulti, dispatch } = useEdit()
+const AltSpellings = ({ show }) => {
+  const { alternative_spellings, addMulti, dispatch, removeMulti } = useEdit()
   const [openModal, setOpenModal] = useState(false)
   const property = 'alternative_spellings'
   const add = (value) => {
     addMulti(property, value)
   }
   const remove = (index) => {
-    dispatch({
-      type: REMOVE_MULTI,
-      property,
-      index,
-    })
+    removeMulti(property, index)
   }
   return (
     <>
-      <AltInput>
+      <AltInput show={show}>
         <MultiInput>
           <div>
             <Grid

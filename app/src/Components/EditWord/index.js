@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { Button } from '../Surfaces'
 import AltSpellings from './AltSpellings'
-import Context from './context'
-import Images from './Inputs/Images'
-import Pronunciation from './Inputs/Pronunciation'
+
+import Images from './Images'
+import Pronunciation from './Pronunciation'
 import LanguageEntry from './LanguageEntry'
 import MultiText from './MultiText'
 import Notes from './Notes'
@@ -43,11 +43,15 @@ const InputGrid = styled.div`
 const TransInput = styled.div`
   grid-area: tr;
   background-color: ${trilight};
+  transition: all 1s;
+  opacity: ${({ show = true }) => (show ? `1` : `0`)};
 `
 
 const TagInput = styled.div`
   grid-area: t;
   background-color: ${secondlight};
+  transition: all 1s;
+  opacity: ${({ show = true }) => (show ? `1` : `0`)};
 `
 
 const ButtonGrid = styled.div`
@@ -55,6 +59,8 @@ const ButtonGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   place-items: center;
+  transition: all 1s;
+  opacity: ${({ show = true }) => (show ? `1` : `0`)};
 `
 const InputButton = styled(Button)`
   width: 80%;
@@ -74,39 +80,35 @@ const EditWord = () => {
   console.log(language_entry)
   // add _id
   // Shouldn't _id be handled by parent element???
+  const showExtras = () => {
+    return (
+      tags.length > 0 && pronunciation.length > 0 && translations.length > 0
+    )
+  }
+  const showRequired = () => language_entry.length > 0
   return (
     <InputGrid>
       <LanguageEntry />
-      {language_entry.length > 0 ? (
-        <>
-          <AltSpellings />
-          <Pronunciation />
-          <TransInput>
-            <MultiText property='translations' label='Translations' />
-          </TransInput>
-          <TagInput>
-            <MultiText property='tags' label='Tags' />
-          </TagInput>
-          {tags.length > 0 &&
-          pronunciation.length > 0 &&
-          translations.length > 0 ? (
-            <>
-              <Images />
-              <RecordingsInput />
-              <Notes />
-              <VisibleInput></VisibleInput>
-              <ButtonGrid>
-                <InputButton color='secondary' onClick={onSave}>
-                  SUBMIT
-                </InputButton>
-                <InputButton variant='contained' color='red' onClick={onDelete}>
-                  DELETE
-                </InputButton>
-              </ButtonGrid>
-            </>
-          ) : null}
-        </>
-      ) : null}
+      <AltSpellings show={showRequired()} />
+      <Pronunciation show={showRequired()} />
+      <TransInput show={showRequired()}>
+        <MultiText property='translations' label='Translations' />
+      </TransInput>
+      <TagInput show={showRequired()}>
+        <MultiText property='tags' label='Tags' />
+      </TagInput>
+      <Images show={showExtras()} />
+      <RecordingsInput show={showExtras()} />
+      <Notes show={showExtras()} />
+      <VisibleInput show={showExtras()} />
+      <ButtonGrid show={showExtras()}>
+        <InputButton color='secondary' onClick={onSave}>
+          SUBMIT
+        </InputButton>
+        <InputButton variant='contained' color='red' onClick={onDelete}>
+          DELETE
+        </InputButton>
+      </ButtonGrid>
     </InputGrid>
   )
 }

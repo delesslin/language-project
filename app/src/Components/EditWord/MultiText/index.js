@@ -1,10 +1,8 @@
-import { Chip, Fab, Grid, TextField } from '@material-ui/core'
-import React, { useContext, useState } from 'react'
-import Context from '../context'
-import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
+import { Chip, Grid, TextField } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
-import styled from 'styled-components'
 import { Button } from 'Components/Surfaces'
+import React, { useState } from 'react'
+import styled from 'styled-components'
 import useEdit from '../useEdit'
 const MultiInput = styled.div`
   display: grid;
@@ -28,7 +26,7 @@ const AddButton = styled(Button)`
   }}
 `
 const useMulti = (property) => {
-  const { state, dispatch, addMulti } = useEdit()
+  const { state, dispatch, addMulti, removeMulti } = useEdit()
   const [isClickable, setIsClickable] = useState(false)
   const [current, setCurrent] = useState('')
   const add = () => {
@@ -38,11 +36,7 @@ const useMulti = (property) => {
     }
   }
   const remove = (index) => {
-    dispatch({
-      type: REMOVE_MULTI,
-      property,
-      index,
-    })
+    removeMulti(property, index)
   }
   const handleTextChange = (e) => {
     setCurrent(e.currentTarget.value)

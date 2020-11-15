@@ -2,7 +2,7 @@ import { Chip, Fab, Grid, TextField } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { ADD_MULTI, REMOVE_MULTI } from '../reducer'
+import { ADD_MULTI, REMOVE_MULTI } from '../useEdit/reducer'
 import useEdit from '../useEdit'
 
 const secondlight = '#FFFED6'
@@ -10,27 +10,21 @@ const secondlight = '#FFFED6'
 const NoteInput = styled.div`
   grid-area: n;
   background-color: ${secondlight};
+  transition: all 1s;
+  opacity: ${({ show = true }) => (show ? `1` : `0`)};
 `
-const Notes = () => {
-  const { notes, dispatch } = useEdit()
+const Notes = ({ show }) => {
+  const { notes, dispatch, removeMulti, addMulti } = useEdit()
   const [currText, setCurrText] = useState('')
   const property = 'notes'
   const add = (value) => {
-    dispatch({
-      type: ADD_MULTI,
-      property,
-      value,
-    })
+    addMulti(property, value)
   }
   const remove = (index) => {
-    dispatch({
-      type: REMOVE_MULTI,
-      property,
-      index,
-    })
+    removeMulti(property, index)
   }
   return (
-    <NoteInput>
+    <NoteInput show={show}>
       <div>
         <Grid item container spacing={2}>
           <Grid item>

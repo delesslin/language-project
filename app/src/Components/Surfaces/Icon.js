@@ -13,7 +13,7 @@ import { MdRecordVoiceOver } from 'react-icons/md'
 import { RiFacebookBoxFill } from 'react-icons/ri'
 import { TiInfoLarge, TiBackspaceOutline } from 'react-icons/ti'
 import { BsShift, BsPeopleFill, BsImages } from 'react-icons/bs'
-import { BiCopy } from 'react-icons/bi'
+import { BiCopy, BiMessageSquareError } from 'react-icons/bi'
 import { GrClose } from 'react-icons/gr'
 import { AiOutlineFontColors, AiFillTags } from 'react-icons/ai'
 import { FiTwitter } from 'react-icons/fi'
@@ -97,3 +97,7 @@ export const HiddenIcon = (props) => (
 export const TwitterIcon = (props) => <Icon {...props} Component={FiTwitter} />
 
 export const IssueIcon = (props) => <Icon {...props} Component={VscIssues} />
+
+export const RequestIcon = (props) => (
+  <Icon {...props} Component={BiMessageSquareError} />
+)

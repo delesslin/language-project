@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useReducer } from 'react'
 import { useHistory } from 'react-router'
 import useAPI from 'utils/hooks/useAPI'
 import blankState from '../blankState'
-import Context from '../context'
-import reducer, { ADD_MULTI, INIT, REPLACE } from '../reducer'
+import Context from './context'
+import reducer, { ADD_MULTI, INIT, REMOVE_MULTI, REPLACE } from './reducer'
 
 export const EditProvider = ({
   children,
@@ -39,6 +39,13 @@ export const EditProvider = ({
       value,
     })
   }
+  const removeMulti = (property, index) => {
+    dispatch({
+      type: REMOVE_MULTI,
+      property,
+      index,
+    })
+  }
   const api = {
     ...state,
     state,
@@ -49,6 +56,7 @@ export const EditProvider = ({
     replace,
     addMulti,
     dispatch,
+    removeMulti,
   }
   return <Context.Provider value={api}>{children}</Context.Provider>
 }

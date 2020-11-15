@@ -7,6 +7,7 @@ import {
   LockIcon,
   Page,
   Paper,
+  RequestIcon,
   Text,
   UnlockIcon,
   UsersIcon,
@@ -71,7 +72,7 @@ const Link = ({ children, to }) => {
   const history = useHistory()
   return (
     <NavButton
-      color='#666'
+      color='#bbb'
       round={true}
       size={5}
       onClick={() => history.push(to)}
@@ -95,6 +96,11 @@ const Landing = ({ children }) => {
             )}
           </AdminButton>
           <Buttons>
+            {roles.includes('editor') ? (
+              <Link to='/admin/requests'>
+                <RequestIcon />
+              </Link>
+            ) : null}
             {roles.includes('admin') ? (
               <>
                 <Link to='/admin'>

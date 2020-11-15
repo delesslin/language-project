@@ -1,16 +1,13 @@
 import { Fab, Grid, TextField } from '@material-ui/core'
 import EditIcon from '@material-ui/icons/Edit'
-import React, { useContext, useEffect } from 'react'
-
-import useAPI from 'utils/hooks/useAPI'
-import { KeyboardComponent } from '../../Keyboard/KeyboardComponent'
-import { Button, Modal } from '../../'
-
-import Context from '../context'
-import { REPLACE } from '../reducer'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
+import useAPI from 'utils/hooks/useAPI'
+import { Button, Modal } from '../../'
+import { KeyboardComponent } from '../../Keyboard/KeyboardComponent'
 import useEdit from '../useEdit'
+
 const trilight = '#FFEBF1'
 const WordInput = styled.div`
   grid-area: word;
@@ -27,7 +24,6 @@ const ModalGrid = styled.div`
   place-items: stretch;
 `
 const LanguageEntry = () => {
-  // const [{ language_entry }, dispatch] = useContext(Context)
   const { language_entry = '', replace } = useEdit()
   const { words } = useAPI()
   const history = useHistory()

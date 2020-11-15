@@ -42,7 +42,7 @@ export const StyledButton = styled(Paper)`
       : `
 box-shadow: 2px 2px 1px #222;
 &:hover {
-  box-shadow: 4px 4px 2px #222;
+  box-shadow: 3px 3px 1px #222;
 }
 `}
 ${({ raised = true }) =>
@@ -51,7 +51,7 @@ ${({ raised = true }) =>
       : `
 box-shadow: 2px 2px 1px #222;
 &:hover {
-  box-shadow: 4px 4px 2px #222;
+  box-shadow: 3px 3px 1px #222;
 }
 `}
 `

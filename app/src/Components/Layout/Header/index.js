@@ -5,7 +5,7 @@ import { RiMenuFill } from 'react-icons/ri'
 import { useHistory, useLocation } from 'react-router'
 import styled from 'styled-components'
 // TODO: why is this here?
-import { hexColor } from '../../Buttons/IconButton'
+
 import { Button } from '../../Surfaces'
 import { NavButton } from '../Nav'
 import logo from './logo.png'
@@ -34,7 +34,7 @@ export const Title = styled.h1`
   font-size: 2rem;
 
   border-radius: 1px;
-  ${({ theme }) => `color: ${hexColor(theme.dark, 1)};`}
+  color: ${({ theme }) => theme.dark};
   ${(props) => props.theme.fonts.primary};
   ${media('<phone')} {
     font-size: 1.2rem;
