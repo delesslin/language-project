@@ -10,7 +10,7 @@ import { CgMore } from 'react-icons/cg'
 import { FaKeyboard, FaRegEye, FaRegEyeSlash } from 'react-icons/fa'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { MdRecordVoiceOver } from 'react-icons/md'
-import { RiFacebookBoxFill } from 'react-icons/ri'
+import { RiFacebookBoxFill, RiDeleteBinLine } from 'react-icons/ri'
 import { TiInfoLarge, TiBackspaceOutline } from 'react-icons/ti'
 import { BsShift, BsPeopleFill, BsImages } from 'react-icons/bs'
 import {
@@ -18,11 +18,13 @@ import {
   BiMessageError,
   BiMessageEdit,
   BiMessageX,
+  BiSave,
 } from 'react-icons/bi'
-import { GrClose } from 'react-icons/gr'
+import { GrClose, GrSend } from 'react-icons/gr'
 import { AiOutlineFontColors, AiFillTags } from 'react-icons/ai'
 import { FiTwitter } from 'react-icons/fi'
 import { VscIssues } from 'react-icons/vsc'
+import { GiRaiseZombie } from 'react-icons/gi'
 import styled from 'styled-components'
 // TODO: use react icons theme provider to allow for styling
 const IconWrapper = styled.div``
@@ -71,3 +73,7 @@ export const IssueIcon = genIcon(VscIssues)
 export const RequestIcon = genIcon(BiMessageError)
 export const IgnoreRequestIcon = genIcon(BiMessageX)
 export const ReplyRequestIcon = genIcon(BiMessageEdit)
+export const SaveIcon = genIcon(BiSave)
+export const SendIcon = genIcon(GrSend)
+export const DeleteIcon = genIcon(RiDeleteBinLine)
+export const ResurrectIcon = genIcon(GiRaiseZombie)

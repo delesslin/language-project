@@ -5,6 +5,7 @@ import { APIContext, initState } from './APIContext'
 import genTags from './genTags'
 import WordsAPI from './WordsAPI'
 import Auth from './Auth'
+import Axios from 'axios'
 
 export const APIProvider = ({ children }) => {
   const [state, setState] = React.useState(initState)
@@ -83,9 +84,29 @@ export const APIProvider = ({ children }) => {
     await reload()
     return res
   }
+  const readMessages = async () => {
+    return await Axios.get('/api/message', options)
+      .then(({ data }) => {
+        return data
+      })
+      .catch(console.error)
+  }
+  const ignoreMessage = async (_id) => {
+    return await Axios.patch(`/api/message/ignore/${_id}`, {}, options)
+  }
+  const sendResponse = async (_id, message) => {
+    return await Axios.post(
+      `/api/message/response/${_id}`,
+      { message },
+      options
+    )
+  }
   return (
     <APIContext.Provider
       value={{
+        sendResponse,
+        ignoreMessage,
+        readMessages,
         updateWord,
         deleteWord,
         isLoading,

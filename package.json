@@ -22,6 +22,7 @@
   "author": "delesslin",
   "license": "MIT",
   "dependencies": {
+    "@sendgrid/mail": "^7.4.0",
     "axios": "^0.21.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -34,6 +35,8 @@
     "mongodb": "^3.6.0",
     "mongoose": "^5.10.11",
     "node-fetch": "^2.6.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "react": "^17.0.1",
+    "react-html-email": "^3.0.0"
   }
 }
