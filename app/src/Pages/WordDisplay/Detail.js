@@ -1,9 +1,12 @@
 import { ShareFB, ShareTwitter } from 'Components/Share'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import useCopy from 'utils/hooks/useCopy'
 import {
   Button,
   FacebookIcon,
+  LinkIcon,
+  Notification,
   Paper,
   Text,
   TwitterIcon,
@@ -34,9 +37,17 @@ const series = (strArray) => {
   }, '')
 }
 const Detail = ({ word }) => {
+  const copy = useCopy()
+  const [show, setShow] = useState(false)
   const quote = `${word.language_entry} (${word.translations[0]})`
   const pronunciations = series(word.pronunciation)
   const translations = series(word.translations)
+  const url = document.location.href
+  const handleCopy = () => {
+    console.log('copy', url)
+    copy(url)
+    setShow(true)
+  }
   return (
     <DetailPaper color='transparent'>
       <Text size={2}>
@@ -67,7 +78,13 @@ const Detail = ({ word }) => {
             <TwitterIcon />
           </Button>
         </ShareTwitter>
+        <Button size='4' round={true} color='light' onClick={handleCopy}>
+          <LinkIcon />
+        </Button>
       </ShareDiv>
+      <Notification open={show} handleClose={() => setShow(false)}>
+        {`Link copied to clipboard!`}
+      </Notification>
     </DetailPaper>
   )
 }

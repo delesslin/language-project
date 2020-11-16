@@ -4,6 +4,7 @@ import { useLocation } from 'react-router'
 
 export function ShareFB({ children, quote = '' }) {
   const { pathname } = useLocation()
+
   const shareURL = `https://catawbalanguage.org${pathname}`
   const shareTag = 'catawbalanguage'
   if (quote.length === 0) {

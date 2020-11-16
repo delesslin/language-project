@@ -19,6 +19,7 @@ import {
   BiMessageEdit,
   BiMessageX,
   BiSave,
+  BiLink,
 } from 'react-icons/bi'
 import { GrClose, GrSend } from 'react-icons/gr'
 import { AiOutlineFontColors, AiFillTags } from 'react-icons/ai'
@@ -77,3 +78,4 @@ export const SaveIcon = genIcon(BiSave)
 export const SendIcon = genIcon(GrSend)
 export const DeleteIcon = genIcon(RiDeleteBinLine)
 export const ResurrectIcon = genIcon(GiRaiseZombie)
+export const LinkIcon = genIcon(BiLink)
