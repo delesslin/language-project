@@ -79,6 +79,11 @@ const genHTML = ({ title, name, date, response_message, request_message }) => {
                       <p><i>${request_message}</i></p>
                     </td>
                   </tr>
+                  <tr>
+                  <td>
+                    <p><i><strong>PLEASE DO NOT RESPOND TO THIS EMAIL</strong></i></p>
+                  </td>
+                </tr>
                   </table>
                 </td>
               </tr>
