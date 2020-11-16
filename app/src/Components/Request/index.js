@@ -21,18 +21,19 @@ const Input = styled.input`
   font-size: 1.5rem;
   border-radius: 10px;
 `
-const Request = () => {
+const Request = ({ term = '' }) => {
   const [success, setSuccess] = useState(-1)
   const history = useHistory()
   const { headers } = useAPI()
   const nameRef = useRef(null)
   const emailRef = useRef(null)
-  const messageRef = useRef(null)
+  // const messageRef = useRef(null)
+  const [message, setMessage] = useState(term)
   const type = 'request'
   const handleSubmit = () => {
     const name = nameRef.current.value
     const email = emailRef.current.value
-    const message = messageRef.current.value
+
     Axios.post('/api/message', { name, email, message, type }, headers)
       .then((res) => {
         setSuccess(1)
@@ -68,7 +69,11 @@ const Request = () => {
         </div>
         <div>
           <Text size={0.9}>Your Request:</Text>
-          <Input type='text' ref={messageRef} />
+          <Input
+            value={message}
+            type='text'
+            onChange={(e) => setMessage(e.target.value)}
+          />
         </div>
         <Button onClick={handleSubmit}>SUBMIT</Button>
       </RequestPaper>

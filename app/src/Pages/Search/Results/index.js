@@ -66,7 +66,7 @@ const More = styled(Button)`
   grid-area: more;
 `
 // TODO: insert dividers between results
-const Results = ({ loading, results }) => {
+const Results = ({ loading, results, term }) => {
   const [open, setOpen] = useState(false)
   const copy = useCopy()
   const history = useHistory()
@@ -113,7 +113,7 @@ const Results = ({ loading, results }) => {
             </Result>
           )
         })}
-        <Request />
+        <Request term={term} />
       </ResultsDiv>
     )
   } else {

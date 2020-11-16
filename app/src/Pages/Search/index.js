@@ -68,7 +68,7 @@ const Search = () => {
         />
         <SearchButton loading={isSearching} onClick={handleClick} />
       </SearchBox>
-      <Results loading={isSearching} results={results} />
+      <Results loading={isSearching} results={results} term={_term} />
     </Page>
   )
 }
