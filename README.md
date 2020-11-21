@@ -1,7 +1,4 @@
 # V0.1.0 - Initial Public Release
-## 🐛 Bugs
-- Recently inputted words don't have sound on user end
-
 
 ## Minimum Viable Product
 
@@ -26,17 +23,13 @@
 - grammar lessons
 - <https://paddle.com/blog/why-we-created-an-email-system-using-react/>
 - Export data as .csv file
-- progressively introduce required parts of word and submit button
 - Refactor media queries into theme queries
-- Get rid of /styled folder. Styles should be isolated by component
 - Add custom image url to edit/new word
 - Consolidate batch-upload & word-upload APIs...should presuume an Array of length > 0
 - handle multiple images and multiple recordings and multiple translations and multiple etc
 - Sanitize data so that strings don't begin or end with ' '
 - Get permission before recording
    1. Recording symbol is permanent
-- Search should use query string to make shareable and navigable
-   1. Change to routing solution
 - add 30 more words (currently 112)
    1. Reintroduce way to see that data easily on admin panel
 

@@ -1,3 +1,5 @@
+// TODO: migrate to Pages/admin/words
+
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from '../Surfaces'

@@ -13,7 +13,7 @@ const StyledGrid = styled.div`
   opacity: ${({ show = true }) => (show ? `1` : `0`)};
 `
 const VisibleInput = ({ show }) => {
-  const { public: isPublic, replace } = useEdit()
+  const { public: isPublic = false, replace } = useEdit()
   const property = 'public'
   const handleSwitch = (e) => {
     const { checked: value } = e.target
@@ -21,8 +21,8 @@ const VisibleInput = ({ show }) => {
   }
   return (
     <StyledGrid show={show}>
-      <h5>visibility</h5>
-      <Switch checked={isPublic} onChange={handleSwitch} />
+      <h5>{isPublic ? 'PUBLIC' : 'hidden'}</h5>
+      <Switch name='show' checked={isPublic} onChange={handleSwitch} />
     </StyledGrid>
   )
 }

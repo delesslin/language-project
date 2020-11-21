@@ -1,6 +1,6 @@
 import React from 'react'
 import useAPI from 'utils/hooks/useAPI'
-
+//
 const noRecordingsFirst = (arr) => {
   return arr.sort((a, b) => {
     return a.recordings.length > b.recordings.length
@@ -30,6 +30,7 @@ const noTagsFirst = (arr) => {
     return a.tags.length > b.tags.length
   })
 }
+
 const useFilters = () => {
   const { words } = useAPI()
   const [orderedWords, setOrderedWords] = React.useState([])
@@ -71,10 +72,18 @@ const useFilters = () => {
       return newFilters
     })
   }
+  const filterWords = (filtersArr = [defaultSort]) => {
+    setOrderedWords(() => {
+      return filtersArr.reduce((acc, filter) => {
+        return filter(acc)
+      }, words)
+    })
+  }
   return {
     filters,
     selectFilter,
     orderedWords,
+    filterWords,
   }
 }
 

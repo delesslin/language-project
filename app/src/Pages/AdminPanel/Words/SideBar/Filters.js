@@ -17,7 +17,9 @@ const Filter = styled.div`
 `
 const Filters = ({ filters, selectFilter }) => {
   const { hiddenFirst, noImagesFirst, noRecordingsFirst, noTagsFirst } = filters
-  const handleClick = (obj) => selectFilter(obj)
+  const handleClick = (obj) => {
+    selectFilter(obj)
+  }
   return (
     <FiltersDiv>
       <Filter
