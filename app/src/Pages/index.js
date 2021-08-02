@@ -10,9 +10,13 @@ import Search from './Search'
 import Tag from './Tag'
 import Type from './Type'
 import WordDisplay from './WordDisplay'
+import Lessons from './Lessons'
 
 const Public = () => (
   <Switch>
+    <Route path='/lessons'>
+      <Lessons />
+    </Route>
     <Route path='/type/:_input?'>
       <Type />
     </Route>
@@ -28,9 +32,6 @@ const Public = () => (
     <Route path='/search/:_term?'>
       <Search />
     </Route>
-    {/* <Route path='/request'>
-      <Request />
-    </Route> */}
     <Route path='/game'>
       <Game />
     </Route>

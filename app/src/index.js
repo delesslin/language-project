@@ -10,11 +10,6 @@ import Pages from './Pages'
 import { APIProvider } from './utils/hooks/useAPI'
 // TODO: Move app contents into ReactDOM.render
 
-// const bp = getBreakPoints()
-// setBreakPoints({
-//   ...bp,
-//   smallTablet: 500,
-// })
 const GlobalStyle = createGlobalStyle`
 html,
 body,
@@ -28,30 +23,21 @@ html {
   overflow-x: hidden;
 
 }
-
 `
-
-export const App = () => {
-  return (
-    <React.Fragment>
-      <Normalize />
-      <GlobalStyle />
-      <GlobalTheme>
-        <APIProvider>
-          <Router>
-            <Layout>
-              <Pages />
-            </Layout>
-          </Router>
-        </APIProvider>
-      </GlobalTheme>
-    </React.Fragment>
-  )
-}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Normalize />
+    <GlobalStyle />
+    <GlobalTheme>
+      <APIProvider>
+        <Router>
+          <Layout>
+            <Pages />
+          </Layout>
+        </Router>
+      </APIProvider>
+    </GlobalTheme>
   </React.StrictMode>,
   document.getElementById('root')
 )
