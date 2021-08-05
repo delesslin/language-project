@@ -3,18 +3,19 @@ const path = require('path')
 const router = express()
 const Word = require('../../models/word')
 const genHTML = require('./genHTML')
+const GOOGLE_ANALYTICS_ID = process.env.GOOGLE_ANALYTICS_ID
 const { IMAGE, DESCRIPTION, TITLE } = require('./defaults.js')
 const customizeHTML = (args) => {
   return genHTML({
     ...args,
     analytics: `<!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QJMKBWMM3J"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ANALYTICS_ID}"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-QJMKBWMM3J');
+      gtag('config', '${GOOGLE_ANALYTICS_ID}');
     </script>`,
   })
 }
