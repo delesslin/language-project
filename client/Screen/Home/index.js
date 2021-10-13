@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Animated, Easing, View, Text, Image, StyleSheet } from 'react-native'
+import { Animated, Easing, View, Text, StyleSheet, Image } from 'react-native'
 import Theme from '../../Theme'
 import Background, { BACKWARDS, FORWARDS, STOP } from './Background'
 import Buttons from './Buttons'
@@ -16,18 +16,22 @@ import Rabbit, {
 import { Container, Card } from 'Components'
 
 import { useAnimatedValue, useObjState, useAsyncEffect } from 'hooks'
+import { Title } from './Title'
+import { AcornToken } from './AcornToken'
 const asyncAnimated = (AnimatedArray) => {
   const validMethod = ['timing']
   return new Promise((res, rej) => {
     Animated.sequence(AnimatedArray).start(() => res())
   })
 }
+
 const Home = () => {
   const titleOpacity = useAnimatedValue(0)
-  const [acorn, setAcorn] = useState({
-    x: useAnimatedValue(-125),
-    y: useAnimatedValue(-50),
+  const [acorn, setAcorn] = useObjState({
+    x: useAnimatedValue(25),
+    y: useAnimatedValue(-75),
     zRotation: useAnimatedValue(0),
+    showOrnaments: false,
   })
   const [bgDir, setBgDr] = useState(FORWARDS)
   const [rabbit, setRabbit] = useObjState({
@@ -98,13 +102,18 @@ const Home = () => {
     })
   }, [])
   const handleTama = async () => {
-    console.log('TAMA PRESS')
     acorn.zRotation.stopAnimation()
+    setRabbit({
+      speaking: false,
+    })
+    setAcorn({
+      showOrnaments: true,
+    })
     await asyncAnimated([
       Animated.parallel([
         Animated.spring(acorn.x, {
           useNativeDriver: false,
-          toValue: 0,
+          toValue: 150,
         }),
         Animated.spring(acorn.y, {
           useNativeDriver: false,
@@ -157,7 +166,7 @@ const Home = () => {
     await asyncAnimated([
       Animated.timing(acorn.y, {
         useNativeDriver: false,
-        toValue: 700,
+        toValue: 650,
         duration: 1000,
         easing: Easing.bounce,
       }),
@@ -175,6 +184,32 @@ const Home = () => {
     <Container>
       <Card>
         <Background direction={bgDir} fps={30}>
+          <View
+            style={{
+              width: 100,
+              backgroundColor: Theme.WHITE,
+              alignSelf: 'flex-end',
+              margin: 10,
+              borderRadius: 25,
+              borderWidth: 3,
+              borderColor: Theme.BLACK,
+              paddingHorizontal: 5,
+              paddingVertical: 1,
+            }}
+          >
+            <View style={{ position: 'absolute', left: -40, top: -15 }}>
+              <Image
+                style={{ width: 100, height: 60 }}
+                source={require('../../assets/acorn_counter.png')}
+              />
+            </View>
+            <Text
+              style={{ fontFamily: 'text', textAlign: 'right', fontSize: 20 }}
+            >
+              0
+            </Text>
+          </View>
+          <Title opacity={titleOpacity}></Title>
           <Rabbit
             loop={rabbit.loop}
             fps={5}
@@ -186,72 +221,12 @@ const Home = () => {
           >
             {rabbit.text}
           </Rabbit>
-          <Animated.View
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: Theme.RED,
-              top: acorn.y,
-              left: acorn.x,
-            }}
-          >
-            <Animated.View
-              style={{
-                alignSelf: 'center',
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-                transform: [
-                  {
-                    rotateZ: acorn.zRotation.interpolate({
-                      inputRange: [0, 360],
-                      outputRange: ['0deg', '360deg'],
-                    }),
-                  },
-                  {
-                    scale: acorn.zRotation.interpolate({
-                      inputRange: [0, 360],
-                      outputRange: [1, 2],
-                    }),
-                  },
-                ],
-              }}
-            >
-              <Image
-                onPress={handleTama}
-                source={require('assets/acorn_1.png')}
-                style={{ width: 50, height: 50, position: 'absolute' }}
-              />
-            </Animated.View>
-          </Animated.View>
+          <AcornToken
+            acorn={acorn}
+            handleTama={handleTama}
+            showOrnaments={acorn.showOrnaments}
+          ></AcornToken>
         </Background>
-        <Animated.View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            paddingVertical: 100,
-            opacity: titleOpacity,
-          }}
-        >
-          <Animated.View
-            style={{
-              backgroundColor: Theme.rgba(Theme.WHITE, 0.9),
-              paddingHorizontal: 10,
-              paddingVertical: 5,
-              borderRadius: 15,
-            }}
-          >
-            <Text
-              style={{
-                fontSize: 70,
-                fontFamily: 'title',
-                color: Theme.rgba(Theme.RED, 0.9),
-              }}
-            >
-              KATABARE
-            </Text>
-          </Animated.View>
-        </Animated.View>
       </Card>
       {button.show ? (
         <Buttons onPress={button.onPress}>
