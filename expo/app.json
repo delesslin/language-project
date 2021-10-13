@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "Catawba Language Project",
+    "slug": "catawba-language",
+    "version": "0.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/Social Media Logo for CCPP - Facebook.png",
+    "splash": {
+      "image": "./assets/Social Media Logo for CCPP - Facebook.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#051940"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": false
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/Social Media Logo for CCPP - Facebook.png",
+        "backgroundColor": "#051940"
+      }
+    },
+    "web": {
+      "favicon": "./assets/Social Media Logo for CCPP - Facebook.png"
+    }
+  }
+}
