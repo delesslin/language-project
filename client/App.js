@@ -8,6 +8,7 @@ export default function App() {
   const [loaded, error] = useFonts({
     title: require('./assets/Fonts/ConcertOne-Regular.ttf'),
     text: require('./assets/Fonts/SourceSansPro-Bold.ttf'),
+    mono: require('./assets/Fonts/SourceCodePro-Regular.ttf'),
   })
   if (error) {
     console.error(error)

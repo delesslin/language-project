@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Animated, Easing, View, Text, StyleSheet, Image } from 'react-native'
-import Theme from '../../Theme'
+import { Animated, Easing, Text, StyleSheet } from 'react-native'
 import Background, { BACKWARDS, FORWARDS, STOP } from './Background'
 import Buttons from './Buttons'
 import Rabbit, {
@@ -17,7 +16,9 @@ import { Container, Card } from 'Components'
 
 import { useAnimatedValue, useObjState, useAsyncEffect } from 'hooks'
 import { Title } from './Title'
-import { AcornToken } from './AcornToken'
+import Token from './Token'
+import { useAnimated } from '../../hooks'
+import { Counter } from './Counter'
 const asyncAnimated = (AnimatedArray) => {
   const validMethod = ['timing']
   return new Promise((res, rej) => {
@@ -26,11 +27,11 @@ const asyncAnimated = (AnimatedArray) => {
 }
 
 const Home = () => {
-  const titleOpacity = useAnimatedValue(0)
+  const titleOpacity = useAnimated(0)
   const [acorn, setAcorn] = useObjState({
-    x: useAnimatedValue(25),
-    y: useAnimatedValue(-75),
-    zRotation: useAnimatedValue(0),
+    x: useAnimated(25),
+    y: useAnimated(-75),
+    zRotation: useAnimated(0),
     showOrnaments: false,
   })
   const [bgDir, setBgDr] = useState(FORWARDS)
@@ -38,7 +39,7 @@ const Home = () => {
     speaking: false,
     loop: true,
     sequence: RABBIT_HOP,
-    x: useAnimatedValue(400),
+    x: useAnimated(400),
     text: 'Tαnakɛ!',
   })
   const [button, setButton] = useObjState({
@@ -48,34 +49,30 @@ const Home = () => {
   })
   useAsyncEffect(async () => {
     await asyncAnimated([
-      Animated.timing(rabbit.x, {
-        useNativeDriver: false,
+      rabbit.x.timing({
         toValue: -175,
         easing: Easing.sin,
         duration: 5000,
       }),
     ])
-
     setRabbit({
       sequence: RABBIT_EAT,
     })
     await asyncAnimated([
       Animated.parallel([
-        Animated.timing(rabbit.x, {
-          useNativeDriver: false,
+        rabbit.x.timing({
           toValue: 150,
           easing: Easing.linear,
           duration: 8000,
         }),
-        Animated.timing(titleOpacity, {
-          useNativeDriver: false,
+        titleOpacity.timing({
           toValue: 1,
           easing: Easing.linear,
           duration: 2000,
         }),
       ]),
     ])
-    rabbit.x.stopAnimation()
+    rabbit.x.stop()
     setBgDr(STOP)
     setRabbit({
       loop: false,
@@ -83,11 +80,10 @@ const Home = () => {
     })
 
     await asyncAnimated([
-      Animated.timing(titleOpacity, {
-        useNativeDriver: false,
-        toValue: 0,
+      titleOpacity.timing({
         easing: Easing.linear,
         duration: 2000,
+        toValue: 0,
       }),
     ])
 
@@ -102,7 +98,7 @@ const Home = () => {
     })
   }, [])
   const handleTama = async () => {
-    acorn.zRotation.stopAnimation()
+    acorn.zRotation.stop()
     setRabbit({
       speaking: false,
     })
@@ -111,11 +107,11 @@ const Home = () => {
     })
     await asyncAnimated([
       Animated.parallel([
-        Animated.spring(acorn.x, {
+        acorn.x.spring({
           useNativeDriver: false,
           toValue: 150,
         }),
-        Animated.spring(acorn.y, {
+        acorn.y.spring({
           useNativeDriver: false,
           toValue: 250,
         }),
@@ -133,16 +129,13 @@ const Home = () => {
     })
     Animated.loop(
       Animated.sequence([
-        Animated.spring(acorn.zRotation, {
-          useNativeDriver: false,
+        acorn.zRotation.spring({
           toValue: 25,
         }),
-        Animated.spring(acorn.zRotation, {
-          useNativeDriver: false,
+        acorn.zRotation.spring({
           toValue: -10,
         }),
-        Animated.spring(acorn.zRotation, {
-          useNativeDriver: false,
+        acorn.zRotation.spring({
           toValue: 0,
         }),
       ])
@@ -164,7 +157,7 @@ const Home = () => {
     await asyncAnimated([Animated.delay(3000)])
 
     await asyncAnimated([
-      Animated.timing(acorn.y, {
+      acorn.y.timing({
         useNativeDriver: false,
         toValue: 650,
         duration: 1000,
@@ -184,62 +177,39 @@ const Home = () => {
     <Container>
       <Card>
         <Background direction={bgDir} fps={30}>
-          <View
-            style={{
-              width: 100,
-              backgroundColor: Theme.WHITE,
-              alignSelf: 'flex-end',
-              margin: 10,
-              borderRadius: 25,
-              borderWidth: 3,
-              borderColor: Theme.BLACK,
-              paddingHorizontal: 5,
-              paddingVertical: 1,
-            }}
-          >
-            <View style={{ position: 'absolute', left: -40, top: -15 }}>
-              <Image
-                style={{ width: 100, height: 60 }}
-                source={require('../../assets/acorn_counter.png')}
-              />
-            </View>
-            <Text
-              style={{ fontFamily: 'text', textAlign: 'right', fontSize: 20 }}
-            >
-              0
-            </Text>
-          </View>
-          <Title opacity={titleOpacity}></Title>
+          <Counter>{0}</Counter>
+          <Title opacity={titleOpacity.value}>KATABARE</Title>
           <Rabbit
             loop={rabbit.loop}
             fps={5}
             style={{
-              left: rabbit.x,
+              left: rabbit.x.value,
             }}
             speaking={rabbit.speaking}
             sequence={rabbit.sequence}
           >
             {rabbit.text}
           </Rabbit>
-          <AcornToken
-            acorn={acorn}
-            handleTama={handleTama}
+          <Token
+            x={acorn.x.value}
+            y={acorn.y.value}
+            zRotation={acorn.zRotation}
+            onPress={handleTama}
             showOrnaments={acorn.showOrnaments}
-          ></AcornToken>
+            source={require('assets/acorn_1.png')}
+          ></Token>
         </Background>
       </Card>
-      {button.show ? (
-        <Buttons onPress={button.onPress}>
-          <Text
-            style={{
-              fontFamily: 'text',
-              fontSize: 25,
-            }}
-          >
-            {button.text}
-          </Text>
-        </Buttons>
-      ) : null}
+      <Buttons show={button.show} onPress={button.onPress}>
+        <Text
+          style={{
+            fontFamily: 'text',
+            fontSize: 25,
+          }}
+        >
+          {button.text}
+        </Text>
+      </Buttons>
     </Container>
   )
 }

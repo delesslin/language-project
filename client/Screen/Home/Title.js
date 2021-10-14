@@ -2,7 +2,7 @@ import React from 'react'
 import { Animated, Text } from 'react-native'
 import Theme from '../../Theme'
 
-export function Title({ opacity }) {
+export function Title({ opacity, children }) {
   return (
     <Animated.View
       style={{
@@ -27,7 +27,7 @@ export function Title({ opacity }) {
             color: Theme.rgba(Theme.RED, 0.9),
           }}
         >
-          KATABARE
+          {children}
         </Text>
       </Animated.View>
     </Animated.View>

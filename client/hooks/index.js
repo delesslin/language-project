@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Animated } from 'react-native'
+import { Animated, Easing } from 'react-native'
 export const useAsyncEffect = async (asyncFN, arr) => {
   useEffect(() => {
     asyncFN()
@@ -22,6 +22,27 @@ export const useObjState = (obj) => {
   return [state, setObjState]
 }
 export const useAnimatedValue = (val) => useRef(new Animated.Value(val)).current
+
+export const useAnimated = (initialValue) => {
+  const value = useAnimatedValue(initialValue)
+  const setValue = (val) => value.setValue(val)
+  const timing = (config) => {
+    return Animated.timing(value, {
+      useNativeDriver: false,
+      easing: Easing.ease,
+      ...config,
+    })
+  }
+  const spring = (config) => {
+    return Animated.spring(value, {
+      useNativeDriver: false,
+      ...config,
+    })
+  }
+  const interpolate = (config) => value.interpolate(config)
+  const stop = () => value.stopAnimation()
+  return { value, timing, spring, stop, interpolate, setValue }
+}
 export function useInterval(callback, delay) {
   const savedCallback = useRef()
 

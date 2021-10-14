@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { Animated, Easing, Text, Pressable } from 'react-native'
 import Theme from '../../Theme'
 
-function Buttons({ onPress, children }) {
+function Buttons({ onPress, children, show }) {
   const scale = useRef(new Animated.Value(0)).current
 
   useEffect(() => {
@@ -32,6 +32,7 @@ function Buttons({ onPress, children }) {
         onPress()
       })
     }
+  if (!show) return null
   return (
     <Animated.View
       style={{
